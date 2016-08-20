@@ -1,0 +1,132 @@
+<html>
+
+<head>
+
+</head>
+
+<body onload="load();">
+
+    <div>
+        <canvas id="cv" width="300" height="100" style="border:1px dashed #00c3c3; "></canvas>
+    </div>
+    <!-- <div id='izpis'></div> -->
+    <!-- <div class="izpisRazred" id="izpis"></div> -->
+    <div id='output'></div> <!-- > DODANO -->
+
+    <script type="text/javascript" charset="UTF-8">
+        var output = document.getElementById('izpis'); // > ???
+        var x = new Array(); // polje (Array) za x spremenljivko
+        var y = new Array();
+        var canvas, ctx; // spremenljivki za platno in kontekst (ctx)
+        var potVrednost, potVrednost1;
+        var stevec = 0;
+        output = document.getElementById("output");
+
+        function load() {
+            canvas = document.getElementById("cv");
+            ctx = canvas.getContext("2d");
+            ctx.font = '20px arial';
+            //* GRAF ******************************************************************************
+            ctx.lineWidth = "3";
+            ctx.strokeStyle = "#00ff00";
+
+            for (var i = 0; i < 300; i++) { // zanka za zapolnitev polj z naključnimi vrednostmi
+                x[i] = i; // za x so vrednosti: 0, 1, 2, ...
+                y[i] = 50; // za y so vrednosti 300
+                ctx.lineTo(x[i], y[i]); // narišemo linijo do naslednje točke (postavimo jo na platno; ni še prikazana)
+                // za prikaz moramo zapisati še ctx.stroke()
+            }
+            // ctx.stroke(); // linijo prikažemo na platnu (canvas)
+            //* GRAF *****************************************************************************
+        }
+
+        function log(msg) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
+            var node = document.createElement("tr"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
+            // var textnode = document.createTextNode(stevec + " | " + msg); // ustvarimo element s tekstom (vrednost stanja)
+            var textnode = document.createTextNode(stevec + " | " + msg); // ustvarimo element s tekstom (vrednost stanja)
+            node.appendChild(textnode); // dodamo izpis k "node" t.j. vrstici tabele
+            output.insertBefore(node, output.childNodes[0]); // output je spremenljivka div-a t.j. output = document.getElementById("output")
+            if (stevec > 9) { // če je vrstic več kot 10 (šteti začnemo z 0)
+                output.removeChild(output.childNodes[10], output.childNodes[10]); // odstranimo najstarejši zapis
+            }
+            stevec = stevec + 1; // povečamo števec števila izpisanih sporočil
+        }
+
+        var connection = new WebSocket('ws://192.168.42.70:81/', ['arduino']);
+        var connection1 = new WebSocket('ws://192.168.42.71:81/', ['arduino']);
+
+        var tempval = 0, tempval1 = 0;
+        var messageReceived = true, messageReceived1 = true;
+        var IBI = 600; // holds the time between beats, the Inter-Beat Interval
+        var Pulse = false; // true when pulse wave is high, false when it's low
+        var lastBeatTime = 0;
+
+        // connection0
+        connection.onopen = function() {
+            setInterval(function() {
+                tempval++
+                if (messageReceived)
+                    connection.send('tempval: ' + tempval);
+                messageReceived = false;
+            }, 20);
+        };
+        connection.onerror = function(error) {
+            console.log('WebSocket Error ', error);
+        };
+        connection.onmessage = function(e) {
+          log(potVrednost);
+            messageReceived = true;
+            potVrednost = parseInt(e.data);
+            // Signal = potVrednost;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // brišemo platno -> clearRect
+            ctx.beginPath(); // to vrstico moramo zapisati, da se prične izris vsebine na platnu znova
+            y.splice(0, 1); // na mestu 0 v polju y izbrišemo eno vrednost
+            y[299] = potVrednost;
+            for (var i = 0; i < 300; i++) { // zanka za izris vrednosti na platnu
+                ctx.lineTo(x[i], (100 - (y[i] / 1) * 100)); // narišemo linijo do naslednje točke ; 300 -, zaradi obrnjenega izrisa grafa, 0,0 je levo zgoraj na monitorju
+            }
+            ctx.stroke(); // če želimo linijo prikazati na platnu moramo uporabiti "stroke()"
+            ctx.fillText(potVrednost, 1, 15); //Izpišemo trenutno vrednost potenciometra
+            ctx.fillText("1", 290, 20); //Izpišemo min vrednost potenciometra
+            ctx.fillText("0", 290, 100); // Izpišemo max vrednost potenciometra*/
+
+            // output.innerHTML = log ('potVrednost', msg); // > DODANO
+        };
+
+        // connection1
+        connection1.onopen = function() {
+            setInterval(function() {
+                tempval1++
+                if (messageReceived1)
+                    connection1.send('tempval: ' + tempval1);
+                messageReceived1 = false;
+            }, 20);
+        };
+        connection1.onerror = function(error) {
+            console.log('WebSocket Error ', error);
+        };
+        connection1.onmessage = function(e) {
+          log(potVrednost1);
+            messageReceived1 = true;
+            potVrednost1 = parseInt(e.data);
+            // Signal = potVrednost;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // brišemo platno -> clearRect
+            ctx.beginPath(); // to vrstico moramo zapisati, da se prične izris vsebine na platnu znova
+            y.splice(0, 1); // na mestu 0 v polju y izbrišemo eno vrednost
+            y[299] = potVrednost1;
+            for (var i = 0; i < 300; i++) { // zanka za izris vrednosti na platnu
+                ctx.lineTo(x[i], (100 - (y[i] / 1) * 100)); // narišemo linijo do naslednje točke ; 300 -, zaradi obrnjenega izrisa grafa, 0,0 je levo zgoraj na monitorju
+            }
+            ctx.stroke(); // če želimo linijo prikazati na platnu moramo uporabiti "stroke()"
+            ctx.fillText(potVrednost1, 1, 15); //Izpišemo trenutno vrednost potenciometra
+            ctx.fillText("1", 290, 20); //Izpišemo min vrednost potenciometra
+            ctx.fillText("0", 290, 100); // Izpišemo max vrednost potenciometra*/
+
+            // output.innerHTML = log ('potVrednost', msg); // > DODANO
+        };
+    </script>
+</body>
+
+</html>
