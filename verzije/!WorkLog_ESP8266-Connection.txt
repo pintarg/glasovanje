@@ -3,13 +3,13 @@ Verzija: 2016.08.21a
 Narejeno: Vzpostavljena povezava z routerjem prek WiFi. Zajem podatkov s pina 12 (D6). Pošiljanje zajetih podatkov na spletno stran.
 To-Do: Vzpostaviti zajem podatkov za 5 gumbov.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.08.21b
+Narejeno: Zajem podatkov pin 13 (D7). Deloma uspešno. ESP8266 je po spremembi kode slabo odziven-packet loss. Ne javlja vseh podatkov. Komunikacija ok. Sumim napako v kodi.
+To-Do: Sprememba načina delovanja. Ne rabim 2x zajema vrednosti pina, samo podatek, kateri pin/gumb je bil izbran.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.08.21c
+Narejeno: Testiranje pinov: 15 (D8), 13 (D7), 12 (D6), 14 (D5), 2 (D4), 0 (D3), 4 (D2) in 5 (D1). 12 in 13 delujeta ok. Če omenjena pina nista izbrana, se izpisuje rezultat pina 15. Ostali ne delujejo.
+To-Do: Izloči pin 15 in preveri za ostale, kako se bere rezultate.
 ==============================
 Verzija:
 Narejeno:
