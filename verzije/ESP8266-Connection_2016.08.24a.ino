@@ -1,5 +1,5 @@
 // Opis: Koda, ki se izvaja na ESP8266 in skrbi za vzpostavitev WiFi povezave z routerjem, zajem glasov in komunikacijo s spletno stranjo.
-// Verzija: 2016.08.24b
+// Verzija: 2016.08.24a
 // ====================================================================================================
 
 // 470 ohm
@@ -28,20 +28,22 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
             break;
         }
 
-        case WStype_TEXT:
+        case WStype_TEXT: // listening on pin 12 (D6)
         {
           if (digitalRead(13) == 0) { // D7-ZE
             Signal = 5;
           } else if (digitalRead(12) == 0) { // D6-RU
             Signal = 4;
+          // } else if (digitalRead(14) == 0) { // D5-ni v uporabi
+          //   Signal = 8;
+          // } else if (digitalRead(2) == 0) { // D4-ni v uporabi
+          //   Signal = 9;
           } else if (digitalRead(0) == 0) { // D3-BE
             Signal = 3;
           } else if (digitalRead(4) == 0) { // D2-OR
             Signal = 2;
           } else if (digitalRead(5) == 0) { // D1-RD
             Signal = 1;
-          } else {
-            Signal = 0;
           }
 
             itoa(Signal,buffer,10);
@@ -63,11 +65,14 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
 }
 
 void setup() {
-    pinMode(13, INPUT_PULLUP); // D7 zelena
-    pinMode(12, INPUT_PULLUP); // D6 rumena
-    pinMode(0, INPUT_PULLUP); // D3 bela
-    pinMode(4, INPUT_PULLUP); // D2 oranžna
-    pinMode(5, INPUT_PULLUP); // D1 rdeča
+    pinMode(2, INPUT_PULLUP); // D4 rdeca
+    pinMode(14, INPUT_PULLUP); // D5 oranzna
+    pinMode(12, INPUT_PULLUP); // D6 bela
+    pinMode(13, INPUT_PULLUP); // D7 rumena
+    pinMode(15, INPUT_PULLUP); // D8 zelena
+    pinMode(0, INPUT_PULLUP); // D3 zelena
+    pinMode(4, INPUT_PULLUP); // D2 zelena
+    pinMode(5, INPUT_PULLUP); // D1 zelena
 
     Serial.begin(115200);
     WiFi.begin(ssid, password);
