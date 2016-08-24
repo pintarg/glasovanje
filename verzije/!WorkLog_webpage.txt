@@ -3,17 +3,17 @@ Verzija: 2016.08.21a
 Narejeno: Vzpostavljen prikaz za 1 ESP8266 in 1 tipko.
 To-Do: Vzpostaviti prikaz za vsak ESP8266 posebej (ločeni grafi) in vsako tipko posebej (ločene barve v grafu?). Prikaz povprečja izbranih odgovorov.
 ==============================
-Verzija: 
-Narejeno:
-To-Do:
+Verzija:  2016.08.24a
+Narejeno: Označevanje kode.
+To-Do: Urejanje kode za dvojni graf in dvojni scrool izpis.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.08.24b
+Narejeno: Izris 2 grafov, pripravljena koda za izpis 2 scroll funkcij.
+To-Do: Popravi kodo za izris rezultatov na vsakem grafu posebej in ustrezno delovanje 2 scroll funkcij istočasno.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.08.24c
+Narejeno: Delno urejeno.
+To-Do: Popravi kodo za izris rezultatov na vsakem grafu posebej in ustrezno delovanje 2 scroll funkcij istočasno.
 ==============================
 Verzija:
 Narejeno:

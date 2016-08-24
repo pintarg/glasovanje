@@ -1,6 +1,6 @@
 <!--
 Opis: Spletna stran za prikaz zbranih glasov.
-Verzija: 2016.08.24d
+Verzija: 2016.08.24a
 ====================================================================================================-->
 <html>
 
@@ -11,33 +11,25 @@ Verzija: 2016.08.24d
 <body onload="load();">
 
     <div> <!-- risanje grafov -->
-        <canvas id="cv" width="300" height="100" style="border:1px dashed #00c3c3; "></canvas> <!-- GRAF0 -->
-        <canvas id="cv1" width="300" height="100" style="border:1px dashed #00c3c3; "></canvas> <!-- GRAF1 -->
+        <canvas id="cv" width="300" height="100" style="border:1px dashed #00c3c3; "></canvas>
+        <canvas id="cv1" width="300" height="100" style="border:1px dashed #00c3c3; "></canvas>
     </div>
 
     <div id='output'></div> <!-- izpis vrednosti tipke - scroll0 -->
-    <div id='output1'></div> <!-- izpis vrednosti tipke - scroll1 -->
 
     <script type="text/javascript" charset="UTF-8">
-        // var output = document.getElementById('izpis'); // > ???
+        var output = document.getElementById('izpis'); // > ???
         var x = new Array(); // polje (Array) za x spremenljivko
         var y = new Array();
-        var x1 = new Array();
-        var y1 = new Array();
         var canvas, ctx; // spremenljivki za platno in kontekst (ctx)
-        var canvas1, ctx1;
         var potVrednost, potVrednost1;
-        var stevec = 0, stevec1 = 0;
-        var output = document.getElementById("output");
-        var output1 = document.getElementById("output1");
+        var stevec = 0;
+        output = document.getElementById("output");
 
         function load() {
             canvas = document.getElementById("cv");
-            canvas1 = document.getElementById("cv1");
             ctx = canvas.getContext("2d");
-            ctx1 = canvas1.getContext("2d");
             ctx.font = '20px arial';
-            ctx1.font = '20px arial';
             // GRAF0 ******************************************************************************
             ctx.lineWidth = "3";
             ctx.strokeStyle = "#00ff00";
@@ -50,23 +42,11 @@ Verzija: 2016.08.24d
             }
             // ctx.stroke(); // linijo prikažemo na platnu (canvas)
             // GRAF0 *****************************************************************************
-
-            // GRAF1 ******************************************************************************
-            ctx1.lineWidth = "3";
-            ctx1.strokeStyle = "#00ff00";
-
-            for (var i = 0; i < 300; i++) { // zanka za zapolnitev polj z naključnimi vrednostmi
-                x[i] = i; // za x so vrednosti: 0, 1, 2, ...
-                y[i] = 50; // za y so vrednosti 300
-                ctx1.lineTo(x[i], y[i]); // narišemo linijo do naslednje točke (postavimo jo na platno; ni še prikazana)
-                // za prikaz moramo zapisati še ctx.stroke()
-            }
-            // ctx.stroke(); // linijo prikažemo na platnu (canvas)
-            // GRAF1 *****************************************************************************
         }
-        // SCROLL0 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
+        // SCROLL FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
         function log(msg) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
             var node = document.createElement("tr"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
+            // var textnode = document.createTextNode(stevec + " | " + msg); // ustvarimo element s tekstom (vrednost stanja)
             var textnode = document.createTextNode(stevec + " | " + msg); // ustvarimo element s tekstom (vrednost stanja)
             node.appendChild(textnode); // dodamo izpis k "node" t.j. vrstici tabele
             output.insertBefore(node, output.childNodes[0]); // output je spremenljivka div-a t.j. output = document.getElementById("output")
@@ -75,20 +55,7 @@ Verzija: 2016.08.24d
             }
             stevec = stevec + 1; // povečamo števec števila izpisanih sporočil
         }
-        // SCROLL0 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
-
-        // // SCROLL1 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
-        // function log(msg) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
-        //     var node1 = document.createElement("tr1"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
-        //     var textnode1 = document.createTextNode(stevec1 + " | " + msg); // ustvarimo element s tekstom (vrednost stanja)
-        //     node1.appendChild(textnode1); // dodamo izpis k "node" t.j. vrstici tabele
-        //     output1.insertBefore(node1, output1.childNodes[0]); // output je spremenljivka div-a t.j. output = document.getElementById("output")
-        //     if (stevec1 > 9) { // če je vrstic več kot 10 (šteti začnemo z 0)
-        //         output1.removeChild(output1.childNodes[10], output1.childNodes[10]); // odstranimo najstarejši zapis
-        //     }
-        //     stevec1 = stevec1 + 1; // povečamo števec števila izpisanih sporočil
-        // }
-        // // SCROLL1 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
+        // SCROLL FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
 
         // POVEZAVA Z ESP8266 ********************************************************************************
         var connection = new WebSocket('ws://192.168.42.70:81/', ['arduino']); // CONNECTION0 - ESP8266-0
