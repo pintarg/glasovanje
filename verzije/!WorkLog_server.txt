@@ -3,9 +3,9 @@ Verzija: 2016.08.21a
 Narejeno: Vzpostavljen prikaz spletne strani webpage.html in komunikacija s klienti prek socket.io.
 To-Do: Preverjanje, če se socket.io lahko opusti in se uporabi samo WebSocket.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.08.24a
+Narejeno: Odstranjevanje odvečne kode. Ostala samo koda za vzpostavitev strežnika in branje webpage.html.
+To-Do: /
 ==============================
 Verzija:
 Narejeno:
