@@ -1,6 +1,6 @@
 <!--
 Opis: Spletna stran za prikaz zbranih glasov.
-Verzija: 2016.08.25b
+Verzija: 2016.08.25a
 ====================================================================================================-->
 <html>
 
@@ -12,11 +12,10 @@ Verzija: 2016.08.25b
 
     <div> <!-- risanje grafov -->
         <canvas id="cv" width="300" height="100" style="border:1px dashed #00c3c3; "></canvas> <!-- GRAF0 -->
+        <canvas id="cv1" width="300" height="100" style="border:1px dashed #00c3c3; "></canvas> <!-- GRAF1 -->
     </div>
+
     <div id='output'></div> <!-- izpis vrednosti tipke - scroll0 -->
-    <div>
-      <canvas id="cv1" width="300" height="100" style="border:1px dashed #00c3c3; "></canvas> <!-- GRAF1 -->
-    </div>
     <div id='output1'></div> <!-- izpis vrednosti tipke - scroll1 -->
 
     <script type="text/javascript" charset="UTF-8">
@@ -65,7 +64,6 @@ Verzija: 2016.08.25b
             // ctx.stroke(); // linijo prikažemo na platnu (canvas)
             // GRAF1 *****************************************************************************
         }
-
         // SCROLL0 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
         function log(msg) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
             var node = document.createElement("tr"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
@@ -79,18 +77,18 @@ Verzija: 2016.08.25b
         }
         // SCROLL0 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
 
-        // SCROLL1 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
-        function log1(msg1) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
-            var node1 = document.createElement("tr1"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
-            var textnode1 = document.createTextNode(stevec1 + " | " + msg1); // ustvarimo element s tekstom (vrednost stanja)
-            node1.appendChild(textnode1); // dodamo izpis k "node" t.j. vrstici tabele
-            output1.insertBefore(node1, output1.childNodes[0]); // output je spremenljivka div-a t.j. output = document.getElementById("output")
-            if (stevec1 > 9) { // če je vrstic več kot 10 (šteti začnemo z 0)
-                output1.removeChild(output1.childNodes[10], output1.childNodes[10]); // odstranimo najstarejši zapis
-            }
-            stevec1 = stevec1 + 1; // povečamo števec števila izpisanih sporočil
-        }
-        // SCROLL1 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
+        // // SCROLL1 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
+        // function log(msg) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
+        //     var node1 = document.createElement("tr1"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
+        //     var textnode1 = document.createTextNode(stevec1 + " | " + msg); // ustvarimo element s tekstom (vrednost stanja)
+        //     node1.appendChild(textnode1); // dodamo izpis k "node" t.j. vrstici tabele
+        //     output1.insertBefore(node1, output1.childNodes[0]); // output je spremenljivka div-a t.j. output = document.getElementById("output")
+        //     if (stevec1 > 9) { // če je vrstic več kot 10 (šteti začnemo z 0)
+        //         output1.removeChild(output1.childNodes[10], output1.childNodes[10]); // odstranimo najstarejši zapis
+        //     }
+        //     stevec1 = stevec1 + 1; // povečamo števec števila izpisanih sporočil
+        // }
+        // // SCROLL1 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
 
         // POVEZAVA Z ESP8266 ********************************************************************************
         var connection = new WebSocket('ws://192.168.42.70:81/', ['arduino']); // CONNECTION0 - ESP8266-0
@@ -99,6 +97,9 @@ Verzija: 2016.08.25b
 
         var tempval = 0, tempval1 = 0;
         var messageReceived = true, messageReceived1 = true;
+        var IBI = 600; // holds the time between beats, the Inter-Beat Interval
+        var Pulse = false; // true when pulse wave is high, false when it's low
+        var lastBeatTime = 0;
 
         // CONNECTION0 ******************************************************************************
         connection.onopen = function() {
@@ -147,7 +148,7 @@ Verzija: 2016.08.25b
             console.log('WebSocket Error ', error);
         };
         connection1.onmessage = function(e) {
-          log1(potVrednost1);
+          log(potVrednost1);
             messageReceived1 = true;
             potVrednost1 = parseInt(e.data);
             // Signal = potVrednost;
