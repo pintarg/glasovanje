@@ -23,9 +23,9 @@ Verzija: 2016.08.25b
 Narejeno: Urejen izpis rezultatov v 2 ločenih scrollih. Scroll 2 ima vodoraven izpis namesto navpičnega.
 To-Do: Popraviti scrool 2, sa bo imel navpičen izpis. Urediti kodo, da je vrednost v scroll beležena samo ob spremembi.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.08.25c
+Narejeno: Popravljen scroll 2, da je izpis navpičen
+To-Do: Urediti kodo, da je vrednost v scroll beležena samo ob spremembi.
 ==============================
 Verzija:
 Narejeno:
