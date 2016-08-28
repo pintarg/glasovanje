@@ -27,9 +27,9 @@ Verzija: 2016.08.25c
 Narejeno: Popravljen scroll 2, da je izpis navpičen
 To-Do: Urediti kodo, da je vrednost v scroll beležena samo ob spremembi.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.08.28a
+Narejeno: Dodana koda za tretji ESP.
+To-Do: Urediti kodo, da je vrednost v scroll beležena samo ob spremembi.
 ==============================
 Verzija:
 Narejeno:
