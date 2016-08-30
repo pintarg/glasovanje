@@ -31,13 +31,13 @@ Verzija: 2016.08.28a
 Narejeno: Dodana koda za tretji ESP.
 To-Do: Urediti kodo, da je vrednost v scroll beležena samo ob spremembi.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.08.30a
+Narejeno: Urejen prikaz samo ob spremembi vrednosti na grafu1.
+To-Do: Urediti kodo za spremembo prikaza na scroll.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.08.30b
+Narejeno: Urejen izpis scroll, da izpiše samo spremembo vrednosti (brez 0). Aktivno na grafu0 in scroll0.
+To-Do: Urediti kodo za 1 in 2.
 ==============================
 Verzija:
 Narejeno:

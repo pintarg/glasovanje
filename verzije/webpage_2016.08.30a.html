@@ -1,6 +1,6 @@
 <!--
 Opis: Spletna stran za prikaz zbranih glasov.
-Verzija: 2016.08.30b
+Verzija: 2016.08.30a
 ====================================================================================================-->
 <html>
 
@@ -35,7 +35,7 @@ Verzija: 2016.08.30b
         var canvas1, ctx1;
         var canvas2, ctx2;
         var potVrednost, potVrednost1, potVrednost2;
-        var potVrednostTest = 0, potVrednostTestA = 0;
+        var potVrednostTest = 0;
         var stevec = 0, stevec1 = 0, stevec2 = 0;
         var output = document.getElementById("output");
         var output1 = document.getElementById("output1");
@@ -91,19 +91,14 @@ Verzija: 2016.08.30b
 
         // SCROLL0 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
         function log(msg) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
-          if (potVrednost != potVrednostTestA) {
-            if (msg != 0) {
-              var node = document.createElement("tr"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
-              var textnode = document.createTextNode(stevec + " | " + msg); // ustvarimo element s tekstom (vrednost stanja)
-              node.appendChild(textnode); // dodamo izpis k "node" t.j. vrstici tabele
-              output.insertBefore(node, output.childNodes[0]); // output je spremenljivka div-a t.j. output = document.getElementById("output")
-              if (stevec > 9) { // če je vrstic več kot 10 (šteti začnemo z 0)
-                  output.removeChild(output.childNodes[10], output.childNodes[10]); // odstranimo najstarejši zapis
-              }
-              stevec++; // povečamo števec števila izpisanih sporočil
-            }
-            potVrednostTestA = potVrednost;
+          var node = document.createElement("tr"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
+          var textnode = document.createTextNode(stevec + " | " + msg); // ustvarimo element s tekstom (vrednost stanja)
+          node.appendChild(textnode); // dodamo izpis k "node" t.j. vrstici tabele
+          output.insertBefore(node, output.childNodes[0]); // output je spremenljivka div-a t.j. output = document.getElementById("output")
+          if (stevec > 9) { // če je vrstic več kot 10 (šteti začnemo z 0)
+              output.removeChild(output.childNodes[10], output.childNodes[10]); // odstranimo najstarejši zapis
           }
+          stevec = stevec + 1; // povečamo števec števila izpisanih sporočil
         }
         // SCROLL0 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
 
