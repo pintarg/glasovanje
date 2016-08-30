@@ -23,9 +23,9 @@ Verzija: 2016.08.29a - ESP8266-Connection-Test.ino
 Narejeno: Testiranje pinov na ESP8266 V1.0-Amica
 To-Do: Delujoči pini za input: 0, 2, 4, 5, 10, 12, 13 in 14. Pinu 1 (zazna  kot vedno izbranega), 3 (zazna kot vedno izbranega), 9 (ob izbiri ESP zablokira, pomaga samo rst), 15 (zazna kot vedno izbranega) in 16 (ko ga izberep, ga ne deaktivira - zazna kot vedno izbranega) ne delujejo za input. Test outputa (LEDice)?
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.08.30a
+Narejeno: Urejeno zaznavanje spremembe 3 pinov (5(D1), 4(D2) in 0(D3)) in povratna informacija na LEDice (14(D5), 12(D7) in 13(D8)).
+To-Do: /
 ==============================
 Verzija:
 Narejeno:
