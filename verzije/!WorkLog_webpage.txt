@@ -55,9 +55,9 @@ Verzija: 2016.08.31d
 Narejeno: Urejen izpis scroll - omejen izpis "undefined" in popravljeno štetje, da se začne z 1.
 To-Do: Oblikovanje spletne strani za prikaz rezultatov?
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.08.31e
+Narejeno: Popravek na scrollu, saj se je po 10 zapisih beleženje zablokiralo.
+To-Do: Popravljeno.
 ==============================
 Verzija:
 Narejeno:
