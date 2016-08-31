@@ -1,0 +1,240 @@
+<!--
+Opis: Spletna stran za prikaz zbranih glasov.
+Verzija: 2016.08.31a
+====================================================================================================-->
+<html>
+
+<head>
+
+</head>
+
+<body onload="load();">
+
+    <div> <!-- risanje grafov -->
+        <canvas id="cv" width="300" height="100" style="border:1px dashed #00c3c3; "></canvas> <!-- GRAF0 -->
+    </div>
+    <div id='output'></div> <!-- izpis vrednosti tipke - scroll0 -->
+    <div>
+      <canvas id="cv1" width="300" height="100" style="border:1px dashed #00c3c3; "></canvas> <!-- GRAF1 -->
+    </div>
+    <div id='output1'></div> <!-- izpis vrednosti tipke - scroll1 -->
+    <div>
+      <canvas id="cv2" width="300" height="100" style="border:1px dashed #00c3c3; "></canvas> <!-- GRAF2 -->
+    </div>
+    <div id='output2'></div> <!-- izpis vrednosti tipke - scroll2 -->
+
+    <script type="text/javascript" charset="UTF-8">
+        var x = new Array(), x1 = new Array(), x2 = new Array(); // polje (Array) za x spremenljivko
+        var y = new Array(), y1 = new Array(), y2 = new Array();
+        var canvas, ctx, canvas1, ctx1, canvas2, ctx2; // spremenljivki za platno in kontekst (ctx)
+        var potVrednost, potVrednost1, potVrednost2;
+        var potVrednostTest = 0, potVrednostTestA = 0;
+        var stevec = 0, stevec1 = 0, stevec2 = 0;
+        var output = document.getElementById("output"), output1 = document.getElementById("output1"), output2 = document.getElementById("output2");
+
+        function load() {
+            canvas = document.getElementById("cv");
+            canvas1 = document.getElementById("cv1");
+            canvas2 = document.getElementById("cv2");
+            ctx = canvas.getContext("2d");
+            ctx1 = canvas1.getContext("2d");
+            ctx2 = canvas2.getContext("2d");
+            ctx.font = '20px arial';
+            ctx1.font = '20px arial';
+            ctx2.font = '20px arial';
+            // GRAF0 ******************************************************************************
+            ctx.lineWidth = "3";
+            ctx.strokeStyle = "#00ff00";
+
+            for (var i = 0; i < 300; i++) { // zanka za zapolnitev polj z naključnimi vrednostmi
+                x[i] = i; // za x so vrednosti: 0, 1, 2, ...
+                y[i] = 50; // za y so vrednosti 300
+                ctx.lineTo(x[i], y[i]); // narišemo linijo do naslednje točke (postavimo jo na platno; ni še prikazana)
+                // za prikaz moramo zapisati še ctx.stroke()
+            }
+            // ctx.stroke(); // linijo prikažemo na platnu (canvas)
+            // GRAF0 *****************************************************************************
+
+            // GRAF1 ******************************************************************************
+            ctx1.lineWidth = "3";
+            ctx1.strokeStyle = "#00ff00";
+
+            for (var i = 0; i < 300; i++) { // zanka za zapolnitev polj z naključnimi vrednostmi
+                x[i] = i; // za x so vrednosti: 0, 1, 2, ...
+                y[i] = 50; // za y so vrednosti 300
+                ctx1.lineTo(x[i], y[i]); // narišemo linijo do naslednje točke (postavimo jo na platno; ni še prikazana)
+                // za prikaz moramo zapisati še ctx.stroke()
+            }
+            // GRAF1 *****************************************************************************
+
+            // GRAF2 ******************************************************************************
+            ctx2.lineWidth = "3";
+            ctx2.strokeStyle = "#00ff00";
+
+            for (var i = 0; i < 300; i++) { // zanka za zapolnitev polj z naključnimi vrednostmi
+                x[i] = i; // za x so vrednosti: 0, 1, 2, ...
+                y[i] = 50; // za y so vrednosti 300
+                ctx2.lineTo(x[i], y[i]); // narišemo linijo do naslednje točke (postavimo jo na platno; ni še prikazana)
+                // za prikaz moramo zapisati še ctx.stroke()
+            }
+            // GRAF2 *****************************************************************************
+        }
+
+        // SCROLL0 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
+        function log(msg) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
+          if (potVrednost != potVrednostTestA) {
+            if (msg != 0) {
+              var node = document.createElement("tr"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
+              var textnode = document.createTextNode(stevec + " | " + msg); // ustvarimo element s tekstom (vrednost stanja)
+              node.appendChild(textnode); // dodamo izpis k "node" t.j. vrstici tabele
+              output.insertBefore(node, output.childNodes[0]); // output je spremenljivka div-a t.j. output = document.getElementById("output")
+              if (stevec > 9) { // če je vrstic več kot 10 (šteti začnemo z 0)
+                  output.removeChild(output.childNodes[10], output.childNodes[10]); // odstranimo najstarejši zapis
+              }
+              stevec++; // povečamo števec števila izpisanih sporočil
+            }
+            potVrednostTestA = potVrednost;
+          }
+        }
+        // SCROLL0 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
+
+        // SCROLL1 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
+        function log1(msg1) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
+          var node1 = document.createElement("tr"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
+          var textnode1 = document.createTextNode(stevec1 + " | " + msg1); // ustvarimo element s tekstom (vrednost stanja)
+          node1.appendChild(textnode1); // dodamo izpis k "node" t.j. vrstici tabele
+          output1.insertBefore(node1, output1.childNodes[0]); // output je spremenljivka div-a t.j. output = document.getElementById("output")
+          if (stevec1 > 9) { // če je vrstic več kot 10 (šteti začnemo z 0)
+              output1.removeChild(output1.childNodes[10], output1.childNodes[10]); // odstranimo najstarejši zapis
+          }
+          stevec1 = stevec1 + 1; // povečamo števec števila izpisanih sporočil
+        }
+        // SCROLL1 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
+
+        // SCROLL2 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
+        function log2(msg2) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
+          var node2 = document.createElement("tr"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
+          var textnode2 = document.createTextNode(stevec2 + " | " + msg2); // ustvarimo element s tekstom (vrednost stanja)
+          node2.appendChild(textnode2); // dodamo izpis k "node" t.j. vrstici tabele
+          output2.insertBefore(node2, output2.childNodes[0]); // output je spremenljivka div-a t.j. output = document.getElementById("output")
+          if (stevec2 > 9) { // če je vrstic več kot 10 (šteti začnemo z 0)
+              output2.removeChild(output2.childNodes[10], output2.childNodes[10]); // odstranimo najstarejši zapis
+          }
+          stevec2 = stevec2 + 1; // povečamo števec števila izpisanih sporočil
+        }
+        // SCROLL2 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
+
+        // POVEZAVA Z ESP8266 ********************************************************************************
+        var connection = new WebSocket('ws://192.168.42.70:81/', ['arduino']); // CONNECTION0 - ESP8266-0
+        var connection1 = new WebSocket('ws://192.168.42.71:81/', ['arduino']); // CONNECTION1 - ESP8266-1
+        var connection2 = new WebSocket('ws://192.168.42.72:81/', ['arduino']); // CONNECTION1 - ESP8266-2
+        // POVEZAVA Z ESP8266 ********************************************************************************
+
+        var tempval = 0, tempval1 = 0, tempval2 = 0;
+        var messageReceived = true, messageReceived1 = true, messageReceived2 = true;
+
+        // CONNECTION0 ******************************************************************************
+        connection.onopen = function() {
+            setInterval(function() {
+                tempval++
+                if (messageReceived)
+                    connection.send('tempval: ' + tempval);
+                messageReceived = false;
+            }, 20);
+        };
+        connection.onerror = function(error) {
+            console.log('WebSocket Error ', error);
+        };
+        connection.onmessage = function(e) {
+          log(potVrednost);
+            messageReceived = true;
+            potVrednost = parseInt(e.data);
+
+            if (potVrednost != potVrednostTest) {
+              ctx.clearRect(0, 0, canvas.width, canvas.height); // brišemo platno -> clearRect
+              ctx.beginPath(); // to vrstico moramo zapisati, da se prične izris vsebine na platnu znova
+              y.splice(0, 5); // na mestu 0 v polju y izbrišemo eno vrednost
+              y[299] = potVrednost;
+              for (var i = 0; i < 300; i++) { // zanka za izris vrednosti na platnu
+                  ctx.lineTo(x[i], (100 - (y[i] / 5) * 100)); // narišemo linijo do naslednje točke ; 300 -, zaradi obrnjenega izrisa grafa, 0,0 je levo zgoraj na monitorju
+              }
+              ctx.stroke(); // če želimo linijo prikazati na platnu moramo uporabiti "stroke()"
+              ctx.fillText(potVrednost, 1, 15); //Izpišemo trenutno vrednost potenciometra
+              ctx.fillText("5", 290, 20); //Izpišemo min vrednost potenciometra
+              ctx.fillText("0", 290, 100); // Izpišemo max vrednost potenciometra*/
+              potVrednostTest = potVrednost;
+            }
+        };
+        // CONNECTION0 ******************************************************************************
+
+        // CONNECTION1 ******************************************************************************
+        connection1.onopen = function() {
+            setInterval(function() {
+                tempval1++
+                if (messageReceived1)
+                    connection1.send('tempval: ' + tempval1);
+                messageReceived1 = false;
+            }, 20);
+        };
+        connection1.onerror = function(error) {
+            console.log('WebSocket Error ', error);
+        };
+        connection1.onmessage = function(e) {
+          log1(potVrednost1);
+            messageReceived1 = true;
+            potVrednost1 = parseInt(e.data);
+            // Signal = potVrednost;
+
+            ctx1.clearRect(0, 0, canvas1.width, canvas1.height); // brišemo platno -> clearRect
+            ctx1.beginPath(); // to vrstico moramo zapisati, da se prične izris vsebine na platnu znova
+            y1.splice(0, 1); // na mestu 0 v polju y izbrišemo eno vrednost
+            y1[299] = potVrednost1;
+            for (var i = 0; i < 300; i++) { // zanka za izris vrednosti na platnu
+                ctx1.lineTo(x[i], (100 - (y1[i] / 5) * 100)); // narišemo linijo do naslednje točke ; 300 -, zaradi obrnjenega izrisa grafa, 0,0 je levo zgoraj na monitorju
+            }
+            ctx1.stroke(); // če želimo linijo prikazati na platnu moramo uporabiti "stroke()"
+            ctx1.fillText(potVrednost1, 1, 15); //Izpišemo trenutno vrednost potenciometra
+            ctx1.fillText("5", 290, 20); //Izpišemo min vrednost potenciometra
+            ctx1.fillText("0", 290, 100); // Izpišemo max vrednost potenciometra*/
+
+            // output.innerHTML = log ('potVrednost', msg); // > DODANO
+        };
+        // CONNECTION1 ******************************************************************************
+
+        // CONNECTION2 ******************************************************************************
+        connection2.onopen = function() {
+            setInterval(function() {
+                tempval2++
+                if (messageReceived2)
+                    connection2.send('tempval: ' + tempval2);
+                messageReceived2 = false;
+            }, 20);
+        };
+        connection2.onerror = function(error) {
+            console.log('WebSocket Error ', error);
+        };
+        connection2.onmessage = function(e) {
+          log2(potVrednost2);
+            messageReceived2 = true;
+            potVrednost2 = parseInt(e.data);
+            // potVrednostTest2 = potVrednost;
+
+            ctx2.clearRect(0, 0, canvas2.width, canvas2.height); // brišemo platno -> clearRect
+            ctx2.beginPath(); // to vrstico moramo zapisati, da se prične izris vsebine na platnu znova
+            y2.splice(0, 1); // na mestu 0 v polju y izbrišemo eno vrednost
+            y2[299] = potVrednost2;
+            for (var i = 0; i < 300; i++) { // zanka za izris vrednosti na platnu
+                ctx2.lineTo(x[i], (100 - (y2[i] / 5) * 100)); // narišemo linijo do naslednje točke ; 300 -, zaradi obrnjenega izrisa grafa, 0,0 je levo zgoraj na monitorju
+            }
+            ctx2.stroke(); // če želimo linijo prikazati na platnu moramo uporabiti "stroke()"
+            ctx2.fillText(potVrednost2, 1, 15); //Izpišemo trenutno vrednost potenciometra
+            ctx2.fillText("5", 290, 20); //Izpišemo min vrednost potenciometra
+            ctx2.fillText("0", 290, 100); // Izpišemo max vrednost potenciometra*/
+
+            // output.innerHTML = log ('potVrednost', msg); // > DODANO
+        };
+        // CONNECTION2 ******************************************************************************
+    </script>
+</body>
+
+</html>

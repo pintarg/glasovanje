@@ -1,6 +1,6 @@
 <!--
 Opis: Spletna stran za prikaz zbranih glasov.
-Verzija: 2016.08.31d
+Verzija: 2016.08.31c
 ====================================================================================================-->
 <html>
 
@@ -29,7 +29,7 @@ Verzija: 2016.08.31d
     var canvas, ctx, canvas1, ctx1, canvas2, ctx2; // spremenljivki za platno in kontekst (ctx)
     var potVrednost, potVrednost1, potVrednost2;
     var potVrednostTest = 0, potVrednostTest1 = 0, potVrednostTest2 = 0;
-    var stevec = 1, stevec1 = 1, stevec2 = 1;
+    var stevec = 0, stevec1 = 0, stevec2 = 0;
     var output = document.getElementById("output"), output1 = document.getElementById("output1"), output2 = document.getElementById("output2");
     var tempval = 0, tempval1 = 0, tempval2 = 0;
     var messageReceived = true, messageReceived1 = true, messageReceived2 = true;
@@ -83,11 +83,11 @@ Verzija: 2016.08.31d
       }
       // GRAF2 *****************************************************************************
     }
-    var a = 0;
+
     // SCROLL0 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
     function log(msg) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
       if (potVrednost != potVrednostTest) {
-        if (msg != 0 && typeof(msg) != "undefined") {
+        if (msg != 0) {
           var node = document.createElement("tr"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
           var textnode = document.createTextNode(stevec + " | " + msg); // ustvarimo element s tekstom (vrednost stanja)
           node.appendChild(textnode); // dodamo izpis k "node" t.j. vrstici tabele
@@ -105,7 +105,7 @@ Verzija: 2016.08.31d
     // SCROLL1 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
     function log1(msg1) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
       if (potVrednost1 != potVrednostTest1) {
-        if (msg1 != 0 && typeof(msg1) != "undefined") {
+        if (msg1 != 0) {
           var node1 = document.createElement("tr"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
           var textnode1 = document.createTextNode(stevec1 + " | " + msg1); // ustvarimo element s tekstom (vrednost stanja)
           node1.appendChild(textnode1); // dodamo izpis k "node" t.j. vrstici tabele
@@ -123,7 +123,7 @@ Verzija: 2016.08.31d
     // SCROLL2 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
     function log2(msg2) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
       if (potVrednost2 != potVrednostTest2) {
-        if (msg2 != 0 && typeof(msg2) != "undefined") {
+        if (msg2 != 0) {
           var node2 = document.createElement("tr"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
           var textnode2 = document.createTextNode(stevec2 + " | " + msg2); // ustvarimo element s tekstom (vrednost stanja)
           node2.appendChild(textnode2); // dodamo izpis k "node" t.j. vrstici tabele
@@ -166,7 +166,7 @@ Verzija: 2016.08.31d
         }
         ctx.stroke(); // če želimo linijo prikazati na platnu moramo uporabiti "stroke()"
         ctx.fillText(potVrednost, 1, 15); //Izpišemo trenutno vrednost potenciometra
-        ctx.fillText("3", 290, 15); //Izpišemo min vrednost potenciometra
+        ctx.fillText("3", 290, 20); //Izpišemo min vrednost potenciometra
         ctx.fillText("0", 290, 100); // Izpišemo max vrednost potenciometra*/
       }
     };
@@ -199,7 +199,7 @@ Verzija: 2016.08.31d
         }
         ctx1.stroke(); // če želimo linijo prikazati na platnu moramo uporabiti "stroke()"
         ctx1.fillText(potVrednost1, 1, 15); //Izpišemo trenutno vrednost potenciometra
-        ctx1.fillText("3", 290, 15); //Izpišemo min vrednost potenciometra
+        ctx1.fillText("3", 290, 20); //Izpišemo min vrednost potenciometra
         ctx1.fillText("0", 290, 100); // Izpišemo max vrednost potenciometra*/
       }
     };
@@ -232,7 +232,7 @@ Verzija: 2016.08.31d
         }
         ctx2.stroke(); // če želimo linijo prikazati na platnu moramo uporabiti "stroke()"
         ctx2.fillText(potVrednost2, 1, 15); //Izpišemo trenutno vrednost potenciometra
-        ctx2.fillText("3", 290, 15); //Izpišemo min vrednost potenciometra
+        ctx2.fillText("3", 290, 20); //Izpišemo min vrednost potenciometra
         ctx2.fillText("0", 290, 100); // Izpišemo max vrednost potenciometra*/
       }
     };

@@ -39,21 +39,21 @@ Verzija: 2016.08.30b
 Narejeno: Urejen izpis scroll, da izpiše samo spremembo vrednosti (brez 0). Aktivno na grafu0 in scroll0.
 To-Do: Urediti kodo za 1 in 2.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.08.31a
+Narejeno: Urejanje/prestavljanje kode zaradi izgleda/funcionalnosti.
+To-Do: Dodatno urejanje/prestavljanje kode.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.08.31b
+Narejeno: Urejanje/prestavljanje kode zaradi izgleda/funcionalnosti.
+To-Do: Urediti kodo za graf in scroll 1 in 2.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.08.31c
+Narejeno: Urejena koda za graf in scroll 1 in 2.
+To-Do: Urejanje izpisa scroll - omejevanje izpisa "undefined", popraviti začetek štetja na 1.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.08.31d
+Narejeno: Urejen izpis scroll - omejen izpis "undefined" in popravljeno štetje, da se začne z 1.
+To-Do: Oblikovanje spletne strani za prikaz rezultatov?
 ==============================
 Verzija:
 Narejeno:

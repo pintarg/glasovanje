@@ -1,6 +1,6 @@
 <!--
 Opis: Spletna stran za prikaz zbranih glasov.
-Verzija: 2016.08.31d
+Verzija: 2016.08.31b
 ====================================================================================================-->
 <html>
 
@@ -28,8 +28,8 @@ Verzija: 2016.08.31d
     var y = new Array(), y1 = new Array(), y2 = new Array();
     var canvas, ctx, canvas1, ctx1, canvas2, ctx2; // spremenljivki za platno in kontekst (ctx)
     var potVrednost, potVrednost1, potVrednost2;
-    var potVrednostTest = 0, potVrednostTest1 = 0, potVrednostTest2 = 0;
-    var stevec = 1, stevec1 = 1, stevec2 = 1;
+    var potVrednostTest = 0, potVrednostTestA = 0;
+    var stevec = 0, stevec1 = 0, stevec2 = 0;
     var output = document.getElementById("output"), output1 = document.getElementById("output1"), output2 = document.getElementById("output2");
     var tempval = 0, tempval1 = 0, tempval2 = 0;
     var messageReceived = true, messageReceived1 = true, messageReceived2 = true;
@@ -83,11 +83,11 @@ Verzija: 2016.08.31d
       }
       // GRAF2 *****************************************************************************
     }
-    var a = 0;
+
     // SCROLL0 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
     function log(msg) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
-      if (potVrednost != potVrednostTest) {
-        if (msg != 0 && typeof(msg) != "undefined") {
+      if (potVrednost != potVrednostTestA) {
+        if (msg != 0) {
           var node = document.createElement("tr"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
           var textnode = document.createTextNode(stevec + " | " + msg); // ustvarimo element s tekstom (vrednost stanja)
           node.appendChild(textnode); // dodamo izpis k "node" t.j. vrstici tabele
@@ -97,46 +97,35 @@ Verzija: 2016.08.31d
           }
           stevec++; // povečamo števec števila izpisanih sporočil
         }
-        potVrednostTest = potVrednost;
+        potVrednostTestA = potVrednost;
       }
     }
     // SCROLL0 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
 
     // SCROLL1 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
     function log1(msg1) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
-      if (potVrednost1 != potVrednostTest1) {
-        if (msg1 != 0 && typeof(msg1) != "undefined") {
-          var node1 = document.createElement("tr"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
-          var textnode1 = document.createTextNode(stevec1 + " | " + msg1); // ustvarimo element s tekstom (vrednost stanja)
-          node1.appendChild(textnode1); // dodamo izpis k "node" t.j. vrstici tabele
-          output1.insertBefore(node1, output1.childNodes[0]); // output je spremenljivka div-a t.j. output = document.getElementById("output")
-          if (stevec1 > 9) { // če je vrstic več kot 10 (šteti začnemo z 0)
-            output1.removeChild(output1.childNodes[10], output1.childNodes[10]); // odstranimo najstarejši zapis
-          }
-          stevec1++; // povečamo števec števila izpisanih sporočil
-        }
-        potVrednostTest1 = potVrednost1;
+      var node1 = document.createElement("tr"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
+      var textnode1 = document.createTextNode(stevec1 + " | " + msg1); // ustvarimo element s tekstom (vrednost stanja)
+      node1.appendChild(textnode1); // dodamo izpis k "node" t.j. vrstici tabele
+      output1.insertBefore(node1, output1.childNodes[0]); // output je spremenljivka div-a t.j. output = document.getElementById("output")
+      if (stevec1 > 9) { // če je vrstic več kot 10 (šteti začnemo z 0)
+        output1.removeChild(output1.childNodes[10], output1.childNodes[10]); // odstranimo najstarejši zapis
       }
+      stevec1++; // povečamo števec števila izpisanih sporočil
     }
     // SCROLL1 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
 
     // SCROLL2 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
     function log2(msg2) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
-      if (potVrednost2 != potVrednostTest2) {
-        if (msg2 != 0 && typeof(msg2) != "undefined") {
-          var node2 = document.createElement("tr"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
-          var textnode2 = document.createTextNode(stevec2 + " | " + msg2); // ustvarimo element s tekstom (vrednost stanja)
-          node2.appendChild(textnode2); // dodamo izpis k "node" t.j. vrstici tabele
-          output2.insertBefore(node2, output2.childNodes[0]); // output je spremenljivka div-a t.j. output = document.getElementById("output")
-          if (stevec2 > 9) { // če je vrstic več kot 10 (šteti začnemo z 0)
-            output2.removeChild(output2.childNodes[10], output2.childNodes[10]); // odstranimo najstarejši zapis
-          }
-          stevec2++; // povečamo števec števila izpisanih sporočil
-        }
-        potVrednostTest2 = potVrednost2;
+      var node2 = document.createElement("tr"); // ustvarimo spremenljivko node kot vrstico tabele za izpis
+      var textnode2 = document.createTextNode(stevec2 + " | " + msg2); // ustvarimo element s tekstom (vrednost stanja)
+      node2.appendChild(textnode2); // dodamo izpis k "node" t.j. vrstici tabele
+      output2.insertBefore(node2, output2.childNodes[0]); // output je spremenljivka div-a t.j. output = document.getElementById("output")
+      if (stevec2 > 9) { // če je vrstic več kot 10 (šteti začnemo z 0)
+        output2.removeChild(output2.childNodes[10], output2.childNodes[10]); // odstranimo najstarejši zapis
       }
+      stevec2++; // povečamo števec števila izpisanih sporočil
     }
-
     // SCROLL2 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
 
     // CONNECTION0 ******************************************************************************
@@ -162,12 +151,13 @@ Verzija: 2016.08.31d
         y.splice(0, 5); // na mestu 0 v polju y izbrišemo eno vrednost
         y[299] = potVrednost;
         for (var i = 0; i < 300; i++) { // zanka za izris vrednosti na platnu
-          ctx.lineTo(x[i], (100 - (y[i] / 3) * 100)); // narišemo linijo do naslednje točke ; 300 -, zaradi obrnjenega izrisa grafa, 0,0 je levo zgoraj na monitorju
+          ctx.lineTo(x[i], (100 - (y[i] / 5) * 100)); // narišemo linijo do naslednje točke ; 300 -, zaradi obrnjenega izrisa grafa, 0,0 je levo zgoraj na monitorju
         }
         ctx.stroke(); // če želimo linijo prikazati na platnu moramo uporabiti "stroke()"
         ctx.fillText(potVrednost, 1, 15); //Izpišemo trenutno vrednost potenciometra
-        ctx.fillText("3", 290, 15); //Izpišemo min vrednost potenciometra
+        ctx.fillText("5", 290, 20); //Izpišemo min vrednost potenciometra
         ctx.fillText("0", 290, 100); // Izpišemo max vrednost potenciometra*/
+        potVrednostTest = potVrednost;
       }
     };
     // CONNECTION0 ******************************************************************************
@@ -189,19 +179,17 @@ Verzija: 2016.08.31d
       messageReceived1 = true;
       potVrednost1 = parseInt(e.data);
 
-      if (potVrednost1 != potVrednostTest1) {
-        ctx1.clearRect(0, 0, canvas1.width, canvas1.height); // brišemo platno -> clearRect
-        ctx1.beginPath(); // to vrstico moramo zapisati, da se prične izris vsebine na platnu znova
-        y1.splice(0, 5); // na mestu 0 v polju y izbrišemo eno vrednost
-        y1[299] = potVrednost1;
-        for (var i = 0; i < 300; i++) { // zanka za izris vrednosti na platnu
-          ctx1.lineTo(x[i], (100 - (y1[i] / 3) * 100)); // narišemo linijo do naslednje točke ; 300 -, zaradi obrnjenega izrisa grafa, 0,0 je levo zgoraj na monitorju
-        }
-        ctx1.stroke(); // če želimo linijo prikazati na platnu moramo uporabiti "stroke()"
-        ctx1.fillText(potVrednost1, 1, 15); //Izpišemo trenutno vrednost potenciometra
-        ctx1.fillText("3", 290, 15); //Izpišemo min vrednost potenciometra
-        ctx1.fillText("0", 290, 100); // Izpišemo max vrednost potenciometra*/
+      ctx1.clearRect(0, 0, canvas1.width, canvas1.height); // brišemo platno -> clearRect
+      ctx1.beginPath(); // to vrstico moramo zapisati, da se prične izris vsebine na platnu znova
+      y1.splice(0, 1); // na mestu 0 v polju y izbrišemo eno vrednost
+      y1[299] = potVrednost1;
+      for (var i = 0; i < 300; i++) { // zanka za izris vrednosti na platnu
+        ctx1.lineTo(x[i], (100 - (y1[i] / 5) * 100)); // narišemo linijo do naslednje točke ; 300 -, zaradi obrnjenega izrisa grafa, 0,0 je levo zgoraj na monitorju
       }
+      ctx1.stroke(); // če želimo linijo prikazati na platnu moramo uporabiti "stroke()"
+      ctx1.fillText(potVrednost1, 1, 15); //Izpišemo trenutno vrednost potenciometra
+      ctx1.fillText("5", 290, 20); //Izpišemo min vrednost potenciometra
+      ctx1.fillText("0", 290, 100); // Izpišemo max vrednost potenciometra*/
     };
     // CONNECTION1 ******************************************************************************
 
@@ -222,19 +210,17 @@ Verzija: 2016.08.31d
       messageReceived2 = true;
       potVrednost2 = parseInt(e.data);
 
-      if (potVrednost2 != potVrednostTest2) {
-        ctx2.clearRect(0, 0, canvas2.width, canvas2.height); // brišemo platno -> clearRect
-        ctx2.beginPath(); // to vrstico moramo zapisati, da se prične izris vsebine na platnu znova
-        y2.splice(0, 5); // na mestu 0 v polju y izbrišemo eno vrednost
-        y2[299] = potVrednost2;
-        for (var i = 0; i < 300; i++) { // zanka za izris vrednosti na platnu
-          ctx2.lineTo(x[i], (100 - (y2[i] / 3) * 100)); // narišemo linijo do naslednje točke ; 300 -, zaradi obrnjenega izrisa grafa, 0,0 je levo zgoraj na monitorju
-        }
-        ctx2.stroke(); // če želimo linijo prikazati na platnu moramo uporabiti "stroke()"
-        ctx2.fillText(potVrednost2, 1, 15); //Izpišemo trenutno vrednost potenciometra
-        ctx2.fillText("3", 290, 15); //Izpišemo min vrednost potenciometra
-        ctx2.fillText("0", 290, 100); // Izpišemo max vrednost potenciometra*/
+      ctx2.clearRect(0, 0, canvas2.width, canvas2.height); // brišemo platno -> clearRect
+      ctx2.beginPath(); // to vrstico moramo zapisati, da se prične izris vsebine na platnu znova
+      y2.splice(0, 1); // na mestu 0 v polju y izbrišemo eno vrednost
+      y2[299] = potVrednost2;
+      for (var i = 0; i < 300; i++) { // zanka za izris vrednosti na platnu
+        ctx2.lineTo(x[i], (100 - (y2[i] / 5) * 100)); // narišemo linijo do naslednje točke ; 300 -, zaradi obrnjenega izrisa grafa, 0,0 je levo zgoraj na monitorju
       }
+      ctx2.stroke(); // če želimo linijo prikazati na platnu moramo uporabiti "stroke()"
+      ctx2.fillText(potVrednost2, 1, 15); //Izpišemo trenutno vrednost potenciometra
+      ctx2.fillText("5", 290, 20); //Izpišemo min vrednost potenciometra
+      ctx2.fillText("0", 290, 100); // Izpišemo max vrednost potenciometra*/
     };
     // CONNECTION2 ******************************************************************************
   </script>
