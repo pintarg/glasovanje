@@ -59,12 +59,12 @@ Verzija: 2016.08.31e
 Narejeno: Popravek na scrollu, saj se je po 10 zapisih beleženje zablokiralo.
 To-Do: Popravljeno.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.09.01a
+Narejeno: Testiranje povezave z Redis. Testiranje branja vrednosti grafov.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.09.01b
+Narejeno: Testiranje povezave z Redis. Testiranje branja vrednosti grafov in izračun povprečja zbranih vrednosti.
 To-Do:
 ==============================
 Verzija:

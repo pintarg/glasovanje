@@ -1,6 +1,6 @@
 <!--
 Opis: Spletna stran za prikaz zbranih glasov.
-Verzija: 2016.09.01c
+Verzija: 2016.09.01a
 ====================================================================================================-->
 <html>
 
@@ -26,7 +26,7 @@ Verzija: 2016.09.01c
   <button id="gumbVnesi" onClick="vnesi()">Vnesi</button>
   <button id="gumbBeri" onClick="beri()">Beri</button>
   <button id="gumbBrisiBazo" onClick="brisiBazo()">Briši bazo</button>
-  <button id="izracunPovprecja" onClick="izracunPovprecja()">beriElementePolja</button>
+  <button id="gumbBeriElementePolja" onClick="beriElementePolja()">beriElementePolja</button>
   <br>
   Vnos:
   <input id="vnos" name="vnos" type="text" />
@@ -66,19 +66,6 @@ Verzija: 2016.09.01c
 
     function beri() {
       document.getElementById("beri").value = glasovi;
-    };
-
-    function izracunPovprecja() {
-      for (i=0; i<glasovi.length; i++) {
-          if (i==0) {vsota = 0}; // začetni pogoj, da ni vsota od predhodnega preračuna različna od nič; na začetku postavimo vsoto na 0
-          vsota += glasovi[i];
-      };
-
-      document.getElementById("prviElement").value = glasovi[0];
-      document.getElementById("drugiElement").value = glasovi[1];
-      document.getElementById("tretjiElement").value = glasovi[2];
-      document.getElementById("vsota").value = vsota/glasovi.length;
-
     };
 
     function load() {
