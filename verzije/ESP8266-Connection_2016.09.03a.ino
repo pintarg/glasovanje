@@ -1,5 +1,5 @@
 // Opis: Koda, ki se izvaja na ESP8266 in skrbi za vzpostavitev WiFi povezave z routerjem, zajem glasov in komunikacijo s spletno stranjo.
-// Verzija: 2016.09.04a
+// Verzija: 2016.09.03a
 // ====================================================================================================
 
 #include <Arduino.h>
@@ -27,46 +27,26 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
       }
 
     case WStype_TEXT:
-    // DODANA KODA *****************************************
-    // Serial.printf("[%u] get Text: %s\r\n", num, payload);
-    // DODANA KODA *****************************************
       {
-        // DODANA KODA *****************************************
-        String text = String((char *) &payload [0]);
-        // DODANA KODA *****************************************
         if (digitalRead(0) == 0) { // D3-proti (13)
           Signal = 3;
-          // digitalWrite(13, 1);
-          // delay(1000);
-          // digitalWrite(13, 0);
-        } else if (digitalRead(4) == 0) { // D2-nedolocen (12)
-          Signal = 2;
-          // digitalWrite(12, 1);
-          // delay(1000);
-          // digitalWrite(12, 0);
-        } else if (digitalRead(5) == 0) { // D1-za (14)
-          Signal = 1;
-          // digitalWrite(14, 1);
-          // delay(1000);
-          // digitalWrite(14, 0);
-        } else {
-          Signal = 0;
-        }
-        // DODANA KODA *****************************************
-        if (text == "3") {
           digitalWrite(13, 1);
           delay(1000);
           digitalWrite(13, 0);
-        } else if (text == "2") {
+        } else if (digitalRead(4) == 0) { // D2-nedolocen (12)
+          Signal = 2;
           digitalWrite(12, 1);
           delay(1000);
           digitalWrite(12, 0);
-        } else if (text == "1") {
+        } else if (digitalRead(5) == 0) { // D1-za (14)
+          Signal = 1;
           digitalWrite(14, 1);
           delay(1000);
           digitalWrite(14, 0);
+        } else {
+          Signal = 0;
         }
-        // DODANA KODA *****************************************
+
         itoa(Signal,buffer,10);
         webSocket.sendTXT(num, buffer);
         break;

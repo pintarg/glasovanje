@@ -1,6 +1,6 @@
 <!--
 Opis: Spletna stran za prikaz zbranih glasov.
-Verzija: 2016.09.04b
+Verzija: 2016.09.04a
 ====================================================================================================-->
 <html>
 
@@ -64,14 +64,16 @@ Verzija: 2016.09.04b
     var connection2 = new WebSocket('ws://192.168.42.72:81/', ['arduino']); // CONNECTION1 - ESP8266-2
     // POVEZAVA Z ESP8266 ********************************************************************************
 
-    function LedBlinkESP2() {
-      if (potVrednost2 == 3) {
-        connection2.send("3");
-      } else if (potVrednost2 == 2) {
-        connection2.send("2");
-      } else if (potVrednost2 == 1) {
-        connection2.send("1");
-      }
+    function LedBlinkESP2Rd() { // RD Led on ESP2 (connection2)
+      connection2.send("3");
+    };
+
+    function LedBlinkESP2Mo() { // MO Led on ESP2 (connection2)
+      connection2.send("2");
+    };
+
+    function LedBlinkESP2Ze() { // ZE Led on ESP2 (connection2)
+      connection2.send("1");
     };
 
     function beri() {
@@ -280,7 +282,13 @@ Verzija: 2016.09.04b
       potVrednost2 = parseInt(e.data);
       if (potVrednost2 != 0) {
         glasovi[2] = potVrednost2;
-        LedBlinkESP2();
+        if (potVrednost2 == 3) {
+          LedBlinkESP2Rd();
+        } else if (potVrednost2 == 2) {
+          LedBlinkESP2Mo();
+        } else if (potVrednost2 == 1) {
+          LedBlinkESP2Ze();
+        }
       }
 
       if (potVrednost2 != potVrednostTest2) {

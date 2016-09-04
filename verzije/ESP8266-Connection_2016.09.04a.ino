@@ -28,7 +28,7 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
 
     case WStype_TEXT:
     // DODANA KODA *****************************************
-    // Serial.printf("[%u] get Text: %s\r\n", num, payload);
+    Serial.printf("[%u] get Text: %s\r\n", num, payload);
     // DODANA KODA *****************************************
       {
         // DODANA KODA *****************************************
