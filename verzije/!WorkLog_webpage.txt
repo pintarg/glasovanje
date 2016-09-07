@@ -75,13 +75,13 @@ Verzija: 2016.09.04b
 Narejeno: Sprememba funckije LedBlinkESP2.
 To-Do: Še vedno zamik. Pojavlja se večkraten prižig Led, ki je bila nazadnje izbrana.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.09.07a
+Narejeno: Klic funkcije LedBlinkESP2 premaknjen iz Connection v Scroll. Zamika sedaj ni, saj se funkcija kliče od spremembi vrednosti + ko vrednost != 0 + ko vrenost ni "undefined"
+To-Do: Urejanje kode še za ostale ESPje.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.09.07b
+Narejeno: Urejena koda za LedBlinkESP0 in LedBlinkESP1.
+To-Do: Urejanje kode za pisanje podatkov v Redis.
 ==============================
 Verzija:
 Narejeno:

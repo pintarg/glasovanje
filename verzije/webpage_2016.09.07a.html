@@ -1,6 +1,6 @@
 <!--
 Opis: Spletna stran za prikaz zbranih glasov.
-Verzija: 2016.09.07b
+Verzija: 2016.09.07a
 ====================================================================================================-->
 <html>
 
@@ -63,26 +63,6 @@ Verzija: 2016.09.07b
     var connection1 = new WebSocket('ws://192.168.42.71:81/', ['arduino']); // CONNECTION1 - ESP8266-1
     var connection2 = new WebSocket('ws://192.168.42.72:81/', ['arduino']); // CONNECTION1 - ESP8266-2
     // POVEZAVA Z ESP8266 ********************************************************************************
-
-    function LedBlinkESP0() {
-      if (potVrednost == 3) {
-        connection.send("3");
-      } else if (potVrednost == 2) {
-        connection.send("2");
-      } else if (potVrednost == 1) {
-        connection.send("1");
-      }
-    };
-
-    function LedBlinkESP1() {
-      if (potVrednost1 == 3) {
-        connection1.send("3");
-      } else if (potVrednost1 == 2) {
-        connection1.send("2");
-      } else if (potVrednost1 == 1) {
-        connection1.send("1");
-      }
-    };
 
     function LedBlinkESP2() {
       if (potVrednost2 == 3) {
@@ -167,7 +147,6 @@ Verzija: 2016.09.07b
             output.removeChild(output.childNodes[10], output.childNodes[10]); // odstranimo najstarejši zapis
           }
           stevec++; // povečamo števec števila izpisanih sporočil
-          LedBlinkESP0();
         }
         potVrednostTest = potVrednost;
       }
@@ -186,7 +165,6 @@ Verzija: 2016.09.07b
             output1.removeChild(output1.childNodes[10], output1.childNodes[10]); // odstranimo najstarejši zapis
           }
           stevec1++; // povečamo števec števila izpisanih sporočil
-          LedBlinkESP1();
         }
         potVrednostTest1 = potVrednost1;
       }

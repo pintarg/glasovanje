@@ -51,14 +51,14 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
         }
         // DODANA KODA *****************************************
         if (text == "3") {
-          digitalWrite(13, 1); //D7
+          digitalWrite(13, 1);
           delay(500);
           digitalWrite(13, 0);
-        } else if (text == "2") { //D6
+        } else if (text == "2") {
           digitalWrite(12, 1);
           delay(500);
           digitalWrite(12, 0);
-        } else if (text == "1") { //D5
+        } else if (text == "1") {
           digitalWrite(14, 1);
           delay(500);
           digitalWrite(14, 0);
@@ -86,7 +86,7 @@ void setup() {
   pinMode(5, INPUT_PULLUP); // D1
   pinMode(12, OUTPUT); // D6
   pinMode(13, OUTPUT); // D7
-  pinMode(14, OUTPUT); // D5
+  pinMode(14, OUTPUT); // D4
 
   Serial.begin(115200);
   WiFi.begin(ssid, password);

@@ -35,9 +35,9 @@ Verzija: 2016.09.04a
 Narejeno: Dodana koda za sprejem povratne informacije prek WebSocket, ki jo pošlje spletna stran na podlagi prejete informacije o izbiri tipke.
 To-Do: Test. Deluje, vendar z veliko neodzivnostjo po prvih 3-4 pritiskih.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.09.07a
+Narejeno: Popravljen delay (1000>500) pri sprejemu povratne informacije in vklopu LEDice.
+To-Do: /
 ==============================
 Verzija:
 Narejeno:
