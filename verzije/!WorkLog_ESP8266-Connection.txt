@@ -39,9 +39,9 @@ Verzija: 2016.09.07a
 Narejeno: Popravljen delay (1000>500) pri sprejemu povratne informacije in vklopu LEDice.
 To-Do: /
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.09.11a
+Narejeno: Sprememba pina 0 (D3) v 2 (D4), saj ima pin 0 probleme z zaznavo pritiska tipke, če so priključene vse 3 tipke.
+To-Do: /
 ==============================
 Verzija:
 Narejeno:
