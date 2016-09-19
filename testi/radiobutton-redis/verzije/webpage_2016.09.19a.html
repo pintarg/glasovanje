@@ -1,0 +1,62 @@
+<!--
+Opis: Spletna stran za prikaz zbranih glasov.
+Verzija: 2016.09.19a
+====================================================================================================-->
+<html>
+
+<head>
+
+</head>
+
+<body onload="load();">
+<!-- tukaj bo koda za prikaz strani -->
+
+<p><b>Vprasanje:</b>...se prebere iz Redis...</p>
+<p><b>Odgovori:</b></p>
+<form action="">
+  <input type="radio" name="Q000" id="strinja" value="strinja"> Se strinjam
+  <input type="radio" name="Q000" id="vzdrzan" value="vzdrzan"> Vzdrzan
+  <input type="radio" name="Q000" id="nestrinja" value="nestrinja"> Se ne strinjam
+</form>
+
+Povratna informacija: <input id="odg" type="text" />
+
+<!-- ================================================================= -->
+
+<br><br>
+  <div id='output1'></div> <!-- izpis vrednosti tipke - scroll1 -->
+  <div>
+    <canvas id="cv2" width="300" height="100" style="border:1px dashed #00c3c3; "></canvas> <!-- GRAF2 -->
+  </div>
+
+<br>
+<div id='output2'></div> <!-- izpis vrednosti tipke - scroll2 -->
+
+  <button id="gumbVnesi" onClick="vnesi()">Vnesi</button>
+  <button id="gumbBeri" onClick="beri()">Beri</button>
+  <button id="gumbBrisiBazo" onClick="brisiBazo()">Briši bazo</button>
+  <button id="izracunPovprecja" onClick="izracunPovprecja()">beriElementePolja</button>
+  <br>
+  Vnos:
+  <input id="vnos" name="vnos" type="text" />
+  <br>
+  Branje iz baze:
+  <input id="beri" type="text" />
+  <br>
+  Prvi element: <input id="prviElement" type="text" />
+  <br>
+  Drugi element: <input id="drugiElement" type="text" />
+  <br>
+  Tretji element: <input id="tretjiElement" type="text" />
+  <br>
+  Vsota vseh vnesenih številk: <input id="vsota" type="text" />
+  <br>
+
+  <script type="text/javascript" charset="UTF-8">
+    // tukaj bo koda za povezavo z Redis in preverjanje izbranih odgovorov
+
+
+  </script>
+</body>
+
+</html>
