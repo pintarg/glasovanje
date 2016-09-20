@@ -11,11 +11,11 @@ Verzija: 2016.09.19c
 Narejeno: Urejen izpis izbrane vrednosti/gumba.
 To-Do: Urediti povezavo z Redis.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.09.19d
+Narejeno: Popravljen izpis za vprašanje in dodan redisClient.
+To-Do: Urediti povezavo z Redis.
 ==============================
-Verzija:
+Verzija: 
 Narejeno:
 To-Do:
 ==============================
