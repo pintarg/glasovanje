@@ -15,41 +15,37 @@ Verzija: 2016.09.19d
 Narejeno: Popravljen izpis za vprašanje in dodan redisClient.
 To-Do: Urediti povezavo z Redis.
 ==============================
-Verzija: 
-Narejeno:
-To-Do:
+Verzija: 2016.09.20a
+Narejeno:/
+To-Do:/
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.09.24a
+Narejeno: Odstranjevanje kode za povezavo z Redis, saj direktna povezava html-Redis ni možna. Povezava poteka prek server.js. Za komunikacijo se uporablja socket.io.
+To-Do: /
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.09.24b
+Narejeno: Branje števila vprašanj iz baze - deluje samo gumb "Beri vprašanje."
+To-Do: Branje vprašanja iz baze.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.09.24c
+Narejeno: Branje vprašanja iz baze.
+To-Do: Loči kodo za branje vprašanja in branje števila vprašanj, da se branje števila vprašanj izvede samo na začetku.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.09.24d
+Narejeno: Koda za branje števila vprašanj v bazi ločena od kode za branje samega vprašanja.
+To-Do: Uredi kodo za zapis novega prašanja v bazo prek webpage-a.==============================
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.09.24e
+Narejeno: Dodajanje novega vprašanja v bazo.
+To-Do: Pri dodajanju novega vprašanja, se ponovno prebere število vprašanj v bazi in s tem proži popravek izpisa na webpage-u, kar idVpr/stVpr nastavi na 0/stVpr. Treba popraviti, da se izpiše idVpr in ne 0
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.09.24f
+Narejeno: Urejn izpis VprID/stVpr pri dodajanju novega vpr.
+To-Do: Urediti kodo za dodajanje izbranega odgovora na vpr.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
-==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.09.25a
+Narejeno: Branje izbranega odgovora in pošiljanje VprID+odg serverju, kateri doda 2 timestamp-a (YYYY-MM-DD-HH-MM-SS... in v milisekundah).
+To-Do: Izbrati format celotnega odgovora (JSON) in informacije, ki jih vsebuje za zapis v Redis.
 ==============================
 Verzija:
 Narejeno:

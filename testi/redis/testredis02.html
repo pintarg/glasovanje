@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<meta charset=utf-8>
+
+<html>
+
+<head>
+    <title>Primer z gumbi</title>
+</head>
+
+<body>
+
+    <button id="gumbPrizgi" onClick="vnesi()">Vnesi</button>
+    <button id="gumbUgasni" onClick="beri()">Beri</button>
+    <br> Vnos:
+    <br>
+    <input id="vnos" name="vnos" type="text" />
+    <br> Branje iz baze:
+    <input id="branje" name="branje" type="text" />
+
+    <br>
+
+    <div id="izpis"></div>
+
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+    <script type="text/javascript">
+        var socket = io.connect("192.168.42.50:1337"); // ustvarimo socket - se povežemo
+
+        var izpis = document.getElementById("izpis");
+        var stevec = 0; // za štetje sporočil
+
+        document.getElementById("vnos").value = "xyz";
+
+        function vnesi() {
+            vrednostIzTekstnegaPolja = document.getElementById("vnos").value;
+            socket.emit("pisiVbazo", vrednostIzTekstnegaPolja);
+        }
+
+        function beri() {
+            socket.emit("beriIzBaze");
+        }
+
+        socket.on('beriBazo', function(msg) {
+            document.getElementById("branje").value = msg;
+        });
+    </script>
+
+</body>
+
+</html>

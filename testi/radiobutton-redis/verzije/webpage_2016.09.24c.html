@@ -1,0 +1,65 @@
+<!--
+Opis: Spletna stran za prikaz zbranih glasov.
+Verzija: 2016.09.24c
+====================================================================================================-->
+<!DOCTYPE html>
+<meta charset=utf-8>
+<html>
+
+<head>
+
+</head>
+
+<body>
+<!-- tukaj bo koda za prikaz strani -->
+<p><b>Število vprašanj: </b><output id="stVpr" type="text" /><br>
+<p><b>Vprasanje: </b><output id="vpr" type="text" /></p><br>
+<button id="btnDodajVpr" onClick="dodajVpr()">Dodaj vprasanje</button>
+<button id="btnBeriVpr" onClick="beriVpr()">Beri vprašanje</button>
+<p><b>Odgovori:</b></p>
+<form action="">
+  <input type="radio" name="Q000" id="strinja" value="1"> Se strinjam
+  <input type="radio" name="Q000" id="vzdrzan" value="2"> Vzdrzan
+  <input type="radio" name="Q000" id="nestrinja" value="3"> Se ne strinjam
+</form>
+<button id="btnOddajOdg" onClick="oddajOdg()">Oddaj odgovor</button><br>
+<button id="btnNaprej" onClick="naprej()">Naprej</button><br>
+
+Povratna informacija: <output id="odg" type="text" />
+
+<!-- ================================================================= -->
+
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    var socket = io.connect("192.168.42.50:8080")
+    // var stVpr = 0;
+
+    function dodajVpr() {
+      // var redisClient = require('redis').createClient();
+      // var stVpr = 0;
+      document.getElementById("odg").value = stVpr;
+    };
+
+    function beriVpr() {
+      socket.emit("redisBranjeVpr");
+    };
+    socket.on("redisBranjeStVpr", function(msg) {
+      document.getElementById("stVpr").value = msg;
+    });
+    socket.on("redisBranjeVpr2", function(msg) {
+      document.getElementById("vpr").value = msg;
+    });
+    function oddajOdg() {
+      if(document.getElementById("strinja").checked) {
+        document.getElementById("odg").value = "strinja";
+      } else if (document.getElementById("vzdrzan").checked) {
+        document.getElementById("odg").value = "vzdrzan";
+      } else if (document.getElementById("nestrinja").checked) {
+        document.getElementById("odg").value = "nestrinja";
+      }
+    };
+
+  </script>
+</body>
+
+</html>

@@ -1,7 +1,9 @@
 <!--
 Opis: Spletna stran za prikaz zbranih glasov.
-Verzija: 2016.09.20a
+Verzija: 2016.09.25b
 ====================================================================================================-->
+<!DOCTYPE html>
+<meta charset=utf-8>
 <html>
 
 <head>
@@ -10,65 +12,67 @@ Verzija: 2016.09.20a
 
 <body>
 <!-- tukaj bo koda za prikaz strani -->
-
-<p><b>Vprasanje:</b><input id="vpr" type="text" />
-<button id="btnDodajVpr" onClick="dodajVpr()">Dodaj vprasanje</button><button id="btnDodajVpr2" onClick="dodajVpr2()">Dodaj vprasanje2</button></p>
+<p><b>Vprašanje: </b><output id="stVpr" type="text" /><br>
+<p><b>> </b><output id="vpr" type="text" /></p><br>
+<button id="btnBeriVpr" onClick="beriVpr()">Beri vprašanje</button>
 <p><b>Odgovori:</b></p>
 <form action="">
-  <input type="radio" name="Q000" id="strinja" value="1"> Se strinjam
-  <input type="radio" name="Q000" id="vzdrzan" value="2"> Vzdrzan
-  <input type="radio" name="Q000" id="nestrinja" value="3"> Se ne strinjam
+  <input type="radio" name="Q" id="strinja"> Se strinjam
+  <input type="radio" name="Q" id="vzdrzan"> Vzdrzan
+  <input type="radio" name="Q" id="nestrinja"> Se ne strinjam
 </form>
 <button id="btnOddajOdg" onClick="oddajOdg()">Oddaj odgovor</button><br>
-<button id="btnNaprej" onClick="naprej()">Naprej</button><br>
-
-Povratna informacija: <input id="odg" type="text" />
-
+<p>Povratna informacija: <output id="odg" type="text" /></p>
+<hr>
+<p><b>Dodajanje vprašanja: </b><input id="iptDodajVpr" type="text" /</p><br>
+<button id="btnDodajVpr" onClick="dodajVpr()">Dodaj vprašanje</button>
 <!-- ================================================================= -->
 
-  <script type="text/javascript" charset="UTF-8">
-    // tukaj bo koda za povezavo z Redis in preverjanje izbranih odgovorov
-    var redisClient = require('redis').createClient();
-    var stVpr = 0;
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    var socket = io.connect("192.168.42.50:8080")
+    // var stVpr = 0;
+    // var novVpr = 'x';
+    var odg = 'x';
+    var vprID = 0;
 
+    // branje novega vprašanja iz webpage-a in pošiljanje v bazo
     function dodajVpr() {
-      // var redisClient = require('redis').createClient();
-      var stVpr = 0;
-      redisClient.hlen('vprasanja', function(err, reply) {
-        stVpr = reply;
-        document.getElementById("odg").value = stVpr;
-      });
-      document.getElementById("odg").value = stVpr;
+      socket.emit("redisDodajVpr", document.getElementById("iptDodajVpr").value.toString());
+      // novVpr = document.getElementById("iptDodajVpr").value;
+      // socket.emit("redisDodajVpr", novVpr.toString());
     };
-
-    function dodajVpr2() {
-      // var redisClient = require('redis').createClient();
-      // // var stVpr = 0;
-      // //   redisClient.hset('vprasanja', 3)
-      //
-      // redisClient.get('TestPovezave', function(err, reply) { //Preverjanje dosegljivosti Redis baze + preverjanje, da se povezujemo na pravilno bazo.
-      //   var t = 0;
-      //   if (err) { //Ker se spodnji izpis ob napaki ne izvede, se lahko ta del kode odstrani in popravi nadaljno kodo
-      //     // throw err;
-      //     // console.log('Napaka pri povezavi!');
-      //   } else if (reply != 42) {
-      //     t = "napacnaBaza";
-      //   } else if (reply == 42) {
-      //     t = "ok";
-      //   }
-      //
-      // });
-document.getElementById("odg").value = "t";
+    // pritisk na gumb "Beri vprašanje" proži ukaz za branje vprašanja in ID vprašanja iz baze
+    function beriVpr() {
+      socket.emit("redisBranjeVpr");
     };
-
+    // prejem in izpis števila vprašanj v bazi
+    socket.on("redisBranjeStVpr", function(msg) {
+      document.getElementById("stVpr").value = msg;
+      // stVpr = msg;
+    });
+    // prejem in izpis vprašanja
+    socket.on("redisBranjeVpr2", function(msg) {
+      document.getElementById("vpr").value = msg;
+    });
+    // prejem ID vprašanja
+    socket.on("vprID", function(msg) {
+      vprID = msg;
+    })
+    // funkcija branja izbranega odg in pošiljanja povratne informacije o vprID, izbranem odg, timestamp... serverju za vpis v Redis
     function oddajOdg() {
       if(document.getElementById("strinja").checked) {
         document.getElementById("odg").value = "strinja";
+        odg = 'strinja';
       } else if (document.getElementById("vzdrzan").checked) {
         document.getElementById("odg").value = "vzdrzan";
+        odg = 'vzdrzan';
       } else if (document.getElementById("nestrinja").checked) {
-        document.getElementById("odg").value = "nestrinja";
+        document.getElementById("odg").value = "ne strinja";
+        odg = 'ne strinja';
       }
+      // socket.emit("redisPisanjeOdg", odg.toString());
+      socket.emit("redisPisanjeOdg", "VprID:"+vprID+";Odg:"+odg);
     };
 
   </script>
