@@ -27,9 +27,9 @@ Verzija: 2016.09.25a
 Narejeno: Branje izbranega odgovora in pošiljanje VprID+odg serverju, kateri doda 2 timestamp-a (YYYY-MM-DD-HH-MM-SS... in v milisekundah).
 To-Do: Izbrati format celotnega odgovora (JSON) in informacije, ki jih vsebuje za zapis v Redis.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.09.29a
+Narejeno: Urejanje zapisa izbranega odg v Redis.
+To-Do: Dodatno urejanje, da bo zapis ustrezal JSON formatu.
 ==============================
 Verzija:
 Narejeno:
