@@ -1,4 +1,4 @@
-// Verzija: 2016.10.03d
+// Verzija: 2016.10.03b
 // ====================================================================================================
 var http = require("http").createServer(handler);
 var fs = require("fs");
@@ -13,7 +13,7 @@ var dodajVpr = 'x';
 var statBranjeStVpr = 0; // status števca branja vprašanj - uporablja se za pravilen izpis VprID/stVpr pri dodajanju novega vprašanja
 var odgovoriJSON = {"odgovori":[]};
 var stOdg = 0; // uporablja se pri funkciji 'pretvorbaJSON' za pridobivanje števila odg v Sorted Set-ih
-// var prejetOdg = 'x'; // uporablja se pri funkciji 'pretvorbaJSON' za pridobivanje števila odg v Sorted Set-ih
+var prejetOdg = 'x'; // uporablja se pri funkciji 'pretvorbaJSON' za pridobivanje števila odg v Sorted Set-ih
 
 
 function handler(req, res) {
@@ -74,9 +74,6 @@ io.sockets.on("connection", function(socket) {
   socket.on("pretvoriJSON", function() {
     pretvorbaJSON();
   });
-  socket.on("izpisiRezultate", function() {
-    rezultati();
-  });
   // FUNKCIJE =================================================================
   // branje števila vprašanj
   function branjeStVpr() {
@@ -101,24 +98,18 @@ io.sockets.on("connection", function(socket) {
   function pretvorbaJSON() {
     clientRedis.zcard("odg2", function(err, reply) {
       stOdg = reply;
-      // console.log("Število odg v Sorted Set-u: "+stOdg);
+      console.log("Število odg v Sorted Set-u: "+stOdg);
     });
-    clientRedis.zrange("odg2", 0, -1, function(err, reply) { // pridobivanje seznama odgovorov
-      // prejetOdg = reply;
+    // pridobivanje seznama odgovorov
+    clientRedis.zrange("odg2", 0, -1, function(err, reply) {
+      prejetOdg = reply;
       // console.log("Odgovori v Sorted Set-u: "+prejetOdg);
-      clientRedis.del("odgovori"); // brisanje obstoječe baze odgovorov (String)
-      clientRedis.append("odgovori", '['+reply+']'); // zapisovanje odgovorov v JSON formatu
+      // brisanje obstoječe baze odgovorov (String)
+      clientRedis.del("odgovori");
+      // zapisovanje odgovorov v JSON formatu
+      clientRedis.append("odgovori", '['+prejetOdg+']');
     });
-  }
-  // izpis rezultatov
-  function rezultati() {
-    var j = 1;
-    for (i=1; i<stVpr; i++) {
-      clientRedis.zcount("odg2", i, i, function(err, reply) {
-        console.log("Število glasov za vprašanje "+j+": "+reply);
-        j++;
-      });
-    }
+    // clientRedis.append("odgovori", '['+prejetOdg+']');
   }
   // FUNKCIJE =================================================================
 });

@@ -1,6 +1,6 @@
 <!--
 Opis: Spletna stran za prikaz zbranih glasov.
-Verzija: 2016.10.03d
+Verzija: 2016.10.03a
 ====================================================================================================-->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -26,11 +26,6 @@ Verzija: 2016.10.03d
 <hr>
 <p><b>Dodajanje vprašanja: </b><input id="iptDodajVpr" type="text" /</p><br>
 <button id="btnDodajVpr" onClick="dodajVpr()">Dodaj vprašanje</button>
-<hr>
-<button id="btnPretvorbaJSON" onClick="pretvorbaJSON()">Pretvori prejete rezultate v JSON</button>
-<hr>
-<button id="btnIzpisRezultatov" onClick="izpisRezultatov()">Izpiši rezultate glasovanja</button>
-<p><b>Izpis rezultatov: </b><output id="rezultati" type="text" /></p>
 <!-- ================================================================= -->
 
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
@@ -80,14 +75,7 @@ Verzija: 2016.10.03d
       socket.emit("redisSporocanjeVprID", vprID);
       socket.emit("redisPisanjeOdg", '"VprID"'+':"'+vprID+'","Odg"'+':"'+odg+'"');
     };
-    // funkcija za pretvorbo prejetih rezultatov v JSON obliko
-    function pretvorbaJSON() {
-      socket.emit("pretvoriJSON");
-    };
-    // izpis rezultatov glasovanja
-    function izpisRezultatov() {
-      socket.emit("izpisiRezultate");
-    };
+
   </script>
 </body>
 

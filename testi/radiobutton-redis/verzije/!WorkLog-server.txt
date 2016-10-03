@@ -31,6 +31,78 @@ Verzija: 2016.09.29a
 Narejeno: Urejanje zapisa izbranega odg v Redis.
 To-Do: Dodatno urejanje, da bo zapis ustrezal JSON formatu.
 ==============================
+Verzija: 2016.10.03a
+Narejeno: Dodana koda za zapisovanje izbranega odgovora v Sorted Set. Testiranje. Deluje.
+To-Do: Urejanje zapisa za String, da bo ustrezal JSON formatu.
+==============================
+Verzija: 2016.10.03b
+Narejeno: Urejanje funkcije 'pretvorbaJSON', ki odgovore, zapisane v Sorted Set pretvori v JSON in zapiše v String bazo 'odgovori'.
+To-Do: Urejanje izpisa rezultatov.
+==============================
+Verzija: 2016.10.03c
+Narejeno: Urejanje funkcije 'rezultati', ki prebere število odgovorov za posamezna vprašanja.
+To-Do: Izpis je trenutno narejen v console.log. Urediti izpis na webpage.
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
 Verzija:
 Narejeno:
 To-Do:

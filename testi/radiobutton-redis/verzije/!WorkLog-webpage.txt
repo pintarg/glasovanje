@@ -51,6 +51,74 @@ Verzija: 2016.09.29a
 Narejeno: Urejanje zapisa izbranega odg v Redis.
 To-Do: /
 ==============================
+Verzija: 2016.10.03a
+Narejeno: Dodana koda za zapisovanje izbranega odgovora v Sorted Set. Testiranje. Deluje.
+To-Do: Urejanje zapisa za String, da bo ustrezal JSON formatu.
+==============================
+Verzija: 2016.10.03b
+Narejeno: Dodan gumb 'Pretvori prejete rezultate v JSON' in dodana koda, ki kliče funkcijo 'pretvorbaJSON'.
+To-Do: Urejanje izpisa rezultatov.
+==============================
+Verzija: 2016.10.03c
+Narejeno: Dodan gumb 'Izpiši rezultate glasovanja' in dodana koda, ki kliče funkcijo 'izpisRezultatov'.
+To-Do: Urediti izpis rezultatov na webpage.
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
 Verzija:
 Narejeno:
 To-Do:
