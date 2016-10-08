@@ -1,4 +1,4 @@
-// Verzija: 2016.10.08c
+// Verzija: 2016.10.08b
 // ====================================================================================================
 var http = require("http").createServer(handler);
 var fs = require("fs");
@@ -9,7 +9,11 @@ var moment = require("moment");
 var VprID = 1; // ID vprašanja v bazi "vprasanja"
 var stVpr = 0; // število vprašanj v bazi
 var zapisVprID = 0;
+var dodajVpr = 'x';
 var statBranjeStVpr = 0; // status števca branja vprašanj - uporablja se za pravilen izpis VprID/stVpr pri dodajanju novega vprašanja
+var stOdg = 0; // uporablja se pri funkciji 'pretvorbaJSON' za pridobivanje števila odg v Sorted Set-ih
+// var prejetOdg = 'x'; // uporablja se pri funkciji 'pretvorbaJSON' za pridobivanje števila odg v Sorted Set-ih
+
 
 function handler(req, res) {
   fs.readFile(__dirname + "/webpage.html",
@@ -29,45 +33,61 @@ http.listen(8080);
 console.log("Zagon sistema");
 
 io.sockets.on("connection", function(socket) {
-  branjeStVpr(); // branje števila vprašanj v bazi ob zagonu serverja
   // branje vprašanja iz Redis + pošiljanje ID vprašanja (zaporedna št vpr)
-  socket.on("socketBeriVpr", function() {
-    // branjeStVpr();
+  socket.on("redisBranjeVpr", function() {
+    branjeStVpr();
     clientRedis.hget("vprasanja", VprID, function(err, reply) {
       console.log("Vprašanje št "+VprID+": "+reply);
-      socket.emit("socketVprPrebran", {"vpr":reply, "VprID":VprID, "stVpr":stVpr});
+      socket.emit("redisBranjeVpr2", reply.toString());
+      // socket.emit("redisBranjeStVpr", VprID+"/"+stVpr.toString());
+      socket.emit("redisBranjeStVpr", VprID+"/"+stVpr);
+      socket.emit("vprID", VprID);
       VprID++;
     });
   });
   // zapisovanje novega vprašanja v Redis
-  socket.on("socketDodajVpr", function(msg) {
+  socket.on("redisDodajVpr", function(msg) {
     clientRedis.hset("vprasanja", stVpr+1, msg);
-    socket.emit("socketVprPrebran", {"vpr":"delniIzpis", "VprID":VprID-1, "stVpr":stVpr+1});
-    console.log("Prejem "+(stVpr+1)+". vpr: "+msg);
-    stVpr++;
+    console.log("Prejem novega vpr: "+msg);
+    statBranjeStVpr = 1;
+    branjeStVpr();
+  });
+  // prejem VprID za ustrezen zapis v Redis
+  socket.on("redisSporocanjeVprID", function(msg) {
+    zapisVprID = msg;
   });
   // zapisovanje izbranega odgovora v Redis
-  socket.on("socketPisanjeOdg", function(msg) {
+  socket.on("redisPisanjeOdg", function(msg) {
     var timestamp = new Date().getTime(); // timestamp v milisekundah
     var timestamp2 = moment().format(); // timestamp v obliki "2016-09-25T23:05:56+02:00" // uporablja se knjižnica "moment"
-    console.log("Prejem ID vpr pti zapisu odg: "+msg.VprID);
-    clientRedis.zadd("odgovori", msg.VprID, '{"VprID"'+':"'+msg.VprID+'","Odg"'+':"'+msg.Odg+'","ts"'+':"'+timestamp2+'","ts2":"'+timestamp+'","SocketID":"'+socket.id+'"}');
+    // console.log("Odg na vpr:");
+    // console.log('{'+msg+',"ts"'+':"'+timestamp2+'","ts2":"'+timestamp+'","SocketID":"'+socket.id+'"}');
+    clientRedis.zadd("odgovori", zapisVprID, '{'+msg+',"ts"'+':"'+timestamp2+'","ts2":"'+timestamp+'","SocketID":"'+socket.id+'"}');
   });
   // branje izbranih odgovorov iz Redis
-  socket.on("socketBranjeOdg", function() {
+  socket.on("redisBranjeOdg", function() {
 
   });
-  socket.on("socketIzpisiRezultate", function() {
+  socket.on("izpisiRezultate", function() {
     rezultati();
   });
   // FUNKCIJE =================================================================
   // branje števila vprašanj
   function branjeStVpr() {
     clientRedis.hlen("vprasanja", function(err, reply) {
+      if (statBranjeStVpr == 1) { // potrebno za pravilen izpis VprID/stVpr pri dodajanju novega vpr
+        VprID--;
+      }
       if (err) {
         console.log("Napaka pri branju števila vprašanj v bazi.");
       } else {
+        // console.log("Število vprašanj v bazi: "+reply);
         stVpr = reply;
+        socket.emit("redisBranjeStVpr", VprID+"/"+stVpr.toString());
+      }
+      if (statBranjeStVpr == 1) { // potrebno za pravilen izpis VprID/stVpr pri dodajanju novega vpr
+        VprID++;
+        statBranjeStVpr = 0;
       }
     });
   }

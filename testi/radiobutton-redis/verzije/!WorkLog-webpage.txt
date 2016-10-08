@@ -63,17 +63,17 @@ Verzija: 2016.10.03c
 Narejeno: Dodan gumb 'Izpiši rezultate glasovanja' in dodana koda, ki kliče funkcijo 'izpisRezultatov'.
 To-Do: Urediti izpis rezultatov na webpage.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.07a
+Narejeno: Testiranje funkcij. Vmesna verzija.
+To-Do: Urediti izpis rezultatov na webpage.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.08a
+Narejeno: Brisanje gumba 'btnPretvorbaJSON' in z njim povezane funkcije.
+To-Do: Urediti izpis rezultatov na webpage.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.08b
+Narejeno: Oblikovno in funkcionalno urejanje kode. Brisanje odvečne kode in spreminjanje za optimalnejše delovanje.
+To-Do: Urediti izpis rezultatov na webpage.
 ==============================
 Verzija:
 Narejeno:

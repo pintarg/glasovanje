@@ -43,21 +43,25 @@ Verzija: 2016.10.03c
 Narejeno: Urejanje funkcije 'rezultati', ki prebere število odgovorov za posamezna vprašanja.
 To-Do: Izpis je trenutno narejen v console.log. Urediti izpis na webpage.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.07a
+Narejeno: Testiranje funkcij. Vmesna verzija.
+To-Do: Urediti funkcijo 'rezultati', da dodatna funkcija za izpis ne bo znotraj loop funkcije.
+Urejanje kode za zapis odgovorov v bazo - koda za zapis v String se izbriše. Ostane zapis v Sorted Set.
+Urediti izpis rezultatov na spletno stran.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.08a
+Narejeno: Funkcija 'rezultati' urejena. Napake ne javlja več, vendar je samo lepotna napaka in ne vpliva na delovanje, zato bom vrnil v prejšnje stanje.
+To-Do: Povrnitev funkcije 'rezultati' v prejšnje stanje.
+Urejanje kode za zapis odgovorov v bazo - koda za zapis v String se izbriše. Ostane zapis v Sorted Set.
+Urediti izpis rezultatov na spletno stran.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.08b
+Narejeno: Brisanje funkcije 'pretvorbaJSON' in z njo povezane kode. Brisanje baze 'odgovori' iz Redisa in preimenovanje baze 'odg2' v 'odgovori'.
+To-Do: Urediti izpis rezultatov na spletno stran.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.08c
+Narejeno: Oblikovno in funkcionalno urejanje kode. Brisanje odvečne kode in spreminjanje za optimalnejše delovanje.
+To-Do: Urediti izpis rezultatov na spletno stran.
 ==============================
 Verzija:
 Narejeno:

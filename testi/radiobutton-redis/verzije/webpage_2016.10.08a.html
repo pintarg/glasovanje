@@ -1,6 +1,6 @@
 <!--
 Opis: Spletna stran za prikaz zbranih glasov.
-Verzija: 2016.10.08c
+Verzija: 2016.10.08a
 ====================================================================================================-->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -34,25 +34,34 @@ Verzija: 2016.10.08c
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script type="text/javascript">
     var socket = io.connect("192.168.42.50:8080")
+    // var stVpr = 0;
+    // var novVpr = 'x';
     var odg = 'x';
     var vprID = 0;
 
     // branje novega vprašanja iz webpage-a in pošiljanje v bazo
     function dodajVpr() {
-      socket.emit("socketDodajVpr", document.getElementById("iptDodajVpr").value);
+      socket.emit("redisDodajVpr", document.getElementById("iptDodajVpr").value.toString());
+      // novVpr = document.getElementById("iptDodajVpr").value;
+      // socket.emit("redisDodajVpr", novVpr.toString());
     };
     // pritisk na gumb "Beri vprašanje" proži ukaz za branje vprašanja in ID vprašanja iz baze
     function beriVpr() {
-      socket.emit("socketBeriVpr");
+      socket.emit("redisBranjeVpr");
     };
-    // prejem in izpis vprašanja, števila vprašanj v bazi in prejem ID vprašanja
-    socket.on("socketVprPrebran", function(data) {
-      if (data.vpr != "delniIzpis") { // funkcija je uporabljena 2x, pri branju vprašanja in pri dodajanju novega vprašanja, zato omejitev izpisa
-        vprID = data.VprID;
-        document.getElementById("vpr").value = data.vpr;
-      }
-      document.getElementById("stVpr").value = data.VprID+"/"+data.stVpr;
+    // prejem in izpis števila vprašanj v bazi
+    socket.on("redisBranjeStVpr", function(msg) {
+      document.getElementById("stVpr").value = msg;
+      // stVpr = msg;
     });
+    // prejem in izpis vprašanja
+    socket.on("redisBranjeVpr2", function(msg) {
+      document.getElementById("vpr").value = msg;
+    });
+    // prejem ID vprašanja
+    socket.on("vprID", function(msg) {
+      vprID = msg;
+    })
     // funkcija branja izbranega odg in pošiljanja povratne informacije o vprID, izbranem odg, timestamp... serverju za vpis v Redis
     function oddajOdg() {
       if(document.getElementById("strinja").checked) {
@@ -65,11 +74,13 @@ Verzija: 2016.10.08c
         document.getElementById("odg").value = "ne strinja";
         odg = 'ne strinja';
       }
-      socket.emit("socketPisanjeOdg", {"VprID":vprID, "Odg":odg});
+      // socket.emit("redisPisanjeOdg", odg.toString());
+      socket.emit("redisSporocanjeVprID", vprID);
+      socket.emit("redisPisanjeOdg", '"VprID"'+':"'+vprID+'","Odg"'+':"'+odg+'"');
     };
     // izpis rezultatov glasovanja
     function izpisRezultatov() {
-      socket.emit("socketIzpisiRezultate");
+      socket.emit("izpisiRezultate");
     };
   </script>
 </body>
