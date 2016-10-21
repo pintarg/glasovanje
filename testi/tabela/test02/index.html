@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<script src="angular.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+<p>{{carname}}</p>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.carname = "Riba";
+});
+</script>
+
+<p>The property "carname" was made in the controller, and can be referred to in the view by using the {{ }} brackets.</p>
+
+</body>
+</html>

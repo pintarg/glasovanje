@@ -75,29 +75,31 @@ Verzija: 2016.10.08b
 Narejeno: Oblikovno in funkcionalno urejanje kode. Brisanje odvečne kode in spreminjanje za optimalnejše delovanje.
 To-Do: Urediti izpis rezultatov na webpage.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.14a
+Narejeno: Vmesno shranjevanje pred dodajanjem AngularJS.
+To-Do:/
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.14b
+Narejeno: Mentorski sestanek. Delo na tabeli za izpis odgovorov (AngularJS).
+To-Do: Nadaljuj.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.18a
+Narejeno: Vzpostavljeno delovanje testnega izpisa podatkov v tabelo
+To-Do: /
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.19a
+Narejeno: Vrnitev na verzijo 2016.10.14a in ponovno dodajanje kode za ng-table.
+Narejeno: Koda dodana. htmlpreview deluje. Test prek node > server.js javlja napako glede deklarirana angularja in 'angular.module'-a
+To-Do: Urediti delovanj prek node > server.js.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.20a
+Narejeno: Urejen izpis podatkov v tabelo z uporabo angular-ja. src angular je nastavljen na 'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js' in ne na lokalno verzijo.
+To-Do: Urejanje izpisa rezultatov iz Redis DB v tabelo in uporaba lokalne verzije angular-ja.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.20b
+Narejeno: Urejanje izpisa rezultatov iz Redis DB v tabelo.
+Podatki se prenesejo na spletno stran, vendar se tabela ne osveži.
+To-Do: Urediti osveževanje tabele ob prenosu podatkov. Uporaba lokalne verzije angular-ja.
 ==============================
 Verzija:
 Narejeno:

@@ -1,4 +1,4 @@
-// Verzija: 2016.10.20b
+// Verzija: 2016.10.14b
 // ====================================================================================================
 var http = require("http").createServer(handler);
 var fs = require("fs");
@@ -6,12 +6,10 @@ var io = require("socket.io").listen(http);
 var redis = require("redis");
 var clientRedis = redis.createClient();
 var moment = require("moment");
-// var angular = require("angular");
 var VprID = 1; // ID vprašanja v bazi "vprasanja"
 var stVpr = 0; // število vprašanj v bazi
 var zapisVprID = 0;
 var statBranjeStVpr = 0; // status števca branja vprašanj - uporablja se za pravilen izpis VprID/stVpr pri dodajanju novega vprašanja
-var prejetOdg = 'x';
 
 function handler(req, res) {
   fs.readFile(__dirname + "/webpage.html",
@@ -53,7 +51,7 @@ io.sockets.on("connection", function(socket) {
     var timestamp = new Date().getTime(); // timestamp v milisekundah
     var timestamp2 = moment().format(); // timestamp v obliki "2016-09-25T23:05:56+02:00" // uporablja se knjižnica "moment"
     console.log("Prejem ID vpr pti zapisu odg: "+msg.VprID);
-    clientRedis.zadd("odgovori", msg.VprID, '{VprID'+':"'+msg.VprID+'",Odg'+':"'+msg.Odg+'",ts'+':"'+timestamp2+'",ts2:"'+timestamp+'",SocketID:"'+socket.id+'"}');
+    clientRedis.zadd("odgovori", msg.VprID, '{"VprID"'+':"'+msg.VprID+'","Odg"'+':"'+msg.Odg+'","ts"'+':"'+timestamp2+'","ts2":"'+timestamp+'","SocketID":"'+socket.id+'"}');
   });
   // branje izbranih odgovorov iz Redis
   socket.on("socketBranjeOdg", function() {
@@ -61,8 +59,6 @@ io.sockets.on("connection", function(socket) {
   });
   socket.on("socketIzpisiRezultate", function() {
     stOdgPosameznoVpr();
-    branjeRezultatov();
-    // socket.emit("socketPosiljanjeRezultatov", prejetOdg);
   });
   // FUNKCIJE =================================================================
   // branje števila vprašanj
@@ -84,14 +80,6 @@ io.sockets.on("connection", function(socket) {
         j++;
       });
     }
-  }
-  // branje rezultatov iz Redis in pošiljanje na webpage za izpis v tabeli
-  function branjeRezultatov() {
-    clientRedis.zrange("odgovori", 0, -1, function(err, reply) { // pridobivanje seznama odgovorov
-      prejetOdg = reply;
-      console.log("Odgovori v Sorted Set-u: "+prejetOdg);
-      socket.emit("socketPosiljanjeRezultatov", prejetOdg);
-    });
   }
   // FUNKCIJE =================================================================
 });

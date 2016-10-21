@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2016.10.20b -->
+<!-- Verzija: 2016.10.20c -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -29,8 +29,7 @@
 <button id="btnIzpisRezultatov" onClick="izpisRezultatov()">Izpiši rezultate glasovanja</button>
 <p><b>Izpis rezultatov:</b>
 <div ng-app="myApp" ng-controller="myCtrl">
-  <div>
-  <table ng-table="tablePodatki">
+  <table>
     <tr>
       <th>Vpr ID</th>
       <th>Odg</th>
@@ -46,16 +45,12 @@
       <td>{{podatek.SocketID}}</td>
     </tr>
   </table>
-  </div>
 </div>
 <!-- ================================================================= -->
   <!-- <script type="text/javascript" src="angular.js"></script> -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script type="text/javascript">
-    var socket = io.connect("192.168.42.50:8080");
-    var odg = 'x';
-    var vprID = 0;
     // var angular;
     // var rezultati = [{VprID:'1', Odg:'strinja', ts:'2016-10-09T01:33:08+02:00', ts2:'1475969588710', SocketID:'/#bTZQaCpk1eUG4Ag2AAAB'},{VprID:'2', Odg:'nestrinja', ts:'2016-10-10T01:33:08+02:00', ts2:'1475969588555', SocketID:'/#bTZQaCpk1eUG4Ag2BBBC'}];
     // var rezultati = null;
@@ -64,18 +59,10 @@
     app.controller('myCtrl', function($scope) {
       $scope.podatki = rezultati;
     });
-    // $scope.updatePodatki = function() {
-    //   $scope.tablePodatki.reload();
-    // }
-    function updatePodatki() {
-      // document.getElementById("odg").value = "test izvedbe funkcije updatePodatki()";
-      app.controller('myCtrl', function($scope) {
-        document.getElementById("odg").value = "test izvedbe funkcije updatePodatki()";
-        // $scope.tablePodatki.reload();
-        $scope.tablePodatki.total($scope.tablePodatki.length);
-        $scope.tablePodatki.reload();
-      });
-    };
+
+    var socket = io.connect("192.168.42.50:8080");
+    var odg = 'x';
+    var vprID = 0;
 
     // branje novega vprašanja iz webpage-a in pošiljanje v bazo
     function dodajVpr() {
@@ -113,8 +100,7 @@
     };
     socket.on("socketPosiljanjeRezultatov", function(msg) {
       rezultati = '['+msg+']';
-      // document.getElementById("odg").value = '['+msg+']';
-      updatePodatki();
+      document.getElementById("odg").value = '['+msg+']';
     });
   </script>
 </body>

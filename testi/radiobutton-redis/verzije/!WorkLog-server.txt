@@ -63,17 +63,17 @@ Verzija: 2016.10.08c
 Narejeno: Oblikovno in funkcionalno urejanje kode. Brisanje odvečne kode in spreminjanje za optimalnejše delovanje.
 To-Do: Urediti izpis rezultatov na spletno stran.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.14a
+Narejeno: Vmesno shranjevanje pred dodajanjem AngularJS.
+To-Do:/
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.14b
+Narejeno: Mentorski sestanek. Delo na tabeli za izpis odgovorov (AngularJS).
+To-Do: Nadaljuj.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.20a
+Narejeno: Urejanje kode za branje rezultatov iz Redis DB, prenos na webpage in izpis v tabelo.
+To-Do: /
 ==============================
 Verzija:
 Narejeno:
