@@ -1,0 +1,45 @@
+<html ng-app="MyApp">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title>Add Rows</title>
+
+    <link href="http://cdn.foundation5.zurb.com/foundation.css" rel="stylesheet">
+    <script src="angular.js"></script>
+  </head>
+
+  <body ng-controller="MainController">
+
+    <a href="#" class="button" ng-click="addRow()">Add Row {{counter}}</a>
+
+<table>
+  <thead>
+    <tr>
+      <th width="200">Some Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="rowContent in rows">
+      <td>{{rowContent}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+angular.module('MyApp', [])
+.controller('MainController', [ '$scope', function($scope) {
+
+$scope.rows = ['Row 1', 'Row 2'];
+
+$scope.counter = 3;
+
+$scope.addRow = function() {
+
+  $scope.rows.push('Row ' + $scope.counter);
+  $scope.counter++;
+}
+}]);
+</script>
+  </body>
+</html>

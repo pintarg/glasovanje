@@ -1,0 +1,29 @@
+<p>Test</p>
+<script src="angular.js"></script>
+<div ng-app="myApp" ng-controller="myCtrl">
+  <div>
+  <table ng-table="tablePodatki">
+    <tr>
+      <th>Vpr ID</th>
+      <th>Odg</th>
+      <th>ts</th>
+      <th>ts2</th>
+      <th>SocketID</th>
+    </tr>
+    <tr ng-repeat="podatek in podatki">
+      <td>{{podatek.VprID}}</td>
+      <td>{{podatek.Odg}}</td>
+      <td>{{podatek.ts}}</td>
+      <td>{{podatek.ts2}}</td>
+      <td>{{podatek.SocketID}}</td>
+    </tr>
+  </table>
+  </div>
+</div>
+<script type="text/javascript">
+  var rezultati = [{VprID:"test",Odg:"x",ts:"x",ts2:"x",SocketID:"x"}];
+  var app = angular.module('myApp', []);
+  app.controller('myCtrl', function($scope) {
+    $scope.podatki = rezultati;
+  });
+</script>

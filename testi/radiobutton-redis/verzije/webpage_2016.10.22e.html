@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2016.10.22f -->
+<!-- Verzija: 2016.10.22e -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -51,12 +51,24 @@
 <!-- ================================================================= -->
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script type="text/javascript">
-    var arVprID, arOdg, arTs, arTs2, arSocketID; // spremenljivke za dodajanje vrednost v nove vrstice Angular tabele
-    var app = angular.module('myApp', []); // angular. Ta del kode mora biti na začetku!
+    // var rezultati = [{VprID:'1', Odg:'strinja', ts:'2016-10-09T01:33:08+02:00', ts2:'1475969588710', SocketID:'/#bTZQaCpk1eUG4Ag2AAAB'},{VprID:'2', Odg:'nestrinja', ts:'2016-10-10T01:33:08+02:00', ts2:'1475969588555', SocketID:'/#bTZQaCpk1eUG4Ag2BBBC'}];
+    // var rezultati = null;
+    // var rezultati = [{VprID:"x",Odg:"x",ts:"x",ts2:"x",SocketID:"x"}];
+    var rezultati = [{VprID:"",Odg:"",ts:"",ts2:"",SocketID:""}];
+    var arVprID, arOdg, arTs, arTs2, arSocketID;// spremenljivke za dodajanje vrednost v nove vrstice Angular tabele
+
+    var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope) {
-      $scope.podatki = [{VprID:"",Odg:"",ts:"",ts2:"",SocketID:""}]; // mora biti, drugače ne izpiše tabele
+      $scope.podatki = rezultati;
       $scope.addRow = function() {
+        // $scope.podatki.push({VprID:'z',Odg:'z',ts:'z',ts2:'z',SocketID:'z'});
+        // $scope.VprID = 'y';
+        // $scope.Odg = 'y';
+        // $scope.ts = 'y';
+        // $scope.ts2 = 'y';
+        // $scope.SocketID = 'y';
         $scope.podatki.push({VprID:arVprID,Odg:arOdg,ts:arTs,ts2:arTs2,SocketID:arSocketID});
+        // $scope.podatki.push({VprID:'z',Odg:'z',ts:'z',ts2:'z',SocketID:'z'});
       };
     });
 
@@ -79,6 +91,7 @@
         document.getElementById("vpr").value = data.vpr;
       }
       document.getElementById("stVpr").value = data.VprID+"/"+data.stVpr;
+      // document.getElementById("odg").value = data;
     });
     // funkcija branja izbranega odg in pošiljanja povratne informacije o vprID, izbranem odg, timestamp... serverju za vpis v Redis
     function oddajOdg() {
@@ -104,6 +117,9 @@
       arTs = msg.ts;
       arTs2 = msg.ts2;
       arSocketID = msg.SocketID;
+      // rezultati = '['+msg+']';
+      // document.getElementById("odg").value = rezultati;
+      // document.getElementById("odg").value = msg;
       document.getElementById("btnAddRow").click();
       // angular.element(document.getElementById("divIzpisRezultatov")).scope().addRow(); // Izpis v tabelo ne deluje najbolje.
     });

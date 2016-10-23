@@ -1,4 +1,4 @@
-// Verzija: 2016.10.22c
+// Verzija: 2016.10.22b
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -81,11 +81,23 @@ io.sockets.on("connection", function(socket) {
   }
   // branje rezultatov iz Redis in pošiljanje na webpage za izpis v tabeli
   function branjeRezultatov() {
+    // clientRedis.zcard("odgovori", function(err, reply) {
+    //   stOdg = reply;
+    //   console.log("Število odg v Sorted Set-u: "+stOdg);
+    // });
+
     for (i=0; i<stOdg; i++) {
       clientRedis.zrange("odgovori", i, i, function(err, reply) { // pridobivanje seznama odgovorov
         socket.emit("socketPosiljanjeRezultatov", JSON.parse(reply));
       });
     }
+
+    //   clientRedis.zrange("odgovori", 0, -1, function(err, reply) { // pridobivanje seznama odgovorov
+    //     // prejetOdg = reply;
+    //     // console.log("Odgovori v Sorted Set-u: "+prejetOdg);
+    //     socket.emit("socketPosiljanjeRezultatov", JSON.parse(reply));
+    //     // socket.emit("socketPosiljanjeRezultatov", {"VprID":"1","Odg":"strinja","ts":"2016-10-22T15:09:59+02:00","ts2":"1477141799733","SocketID":"/#Zc-A_o4J-9sHLTh1AAAA"});
+    //   });
   }
   function branjeStOdgVBazi() {
     clientRedis.zcard("odgovori", function(err, reply) {

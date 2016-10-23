@@ -101,33 +101,33 @@ Narejeno: Urejanje izpisa rezultatov iz Redis DB v tabelo.
 Podatki se prenesejo na spletno stran, vendar se tabela ne osveži.
 To-Do: Urediti osveževanje tabele ob prenosu podatkov. Uporaba lokalne verzije angular-ja.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.21a
+Narejeno: Mentorski sestanek. Preverjanje tabele z angular.js - ni zaključeno.
+To-Do: Vrni na verzijo 2016.10.20b in uredi dodajanje zapisov v tabelo in ne osveževanje.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.22a
+Narejeno: Povrnitev na verzijo 2016.10.20b. Sprememba uporabe angular.js, da se bere z lokalnega diska. Nepotrebni deli kode so komentirani in se odstranijo v naslednji verziji.
+To-Do: Urejanje tabele za dodajanje novih podatkov.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.22b
+Narejeno: Vmesno shranjevanje med testiranjem https://hello-angularjs.appspot.com/addtablerow/
+To-Do: Nadaljuj.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.22c
+Narejeno: Testiranje testClick po predlogu ML. Ne deluje. Začetna vrednost var 'rezultati' je prazna (''). Po izpisu rezultatov iz baze v var 'rezultati', se vrednost var spremeni v vrednot vsebine rezultatov v bazi. Po kliku na 'Naloži podatke', se vsebina ne prikaže na spletni strani. Drsnik na spletni strani se premakne, kot da je bila vsebina dodana, vendar se ne izpiše na spletni strani.
+To-Do: Vrni na verzijo 2016.10.22b in nadaljuj z opcijo dodajanja novih vrednosti v tabelo.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.22d
+Narejeno: Urejeno delovanje dodajanja novih podatkov - testno. V kodi so 3 primeri uporabe.
+To-Do: Odstranjevanje odvečne kode in ureditev izpisa podatkov iz baze.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.22e
+Narejeno: Urejena koda za izpis rezultatov v Angular tabelo.
+To-Do: Izpisi se samo dodajajo in se pojavi podvajanje. Urediti, da ponoven klik na izpis podatkov pobriše tabelo in ponovno izpolni tabelo.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.22f
+Narejeno: Odstranjevanje komentirane kode.
+To-Do: Izpisi se samo dodajajo in se pojavi podvajanje. Urediti, da ponoven klik na izpis podatkov pobriše tabelo in ponovno izpolni tabelo.
 ==============================
 Verzija:
 Narejeno:

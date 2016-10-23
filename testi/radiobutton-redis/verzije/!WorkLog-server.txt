@@ -75,21 +75,21 @@ Verzija: 2016.10.20a
 Narejeno: Urejanje kode za branje rezultatov iz Redis DB, prenos na webpage in izpis v tabelo.
 To-Do: /
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.21a
+Narejeno: Mentorski sestanek. Testiranje uporabe lokalne verzije angular.js. Urejeno z expressom. Narejeni primeri.
+To-Do: Vrni na verzijo 2016.10.20a in dodaj express.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.22a
+Narejeno: Povrnitev na verzijo 2016.10.20a. Dodajanje Express knjižnice za uvoz angular.js. Express je nadomestil tudi funkcijo 'handler' za vzpostavitev spletne strani. Nepotrebni deli kode so komentirani in se odstranijo v naslednji verziji.
+To-Do: /
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.22b
+Narejeno: Urejeno branje in pošiljanje rezultatov na spletno stran. Odgovori se pošiljajo posamezno in ne vsi na enkrat.
+To-Do: VAROVALKE za neveljavne korake (dodajanje novega vpr brez vpisa vpr...)
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.22c
+Narejeno: Odstranjevanje komentirane kode.
+To-Do: VAROVALKE za neveljavne korake (dodajanje novega vpr brez vpisa vpr...)
 ==============================
 Verzija:
 Narejeno:
