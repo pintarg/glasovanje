@@ -91,9 +91,9 @@ Verzija: 2016.10.22c
 Narejeno: Odstranjevanje komentirane kode.
 To-Do: VAROVALKE za neveljavne korake (dodajanje novega vpr brez vpisa vpr...)
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.23a
+Narejeno: Dodana funkcija 'socketPosiljanjeStOdgVBazi' za pošiljanje št odg v bazi na webpage. Podatek se uporabi za brisanje vsebine tabele odgovorov.
+To-Do: VAROVALKE za neveljavne korake (dodajanje novega vpr brez vpisa vpr...)
 ==============================
 Verzija:
 Narejeno:

@@ -129,9 +129,9 @@ Verzija: 2016.10.22f
 Narejeno: Odstranjevanje komentirane kode.
 To-Do: Izpisi se samo dodajajo in se pojavi podvajanje. Urediti, da ponoven klik na izpis podatkov pobriše tabelo in ponovno izpolni tabelo.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.23a
+Narejeno: Dodani funkciji 'scope.emptyRows' in 'socketPosiljanjeStOdgVBazi' za prejem informacij o številu odg v bazi in ustrezno brisanje vsebine tabele pred ponovnim zapisom.
+To-Do: Oblikovanje.
 ==============================
 Verzija:
 Narejeno:
