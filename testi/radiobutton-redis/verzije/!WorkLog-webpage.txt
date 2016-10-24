@@ -133,13 +133,15 @@ Verzija: 2016.10.23a
 Narejeno: Dodani funkciji 'scope.emptyRows' in 'socketPosiljanjeStOdgVBazi' za prejem informacij o številu odg v bazi in ustrezno brisanje vsebine tabele pred ponovnim zapisom.
 To-Do: Oblikovanje.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.24a
+Narejeno: Sprememba kode v 'addRow' in 'socketPosiljanjeStOdgVBazi' za dodajanje novih podatkov.
+To-Do: Oblikovanje.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.10.24b
+Narejeno: Sprememba izpisa rezultatov v Angular tabelo. Ni potrebe po brisanju vrstic in rezultati se ne pošiljajo vsak posebej ampak vsi skupaj istočasno v eni spremenljivki. Na strani webpage-a se naredi 'JSON.parse'.
+Brisanje: 'emptyRows', 'socketPosiljanjeStOdgVBazi'.
+Spreminjanje: 'addRow' v 'Rewrite'.
+To-Do: Oblikovanje.
 ==============================
 Verzija:
 Narejeno:

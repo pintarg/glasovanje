@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2016.10.24b -->
+<!-- Verzija: 2016.10.24a -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -29,7 +29,8 @@
 <button id="btnIzpisRezultatov" onClick="izpisRezultatov()">Izpiši rezultate glasovanja</button>
 
 <div id="divIzpisRezultatov" ng-app="myApp" ng-controller="myCtrl">
-  <button id="btnRewrite" type='button' ng-click="rewrite()" style="display:none">Naloži podatke</button> <!-- gumb je skrit, ker se ga uporablja v 'socketPosiljanjeRezultatov' za izpis nove vrstice v Angular tabelo -->
+  <button id="btnAddRow" type='button' ng-click="addRow()" style="display:none">Naloži podatke</button> <!-- gumb je skrit, ker se ga uporablja v 'socketPosiljanjeRezultatov' za izpis nove vrstice v Angular tabelo -->
+  <button id="btnEmptyRows" type='button' ng-click="emptyRows()" style="display:none">Izprazni tabelo</button>
   <p><b>Izpis rezultatov:</b>
   <table>
     <tr>
@@ -51,12 +52,17 @@
 <!-- ================================================================= -->
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script type="text/javascript">
+    var arVprID, arOdg, arTs, arTs2, arSocketID; // spremenljivke za dodajanje vrednost v nove vrstice Angular tabele
+    var erStOdg; // spremenjivka števila odg v bazi. Uporabi se v funkciji 'emptyRows'
     var app = angular.module('myApp', []); // angular. Ta del kode mora biti na začetku!
     var rezultati;
     app.controller('myCtrl', function($scope) {
       $scope.podatki = [{VprID:"",Odg:"",ts:"",ts2:"",SocketID:""}]; // mora biti, drugače ne izpiše tabele
-      $scope.rewrite = function() {
-        return $scope.podatki = rezultati;
+      $scope.addRow = function() {
+        $scope.podatki.push(rezultati);
+      };
+      $scope.emptyRows = function() { // funkcija brisanja celotne vsebine tabele
+        $scope.podatki.splice(1, erStOdg);
       };
     });
 
@@ -100,9 +106,15 @@
     };
     // izpis rezultatov glasovanja
     socket.on("socketPosiljanjeRezultatov", function(msg) {
-      rezultati = JSON.parse(msg);
-      document.getElementById("btnRewrite").click();
+      rezultati = msg;
+      document.getElementById("btnAddRow").click();
       // angular.element(document.getElementById("divIzpisRezultatov")).scope().addRow(); // Izpis v tabelo ne deluje najbolje.
+    });
+    // prejem informacije o številu glasov v bazi, da se ustrezno briše celotno tabelo izpisov
+    socket.on("socketPosiljanjeStOdgVBazi", function(msg) {
+      erStOdg = msg;
+      document.getElementById("btnEmptyRows").click();
+      // document.getElementById("odg").value = erStOdg;
     });
   </script>
 </body>

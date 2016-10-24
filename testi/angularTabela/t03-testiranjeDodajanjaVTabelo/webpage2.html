@@ -1,10 +1,10 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2016.10.24b -->
+<!-- Verzija: 2016.10.20c -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
 <html>
-<script src="angular.js"></script>
+
 <head>
 
 </head>
@@ -27,10 +27,9 @@
 <button id="btnDodajVpr" onClick="dodajVpr()">Dodaj vprašanje</button>
 <hr>
 <button id="btnIzpisRezultatov" onClick="izpisRezultatov()">Izpiši rezultate glasovanja</button>
-
-<div id="divIzpisRezultatov" ng-app="myApp" ng-controller="myCtrl">
-  <button id="btnRewrite" type='button' ng-click="rewrite()" style="display:none">Naloži podatke</button> <!-- gumb je skrit, ker se ga uporablja v 'socketPosiljanjeRezultatov' za izpis nove vrstice v Angular tabelo -->
-  <p><b>Izpis rezultatov:</b>
+<p><b>Izpis rezultatov:</b>
+<div ng-app="myApp" ng-controller="myCtrl">
+  <button id="btnAddRow" type='button' ng-click="addRow()">Naloži podatke</button> <!-- gumb je skrit, ker se ga uporablja v 'socketPosiljanjeRezultatov' za izpis nove vrstice v Angular tabelo -->
   <table>
     <tr>
       <th>Vpr ID</th>
@@ -49,16 +48,18 @@
   </table>
 </div>
 <!-- ================================================================= -->
+  <!-- <script type="text/javascript" src="angular.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script type="text/javascript">
-    var app = angular.module('myApp', []); // angular. Ta del kode mora biti na začetku!
     var rezultati;
-    app.controller('myCtrl', function($scope) {
-      $scope.podatki = [{VprID:"",Odg:"",ts:"",ts2:"",SocketID:""}]; // mora biti, drugače ne izpiše tabele
-      $scope.rewrite = function() {
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', ['$scope', '$window', function($scope, $window) {
+      $scope.podatki = [{VprID:"x",Odg:"x",ts:"x",ts2:"x",SocketID:"x"}];
+      $scope.addRow = function() {
         return $scope.podatki = rezultati;
       };
-    });
+    }]);
 
     var socket = io.connect("192.168.42.50:8080");
     var odg = 'x';
@@ -98,11 +99,11 @@
     function izpisRezultatov() {
       socket.emit("socketIzpisiRezultate");
     };
-    // izpis rezultatov glasovanja
     socket.on("socketPosiljanjeRezultatov", function(msg) {
       rezultati = JSON.parse(msg);
-      document.getElementById("btnRewrite").click();
-      // angular.element(document.getElementById("divIzpisRezultatov")).scope().addRow(); // Izpis v tabelo ne deluje najbolje.
+      // rezultati = msg;
+      document.getElementById("odg").value = rezultati
+      document.getElementById("btnAddRow").click();
     });
   </script>
 </body>
