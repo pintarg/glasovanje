@@ -1,4 +1,4 @@
-// Verzija: 2016.11.12c
+// Verzija: 2016.11.12a
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -19,21 +19,6 @@ express.get('/angular.js', function(req, res) {
 });
 express.get('/angular-route.js', function(req, res) {
   res.sendFile(__dirname + '/angular-route.js');
-});
-express.get('/app.js', function(req, res) {
-  res.sendFile(__dirname + '/app.js');
-});
-express.get('/pages/home.html', function(req, res) {
-  res.sendFile(__dirname + '/pages/home.html');
-});
-express.get('/pages/question.html', function(req, res) {
-  res.sendFile(__dirname + '/pages/question.html');
-});
-express.get('/pages/add-question.html', function(req, res) {
-  res.sendFile(__dirname + '/pages/add-question.html');
-});
-express.get('/pages/answers.html', function(req, res) {
-  res.sendFile(__dirname + '/pages/answers.html');
 });
 http.listen(8080);
 console.log("Zagon sistema");

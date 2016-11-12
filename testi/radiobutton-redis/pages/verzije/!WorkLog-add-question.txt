@@ -1,0 +1,50 @@
+==============================
+Verzija: 2016.11.12a
+Narejeno: Začetna postavitev.
+To-Do: Prenos podatkov številke vprašanja in števila vseh vprašanj prek '$scope' in samodejni izpis ob prihodu na stran.
+Dodajanje možnosti izpisa vseh vprašanj v bazi.
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================

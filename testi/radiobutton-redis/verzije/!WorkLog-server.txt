@@ -101,13 +101,13 @@ Spreminjanje: 'socketPisanjeOdg', 'branjeRezultatov'.
 Brisanje: 'branjeStOdgVBazi'.
 To-Do: VAROVALKE za neveljavne korake (dodajanje novega vpr brez vpisa vpr...)
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.11.12a
+Narejeno: Spreminjanje v Single page aplication. Dodajanje angular-route.js
+To-Do: Spreminjanje v Single page aplication.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.11.12b
+Narejeno: Spreminjanje v Single page aplication. Dodajanje zunanjih datotek (app.js; /pages/home.html, question.html, add-question.html, answers-html).
+To-Do: Urejanje kode za pravilno delovanje posameznih podstrani.
 ==============================
 Verzija:
 Narejeno:

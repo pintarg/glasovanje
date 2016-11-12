@@ -143,9 +143,9 @@ Brisanje: 'emptyRows', 'socketPosiljanjeStOdgVBazi'.
 Spreminjanje: 'addRow' v 'Rewrite'.
 To-Do: Oblikovanje.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.11.12a
+Narejeno: Spreminjanje v Single page aplication.
+To-Do: Oblikovanje.
 ==============================
 Verzija:
 Narejeno:

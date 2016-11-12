@@ -1,27 +1,59 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2016.11.12b -->
+<!-- Verzija: 2016.11.12a -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
-<html ng-app="myApp">
+<html>
+<script src="angular.js"></script>
+<script src="angular-route.js"></script>
 <head>
-  <script src="angular.js"></script>
-  <script src="angular-route.js"></script>
-  <script src="/socket.io/socket.io.js"></script>
-</head>
-<body>
-  <a href="#/home">Home</a>
-  <a href="#/question">Vprašanje</a>
-  <a href="#/add-question">Dodajanje novega vprašanja</a>
-  <a href="#/answers">Odgovori/rezultati</a>
-  <div ng-view><div>
-  <script src="app.js"></script>
 
+</head>
+
+<body>
+<!-- tukaj bo koda za prikaz strani -->
+<p><b>Vprašanje: </b><output id="stVpr" type="text" /><br>
+<p><b>> </b><output id="vpr" type="text" /></p><br>
+<button id="btnBeriVpr" onClick="beriVpr()">Beri vprašanje</button>
+<p><b>Odgovori:</b></p>
+<form action="">
+  <input type="radio" name="Q" id="strinja"> Se strinjam
+  <input type="radio" name="Q" id="vzdrzan"> Vzdrzan
+  <input type="radio" name="Q" id="nestrinja"> Se ne strinjam
+</form>
+<button id="btnOddajOdg" onClick="oddajOdg()">Oddaj odgovor</button><br>
+<p>Povratna informacija: <output id="odg" type="text" /></p>
+<hr>
+<p><b>Dodajanje vprašanja: </b><input id="iptDodajVpr" type="text" /</p><br>
+<button id="btnDodajVpr" onClick="dodajVpr()">Dodaj vprašanje</button>
+<hr>
+<button id="btnIzpisRezultatov" onClick="izpisRezultatov()">Izpiši rezultate glasovanja</button>
+
+<div id="divIzpisRezultatov" ng-app="myApp" ng-controller="myCtrl">
+  <button id="btnRewrite" type='button' ng-click="rewrite()" style="display:none">Naloži podatke</button> <!-- gumb je skrit, ker se ga uporablja v 'socketPosiljanjeRezultatov' za izpis nove vrstice v Angular tabelo -->
+  <p><b>Izpis rezultatov:</b>
+  <table>
+    <tr>
+      <th>Vpr ID</th>
+      <th>Odg</th>
+      <th>ts</th>
+      <th>ts2</th>
+      <th>SocketID</th>
+    </tr>
+    <tr ng-repeat="podatek in podatki">
+      <td>{{podatek.VprID}}</td>
+      <td>{{podatek.Odg}}</td>
+      <td>{{podatek.ts}}</td>
+      <td>{{podatek.ts2}}</td>
+      <td>{{podatek.SocketID}}</td>
+    </tr>
+  </table>
+</div>
+<!-- ================================================================= -->
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script type="text/javascript">
-    // var app = angular.module('myApp', []); // angular. Ta del kode mora biti na začetku!
+    var app = angular.module('myApp', []); // angular. Ta del kode mora biti na začetku!
     var rezultati;
-    var odg = 'x';
     app.controller('myCtrl', function($scope) {
       $scope.podatki = [{VprID:"",Odg:"",ts:"",ts2:"",SocketID:""}]; // mora biti, drugače ne izpiše tabele
       $scope.rewrite = function() {
@@ -30,7 +62,7 @@
     });
 
     var socket = io.connect("192.168.42.50:8080");
-    // var odg = 'x';
+    var odg = 'x';
     var vprID = 0;
 
     // branje novega vprašanja iz webpage-a in pošiljanje v bazo
@@ -75,4 +107,5 @@
     });
   </script>
 </body>
+
 </html>
