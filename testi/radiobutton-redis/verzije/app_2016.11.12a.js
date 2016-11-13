@@ -1,7 +1,6 @@
-// Verzija: 2016.11.13b
+// Verzija: 2016.11.12a
 // ====================================================================================================
 var app = angular.module('myApp', ['ngRoute']);
-var rezultati;
 
 app.config(function($routeProvider) {
   $routeProvider
@@ -34,8 +33,5 @@ app.controller('Add-questionController', function($scope) {
 
 });
 app.controller('AnswersController', function($scope) {
-  $scope.podatki = [{VprID:"",Odg:"",ts:"",ts2:"",SocketID:""}]; // mora biti, drugače ne izpiše tabele
-  $scope.rewrite = function() {
-    return $scope.podatki = rezultati;
-  };
+
 });

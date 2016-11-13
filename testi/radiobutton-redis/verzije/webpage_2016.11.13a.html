@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2016.11.13c -->
+<!-- Verzija: 2016.11.13a -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -11,7 +11,7 @@
   <link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css">
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
   <style>
-    html, body {font-size: 1em;}
+    html, body {font-size: 1.1em;}
     body {padding-top: 70px;}
   </style>
 </head>
@@ -38,8 +38,16 @@
   <script src="app.js"></script>
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   <script type="text/javascript">
-
+    // var app = angular.module('myApp', []); // angular. Ta del kode mora biti na začetku!
+    var rezultati;
     var odg = 'x';
+    app.controller('myCtrl', function($scope) {
+      $scope.podatki = [{VprID:"",Odg:"",ts:"",ts2:"",SocketID:""}]; // mora biti, drugače ne izpiše tabele
+      $scope.rewrite = function() {
+        return $scope.podatki = rezultati;
+      };
+    });
+
     var socket = io.connect("192.168.42.50:8080");
     // var odg = 'x';
     var vprID = 0;

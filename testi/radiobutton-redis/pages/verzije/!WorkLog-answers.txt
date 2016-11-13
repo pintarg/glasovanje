@@ -3,9 +3,9 @@ Verzija: 2016.11.12a
 Narejeno: Začetna postavitev.
 To-Do: Oblikovanje tabele rezultatov.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.11.13a
+Narejeno: Brisanje 'ng-app="myApp"' iz div-a, preimenovanje 'myCtrl' v 'AnswersController' in selitev controllerja iz webpage.html v app.js.
+To-Do: /
 ==============================
 Verzija:
 Narejeno:

@@ -1,5 +1,0 @@
-Webpage worklog - 2016.11.12a
----
-Dodan src angular-route.js
-
-

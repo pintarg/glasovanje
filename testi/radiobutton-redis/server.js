@@ -14,11 +14,11 @@ var statBranjeStVpr = 0; // status števca branja vprašanj - uporablja se za pr
 express.get('/', function(req, res) {
   res.sendFile(__dirname + '/webpage.html');
 });
-express.get('/angular.js', function(req, res) {
-  res.sendFile(__dirname + '/angular.js');
+express.get('/src/angular.js', function(req, res) {
+  res.sendFile(__dirname + '/src/angular.js');
 });
-express.get('/angular-route.js', function(req, res) {
-  res.sendFile(__dirname + '/angular-route.js');
+express.get('/src/angular-route.js', function(req, res) {
+  res.sendFile(__dirname + '/src/angular-route.js');
 });
 express.get('/app.js', function(req, res) {
   res.sendFile(__dirname + '/app.js');
@@ -34,6 +34,12 @@ express.get('/pages/add-question.html', function(req, res) {
 });
 express.get('/pages/answers.html', function(req, res) {
   res.sendFile(__dirname + '/pages/answers.html');
+});
+express.get('/css/bootstrap-theme.min.css', function(req, res) {
+  res.sendFile(__dirname + '/css/bootstrap-theme.min.css');
+});
+express.get('/css/bootstrap.min.css', function(req, res) {
+  res.sendFile(__dirname + '/css/bootstrap.min.css');
 });
 http.listen(8080);
 console.log("Zagon sistema");
