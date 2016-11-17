@@ -7,16 +7,16 @@ Verzija: 2016.11.13a
 Narejeno: Urejanje 'AnswersController' controllerja. Premik 'myCtrl' iz webpage.html v app.js in preimenovanje v answers.html iz 'myCtrl' v 'AnswersController'.
 To-Do: /
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.17a
+Narejeno: Delo na kontrolerju 'QuestionController' za omogočanje expression-ov na question_2016.11.17a.html.
+To-Do: Urejanje ostalih podstrani.
+==============================
+Verzija: 2016.11.17b
+Narejeno: Dodajanje potrjevanja o prejemu odgovora. [webpage_2016.11.17c.html; question_2016.11.17b.html; app_2016.11.17b.js]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
-==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.17c
+Narejeno: Prikaz števila vprašanj v bazi. [server_2016.11.17a.js; webpage_2016.11.17d.html; add-question_2016.11.17a.html; app_2016.11.17c.js]
 To-Do:
 ==============================
 Verzija:

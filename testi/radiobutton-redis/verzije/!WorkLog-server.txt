@@ -109,8 +109,8 @@ Verzija: 2016.11.12b
 Narejeno: Spreminjanje v Single page aplication. Dodajanje zunanjih datotek (app.js; /pages/home.html, question.html, add-question.html, answers-html).
 To-Do: Urejanje kode za pravilno delovanje posameznih podstrani.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.17a
+Narejeno: Prikaz števila vprašanj v bazi. [server_2016.11.17a.js; webpage_2016.11.17d.html; add-question_2016.11.17a.html; app_2016.11.17c.js]
 To-Do:
 ==============================
 Verzija:

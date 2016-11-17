@@ -4,12 +4,12 @@ Narejeno: Začetna postavitev.
 To-Do: Prenos podatkov številke vprašanja in števila vseh vprašanj prek '$scope' in samodejni izpis ob prihodu na stran.
 Ko je vprašanje enkrat prebrano, je vedno izpisano - tudi če se premika med 'zavihki/podstranmi'
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.11.17a
+Narejeno: Sprememba načina prikaza vprašanj, id in števila vprašanj - uporaba expression-ov.
+To-Do: Uredi ponastavitev izbranega odgovora po oddaji odgovora. Onemogoči zahteve po novem vprašanju, če je izpisano zadnje vprašanje - npr 3/3.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.17b
+Narejeno: Dodajanje potrjevanja o prejemu odgovora. [webpage_2016.11.17c.html; question_2016.11.17b.html; app_2016.11.17b.js]
 To-Do:
 ==============================
 Verzija:

@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2016.11.17e -->
+<!-- Verzija: 2016.11.17a -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -41,8 +41,8 @@
 
     var odg = 'x';
     var socket = io.connect("192.168.42.50:8080");
-    var odg = 'x';
-    var VprID, stVpr;
+    // var odg = 'x';
+    var VprID = 0, stVpr = 0;
     var vprasanje = 'Za prikaz vprašanja klikni na gumb "Beri vprašanje".';
 
     // branje novega vprašanja iz webpage-a in pošiljanje v bazo
@@ -55,36 +55,29 @@
     };
     // prejem in izpis vprašanja, števila vprašanj v bazi in prejem ID vprašanja
     socket.on("socketVprPrebran", function(data) {
-      VprID = data.VprID;
-      // localStorage.setItem("VprID", data.VprID);
-      stVpr = data.stVpr;
-      if (data.vpr != "delniIzpis" && data.vpr != "zagonPrograma") { // funkcija je uporabljena 2x, pri branju vprašanja in pri dodajanju novega vprašanja, zato omejitev izpisa
+      if (data.vpr != "delniIzpis") { // funkcija je uporabljena 2x, pri branju vprašanja in pri dodajanju novega vprašanja, zato omejitev izpisa
         // VprID = data.VprID;
         // document.getElementById("vpr").value = data.vpr;
         vprasanje = data.vpr;
-        document.getElementById("btnRewriteVprasanje").click();
-      } else if (data.vpr == "zagonPrograma") {
-        // document.getElementById("btnPrejemStVpr").click();
       }
+      VprID = data.VprID;
+      stVpr = data.stVpr;
+      document.getElementById("btnRewriteVprasanje").click();
       // document.getElementById("stVpr").value = data.VprID+"/"+data.stVpr;
     });
     // funkcija branja izbranega odg in pošiljanja povratne informacije o vprID, izbranem odg, timestamp... serverju za vpis v Redis
     function oddajOdg() {
       if(document.getElementById("strinja").checked) {
-        // document.getElementById("odg").value = "strinja";
+        document.getElementById("odg").value = "strinja";
         odg = 'strinja';
-        document.getElementById("strinja").checked = false;
       } else if (document.getElementById("vzdrzan").checked) {
-        // document.getElementById("odg").value = "vzdrzan";
+        document.getElementById("odg").value = "vzdrzan";
         odg = 'vzdrzan';
-        document.getElementById("vzdrzan").checked = false;
       } else if (document.getElementById("nestrinja").checked) {
-        // document.getElementById("odg").value = "ne strinja";
+        document.getElementById("odg").value = "ne strinja";
         odg = 'ne strinja';
-        document.getElementById("nestrinja").checked = false;
       }
       socket.emit("socketPisanjeOdg", {"VprID":VprID, "Odg":odg});
-      document.getElementById("btnPotrditevPrejemaOdg").click();
     };
     // izpis rezultatov glasovanja
     function izpisRezultatov() {

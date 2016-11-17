@@ -4,8 +4,8 @@ Narejeno: Začetna postavitev.
 To-Do: Prenos podatkov številke vprašanja in števila vseh vprašanj prek '$scope' in samodejni izpis ob prihodu na stran.
 Dodajanje možnosti izpisa vseh vprašanj v bazi.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.17a
+Narejeno: Prikaz števila vprašanj v bazi. [server_2016.11.17a.js; webpage_2016.11.17d.html; add-question_2016.11.17a.html; app_2016.11.17c.js]
 To-Do:
 ==============================
 Verzija:

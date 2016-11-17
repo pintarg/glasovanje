@@ -1,4 +1,4 @@
-// Verzija: 2016.11.17d
+// Verzija: 2016.11.17b
 // ====================================================================================================
 var app = angular.module('myApp', ['ngRoute']);
 var rezultati;
@@ -35,7 +35,6 @@ app.controller('QuestionController', function($scope) {
   $scope.rewriteVprasanje = function() {
     return $scope.vprasanje = vprasanje,
     $scope.VprID = VprID,
-    // $scope.VprID = localStorage.getItem("VprID"),
     $scope.stVpr = stVpr;
   };
   $scope.potrditevPrejemaOdg = function() {
@@ -43,10 +42,7 @@ app.controller('QuestionController', function($scope) {
   };
 });
 app.controller('Add-questionController', function($scope) {
-  $scope.stVpr1 = stVpr;
-  $scope.prejemStVpr = function() {
-    return $scope.stVpr1 = stVpr;
-  };
+
 });
 app.controller('AnswersController', function($scope) {
   $scope.podatki = [{VprID:"",Odg:"",ts:"",ts2:"",SocketID:""}]; // mora biti, drugače ne izpiše tabele

@@ -155,20 +155,20 @@ Verzija: 2016.11.13b
 Narejeno: Premik 'myCtrl' iz webpage.html v app.js in preimenovanje v answers.html iz 'myCtrl' v 'AnswersController'.
 To-Do: Oblikovanje. Izpis številke in števila vprašanj in vprašanja ni ok.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.17a
+Narejeno: Delo na funkciji 'socketVprPrebran', da je kompatibilno z question_2016.11.17a.html pri uporabi expression-ov.
+To-Do: Dodatno urejanje drugih podstrani.
+==============================
+Verzija: 2016.11.17b
+Narejeno: Ob oddaji odgovora, se izbran radiobutton ponastavi.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.17c
+Narejeno: Dodajanje potrjevanja o prejemu odgovora. [webpage_2016.11.17c.html; question_2016.11.17b.html; app_2016.11.17b.js]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
-==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.17d
+Narejeno: Prikaz števila vprašanj v bazi. [server_2016.11.17a.js; webpage_2016.11.17d.html; add-question_2016.11.17a.html; app_2016.11.17c.js]
 To-Do:
 ==============================
 Verzija:
