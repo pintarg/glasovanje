@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2016.11.18f -->
+<!-- Verzija: 2016.11.18a -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -41,22 +41,17 @@
 
     var odg = 'x';
     var socket = io.connect("192.168.42.50:8080");
-    var VprID, stVpr, novoVpr;
+    var odg = 'x';
+    var VprID, stVpr;
     var vprasanje = 'Za prikaz vprašanja klikni na gumb "Beri vprašanje".';
-    var potrditevPrejemaOdg = 'Odgovor zabeležen.';
 
     // branje novega vprašanja iz webpage-a in pošiljanje v bazo
     function dodajVpr() {
-      novoVpr = document.getElementById("iptDodajVpr").value;
-      socket.emit("socketDodajVpr", novoVpr);
+      socket.emit("socketDodajVpr", document.getElementById("iptDodajVpr").value);
     };
     // pritisk na gumb "Beri vprašanje" proži ukaz za branje vprašanja in ID vprašanja iz baze
     function beriVpr() {
-      if (VprID < stVpr) {
-        socket.emit("socketBeriVpr");
-      } else {
-        document.getElementById("odg").value = "Napača! Dosegel si zadnje vprašanje."
-      }
+      socket.emit("socketBeriVpr");
     };
     // prejem in izpis vprašanja, števila vprašanj v bazi in prejem ID vprašanja
     socket.on("socketVprPrebran", function(data) {
@@ -64,22 +59,20 @@
       stVpr = data.stVpr;
       if (data.vpr != "delniIzpis" && data.vpr != "zagonPrograma") { // funkcija je uporabljena 2x, pri branju vprašanja in pri dodajanju novega vprašanja, zato omejitev izpisa
         vprasanje = data.vpr;
-        document.getElementById("strinja").checked = false;
-        document.getElementById("vzdrzan").checked = false;
-        document.getElementById("nestrinja").checked = false;
         document.getElementById("btnRewriteVprasanje").click();
-      } else if (data.vpr == "delniIzpis") {
-        document.getElementById("btnPrejemStVpr").click();
       }
     });
     // funkcija branja izbranega odg in pošiljanja povratne informacije o vprID, izbranem odg, timestamp... serverju za vpis v Redis
     function oddajOdg() {
       if(document.getElementById("strinja").checked) {
         odg = 'strinja';
+        document.getElementById("strinja").checked = false;
       } else if (document.getElementById("vzdrzan").checked) {
         odg = 'vzdrzan';
+        document.getElementById("vzdrzan").checked = false;
       } else if (document.getElementById("nestrinja").checked) {
         odg = 'ne strinja';
+        document.getElementById("nestrinja").checked = false;
       }
       socket.emit("socketPisanjeOdg", {"VprID":VprID, "Odg":odg});
       document.getElementById("btnPotrditevPrejemaOdg").click();

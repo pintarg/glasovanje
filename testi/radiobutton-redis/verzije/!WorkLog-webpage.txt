@@ -171,25 +171,26 @@ Verzija: 2016.11.17d
 Narejeno: Prikaz števila vprašanj v bazi. [server_2016.11.17a.js; webpage_2016.11.17d.html; add-question_2016.11.17a.html; app_2016.11.17c.js]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.18a
+Narejeno: Zaradi preglednosti brisanje nepotrebne komentirane kode.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.18b
+Narejeno: Urejanje osveževanja števila vprašanj v bazi, po dodajanju novega vprašanja. [webpage_2016.11.18b.html; add-question_2016.11.17a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.18c
+Narejeno: Urejanje prikaza števila vprašanj v bazi, pri dodajanju novega vprašanja in povratne informacije pri dodajanju novega vprašanja. [webpage_2016.11.18c.html; add-question_2016.11.18a.html; app_2016.11.18a.js]
+Funkcije 'dodajVpr', 'oddajOdg'
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.18d
+Narejeno: Popravljanje ponastavljanja radiobutton-ov ob oddaji odgovora. Sedaj se ponastavijo ob branju novega vprašanja in ne takoj ob oddaji odgovora.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.11.18e
+Narejeno: Dodano opozorilo in omejitev, ko dosežemo zadnje vprašanje.
+To-Do: Uredi prikaz opozorila.
 ==============================
 Verzija:
 Narejeno:

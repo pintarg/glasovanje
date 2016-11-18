@@ -1,4 +1,4 @@
-// Verzija: 2016.11.18b
+// Verzija: 2016.11.18a
 // ====================================================================================================
 var app = angular.module('myApp', ['ngRoute']);
 var rezultati;
@@ -37,10 +37,9 @@ app.controller('QuestionController', function($scope) {
     $scope.VprID = VprID,
     // $scope.VprID = localStorage.getItem("VprID"),
     $scope.stVpr = stVpr;
-    // $scope.potrditevPrejemaOdg = potrditevPrejemaOdg2;
   };
   $scope.potrditevPrejemaOdg = function() {
-    $scope.potrditevPrejemaOdg = potrditevPrejemaOdg;
+    $scope.potrditevPrejemaOdg = 'Odgovor zabeležen.';
   };
 });
 app.controller('Add-questionController', function($scope) {

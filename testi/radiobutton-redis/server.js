@@ -1,4 +1,4 @@
-// Verzija: 2016.11.17b
+// Verzija: 2016.11.18a
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -67,7 +67,7 @@ io.sockets.on("connection", function(socket) {
   socket.on("socketPisanjeOdg", function(msg) {
     var timestamp = new Date().getTime(); // timestamp v milisekundah
     var timestamp2 = moment().format(); // timestamp v obliki "2016-09-25T23:05:56+02:00" // uporablja se knjižnica "moment"
-    console.log("Prejem ID vpr pti zapisu odg: "+msg.VprID);
+    console.log("Prejem ID vpr pri zapisu odg: "+msg.VprID);
     clientRedis.zadd("odgovori", msg.VprID, '{"VprID"'+':"'+msg.VprID+'","Odg"'+':"'+msg.Odg+'","ts"'+':"'+timestamp2+'","ts2":"'+timestamp+'","SocketID":"'+socket.id+'"}');
   });
   // branje izbranih odgovorov iz Redis

@@ -1,7 +1,7 @@
-<!-- Verzija: 2016.11.18a -->
+<!-- Verzija: 2016.11.17c -->
 <div id="divVprasanje", ng-controller="QuestionController">
   <!-- <p><b>Vprašanje: </b><output id="stVpr" type="text" /><br> -->
-  <p><b>Vprašanje: </b>{{VprID+' od '+stVpr}}<br>
+  <p><b>Vprašanje: </b>{{VprID+' od '+stVpr}}</p><br>
   <!-- <p><b>> </b><output id="vpr" type="text" /></p><br> -->
   <p><b>> </b>{{vprasanje}}</p><br>
   <button id="btnBeriVpr" onClick="beriVpr()">Beri vprašanje</button>
@@ -15,6 +15,6 @@
     <input type="radio" name="Q" id="nestrinja"> Se ne strinjam
   </form>
   <button id="btnOddajOdg" onClick="oddajOdg()">Oddaj odgovor</button><br>
-  <p><output id="odg" type="text" /></p>
-  <p>Povratna informacija: {{potrditevPrejemaOdg}}</p>
+  <!-- <p>Povratna informacija: <output id="odg" type="text" /></p> -->
+  <p>{{potrditevPrejemaOdg}}</p>
 </div>

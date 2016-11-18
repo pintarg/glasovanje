@@ -1,10 +1,11 @@
-<!-- Verzija: 2016.11.18b -->
+<!-- Verzija: 2016.11.18a -->
 <!-- <p><b>Število vprašanj v bazi: </b><output id="stVpr" type="text" /><br> -->
 <div id="divDodajVprasanje", ng-controller="Add-questionController">
   <p><b>Število vprašanj v bazi: </b>{{stVpr1}}<br>
   <p><b>Dodajanje vprašanja: </b><input id="iptDodajVpr" type="text" /</p><br>
   <button id="btnDodajVpr" onClick="dodajVpr()">Dodaj vprašanje</button>
   <button id="btnPrejemStVpr" type="button" ng-click="prejemStVpr()" style="display:none"></button>
+  <!-- <button id="btnPotrditevPrejemaNovegaVpr" type="button" ng-click="potrditevPrejemaNovegaVpr()" style="display:none"></button> -->
   <br>
   <p>Povratna informacija: {{potrditevPrejemaNovegaVpr}}</p>
 </div>
