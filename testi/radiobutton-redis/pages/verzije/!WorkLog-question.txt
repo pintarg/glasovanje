@@ -12,13 +12,14 @@ Verzija: 2016.11.17b
 Narejeno: Dodajanje potrjevanja o prejemu odgovora. [webpage_2016.11.17c.html; question_2016.11.17b.html; app_2016.11.17b.js]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.20a
+Narejeno: Prikaz pop-up-a, ko dosežemo zadnje vprašanje in želimo prebrati naslednje vprašanje [webpage_2016.11.20a.html; question_2016.11.20a.html; app_2016.11.20a.js; server_2016.11.20a.js].
+Dodan '<div ng-controller="ConfirmCtrl">' in vsebina.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.11.20b
+Narejeno: Delovanje controllerja za question.html združeno pod en controller - 'QuestionController'. [question_2016.11.20b.html; app_2016.11.20b.js].
+To-Do: Brisanje odvečne, komentirane, kode.
 ==============================
 Verzija:
 Narejeno:

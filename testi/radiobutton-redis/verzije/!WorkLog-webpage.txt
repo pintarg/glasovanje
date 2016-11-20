@@ -192,8 +192,9 @@ Verzija: 2016.11.18e
 Narejeno: Dodano opozorilo in omejitev, ko dosežemo zadnje vprašanje.
 To-Do: Uredi prikaz opozorila.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.20a
+Narejeno: Prikaz pop-up-a, ko dosežemo zadnje vprašanje in želimo prebrati naslednje vprašanje [webpage_2016.11.20a.html; question_2016.11.20a.html; app_2016.11.20a.js; server_2016.11.20a.js].
+Sprememba kode v funkciji 'beriVpr'.
 To-Do:
 ==============================
 Verzija:

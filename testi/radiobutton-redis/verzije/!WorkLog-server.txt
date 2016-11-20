@@ -113,8 +113,9 @@ Verzija: 2016.11.17a
 Narejeno: Prikaz števila vprašanj v bazi. [server_2016.11.17a.js; webpage_2016.11.17d.html; add-question_2016.11.17a.html; app_2016.11.17c.js]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.20a
+Narejeno: Prikaz pop-up-a, ko dosežemo zadnje vprašanje in želimo prebrati naslednje vprašanje [webpage_2016.11.20a.html; question_2016.11.20a.html; app_2016.11.20a.js; server_2016.11.20a.js].
+Dodan express.get za ngDialog.css, ngDialog.js in ngDialog-theme-plain.css
 To-Do:
 ==============================
 Verzija:

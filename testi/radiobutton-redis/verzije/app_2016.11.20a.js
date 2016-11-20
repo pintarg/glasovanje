@@ -1,4 +1,4 @@
-// Verzija: 2016.11.20c
+// Verzija: 2016.11.20a
 // ====================================================================================================
 var app = angular.module('myApp', ['ngRoute', 'ngDialog']);
 
@@ -22,30 +22,10 @@ app.config(function($routeProvider) {
   })
   .otherwise({redirectTo:'/'});
 });
+// === DODANA KODA ===
+app.controller('ConfirmCtrl', function($scope, ngDialog) {
 
-app.controller('HomeController', function($scope) {
-  $scope.message = 'Home';
 });
-app.controller('QuestionController', function($scope, ngDialog) {
-  // $scope.vprasanje = 'Klikni na gumb za prikaz vprašanja.';
-  $scope.vprasanje = vprasanje,
-  $scope.VprID = VprID,
-  $scope.stVpr = stVpr;
-  $scope.rewriteVprasanje = function() {
-    return $scope.vprasanje = vprasanje,
-    $scope.VprID = VprID,
-    // $scope.VprID = localStorage.getItem("VprID"),
-    $scope.stVpr = stVpr;
-    // $scope.potrditevPrejemaOdg = potrditevPrejemaOdg2;
-  };
-  $scope.potrditevPrejemaOdg = function() {
-    $scope.potrditevPrejemaOdg = potrditevPrejemaOdg;
-  };
-});
-// === DODANA KODA ZA POP-UP NA QUESTION.HTML ===
-// app.controller('ConfirmCtrl', function($scope, ngDialog) {
-//
-// });
 app.config(['ngDialogProvider', function (ngDialogProvider) {
     ngDialogProvider.setDefaults({
         className: 'ngdialog-theme-plain',
@@ -77,7 +57,26 @@ app.directive('confirm1', ['ngDialog', function (ngDialog) {
     }
   };
 }]);
-// === DODANA KODA ZA POP-UP NA QUESTION.HTML ===
+// === DODANA KODA ===
+app.controller('HomeController', function($scope) {
+  $scope.message = 'Home';
+});
+app.controller('QuestionController', function($scope) {
+  // $scope.vprasanje = 'Klikni na gumb za prikaz vprašanja.';
+  $scope.vprasanje = vprasanje,
+  $scope.VprID = VprID,
+  $scope.stVpr = stVpr;
+  $scope.rewriteVprasanje = function() {
+    return $scope.vprasanje = vprasanje,
+    $scope.VprID = VprID,
+    // $scope.VprID = localStorage.getItem("VprID"),
+    $scope.stVpr = stVpr;
+    // $scope.potrditevPrejemaOdg = potrditevPrejemaOdg2;
+  };
+  $scope.potrditevPrejemaOdg = function() {
+    $scope.potrditevPrejemaOdg = potrditevPrejemaOdg;
+  };
+});
 app.controller('Add-questionController', function($scope) {
   $scope.stVpr1 = stVpr;
   $scope.prejemStVpr = function() {

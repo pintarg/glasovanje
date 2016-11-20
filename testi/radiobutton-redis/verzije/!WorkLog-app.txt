@@ -24,13 +24,14 @@ Narejeno: Urejanje prikaza števila vprašanj v bazi, pri dodajanju novega vpra�
 controller 'Add-questionController' > prejemStVpr
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.20a
+Narejeno: Prikaz pop-up-a, ko dosežemo zadnje vprašanje in želimo prebrati naslednje vprašanje [webpage_2016.11.20a.html; question_2016.11.20a.html; app_2016.11.20a.js; server_2016.11.20a.js].
+Sprememba v 'angular.module'; dodajanje 'app.controller ConfirmCtrl', 'app.config ngDialogProvider' in 'app.directive confirm1'
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.11.20b
+Narejeno: Delovanje controllerja za question.html združeno pod en controller - 'QuestionController'. [question_2016.11.20b.html; app_2016.11.20b.js].
+To-Do: Brisanje odvečne, komentirane, kode.
 ==============================
 Verzija:
 Narejeno:
