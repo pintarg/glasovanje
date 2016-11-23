@@ -1,4 +1,4 @@
-// Verzija: 2016.11.22e
+// Verzija: 2016.11.22c
 // ====================================================================================================
 var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap']);
 
@@ -49,25 +49,9 @@ app.controller('QuestionController', function($scope) {
 // === POPUP, QUESTION.HTML ===
 app.controller('ModalPopup', function ($uibModal) {
   var $ctrl = this;
-  $ctrl.ZadnjeVpr = function () { // Popup za zadnje vprašanje. Uporaba v question.html
+  $ctrl.open = function () {
     var modalInstance = $uibModal.open({
       templateUrl: '/pages/popup/last-question.html',
-      controller: 'ModalInstanceCtrl',
-      controllerAs: '$ctrl',
-      windowClass: 'app-modal-window' // Uporablja se v povezavi s CSS za določanje izgleda
-    });
-  };
-  $ctrl.PodvojenOdg = function () { // Popup za podvojen odgovor. Uporaba v question.html
-    var modalInstance = $uibModal.open({
-      templateUrl: '/pages/popup/duplicated-answer.html',
-      controller: 'ModalInstanceCtrl',
-      controllerAs: '$ctrl',
-      windowClass: 'app-modal-window' // Uporablja se v povezavi s CSS za določanje izgleda
-    });
-  };
-  $ctrl.PrazenOdg = function () { // Popup za prazen odgovor. Uporaba v question.html
-    var modalInstance = $uibModal.open({
-      templateUrl: '/pages/popup/empty-answer.html',
       controller: 'ModalInstanceCtrl',
       controllerAs: '$ctrl',
       windowClass: 'app-modal-window' // Uporablja se v povezavi s CSS za določanje izgleda

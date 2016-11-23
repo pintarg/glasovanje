@@ -1,4 +1,4 @@
-<!-- Verzija: 2016.11.22e -->
+<!-- Verzija: 2016.11.22b -->
 <div id="divVprasanje", ng-controller="QuestionController">
   <!-- <p><b>Vprašanje: </b><output id="stVpr" type="text" /><br> -->
   <p><b>Vprašanje: </b>{{VprID+' od '+stVpr}}<br>
@@ -14,11 +14,8 @@
     <input type="radio" name="Q" id="vzdrzan"> Vzdrzan
     <input type="radio" name="Q" id="nestrinja"> Se ne strinjam
   </form>
-  <button id="btnOddajOdg" onClick="oddajOdg()">Oddaj odgovor</button><br>
+  <button id="btnOddajOdg" onClick="oddajOdg()">Oddaj odgovor</button><br
   <p>Povratna informacija: {{potrditevPrejemaOdg}}</p>
-  <!-- Spodnja koda je komentirana in ostaja v testne namene -->
-  <!-- <p>Povratna informacija2: <output id="odg" type="text" /></p> -->
+  <!-- <confirm1 type="confirm1"></confirm1> <!-- vezano na app.directive 'confirm1' v app.js -->
 </div>
-<button ng-controller="ModalPopup as $ctrl" id="btnZadnjeVpr" type="button" class="btn btn-default" ng-click="$ctrl.ZadnjeVpr()" style="display:none">Zadnje vprašanje</button>
-<button ng-controller="ModalPopup as $ctrl" id="btnPodvojenOdg" type="button" class="btn btn-default" ng-click="$ctrl.PodvojenOdg()" style="display:none">Podvojen odgovor</button>
-<button ng-controller="ModalPopup as $ctrl" id="btnPrazenOdg" type="button" class="btn btn-default" ng-click="$ctrl.PrazenOdg()" style="display:none">Prazen odgovor</button>
+<button ng-controller="ModalDemoCtrl as $ctrl" id="btnZadnjeVpr" type="button" class="btn btn-default" ng-click="$ctrl.open()">Open me!</button>

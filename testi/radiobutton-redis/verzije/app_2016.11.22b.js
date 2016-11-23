@@ -1,4 +1,4 @@
-// Verzija: 2016.11.22e
+// Verzija: 2016.11.22b
 // ====================================================================================================
 var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap']);
 
@@ -6,12 +6,10 @@ app.config(function($routeProvider) {
   $routeProvider
   .when('/', {
     templateUrl:'pages/home.html',
-    // templateUrl:'home.html',
     controller:'HomeController'
   })
   .when('/question', {
     templateUrl:'pages/question.html',
-    // templateUrl:'question.html',
     controller:'QuestionController'
   })
   .when('/add-question', {
@@ -46,31 +44,45 @@ app.controller('QuestionController', function($scope) {
     // return $scope.potrditevPrejemaOdg = 'Odgovor zabeležen.';
   };
 });
-// === POPUP, QUESTION.HTML ===
-app.controller('ModalPopup', function ($uibModal) {
+// // === DODANA KODA ZA POP-UP NA QUESTION.HTML ===
+// app.config(['ngDialogProvider', function (ngDialogProvider) {
+//     ngDialogProvider.setDefaults({
+//         className: 'ngdialog-theme-plain',
+//         plain: true,
+//         showClose: true,
+//         closeByDocument: true,
+//         closeByEscape: true
+//     });
+// }]);
+//
+// app.directive('confirm1', ['ngDialog', function (ngDialog) {
+//   return {
+//     restrict: 'E',
+//     template: '<button id="btnZadnjeVpr" type="button" ng-click="confirmation()" style="display:none"></button>',
+//     controller: function($scope) {
+//       $scope.confirmation = function() {
+//         ngDialog.openConfirm({
+//           scope: $scope,
+//           templateUrl: "pages/pop-up/last-question.html",
+//         });
+//       };
+//     }
+//   };
+// }]);
+// // === DODANA KODA ZA POP-UP NA QUESTION.HTML ===
+// === DODANA KODA ZA POP-UP2 NA QUESTION.HTML ===
+app.controller('ModalDemoCtrl', function ($uibModal) {
   var $ctrl = this;
-  $ctrl.ZadnjeVpr = function () { // Popup za zadnje vprašanje. Uporaba v question.html
+
+  $ctrl.open = function (size, parentSelector) {
+    var parentElem = parentSelector ?
+      angular.element($document[0].querySelector('.modal-demo ' + parentSelector)) : undefined;
     var modalInstance = $uibModal.open({
-      templateUrl: '/pages/popup/last-question.html',
+//      ariaLabelledBy: 'modal-title',
+//      ariaDescribedBy: 'modal-body',
+      templateUrl: '/pages/pop-up/last-question.html',
       controller: 'ModalInstanceCtrl',
       controllerAs: '$ctrl',
-      windowClass: 'app-modal-window' // Uporablja se v povezavi s CSS za določanje izgleda
-    });
-  };
-  $ctrl.PodvojenOdg = function () { // Popup za podvojen odgovor. Uporaba v question.html
-    var modalInstance = $uibModal.open({
-      templateUrl: '/pages/popup/duplicated-answer.html',
-      controller: 'ModalInstanceCtrl',
-      controllerAs: '$ctrl',
-      windowClass: 'app-modal-window' // Uporablja se v povezavi s CSS za določanje izgleda
-    });
-  };
-  $ctrl.PrazenOdg = function () { // Popup za prazen odgovor. Uporaba v question.html
-    var modalInstance = $uibModal.open({
-      templateUrl: '/pages/popup/empty-answer.html',
-      controller: 'ModalInstanceCtrl',
-      controllerAs: '$ctrl',
-      windowClass: 'app-modal-window' // Uporablja se v povezavi s CSS za določanje izgleda
     });
   };
 });
@@ -80,7 +92,7 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance) {
       $uibModalInstance.close();
   };
 });
-// === /POPUP, QUESTION.HTML ===
+// === DODANA KODA ZA POP-UP2 NA QUESTION.HTML ===
 
 app.controller('Add-questionController', function($scope) {
   $scope.stVpr1 = stVpr;

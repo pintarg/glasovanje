@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2016.11.22d -->
+<!-- Verzija: 2016.11.22a -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -7,11 +7,13 @@
 <head>
   <script src="/src/angular.js"></script>
   <script src="/src/angular-route.js"></script>
+  <script src="/src/ngDialog.js"></script>
   <script src="/src/ui-bootstrap-tpls.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css">
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/css/ngDialog.css">
+  <link rel="stylesheet" type="text/css" href="/css/ngDialog-theme-plain.css">
   <style>
     html, body {font-size: 1em;}
     body {padding-top: 70px;}
@@ -45,8 +47,6 @@
     var socket = io.connect("10.1.0.111:8080");
     var VprID, stVpr, novoVpr;
     var rezultati;
-    var podvojenOdg = false; // Varovalka pred dvojnim oddajanjem odgovora na isto vprašanje
-    var prazenOdg = false; // Varovalka pred praznim oddajanjem odgovora
     var vprasanje = 'Za prikaz vprašanja klikni na gumb "Beri vprašanje".';
     var potrditevPrejemaOdg2 = 'Odgovor zabeležen.';
     var potrditevPrejemaOdg;
@@ -60,9 +60,7 @@
     function beriVpr() {
       if (VprID < stVpr) {
         socket.emit("socketBeriVpr");
-        podvojenOdg = false;
       } else {
-        // popup za opozorilo zadnjega vprašanja
         document.getElementById("btnZadnjeVpr").click();
       }
     };
@@ -84,26 +82,13 @@
     function oddajOdg() {
       if(document.getElementById("strinja").checked) {
         odg = 'strinja';
-        prazenOdg = false;
       } else if (document.getElementById("vzdrzan").checked) {
         odg = 'vzdrzan';
-        prazenOdg = false;
       } else if (document.getElementById("nestrinja").checked) {
         odg = 'ne strinja';
-        prazenOdg = false;
-      } else {
-        // popup za prazen odgovor
-        document.getElementById("btnPrazenOdg").click();
-        prazenOdg = true;
       }
-      if (podvojenOdg == false && prazenOdg == false) {
-        socket.emit("socketPisanjeOdg", {"VprID":VprID, "Odg":odg});
-        document.getElementById("btnPotrditevPrejemaOdg").click();
-        podvojenOdg = true;
-      } else if (podvojenOdg == true && prazenOdg == false) {
-        // popup za podvojen odg
-        document.getElementById("btnPodvojenOdg").click();
-      }
+      socket.emit("socketPisanjeOdg", {"VprID":VprID, "Odg":odg});
+      document.getElementById("btnPotrditevPrejemaOdg").click();
     };
     // izpis rezultatov glasovanja
     function izpisRezultatov() {

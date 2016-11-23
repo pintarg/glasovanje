@@ -1,4 +1,4 @@
-// Verzija: 2016.11.22d
+// Verzija: 2016.11.22a
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -42,22 +42,21 @@ express.get('/css/bootstrap-theme.min.css', function(req, res) {
 express.get('/css/bootstrap.min.css', function(req, res) {
   res.sendFile(__dirname + '/css/bootstrap.min.css');
 });
+express.get('/css/ngDialog.css', function(req, res) {
+  res.sendFile(__dirname + '/css/ngDialog.css');
+});
+express.get('/src/ngDialog.js', function(req, res) {
+  res.sendFile(__dirname + '/src/ngDialog.js');
+});
+express.get('/css/ngDialog-theme-plain.css', function(req, res) {
+  res.sendFile(__dirname + '/css/ngDialog-theme-plain.css');
+});
 express.get('/src/ui-bootstrap-tpls.js', function(req, res) {
   res.sendFile(__dirname + '/src/ui-bootstrap-tpls.js');
 });
-express.get('/pages/popup/last-question.html', function(req, res) {
-  res.sendFile(__dirname + '/pages/popup/last-question.html');
+express.get('/pages/pop-up/last-question.html', function(req, res) {
+  res.sendFile(__dirname + '/pages/pop-up/last-question.html');
 });
-express.get('/pages/popup/duplicated-answer.html', function(req, res) {
-  res.sendFile(__dirname + '/pages/popup/duplicated-answer.html');
-});
-express.get('/pages/popup/empty-answer.html', function(req, res) {
-  res.sendFile(__dirname + '/pages/popup/empty-answer.html');
-});
-express.get('/css/style.css', function(req, res) {
-  res.sendFile(__dirname + '/css/style.css');
-});
-
 http.listen(8080);
 console.log("Zagon sistema");
 

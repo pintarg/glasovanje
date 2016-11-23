@@ -21,20 +21,23 @@ Verzija: 2016.11.20b
 Narejeno: Delovanje controllerja za question.html združeno pod en controller - 'QuestionController'. [question_2016.11.20b.html; app_2016.11.20b.js].
 To-Do: Brisanje odvečne, komentirane, kode.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.22a
+Narejeno: Brisanje odvečne komentirane kode.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.22b
+Narejeno: Urejanje kode za testiranje pop-up2. [question_2016.11.22b.html; app_2016.11.22b.js; server_2016.11.22a; webpage_2016.11.22a.html]
+Dodajanje kode za button 'ng-controller="ModalDemoCtrl as $ctrl"'
+To-Do: Brisanje kode za pop-up1
+==============================
+Verzija: 2016.11.22c
+Narejeno: Urejanje kode za popup2. [question_2016.11.22c.html; app_2016.11.22c.js; server_2016.11.22b; webpage_2016.11.22b.html]
+Dodan gumb 'ng-controller="ModalPopup as $ctrl"' in odstranjena koda v povezavi s popup1
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
-==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.22d
+Narejeno: Popup za oddajo podvojenega in praznega odgovora. [question_2016.11.22d.html; app_2016.11.22d.js; server_2016.11.22c; webpage_2016.11.22c.html]
+Dodajanje gumbov za klic popup-ov
 To-Do:
 ==============================
 Verzija:

@@ -1,4 +1,4 @@
-// Verzija: 2016.11.22d
+// Verzija: 2016.11.22b
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -47,12 +47,6 @@ express.get('/src/ui-bootstrap-tpls.js', function(req, res) {
 });
 express.get('/pages/popup/last-question.html', function(req, res) {
   res.sendFile(__dirname + '/pages/popup/last-question.html');
-});
-express.get('/pages/popup/duplicated-answer.html', function(req, res) {
-  res.sendFile(__dirname + '/pages/popup/duplicated-answer.html');
-});
-express.get('/pages/popup/empty-answer.html', function(req, res) {
-  res.sendFile(__dirname + '/pages/popup/empty-answer.html');
 });
 express.get('/css/style.css', function(req, res) {
   res.sendFile(__dirname + '/css/style.css');

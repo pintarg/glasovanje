@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sampleapp">
+  <head>
+    <!-- jQuery, from CDN. -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+
+    <!-- Boostrap, from CDN. -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Angular, from CDN. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-animate.min.js"></script>-->
+
+    <!-- Angular Modal Service, the library we're demoing. -->
+    <script src="angular-modal-service.js"></script>
+
+    <!-- Source for our sample app. -->
+    <script src="sampleapp.js"></script>
+    <script src="yesno/yesnocontroller.js"></script>
+  </head>
+
+  <body ng-controller="SampleController" data-spy="scroll" data-target="#mainNav">
+
+    <div class="container">
+      <a id="yesno"></a>
+      <div class="sample">
+
+      <p><a href class="btn btn-default btn-lg " ng-click="showYesNo()">Show Yes No</a></p>
+
+
+      <pre ng-show="yesNoResult">{{yesNoResult}}</pre>
+
+
+  </body>
+</html>

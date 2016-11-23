@@ -118,16 +118,19 @@ Narejeno: Prikaz pop-up-a, ko dosežemo zadnje vprašanje in želimo prebrati na
 Dodan express.get za ngDialog.css, ngDialog.js in ngDialog-theme-plain.css
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.22a
+Narejeno: Urejanje kode za testiranje pop-up2. [question_2016.11.22b.html; app_2016.11.22b.js; server_2016.11.22a; webpage_2016.11.22a.html]
+Dodan express.get za 'ui-bootstrap-tpls.js' in 'last-question.html'.
+To-Do: Brisanje kode za pop-up1
+==============================
+Verzija: 2016.11.22b
+Narejeno: Urejanje kode za popup2. [question_2016.11.22c.html; app_2016.11.22c.js; server_2016.11.22b; webpage_2016.11.22b.html]
+Odstranjeni express.get za 'ngDialog' in dodan za 'style.css'.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
-==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.22c
+Narejeno: Popup za oddajo podvojenega in praznega odgovora. [question_2016.11.22d.html; app_2016.11.22d.js; server_2016.11.22c; webpage_2016.11.22c.html]
+Dodajanje express.get za popup .html strani
 To-Do:
 ==============================
 Verzija:

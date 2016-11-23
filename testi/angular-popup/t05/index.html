@@ -1,0 +1,15 @@
+<!doctype html>
+<html ng-app="ui.bootstrap.demo">
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.2.0.js"></script>
+    <script src="example.js"></script>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+      <style>
+          .app-modal-window .modal-dialog {width: 300px;}
+      </style>
+  </head>
+  <body>
+      <button ng-controller="ModalDemoCtrl as $ctrl" type="button" class="btn btn-default" ng-click="$ctrl.open()">Open me!</button>
+  </body>
+</html>
