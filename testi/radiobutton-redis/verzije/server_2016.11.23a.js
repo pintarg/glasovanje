@@ -1,4 +1,4 @@
-// Verzija: 2016.11.23c
+// Verzija: 2016.11.23a
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -60,9 +60,7 @@ express.get('/pages/popup/no-question.html', function(req, res) {
 express.get('/css/style.css', function(req, res) {
   res.sendFile(__dirname + '/css/style.css');
 });
-express.get('/src/smart-table.js', function(req, res) {
-  res.sendFile(__dirname + '/src/smart-table.js');
-});
+
 http.listen(8080);
 console.log("Zagon sistema");
 

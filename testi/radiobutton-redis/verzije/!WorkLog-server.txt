@@ -133,12 +133,14 @@ Narejeno: Popup za oddajo podvojenega in praznega odgovora. [question_2016.11.22
 Dodajanje express.get za popup .html strani
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.23a
+Narejeno: Dodajanje popup-a za oddajanje odgovora na 0. vprašanje/ni vprašanja. [question_2016.11.23b.html; app_2016.11.23b.js; webpage_2016.11.23b.html; server_2016.11.23a.js]
+Dodajanje express.get za popup .html strani
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.23b
+Narejeno: Urejanje tabele za izpis rezultatov. Nastavljeno filtriranje/iskanje. [answers_2016.11.23b.html; app_2016.11.23d.js; webpage_2016.11.23e.html; server_2016.11.23b.js]
+Dodan express.get('/src/smart-table.js'
 To-Do:
 ==============================
 Verzija:

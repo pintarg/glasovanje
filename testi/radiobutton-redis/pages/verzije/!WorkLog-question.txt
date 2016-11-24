@@ -40,12 +40,13 @@ Narejeno: Popup za oddajo podvojenega in praznega odgovora. [question_2016.11.22
 Dodajanje gumbov za klic popup-ov
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.23a
+Narejeno: Urejanje izpisa prejema povratne informacije zapisa odgovora v bazo. [question_2016.11.23a.html; app_2016.11.23a.js; webpage_2016.11.23a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.23b
+Narejeno: Dodajanje popup-a za oddajanje odgovora na 0. vprašanje/ni vprašanja. [question_2016.11.23b.html; app_2016.11.23b.js; webpage_2016.11.23b.html; server_2016.11.23a.js]
+Dodajanje gumbov za klic popup-ov
 To-Do:
 ==============================
 Verzija:

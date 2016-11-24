@@ -1,0 +1,96 @@
+<section class="clearfix" id="section-format" ng-controller="formatCtrl">
+	<h2 class="h2">Format data & cell templating</h2>
+
+	<p class="text-justify">
+		Well, the point is that you keep full control on the markup, so formatting and templating gets as easy as using
+		standard markup and angular framework features, fancy directives, etc.
+	</p>
+
+	<tabset>
+		<tab heading="markup">
+			<pre ng-non-bindable><code class="language-markup">&lt;table st-table="rowCollection" class="table table-striped">
+	&lt;thead>
+	&lt;tr>
+		&lt;th>first name&lt;/th>
+		&lt;th>last name&lt;/th>
+		&lt;th>birth date&lt;/th>
+		&lt;th>balance&lt;/th>
+		&lt;th>email&lt;/th>
+	&lt;/tr>
+	&lt;/thead>
+	&lt;tbody>
+	&lt;tr ng-repeat="row in rowCollection">
+		&lt;td>{{row.firstName | uppercase}}&lt;/td>
+		&lt;td>{{row.lastName}}&lt;/td>
+		&lt;td>{{row.birthDate | date}}&lt;/td>
+		&lt;td>{{row.balance | currency}}&lt;/td>
+		&lt;td>
+			&lt;button class="btn btn-sm" popover-placement="top" popover="{{row.email}}" type="button">
+				&lt;i class="glyphicon glyphicon-eye-open">&lt;/i>
+			&lt;/button>
+			&lt;a ng-href="mailto:{{row.email}}">email&lt;/a>&lt;/td>
+		&lt;td>
+			&lt;button type="button" ng-click="removeRow(row)" class="btn btn-sm btn-danger">
+				&lt;i class="glyphicon glyphicon-remove-circle">
+				&lt;/i>
+			&lt;/button>
+		&lt;/td>
+	&lt;/tr>
+	&lt;/tbody>
+&lt;/table></code></pre>
+		</tab>
+		<tab heading="JavaScript">
+<pre><code class="language-javascript">app.controller('formatCtrl', ['$scope', function (scope) {
+    scope.rowCollection = [
+        {firstName: 'Laurent', lastName: 'Renard', birthDate: new Date('1987-05-21'), balance: 102, email: 'whatever@gmail.com'},
+        {firstName: 'Blandine', lastName: 'Faivre', birthDate: new Date('1987-04-25'), balance: -2323.22, email: 'oufblandou@gmail.com'},
+        {firstName: 'Francoise', lastName: 'Frere', birthDate: new Date('1955-08-27'), balance: 42343, email: 'raymondef@gmail.com'}
+    ];
+
+    scope.removeRow = function removeRow(row) {
+        var index = scope.rowCollection.indexOf(row);
+        if (index !== -1) {
+            scope.rowCollection.splice(index, 1);
+        }
+    }
+}]);</code></pre>
+		</tab>
+	</tabset>
+	<div>
+		<table st-table="rowCollection" class="table table-striped">
+			<thead>
+			<tr>
+				<th>first name</th>
+				<th>last name</th>
+				<th>birth date</th>
+				<th>balance</th>
+				<th>email</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="row in rowCollection">
+				<td>{{row.firstName | uppercase}}</td>
+				<td>{{row.lastName}}</td>
+				<td>{{row.birthDate | date}}</td>
+				<td>{{row.balance | currency}}</td>
+				<td>
+					<button class="btn btn-sm" popover-placement="top" popover="{{row.email}}" type="button">
+						<i class="glyphicon glyphicon-eye-open"></i>
+					</button>
+					<a ng-href="mailto:{{row.email}}">email</a></td>
+				<td>
+					<button type="button" ng-click="removeRow(row)" class="btn btn-sm btn-danger">
+						<i class="glyphicon glyphicon-remove-circle">
+						</i>
+					</button>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="text-center">
+		<a class="btn btn-primary"
+			 href="https://github.com/lorenzofox3/smart-table-website/tree/gh-pages/sections/format"><i
+			class="glyphicon-pencil glyphicon"></i>improve the documentation</a>
+	</div>
+</section>

@@ -7,12 +7,13 @@ Verzija: 2016.11.13a
 Narejeno: Brisanje 'ng-app="myApp"' iz div-a, preimenovanje 'myCtrl' v 'AnswersController' in selitev controllerja iz webpage.html v app.js.
 To-Do: /
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.11.23a
+Narejeno: Urejanje prikaza tabele odgovorov in dodajanje gumba za izbris posamezne vrstice. [app_2016.11.23c.js; answers_2016.11.23a.html]
+To-Do: Trenutno se izvede samo izbris vrstice na strani. Treba urediti komunikacijo s strežnikom, da izvede brisanje v Redis DB.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.23b
+Narejeno: Urejanje tabele za izpis rezultatov. Nastavljeno filtriranje/iskanje. [answers_2016.11.23b.html; app_2016.11.23d.js; webpage_2016.11.23e.html; server_2016.11.23b.js]
+Urediti komunikacijo s strežnikom, da izvede brisanje v Redis DB.
 To-Do:
 ==============================
 Verzija:

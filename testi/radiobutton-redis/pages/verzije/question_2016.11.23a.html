@@ -1,4 +1,4 @@
-<!-- Verzija: 2016.11.23c -->
+<!-- Verzija: 2016.11.23a -->
 <div id="divVprasanje", ng-controller="QuestionController">
   <p><b>Vprašanje: </b>{{VprID+' od '+stVpr}}<br>
   <p><b>> </b>{{vprasanje}}</p><br>
@@ -9,16 +9,14 @@
   <p><b>Odgovori:</b></p>
   <form action="">
     <input type="radio" name="Q" id="strinja"> Se strinjam
-    <input type="radio" name="Q" id="vzdrzan"> Vzdržan
+    <input type="radio" name="Q" id="vzdrzan"> Vzdrzan
     <input type="radio" name="Q" id="nestrinja"> Se ne strinjam
   </form>
   <button id="btnOddajOdg" onClick="oddajOdg()">Oddaj odgovor</button><br>
-  <p>{{potrZapOdg}}</p>
+  <p>Povratna informacija: {{potrZapOdg}}</p>
   <!-- Spodnja koda je komentirana in ostaja v testne namene -->
   <!-- <p>Povratna informacija2: <output id="odg" type="text" /></p> -->
-
 </div>
 <button ng-controller="ModalPopup as $ctrl" id="btnZadnjeVpr" type="button" class="btn btn-default" ng-click="$ctrl.ZadnjeVpr()" style="display:none">Zadnje vprašanje</button>
 <button ng-controller="ModalPopup as $ctrl" id="btnPodvojenOdg" type="button" class="btn btn-default" ng-click="$ctrl.PodvojenOdg()" style="display:none">Podvojen odgovor</button>
 <button ng-controller="ModalPopup as $ctrl" id="btnPrazenOdg" type="button" class="btn btn-default" ng-click="$ctrl.PrazenOdg()" style="display:none">Prazen odgovor</button>
-<button ng-controller="ModalPopup as $ctrl" id="btnNiVpr" type="button" class="btn btn-default" ng-click="$ctrl.NiVpr()" style="display:none">Ni vprašanja</button>

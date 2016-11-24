@@ -1,6 +1,6 @@
-// Verzija: 2016.11.23e
+// Verzija: 2016.11.23c
 // ====================================================================================================
-var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap', 'smart-table']);
+var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap']);
 
 app.config(function($routeProvider) {
   $routeProvider
@@ -92,12 +92,10 @@ app.controller('Add-questionController', function($scope) {
     $scope.potrditevPrejemaNovegaVpr = 'Prejem novega vprašanja: "'+novoVpr+'" zabeležen.';
   };
 });
-app.controller('AnswersController', function($scope, $filter, $route) {
-  // $scope.podatki = [{VprID:"",Odg:"",ts:"",ts2:"",SocketID:""}]; // mora biti, drugače ne izpiše tabele
-  $scope.podatki = rezultati;
+app.controller('AnswersController', function($scope) {
+  $scope.podatki = [{VprID:"",Odg:"",ts:"",ts2:"",SocketID:""}]; // mora biti, drugače ne izpiše tabele
   $scope.rewrite = function() {
-    return $scope.podatki = rezultati,
-    $route.reload(); // za osvežitev podatkov v expression-ih. Brez tega ne deluje iskanje po tabeli takoj po izpisu.
+    return $scope.podatki = rezultati;
   };
   $scope.removeRow = function removeRow(podatek) { // Brisanje posamezne vrstice v izpisani tabeli
     var index = $scope.podatki.indexOf(podatek);
@@ -105,6 +103,4 @@ app.controller('AnswersController', function($scope, $filter, $route) {
       $scope.podatki.splice(index, 1);
     }
   };
-  $scope.predicates = ['VprID', 'Odg', 'ts', 'ts2', 'SocketID'];
-  $scope.selectedPredicate = $scope.predicates[0];
 });

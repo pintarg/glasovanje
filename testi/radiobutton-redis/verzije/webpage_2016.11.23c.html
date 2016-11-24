@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2016.11.23f -->
+<!-- Verzija: 2016.11.23c -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -8,7 +8,6 @@
   <script src="/src/angular.js"></script>
   <script src="/src/angular-route.js"></script>
   <script src="/src/ui-bootstrap-tpls.js"></script>
-  <script src="/src/smart-table.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css">
   <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
@@ -45,7 +44,7 @@
     var odg = 'x';
     var socket = io.connect("10.1.0.111:8080");
     var VprID, stVpr, novoVpr, potrZapOdg; // potrZapOdg-potrditev zapisa odgovora
-    var rezultati = [{VprID:"",Odg:"",ts:"",ts2:"",SocketID:""}];
+    var rezultati;
     var podvojenOdg = false; // Varovalka pred dvojnim oddajanjem odgovora na isto vprašanje
     var prazenOdg = false; // Varovalka pred praznim oddajanjem odgovora
     var vprasanje = 'Za prikaz vprašanja klikni na gumb "Beri vprašanje".';
@@ -82,13 +81,13 @@
     // funkcija branja izbranega odg in pošiljanja povratne informacije o vprID, izbranem odg, timestamp... serverju za vpis v Redis
     function oddajOdg() {
       if(document.getElementById("strinja").checked) {
-        odg = 'Se strinjam';
+        odg = 'strinja';
         prazenOdg = false;
       } else if (document.getElementById("vzdrzan").checked) {
-        odg = 'Vzdržan';
+        odg = 'vzdrzan';
         prazenOdg = false;
       } else if (document.getElementById("nestrinja").checked) {
-        odg = 'Se ne strinjam';
+        odg = 'ne strinja';
         prazenOdg = false;
       } else {
         prazenOdg = true;
@@ -100,7 +99,7 @@
       } else if (podvojenOdg == true) { // popup za podvojen odg
         document.getElementById("btnPodvojenOdg").click();
       } else { // pošiljanje odgovora v bazo
-        potrZapOdg = 'Odgovor zabeležen. Vprašanje: "'+vprasanje+'", odgovor: "'+odg+'".'; // potrditev zapisa odgovora v bazo
+        potrZapOdg = 'Odgovor zabeležen.'; // potrditev zapisa odgovora v bazo
         socket.emit("socketPisanjeOdg", {"VprID":VprID, "Odg":odg});
         document.getElementById("btnPotrditevPrejemaOdg").click();
         podvojenOdg = true;

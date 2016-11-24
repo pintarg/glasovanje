@@ -52,20 +52,21 @@ Narejeno: Popup za oddajo podvojenega in praznega odgovora. [question_2016.11.22
 Dodajanje funkcij za popup-a
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.23a
+Narejeno: Urejanje izpisa prejema povratne informacije zapisa odgovora v bazo. [question_2016.11.23a.html; app_2016.11.23a.js; webpage_2016.11.23a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.23b
+Narejeno: Dodajanje popup-a za oddajanje odgovora na 0. vprašanje/ni vprašanja. [question_2016.11.23b.html; app_2016.11.23b.js; webpage_2016.11.23b.html; server_2016.11.23a.js]
+Dodajanje funkcije '$ctrl.NiVpr' za popup
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.11.23c
+Narejeno: Urejanje prikaza tabele odgovorov in dodajanje gumba za izbris posamezne vrstice. [app_2016.11.23c.js; answers_2016.11.23a.html]
+To-Do: Trenutno se izvede samo izbris vrstice na strani. Treba urediti komunikacijo s strežnikom, da izvede brisanje v Redis DB.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.23d
+Narejeno: Urejanje tabele za izpis rezultatov. Nastavljeno filtriranje/iskanje. [answers_2016.11.23b.html; app_2016.11.23d.js; webpage_2016.11.23e.html; server_2016.11.23b.js]
 To-Do:
 ==============================
 Verzija:

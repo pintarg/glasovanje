@@ -212,24 +212,25 @@ Narejeno: Popup za oddajo podvojenega in praznega odgovora. [question_2016.11.22
 Dodajanje gumbov za klic popupov in preverjanje pogojev za klic posameznega popup-a.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.23a
+Narejeno: Urejanje izpisa prejema povratne informacije zapisa odgovora v bazo. [question_2016.11.23a.html; app_2016.11.23a.js; webpage_2016.11.23a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.23b
+Narejeno: Dodajanje popup-a za oddajanje odgovora na 0. vprašanje/ni vprašanja. [question_2016.11.23b.html; app_2016.11.23b.js; webpage_2016.11.23b.html; server_2016.11.23a.js]
+Urejanje kode za klic popup-a.
+To-Do: Preveri pogoje za klic posameznih popup-ov in jih uredi.
+==============================
+Verzija: 2016.11.23c
+Narejeno: Urejanje kode za določanje pogojev klicov posameznih popup-ov na question.html strani.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.23d
+Narejeno: Po oddaji odgovora, se izpiše obvestilo o sprejemu odgovora, vprašanju in izbranem odgovoru.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
-==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.23e
+Narejeno: Urejanje tabele za izpis rezultatov. Nastavljeno filtriranje/iskanje. [answers_2016.11.23b.html; app_2016.11.23d.js; webpage_2016.11.23e.html; server_2016.11.23b.js]
 To-Do:
 ==============================
 Verzija:
