@@ -16,8 +16,8 @@ Narejeno: Urejanje tabele za izpis rezultatov. Nastavljeno filtriranje/iskanje. 
 Urediti komunikacijo s strežnikom, da izvede brisanje v Redis DB.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.25a
+Narejeno: Uvoz oblikovanja.
 To-Do:
 ==============================
 Verzija:

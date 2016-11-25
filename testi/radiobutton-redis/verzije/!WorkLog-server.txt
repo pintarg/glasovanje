@@ -143,8 +143,8 @@ Narejeno: Urejanje tabele za izpis rezultatov. Nastavljeno filtriranje/iskanje. 
 Dodan express.get('/src/smart-table.js'
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.25a
+Narejeno: Uvoz oblikovanja. Dodan express.get('/pictures/ozadje.jpg' za sliko.
 To-Do:
 ==============================
 Verzija:

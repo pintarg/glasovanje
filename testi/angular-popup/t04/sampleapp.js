@@ -12,7 +12,7 @@ app.controller('SampleController', ['$scope', 'ModalService', function($scope, M
       templateUrl: "yesno/yesno.html",
       controller: "YesNoController"
     }).then(function(modal) {
-      modal.element.modal();
+      modal.element.modal();f
       modal.close.then(function(result) {
         $scope.yesNoResult = result ? "You said Yes" : "You said No";
       });

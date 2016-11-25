@@ -13,8 +13,8 @@ Narejeno: Urejanje prikaza števila vprašanj v bazi, pri dodajanju novega vpra�
 potrditevPrejemaNovegaVpr
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.25a
+Narejeno: Uvoz oblikovanja.
 To-Do:
 ==============================
 Verzija:
