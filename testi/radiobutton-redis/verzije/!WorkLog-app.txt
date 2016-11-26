@@ -69,16 +69,18 @@ Verzija: 2016.11.23d
 Narejeno: Urejanje tabele za izpis rezultatov. Nastavljeno filtriranje/iskanje. [answers_2016.11.23b.html; app_2016.11.23d.js; webpage_2016.11.23e.html; server_2016.11.23b.js]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.11.25a
+Narejeno: Brisanje vrstice odgovora v tabeli, proži ukaz brisanja izbrane vrstice v Redis DB. [app_2016.11.25a.js; webpage_2016.11.25a.html; server_2016.11.25b.js]
+Dodan socket.emit("socketBrisanjeVrsticeOdg", podatek);
+To-Do: Popup varovalka brisanja - da/ne vprašanje brisanja.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.11.25b
+Narejeno: Dodajanje popup-a za obvestilo o brisanju odgovora. [app_2016.11.25b.js; server_2016.11.25c.js]
+Urejanje $scope.removeRow in dodajanje app.controller('CtrlRmRow'
+To-Do: Trenutno se ob kliku na 'Da' proži brisanje izbranega odgovora, ob kliku na 'Ne', pa se ponovno prebere in izpiše tabelo. Urediti kodo, da se izognem nepotrebnemu branju iz DB.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.25c
+Narejeno: Urejeno delovanje popup-a za brisanje odgovora, da ni potrebno ponovno branje in nalaganje tabele.
 To-Do:
 ==============================
 Verzija:

@@ -233,8 +233,8 @@ Verzija: 2016.11.23e
 Narejeno: Urejanje tabele za izpis rezultatov. Nastavljeno filtriranje/iskanje. [answers_2016.11.23b.html; app_2016.11.23d.js; webpage_2016.11.23e.html; server_2016.11.23b.js]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.25a
+Narejeno: Brisanje vrstice odgovora v tabeli, proži ukaz brisanja izbrane vrstice v Redis DB. [app_2016.11.25a.js; webpage_2016.11.25a.html; server_2016.11.25b.js]
 To-Do:
 ==============================
 Verzija:

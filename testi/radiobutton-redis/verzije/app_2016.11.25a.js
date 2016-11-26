@@ -1,7 +1,7 @@
-// Verzija: 2016.11.25d
+// Verzija: 2016.11.25a
 // ====================================================================================================
 var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap', 'smart-table']);
-var removeRowPodatek;
+
 app.config(function($routeProvider) {
   $routeProvider
   .when('/', {
@@ -41,7 +41,7 @@ app.controller('QuestionController', function($scope) {
     return $scope.potrZapOdg = potrZapOdg;
   };
 });
-// === POPUP-i ===
+// === POPUP, QUESTION.HTML ===
 app.controller('ModalPopup', function ($uibModal) {
   var $ctrl = this;
   $ctrl.ZadnjeVpr = function () { // Popup za zadnje vprašanje. Uporaba v question.html
@@ -76,25 +76,14 @@ app.controller('ModalPopup', function ($uibModal) {
       windowClass: 'app-modal-window' // Uporablja se v povezavi s CSS za določanje izgleda
     });
   };
-  // $ctrl.BrisiOdg = function () { // Popup za opozorilo pred brisanjem odgovora iz tabele odgovorov
-  //   var modalInstance = $uibModal.open({
-  //     templateUrl: '/pages/popup/delete-warning.html',
-  //     controller: 'ModalInstanceCtrl',
-  //     controllerAs: '$ctrl',
-  //     windowClass: 'app-modal-window' // Uporablja se v povezavi s CSS za določanje izgleda
-  //   });
-  // };
 });
 app.controller('ModalInstanceCtrl', function ($uibModalInstance) {
   var $ctrl = this;
-  $ctrl.ok = function() {
+  $ctrl.ok = function () {
       $uibModalInstance.close();
   };
-  $ctrl.cancel = function() {
-
-  };
 });
-// === /POPUP-i ===
+// === /POPUP, QUESTION.HTML ===
 
 app.controller('Add-questionController', function($scope) {
   $scope.stVpr1 = stVpr;
@@ -103,7 +92,7 @@ app.controller('Add-questionController', function($scope) {
     $scope.potrditevPrejemaNovegaVpr = 'Prejem novega vprašanja: "'+novoVpr+'" zabeležen.';
   };
 });
-app.controller('AnswersController', function($scope, $filter, $route, $uibModal) {
+app.controller('AnswersController', function($scope, $filter, $route) {
   // $scope.podatki = [{VprID:"",Odg:"",ts:"",ts2:"",SocketID:""}]; // mora biti, drugače ne izpiše tabele
   $scope.podatki = rezultati;
   $scope.rewrite = function() {
@@ -111,29 +100,12 @@ app.controller('AnswersController', function($scope, $filter, $route, $uibModal)
     $route.reload(); // za osvežitev podatkov v expression-ih. Brez tega ne deluje iskanje po tabeli takoj po izpisu.
   };
   $scope.removeRow = function removeRow(podatek) { // Brisanje posamezne vrstice v izpisani tabeli
-    removeRowPodatek = podatek;
-    var modalInstance = $uibModal.open({
-      templateUrl: '/pages/popup/delete-warning.html',
-      controller: 'CtrlRmRow',
-      controllerAs: '$ctrl',
-      windowClass: 'app-modal-window' // Uporablja se v povezavi s CSS za določanje izgleda
-    });
-  };
-  $scope.predicates = ['VprID', 'Odg', 'ts', 'ts2', 'SocketID'];
-  $scope.selectedPredicate = $scope.predicates[0];
-});
-app.controller('CtrlRmRow', function ($uibModalInstance, $scope) { // ta kontroler se uporablja skupaj z '$scope.removeRow', za prikaz popup-a ob brisanju odgovora
-  var $ctrl = this;
-  $scope.podatki = rezultati;
-  $ctrl.ok = function() {
-    var index = $scope.podatki.indexOf(removeRowPodatek);
+    var index = $scope.podatki.indexOf(podatek);
     if (index !== -1) {
       $scope.podatki.splice(index, 1);
     }
-    socket.emit("socketBrisanjeVrsticeOdg", removeRowPodatek); // pošiljanje vsebine vrstice, ki jo želimo izbrisati
-    $uibModalInstance.close();
+    socket.emit("socketBrisanjeVrsticeOdg", podatek); // pošiljanje vsebine vrstice, ki jo želimo izbrisati
   };
-  $ctrl.cancel = function() {
-    $uibModalInstance.close();
-  };
+  $scope.predicates = ['VprID', 'Odg', 'ts', 'ts2', 'SocketID'];
+  $scope.selectedPredicate = $scope.predicates[0];
 });

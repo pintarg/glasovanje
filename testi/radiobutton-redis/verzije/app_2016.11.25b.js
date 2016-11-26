@@ -1,7 +1,7 @@
-// Verzija: 2016.11.25d
+// Verzija: 2016.11.25b
 // ====================================================================================================
 var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap', 'smart-table']);
-var removeRowPodatek;
+var podatek0;
 app.config(function($routeProvider) {
   $routeProvider
   .when('/', {
@@ -110,8 +110,20 @@ app.controller('AnswersController', function($scope, $filter, $route, $uibModal)
     return $scope.podatki = rezultati,
     $route.reload(); // za osvežitev podatkov v expression-ih. Brez tega ne deluje iskanje po tabeli takoj po izpisu.
   };
+  // $scope.removeRow = function removeRow(podatek) { // Brisanje posamezne vrstice v izpisani tabeli
+  //   var index = $scope.podatki.indexOf(podatek);
+  //   if (index !== -1) {
+  //     $scope.podatki.splice(index, 1);
+  //   }
+  //   socket.emit("socketBrisanjeVrsticeOdg", podatek); // pošiljanje vsebine vrstice, ki jo želimo izbrisati
+  // };
+
   $scope.removeRow = function removeRow(podatek) { // Brisanje posamezne vrstice v izpisani tabeli
-    removeRowPodatek = podatek;
+    podatek0 = podatek;
+    var index = $scope.podatki.indexOf(podatek);
+    if (index !== -1) {
+      $scope.podatki.splice(index, 1);
+    }
     var modalInstance = $uibModal.open({
       templateUrl: '/pages/popup/delete-warning.html',
       controller: 'CtrlRmRow',
@@ -122,18 +134,14 @@ app.controller('AnswersController', function($scope, $filter, $route, $uibModal)
   $scope.predicates = ['VprID', 'Odg', 'ts', 'ts2', 'SocketID'];
   $scope.selectedPredicate = $scope.predicates[0];
 });
-app.controller('CtrlRmRow', function ($uibModalInstance, $scope) { // ta kontroler se uporablja skupaj z '$scope.removeRow', za prikaz popup-a ob brisanju odgovora
+app.controller('CtrlRmRow', function ($uibModalInstance, $scope) {
   var $ctrl = this;
-  $scope.podatki = rezultati;
   $ctrl.ok = function() {
-    var index = $scope.podatki.indexOf(removeRowPodatek);
-    if (index !== -1) {
-      $scope.podatki.splice(index, 1);
-    }
-    socket.emit("socketBrisanjeVrsticeOdg", removeRowPodatek); // pošiljanje vsebine vrstice, ki jo želimo izbrisati
+    socket.emit("socketBrisanjeVrsticeOdg", podatek0); // pošiljanje vsebine vrstice, ki jo želimo izbrisati
     $uibModalInstance.close();
   };
   $ctrl.cancel = function() {
+    socket.emit("socketIzpisiRezultate");
     $uibModalInstance.close();
   };
 });

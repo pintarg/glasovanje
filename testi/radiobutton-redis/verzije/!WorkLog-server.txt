@@ -147,12 +147,14 @@ Verzija: 2016.11.25a
 Narejeno: Uvoz oblikovanja. Dodan express.get('/pictures/ozadje.jpg' za sliko.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.25b
+Narejeno: Brisanje vrstice odgovora v tabeli, proži ukaz brisanja izbrane vrstice v Redis DB. [app_2016.11.25a.js; webpage_2016.11.25a.html; server_2016.11.25b.js]
+Dodan socket.on("socketBrisanjeVrsticeOdg"
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.25c
+Narejeno: Dodajanje popup-a za obvestilo o brisanju odgovora. [app_2016.11.25b.js; server_2016.11.25c.js]
+Dodan express.get('/pages/popup/delete-warning.html'
 To-Do:
 ==============================
 Verzija:

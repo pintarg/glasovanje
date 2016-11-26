@@ -1,4 +1,4 @@
-// Verzija: 2016.11.25d
+// Verzija: 2016.11.25b
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -56,9 +56,6 @@ express.get('/pages/popup/empty-answer.html', function(req, res) {
 });
 express.get('/pages/popup/no-question.html', function(req, res) {
   res.sendFile(__dirname + '/pages/popup/no-question.html');
-});
-express.get('/pages/popup/delete-warning.html', function(req, res) {
-  res.sendFile(__dirname + '/pages/popup/delete-warning.html');
 });
 express.get('/css/style.css', function(req, res) {
   res.sendFile(__dirname + '/css/style.css');
