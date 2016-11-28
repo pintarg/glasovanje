@@ -1,19 +1,7 @@
 ==============================
-Verzija: 2016.11.22a
-Narejeno: Dodana koda za last-question.html popup.
-To-Do:
-==============================
-Verzija: 2016.11.25a
-Narejeno: Uvoz oblikovanja.
-To-Do:
-==============================
-Verzija: 2016.11.27a
-Narejeno: Uvoz oblikovanja.
-To-Do:
-==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.11.28a
+Narejeno: Urejanje dodatne podstrani 'all-questions' za prikaz zabele vprašanj. [server_2016.11.28b.js; app_2016.11.28a.js; all-questions_2016.11.28a.html; webpage_2016.11.28a.html]
+To-Do: Nadaljuj z urejanjem.
 ==============================
 Verzija:
 Narejeno:

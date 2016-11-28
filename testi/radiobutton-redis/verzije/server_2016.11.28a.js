@@ -1,4 +1,4 @@
-// Verzija: 2016.11.28d
+// Verzija: 2016.11.28a
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -31,9 +31,6 @@ express.get('/pages/add-question.html', function(req, res) {
 express.get('/pages/answers.html', function(req, res) {
   res.sendFile(__dirname + '/pages/answers.html');
 });
-express.get('/pages/all-questions.html', function(req, res) {
-  res.sendFile(__dirname + '/pages/all-questions.html');
-});
 // === EXPRESS.GET src ===
 express.get('/src/angular.js', function(req, res) {
   res.sendFile(__dirname + '/src/angular.js');
@@ -46,15 +43,6 @@ express.get('/src/ui-bootstrap-tpls.js', function(req, res) {
 });
 express.get('/src/smart-table.js', function(req, res) {
   res.sendFile(__dirname + '/src/smart-table.js');
-});
-express.get('/src/jquery.min.js', function(req, res) {
-  res.sendFile(__dirname + '/src/jquery.min.js');
-});
-express.get('/src/bootstrap.min.js', function(req, res) {
-  res.sendFile(__dirname + '/src/bootstrap.min.js');
-});
-express.get('/src/bootstrap-hover-dropdown.min.js', function(req, res) {
-  res.sendFile(__dirname + '/src/bootstrap-hover-dropdown.min.js');
 });
 // === EXPRESS.GET css ===
 express.get('/css/style.css', function(req, res) {
@@ -94,35 +82,19 @@ io.sockets.on("connection", function(socket) {
   // branje vprašanja iz Redis + pošiljanje ID vprašanja (zaporedna št vpr)
   socket.on("socketBeriVpr", function() {
     branjeStVpr();
-    clientRedis.zrange("vprasanja", (VprID-1), (VprID-1), function(err, reply) {
-      tempReply = JSON.parse(reply);
-      // console.log("Vprašanje št "+VprID+": "+reply);
-      // console.log(">>> VprID: "+tempReply.VprID+"; vprasanje: "+tempReply.vprasanje);
-      socket.emit("socketVprPrebran", {"vpr":tempReply.vprasanje, "VprID":VprID, "stVpr":stVpr});
+    clientRedis.hget("vprasanja", VprID, function(err, reply) {
+      console.log("Vprašanje št "+VprID+": "+reply);
+      socket.emit("socketVprPrebran", {"vpr":reply, "VprID":VprID, "stVpr":stVpr});
       VprID++;
     });
   });
-  // socket.on("socketBeriVpr", function() { // STARA FUNKCIJA ZA UPORABO S HASH REDIS DB
-  //   branjeStVpr();
-  //   clientRedis.hget("vprasanja", VprID, function(err, reply) {
-  //     console.log("Vprašanje št "+VprID+": "+reply);
-  //     socket.emit("socketVprPrebran", {"vpr":reply, "VprID":VprID, "stVpr":stVpr});
-  //     VprID++;
-  //   });
-  // });
   // zapisovanje novega vprašanja v Redis
   socket.on("socketDodajVpr", function(msg) {
-    clientRedis.zadd("vprasanja", stVpr+1, '{"VprID":"'+(stVpr+1)+'","vprasanje":"'+msg+'"}');
+    clientRedis.hset("vprasanja", stVpr+1, msg);
     socket.emit("socketVprPrebran", {"vpr":"delniIzpis", "VprID":VprID-1, "stVpr":stVpr+1});
-    console.log("Prejem "+(stVpr+1)+". vprašanja: "+msg);
+    console.log("Prejem "+(stVpr+1)+". vpr: "+msg);
     stVpr++;
   });
-  // socket.on("socketDodajVpr", function(msg) { // STARA FUNKCIJA ZA UPORABO S HASH REDIS DB
-  //   clientRedis.hset("vprasanja", stVpr+1, msg);
-  //   socket.emit("socketVprPrebran", {"vpr":"delniIzpis", "VprID":VprID-1, "stVpr":stVpr+1});
-  //   console.log("Prejem "+(stVpr+1)+". vpr: "+msg);
-  //   stVpr++;
-  // });
   // zapisovanje izbranega odgovora v Redis
   socket.on("socketPisanjeOdg", function(msg) {
     var timestamp = new Date().getTime(); // timestamp v milisekundah
@@ -146,22 +118,14 @@ io.sockets.on("connection", function(socket) {
       console.log("Število brisanih odgovorov iz tabele odgovorov: "+reply);
     });
   });
-  // izpis vseh prašanj v tabelo
-  socket.on("socketIzpisVprasanj", function() {
-    clientRedis.zrange("vprasanja", 0, -1, function(err, reply) { // pridobivanje seznama vprašanj
-      socket.emit("socketPosiljanjeVprasanj", '['+reply+']');
-    });
-      // console.log("Izpis vprašanj: "+JSON.stringify(reply));
-  });
   // FUNKCIJE =================================================================
   // branje števila vprašanj
   function branjeStVpr() {
-    clientRedis.zcount("vprasanja", "-inf", "+inf", function(err, reply) {
+    clientRedis.hlen("vprasanja", function(err, reply) {
       if (err) {
-        console.log("Napaka pri branju števila vprašanj v bazi: "+err);
+        console.log("Napaka pri branju števila vprašanj v bazi.");
       } else {
         stVpr = reply;
-        // console.log("Število vprašanj v bazi: "+reply);
         if (startPrograma === 0) { // pošiljanje števila vprašanj v bazi ob zagonu programa
           socket.emit("socketVprPrebran", {"vpr":"zagonPrograma", "VprID":VprID-1, "stVpr":stVpr});
           startPrograma = 1;
@@ -169,19 +133,6 @@ io.sockets.on("connection", function(socket) {
       }
     });
   }
-  // function branjeStVpr() { // STARA FUNKCIJA ZA UPORABO S HASH REDIS DB
-  //   clientRedis.hlen("vprasanja", function(err, reply) {
-  //     if (err) {
-  //       console.log("Napaka pri branju števila vprašanj v bazi.");
-  //     } else {
-  //       stVpr = reply;
-  //       if (startPrograma === 0) { // pošiljanje števila vprašanj v bazi ob zagonu programa
-  //         socket.emit("socketVprPrebran", {"vpr":"zagonPrograma", "VprID":VprID-1, "stVpr":stVpr});
-  //         startPrograma = 1;
-  //       }
-  //     }
-  //   });
-  // }
   // izpis števila prejetih odgovorov na posamezno vprašanje
   function stOdgPosameznoVpr() {
     var j=1;

@@ -157,16 +157,17 @@ Narejeno: Dodajanje popup-a za obvestilo o brisanju odgovora. [app_2016.11.25b.j
 Dodan express.get('/pages/popup/delete-warning.html'
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.28a
+Narejeno: Urejanje express.get funkcij.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.11.28b
+Narejeno: Urejanje dodatne podstrani 'all-questions' za prikaz zabele vprašanj. [server_2016.11.28b.js; app_2016.11.28a.js; all-questions_2016.11.28a.html; webpage_2016.11.28a.html]
+Dodani src za 'jquery.min.js', 'bootstrap.min.js' in 'bootstrap-hover-dropdown.min.js'. Dodana funkcija 'socket.on("socketIzpisVprasanj"'.
+To-Do: Sprememba DB vprašanj. Trenutno se vprašanja zapisujejo v Hash obliki Redis DB. Sprememba shranjevanja v Sorted sets - enako kot se shranjujejo odgovori.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.28c
+Narejeno: Sprememba DB za zapis vprašanj. Sprememba iz Hash v Sorted set zaradi izpisa vprašanj v tabelo. [server_2016.11.28c.js; webpage_2016.11.28b.html]
 To-Do:
 ==============================
 Verzija:

@@ -237,12 +237,13 @@ Verzija: 2016.11.25a
 Narejeno: Brisanje vrstice odgovora v tabeli, proži ukaz brisanja izbrane vrstice v Redis DB. [app_2016.11.25a.js; webpage_2016.11.25a.html; server_2016.11.25b.js]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.11.28a
+Narejeno: Urejanje dodatne podstrani 'all-questions' za prikaz zabele vprašanj. [server_2016.11.28b.js; app_2016.11.28a.js; all-questions_2016.11.28a.html; webpage_2016.11.28a.html]
+Dodani src za 'jquery.min.js', 'bootstrap.min.js' in 'bootstrap-hover-dropdown.min.js'. Dodane funkcije 'function izpisVprasanj()' in 'socket.on("socketPosiljanjeVprasanj"'
+To-Do: Dokončanje izpisa vprašanj v tabelo.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.28b
+Narejeno: Sprememba DB za zapis vprašanj. Sprememba iz Hash v Sorted set zaradi izpisa vprašanj v tabelo. [server_2016.11.28c.js; webpage_2016.11.28b.html]
 To-Do:
 ==============================
 Verzija:

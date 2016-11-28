@@ -1,0 +1,39 @@
+<!-- Verzija: 2016.11.28b -->
+<div class='homepage'>
+  <h1>Seznam vseh vprašanj</h1>
+  <button id="btnIzpisVprasanj" onClick="izpisVprasanj()">Izpiši vprašanja</button>
+  <div id="divVsaVprasanja", ng-controller="all-questionsController">
+    <button id="btnRewriteVprasanja" type='button' ng-click="rewriteVprasanja()" style="display:none">Naloži podatke</button> <!-- gumb je skrit, ker se ga uporablja v 'socketPosiljanjeVprasanj' za izpis nove vrstice v Angular tabelo -->
+    <h2>Izpis vprašanj:</h2>
+    <form>
+      <label for="predicate">Izberi ime stolpca, po katerem želiš iskati:</label>
+      <select class="form-control" id="predicate" ng-model="selectedPredicate" ng-options="predicate for predicate in predicates"></select>
+    </form>
+    <table st-table="vprasanja" class="table table-striped">
+      <thead>
+        <tr>
+          <th st-sort="VprID">VprID</th>
+          <th st-sort="vprasanje">Vprašanje</th>
+        </tr>
+        <tr>
+          <th>
+            <input st-search="VprID" placeholder="Išči po VprID" class="input-sm form-control" type="search" />
+          </th>
+          <th colspan="3">
+            <input st-search placeholder="Iskanje po celotni tabeli" class="input-sm form-control" type="search" />
+          </th>
+          <th>
+            <input st-search="{{selectedPredicate}}" placeholder="Išči po izbranem stolpcu" class="input-sm form-control" type="search" />
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="vprasanje in vprasanja">
+          <td>{{vprasanje.VprID}}</td>
+          <td>{{vprasanje.vprasanje}}</td>
+          <td><button type="button" ng-click="removeRow(vprasanje)" class="btn btn-sm btn-danger">X</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

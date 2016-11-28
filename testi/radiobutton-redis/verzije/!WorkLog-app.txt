@@ -83,8 +83,9 @@ Verzija: 2016.11.25c
 Narejeno: Urejeno delovanje popup-a za brisanje odgovora, da ni potrebno ponovno branje in nalaganje tabele.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.28a
+Narejeno: Urejanje dodatne podstrani 'all-questions' za prikaz zabele vprašanj. [server_2016.11.28b.js; app_2016.11.28a.js; all-questions_2016.11.28a.html; webpage_2016.11.28a.html]
+Dodano: '.when('/all-questions', {', 'app.controller('all-questionsController',' in 'app.controller('CtrlRmRowVprasanje','.
 To-Do:
 ==============================
 Verzija:
