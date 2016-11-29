@@ -53,8 +53,8 @@ Verzija: 2016.11.25a
 Narejeno: Uvoz oblikovanja.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2019.11.29a
+Narejeno: Dodajanje nove spremenljivke 'zapStVpr' in prenos funkcionalnosti 'VprID' na novo spremeljivko, ko je potreben prikaz zaporedne številke vprašanja. Narejeno zaradi možnosti brisanja vprašanj. [server_2016.11.29b.js; app_2019.11.29a.js; webpage_2016.11.29a.html; question_2019.11.29a.html]
 To-Do:
 ==============================
 Verzija:

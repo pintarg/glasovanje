@@ -170,12 +170,12 @@ Verzija: 2016.11.28c
 Narejeno: Sprememba DB za zapis vprašanj. Sprememba iz Hash v Sorted set zaradi izpisa vprašanj v tabelo. [server_2016.11.28c.js; webpage_2016.11.28b.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.11.29a
+Narejeno: Brisanje odvečne komentirane kode.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2019.11.29b
+Narejeno: Dodajanje nove spremenljivke 'zapStVpr' in prenos funkcionalnosti 'VprID' na novo spremeljivko, ko je potreben prikaz zaporedne številke vprašanja. Narejeno zaradi možnosti brisanja vprašanj. [server_2016.11.29b.js; app_2019.11.29a.js; webpage_2016.11.29a.html; question_2019.11.29a.html]
 To-Do:
 ==============================
 Verzija:

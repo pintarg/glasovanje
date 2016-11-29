@@ -1,4 +1,4 @@
-// Verzija: 2016.11.29c
+// Verzija: 2016.11.29a
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -6,10 +6,10 @@ var io = require("socket.io").listen(http);
 var redis = require("redis");
 var clientRedis = redis.createClient();
 var moment = require("moment");
-var VprID; // ID vprašanja v bazi "vprasanja"
+var VprID = 1; // ID vprašanja v bazi "vprasanja"
 var stVpr = 0; // število vprašanj v bazi
-var zapStVpr = 1; // zaporedna številka vprašanja pri branju iz baze
-// var statBranjeStVpr = 0; // status števca branja vprašanj - uporablja se za pravilen izpis VprID/stVpr pri dodajanju novega vprašanja
+var zapisVprID = 0;
+var statBranjeStVpr = 0; // status števca branja vprašanj - uporablja se za pravilen izpis VprID/stVpr pri dodajanju novega vprašanja
 var startPrograma = 0; // spremenjivka, ki se uporabi za preverjanje ob vnovičnem zagonu programa
 // === EXPRESS.GET initial files ===
 express.get('/', function(req, res) {
@@ -94,19 +94,18 @@ io.sockets.on("connection", function(socket) {
   // branje vprašanja iz Redis + pošiljanje ID vprašanja (zaporedna št vpr)
   socket.on("socketBeriVpr", function() {
     branjeStVpr();
-    clientRedis.zrange("vprasanja", (zapStVpr-1), (zapStVpr-1), function(err, reply) {
+    clientRedis.zrange("vprasanja", (VprID-1), (VprID-1), function(err, reply) {
       tempReply = JSON.parse(reply);
-      VprID = tempReply.VprID;
-      // console.log("Vprašanje št "+zapStVpr+": "+reply);
+      // console.log("Vprašanje št "+VprID+": "+reply);
       // console.log(">>> VprID: "+tempReply.VprID+"; vprasanje: "+tempReply.vprasanje);
-      socket.emit("socketVprPrebran", {"vpr":tempReply.vprasanje, "zapStVpr":zapStVpr, "stVpr":stVpr});
-      zapStVpr++;
+      socket.emit("socketVprPrebran", {"vpr":tempReply.vprasanje, "VprID":VprID, "stVpr":stVpr});
+      VprID++;
     });
   });
   // zapisovanje novega vprašanja v Redis
   socket.on("socketDodajVpr", function(msg) {
     clientRedis.zadd("vprasanja", stVpr+1, '{"VprID":"'+(stVpr+1)+'","vprasanje":"'+msg+'"}');
-    socket.emit("socketVprPrebran", {"vpr":"delniIzpis", "zapStVpr":zapStVpr-1, "stVpr":stVpr+1});
+    socket.emit("socketVprPrebran", {"vpr":"delniIzpis", "VprID":VprID-1, "stVpr":stVpr+1});
     console.log("Prejem "+(stVpr+1)+". vprašanja: "+msg);
     stVpr++;
   });
@@ -114,7 +113,8 @@ io.sockets.on("connection", function(socket) {
   socket.on("socketPisanjeOdg", function(msg) {
     var timestamp = new Date().getTime(); // timestamp v milisekundah
     var timestamp2 = moment().format(); // timestamp v obliki "2016-09-25T23:05:56+02:00" // uporablja se knjižnica "moment"
-    clientRedis.zadd("odgovori", VprID, '{"VprID"'+':"'+VprID+'","Odg"'+':"'+msg.Odg+'","ts"'+':"'+timestamp2+'","ts2":"'+timestamp+'","SocketID":"'+socket.id+'"}');
+    console.log("Prejem ID vpr pri zapisu odg: "+msg.VprID);
+    clientRedis.zadd("odgovori", msg.VprID, '{"VprID"'+':"'+msg.VprID+'","Odg"'+':"'+msg.Odg+'","ts"'+':"'+timestamp2+'","ts2":"'+timestamp+'","SocketID":"'+socket.id+'"}');
   });
   // branje izbranih odgovorov iz Redis
   socket.on("socketBranjeOdg", function() {
@@ -148,7 +148,7 @@ io.sockets.on("connection", function(socket) {
         stVpr = reply;
         // console.log("Število vprašanj v bazi: "+reply);
         if (startPrograma === 0) { // pošiljanje števila vprašanj v bazi ob zagonu programa
-          socket.emit("socketVprPrebran", {"vpr":"zagonPrograma", "zapStVpr":zapStVpr-1, "stVpr":stVpr});
+          socket.emit("socketVprPrebran", {"vpr":"zagonPrograma", "VprID":VprID-1, "stVpr":stVpr});
           startPrograma = 1;
         }
       }
