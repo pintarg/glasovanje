@@ -3,8 +3,8 @@ Verzija: 2016.11.28a
 Narejeno: Urejanje dodatne podstrani 'all-questions' za prikaz zabele vprašanj. [server_2016.11.28b.js; app_2016.11.28a.js; all-questions_2016.11.28a.html; webpage_2016.11.28a.html]
 To-Do: Nadaljuj z urejanjem.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.04a
+Narejeno: Dodajanje funkcionalnosti brisanja vprašanj in povezanih odgovorov iz DB [server_2016.12.04a.js; all-questions_2016.12.04a.html]
 To-Do:
 ==============================
 Verzija:

@@ -178,16 +178,19 @@ Verzija: 2019.11.29b
 Narejeno: Dodajanje nove spremenljivke 'zapStVpr' in prenos funkcionalnosti 'VprID' na novo spremeljivko, ko je potreben prikaz zaporedne številke vprašanja. Narejeno zaradi možnosti brisanja vprašanj. [server_2016.11.29b.js; app_2019.11.29a.js; webpage_2016.11.29a.html; question_2019.11.29a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.04a
+Narejeno: Dodajanje funkcionalnosti brisanja vprašanj in povezanih odgovorov iz DB [server_2016.12.04a.js; all-questions_2016.12.04a.html]
+Dodana funkcija 'socket.on("socketBrisanjeVrsticeVpr"'
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.04b
+Narejeno: Urejeno osveževanje številke in števila vprašanj ob brisanju vprašanja iz tabele in DB [server_2016.12.04b.js; webpage_2016.12.04a.html]
+'zagonPrograma' spremenjen v 'osveziPodatke'. V 'socket.on("socketBrisanjeVrsticeVpr"' dodan klic funkcije 'branjeStVpr'.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.04c
+Narejeno: Urejeno osveževanje max VprID ob brisanju vprašanja iz tabele in DB, da se pri dodajanju novega vprašanja dodeli pravilen VprID. [server_2016.12.04c.js]
+Dodajanje funkcije 'lastVprID()' in umeščanje v kodo. 'socket.on("socketDodajVpr"' sprememba stVpr v maxVprID.
 To-Do:
 ==============================
 Verzija:

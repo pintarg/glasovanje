@@ -1,4 +1,4 @@
-// Verzija: 2016.12.04d
+// Verzija: 2016.12.04c
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);

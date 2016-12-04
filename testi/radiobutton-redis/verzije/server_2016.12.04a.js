@@ -1,4 +1,4 @@
-// Verzija: 2016.12.04d
+// Verzija: 2016.12.04a
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -6,11 +6,11 @@ var io = require("socket.io").listen(http);
 var redis = require("redis");
 var clientRedis = redis.createClient();
 var moment = require("moment");
-var VprID, // ID vprašanja v bazi "vprasanja"
-    maxVprID; // VprID zadnjega/najnovejšega vpr v DB
+var VprID; // ID vprašanja v bazi "vprasanja"
 var stVpr = 0; // število vprašanj v bazi
 var zapStVpr = 1; // zaporedna številka vprašanja pri branju iz baze
-var osveziPodatke = true; // spremenjivka, ki se uporabi za preverjanje ob vnovičnem zagonu programa
+// var statBranjeStVpr = 0; // status števca branja vprašanj - uporablja se za pravilen izpis VprID/stVpr pri dodajanju novega vprašanja
+var startPrograma = 0; // spremenjivka, ki se uporabi za preverjanje ob vnovičnem zagonu programa
 // === EXPRESS.GET initial files ===
 express.get('/', function(req, res) {
   res.sendFile(__dirname + '/webpage.html');
@@ -105,8 +105,7 @@ io.sockets.on("connection", function(socket) {
   });
   // zapisovanje novega vprašanja v Redis
   socket.on("socketDodajVpr", function(msg) {
-    ++maxVprID;
-    clientRedis.zadd("vprasanja", maxVprID, '{"VprID":"'+maxVprID+'","vprasanje":"'+msg+'"}');
+    clientRedis.zadd("vprasanja", stVpr+1, '{"VprID":"'+(stVpr+1)+'","vprasanje":"'+msg+'"}');
     socket.emit("socketVprPrebran", {"vpr":"delniIzpis", "zapStVpr":zapStVpr-1, "stVpr":stVpr+1});
     console.log("Prejem "+(stVpr+1)+". vprašanja: "+msg);
     stVpr++;
@@ -154,20 +153,22 @@ io.sockets.on("connection", function(socket) {
         console.log("Število brisanih odgovorov, vezanih na brisano vprašanje: "+reply);
       });
     });
-    osveziPodatke = true;
     branjeStVpr();
   });
   // FUNKCIJE =================================================================
   // branje števila vprašanj
   function branjeStVpr() {
     clientRedis.zcount("vprasanja", "-inf", "+inf", function(err, reply) {
-      stVpr = reply;
-      // console.log("Število vprašanj v bazi: "+reply);
-      if (osveziPodatke === true) { // pošiljanje števila vprašanj v bazi ob zagonu programa, brisanju vprašanj iz baze
-        socket.emit("socketVprPrebran", {"vpr":"osveziPodatke", "zapStVpr":zapStVpr-1, "stVpr":stVpr});
-        osveziPodatke = false;
+      if (err) {
+        console.log("Napaka pri branju števila vprašanj v bazi: "+err);
+      } else {
+        stVpr = reply;
+        // console.log("Število vprašanj v bazi: "+reply);
+        if (startPrograma === 0) { // pošiljanje števila vprašanj v bazi ob zagonu programa
+          socket.emit("socketVprPrebran", {"vpr":"zagonPrograma", "zapStVpr":zapStVpr-1, "stVpr":stVpr});
+          startPrograma = 1;
+        }
       }
-      lastVprID();
     });
   }
   // izpis števila prejetih odgovorov na posamezno vprašanje
@@ -185,15 +186,6 @@ io.sockets.on("connection", function(socket) {
     clientRedis.zrange("odgovori", 0, -1, function(err, reply) { // pridobivanje seznama odgovorov
       socket.emit("socketPosiljanjeRezultatov", '['+reply+']');
     });
-  }
-  // branje VprID zadnjega vprašanja v DB
-  function lastVprID() {
-    if (stVpr > 0) {
-      clientRedis.zrange("vprasanja", (stVpr-1), (stVpr-1), function(err, reply) {
-        tempReply = JSON.parse(reply);
-        maxVprID = tempReply.VprID;
-      });
-    }
   }
   // FUNKCIJE =================================================================
 });

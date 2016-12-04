@@ -80,14 +80,6 @@ app.controller('ModalPopup', function ($uibModal) {
       windowClass: 'app-modal-window' // Uporablja se v povezavi s CSS za določanje izgleda
     });
   };
-  // $ctrl.BrisiOdg = function () { // Popup za opozorilo pred brisanjem odgovora iz tabele odgovorov
-  //   var modalInstance = $uibModal.open({
-  //     templateUrl: '/pages/popup/delete-warning.html',
-  //     controller: 'ModalInstanceCtrl',
-  //     controllerAs: '$ctrl',
-  //     windowClass: 'app-modal-window' // Uporablja se v povezavi s CSS za določanje izgleda
-  //   });
-  // };
 });
 app.controller('ModalInstanceCtrl', function ($uibModalInstance) {
   var $ctrl = this;
@@ -95,7 +87,6 @@ app.controller('ModalInstanceCtrl', function ($uibModalInstance) {
       $uibModalInstance.close();
   };
   $ctrl.cancel = function() {
-
   };
 });
 // === /POPUP-i ===
@@ -174,3 +165,4 @@ app.controller('CtrlRmRowVprasanje', function ($uibModalInstance, $scope) {
     $uibModalInstance.close();
   };
 });
+// POSAMEZNI CONTROLLER-ji
