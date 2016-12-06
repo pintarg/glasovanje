@@ -1,4 +1,4 @@
-// Verzija: 2016.12.05d
+// Verzija: 2016.12.05b
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -7,14 +7,9 @@ var redis = require("redis");
 var clientRedis = redis.createClient();
 var moment = require("moment");
 var VprID, // ID vprašanja v bazi "vprasanja"
-    maxVprID=0, // VprID zadnjega/najnovejšega vpr v DB
-    vprasanja, // shranjevanje vprašanj iz DB
-    rezultati, // shranjevanje rezultatov iz DB
-    v00=0, // varovalka, ki se uporablja v funkciji 'branjeVprasanj'
-    v01=0, // varovalka, ki se uporablja v funkciji 'branjeRezultatov'
-    stOdgVpr = [], // število odgovorov na posamezno vprašanje - array
-    stVpr = 0, // število vprašanj v bazi
-    zapStVpr = 1; // zaporedna številka vprašanja pri branju iz baze
+    maxVprID; // VprID zadnjega/najnovejšega vpr v DB
+var stVpr = 0; // število vprašanj v bazi
+var zapStVpr = 1; // zaporedna številka vprašanja pri branju iz baze
 var osveziPodatke = true; // spremenjivka, ki se uporabi za preverjanje ob vnovičnem zagonu programa
 // === EXPRESS.GET initial files ===
 express.get('/', function(req, res) {
@@ -40,7 +35,7 @@ express.get('/pages/all-questions.html', function(req, res) {
   res.sendFile(__dirname + '/pages/all-questions.html');
 });
 express.get('/pages/statistics.html', function(req, res) {
-  res.sendFile(__dirname + '/pages/statistics.html');
+  res.sendFile(__dirname + '/pages/statistics.html.html');
 });
 // === EXPRESS.GET src ===
 express.get('/src/angular.js', function(req, res) {
@@ -130,8 +125,7 @@ io.sockets.on("connection", function(socket) {
 
   });
   socket.on("socketIzpisiRezultate", function() {
-    // stOdgPosameznoVpr();
-    v01=1;
+    stOdgPosameznoVpr();
     branjeRezultatov();
   });
   // brisanje posameznega odgovora iz tabele odgovorov
@@ -144,8 +138,9 @@ io.sockets.on("connection", function(socket) {
   });
   // izpis vseh prašanj v tabelo
   socket.on("socketIzpisVprasanj", function() {
-    v00=1;
-    branjeVprasanj();
+    clientRedis.zrange("vprasanja", 0, -1, function(err, reply) { // pridobivanje seznama vprašanj
+      socket.emit("socketPosiljanjeVprasanj", '['+reply+']');
+    });
   });
   // brisanje posameznega vprašanja in povezanih odgovorov iz tabele in DB
   socket.on("socketBrisanjeVrsticeVpr", function(msg) {
@@ -165,72 +160,6 @@ io.sockets.on("connection", function(socket) {
     osveziPodatke = true;
     branjeStVpr();
   });
-  // branje vprašanj in povezanih odgovorov ter pošiljanje VprID, vprašanja, št odg 'se strinja', št odg 'vzdržan' in št odg 'se ne strinja' na webpage
-  socket.on("socketIzpisStatistike", function() {
-    // branjeVprasanj();
-    // branjeRezultatov();
-    // // socket.emit("socketPosiljanjeStatistike", {"VprID":vprasanja.VprID,"vpr":vprasanja.vprasanje}); // NI DOKONČANO
-    // setTimeout(function() {
-    //   var cunga = {"VprID":vprasanja.VprID,"vpr":vprasanja.vprasanje};
-    //   console.log("izpis stat: "+JSON.stringify(cunga));
-    // },100);
-    console.log("Št odg na vpr array: "+stOdgVpr);
-    var j=1,
-        k=0,
-        tempVprasanje,
-        tempOdgovor,
-        tempSeStrinjam,
-        tempVzdrzan,
-        tempSeNeStrinjam;
-    for(i=0; i<maxVprID; i++) {
-      clientRedis.zrangebyscore("vprasanja", '('+i, (i+1), function(err, reply) {
-        // console.log("izpis stat "+j+": "+reply);
-        // j++;
-        if (reply != "") { // pusti '!=', če spremeniš v '!==' ne deluje
-          console.log("Stat vpr: "+reply);
-          tempVprasanje = JSON.parse(reply);
-          // console.log("Neparsan VprID: "+reply.VprID+" Parsan VprID: "+tempVprasanje.VprID);
-        }
-      });
-      clientRedis.zrangebyscore("odgovori", '('+i, (i+1), function(err, reply) {
-        if (reply != "") { // pusti '!=', če spremeniš v '!==' ne deluje
-        tempSeStrinjam=0;
-        tempVzdrzan=0;
-        tempSeNeStrinjam=0;
-          if (stOdgVpr[k]==1) {
-            tempOdgovor = JSON.parse(reply);
-            if (tempOdgovor.Odg == "Se strinjam") {
-              tempSeStrinjam++;
-            } else if (tempOdgovor.Odg == "Vzdržan") {
-              tempVzdrzan++;
-            } else if (tempOdgovor.Odg == "Se ne strinjam") {
-              tempSeNeStrinjam++;
-            }
-          } else if (stOdgVpr[k]>1) {
-            tempOdgovor = JSON.parse('['+reply+']'); // ker je odgovorov za dano vprašanje več kot eden, ga sestavimo v JSON array
-            for(ii=0; ii<stOdgVpr[k]; ii++) { // ponovimo branje JSON array-a odgovorov, kolikor je odgovorov v array-u - 'stOdgVpr[k]'
-              tempOdgovorK = tempOdgovor[ii]; // vsak odgovor za dano vprašanje izluščimo iz JSON array-a
-              // console.log("tempOdgovorK: "+JSON.stringify(tempOdgovorK));
-              if (tempOdgovorK.Odg == "Se strinjam") {
-                tempSeStrinjam++;
-              } else if (tempOdgovorK.Odg == "Vzdržan") {
-                tempVzdrzan++;
-              } else if (tempOdgovorK.Odg == "Se ne strinjam") {
-                tempSeNeStrinjam++;
-              }
-            }
-          }
-          console.log("Stat odg: "+reply);
-          // console.log("reply Odg: "+tempOdgovor.Odg);
-          console.log("Se strinjam: "+tempSeStrinjam+" Vzdržan: "+tempVzdrzan+" Se ne strinjam: "+tempSeNeStrinjam);
-          // console.log("stOdgVpr: "+stOdgVpr[k]);
-          k++;
-        }
-      });
-      // console.log({"VprID":tempVprasanje.VprID,"vprasanje":tempVprasanje.vprasanje,"seStrinjam":tempSeStrinjam,"vzdrzan":tempVzdrzan,"seNeStrinjam":tempSeNeStrinjam});
-    }
-
-  });
   // FUNKCIJE =================================================================
   // branje števila vprašanj
   function branjeStVpr() {
@@ -242,32 +171,22 @@ io.sockets.on("connection", function(socket) {
         osveziPodatke = false;
       }
       lastVprID();
-      stOdgPosameznoVpr();
     });
   }
   // izpis števila prejetih odgovorov na posamezno vprašanje
   function stOdgPosameznoVpr() {
-    var j=1,
-        k=0;
+    var j=1;
     for (i=1; i<=stVpr; i++) {
       clientRedis.zcount("odgovori", i, i, function(err, reply) {
-        stOdgVpr[k] = reply;
-        // console.log("Število glasov za vprašanje "+j+": "+reply);
-        k++;
+        console.log("Število glasov za vprašanje "+j+": "+reply);
         j++;
       });
     }
-    // console.log("Št odg na vpr array: "+stOdgVpr);
   }
   // branje rezultatov iz Redis in pošiljanje na webpage za izpis v tabeli
   function branjeRezultatov() {
     clientRedis.zrange("odgovori", 0, -1, function(err, reply) { // pridobivanje seznama odgovorov
-      rezultati = JSON.parse('['+reply+']');
-      if (v01===1) {
-        socket.emit("socketPosiljanjeRezultatov", rezultati);
-        v01=0;
-        // console.log("Rezultati: "+JSON.stringify(rezultati));
-      }
+      socket.emit("socketPosiljanjeRezultatov", '['+reply+']');
     });
   }
   // branje VprID zadnjega vprašanja v DB
@@ -278,17 +197,6 @@ io.sockets.on("connection", function(socket) {
         maxVprID = tempReply.VprID;
       });
     }
-  }
-  // branje vprašanj iz DB
-  function branjeVprasanj() {
-    clientRedis.zrange("vprasanja", 0, -1, function(err, reply) { // pridobivanje seznama vprašanj
-      vprasanja = JSON.parse('['+reply+']');
-      if (v00===1) { // izvedba 'socketIzpisVprasanj' in pošiljanje seznama vprašanj na webpage
-        socket.emit("socketPosiljanjeVprasanj", vprasanja);
-        v00=0;
-        // console.log("Vprašanja: "+JSON.stringify(vprasanja));
-      }
-    });
   }
   // FUNKCIJE =================================================================
 });

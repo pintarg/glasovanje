@@ -1,0 +1,58 @@
+==============================
+Verzija: 2016.12.05a
+Narejeno: Dodajanje podstrani za prikaz statistike rezultatov [webpage_2016.12.05b.html; app_2016.12.05b.js; server_2016.12.05a.js; statistics_2016.12.05a.html]
+To-Do:
+==============================
+Verzija: 2016.12.05b
+Narejeno: Sprememba parsanja odgovorov v JSON na strani server-ja in ne več na strani webpage-a. Urejanje kode za izpis števila posameznih glasov glede na odgovor. [server_2016.12.05c.js; webpage_2016.12.05c.html; statistics_2016.12.05b.html]
+Sprememba imena gumba v izpisStatistike
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================

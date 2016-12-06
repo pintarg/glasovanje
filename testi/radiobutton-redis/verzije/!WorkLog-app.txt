@@ -92,12 +92,13 @@ Verzija: 2016.11.29a
 Narejeno: Dodajanje nove spremenljivke 'zapStVpr' in prenos funkcionalnosti 'VprID' na novo spremeljivko, ko je potreben prikaz zaporedne številke vprašanja. Narejeno zaradi možnosti brisanja vprašanj. [server_2016.11.29b.js; app_2019.11.29a.js; webpage_2016.11.29a.html; question_2019.11.29a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.05a
+Narejeno: Urejanje osveževanje tabele odgovorov, po brisanju vprašanja in povezanih odgovorov. [app_2016.12.05a.js].
+V 'app.controller('CtrlRmRowVprasanje'' dodana vrstica 'socket.emit("socketIzpisiRezultate");'.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.05b
+Narejeno: Dodajanje podstrani za prikaz statistike rezultatov [webpage_2016.12.05b.html; app_2016.12.05b.js; server_2016.12.05b.js; statistics_2016.12.05a.html]
 To-Do:
 ==============================
 Verzija:

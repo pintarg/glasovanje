@@ -255,16 +255,16 @@ Narejeno: Urejeno osveževanje številke in števila vprašanj ob brisanju vpra�
 V 'socket.on("socketVprPrebran"' sprememba 'zagonPrograma' v 'osveziPodatke'.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.05a
+Narejeno: Urejeno brisanje vrednosti vnosnega polja po dodajanju vprašanja in popravljena povratna informacije pri prejemu novega vprašanja. [webpage_2016.12.05a.html; add-question_2016.12.05a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.05b
+Narejeno: Dodajanje podstrani za prikaz statistike rezultatov [webpage_2016.12.05b.html; app_2016.12.05b.js; server_2016.12.05a.js; statistics_2016.12.05a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.05c
+Narejeno: Sprememba parsanja odgovorov v JSON na strani server-ja in ne več na strani webpage-a. Urejanje kode za izpis števila posameznih glasov glede na odgovor. [server_2016.12.05c.js; webpage_2016.12.05c.html; statistics_2016.12.05b.html]
 To-Do:
 ==============================
 Verzija:

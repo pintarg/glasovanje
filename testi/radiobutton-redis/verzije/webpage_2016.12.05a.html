@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2016.12.05d -->
+<!-- Verzija: 2016.12.05a -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -40,16 +40,8 @@
             <li><a tabindex="-1" href="#/all-questions">Izpis vseh vprašanj</a></li>
           </ul>
         </li>
-        <li class="dropdown">
-          <a href="#/answers" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="false">
-            Odgovori/rezultati
-            <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a tabindex="-1" href="#/statistics" onClick="izpisStatistike()">Statistika rezultatov</a></li>
-          </ul>
-        </li>
-        <!-- <li><a href="#/answers">Odgovori/rezultati</a></li> -->
+        <!-- <li><a href="#/add-question">Dodajanje novega vprašanja</a></li> -->
+        <li><a href="#/answers">Odgovori/rezultati</a></li>
       </ul>
     </div>
     </nav>
@@ -141,7 +133,7 @@
     };
     // izpis rezultatov glasovanja
     socket.on("socketPosiljanjeRezultatov", function(msg) {
-      rezultati = msg;
+      rezultati = JSON.parse(msg);
       document.getElementById("btnRewrite").click();
     });
     // izpis vseh vprašanj v tabelo
@@ -150,12 +142,9 @@
     };
     // prejem vseh vprašanj za prikaz
     socket.on("socketPosiljanjeVprasanj", function(msg) {
-      vsaVpr = msg;
+      vsaVpr = JSON.parse(msg);
       document.getElementById("btnRewriteVprasanja").click();
     });
-    function izpisStatistike() {
-      socket.emit("socketIzpisStatistike");
-    };
   </script>
 </body>
 </html>

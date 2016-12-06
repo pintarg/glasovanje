@@ -17,8 +17,8 @@ Verzija: 2016.11.25a
 Narejeno: Uvoz oblikovanja.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.05a
+Narejeno: Urejeno brisanje vrednosti vnosnega polja po dodajanju vprašanja in popravljena povratna informacije pri prejemu novega vprašanja. [webpage_2016.12.05a.html; add-question_2016.12.05a.html]
 To-Do:
 ==============================
 Verzija:

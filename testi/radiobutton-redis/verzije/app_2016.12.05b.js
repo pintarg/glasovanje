@@ -1,4 +1,4 @@
-// Verzija: 2016.12.05c
+// Verzija: 2016.12.05b
 // ====================================================================================================
 var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap', 'smart-table']);
 var removeRowPodatek, removeRowVprasanje;
@@ -170,38 +170,7 @@ app.controller('CtrlRmRowVprasanje', function ($uibModalInstance, $scope) {
     $uibModalInstance.close();
   };
 });
-app.controller('StatisticsController', function($scope, $filter, $route, $uibModal) {
-  $scope.vprasanja = vsaVpr;
-  $scope.rewriteStatistika = function() {
-    return $scope.vprasanja = vsaVpr,
-    $route.reload();
-  };
-  // $scope.removeRowVprasanja = function removeRow(vprasanje) {
-  //   removeRowVprasanje = vprasanje;
-  //   var modalInstance = $uibModal.open({
-  //     templateUrl: '/pages/popup/delete-warning.html',
-  //     controller: 'CtrlRmRowVprasanje',
-  //     controllerAs: '$ctrl',
-  //     windowClass: 'app-modal-window'
-  //   });
-  // };
-  $scope.predicates = ['VprID', 'vprasanje'];
-  $scope.selectedPredicate = $scope.predicates[0];
-});
-app.controller('CtrlRmRowVprasanje', function ($uibModalInstance, $scope) {
-  var $ctrl = this;
-  $scope.vprasanja = vsaVpr;
-  $ctrl.ok = function() {
-    var index = $scope.vprasanja.indexOf(removeRowVprasanje);
-    if (index !== -1) {
-      $scope.vprasanja.splice(index, 1);
-    }
-    socket.emit("socketBrisanjeVrsticeVpr", removeRowVprasanje);
-    socket.emit("socketIzpisiRezultate");
-    $uibModalInstance.close();
-  };
-  $ctrl.cancel = function() {
-    $uibModalInstance.close();
-  };
+app.controller('StatisticsController', function($scope) {
+
 });
 // POSAMEZNI CONTROLLER-ji
