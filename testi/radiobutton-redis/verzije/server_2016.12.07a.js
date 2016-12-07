@@ -1,4 +1,4 @@
-// Verzija: 2016.12.07d
+// Verzija: 2016.12.07a
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -167,6 +167,13 @@ io.sockets.on("connection", function(socket) {
   });
   // branje vprašanj in povezanih odgovorov ter pošiljanje VprID, vprašanja, št odg 'se strinja', št odg 'vzdržan' in št odg 'se ne strinja' na webpage
   socket.on("socketIzpisStatistike", function() {
+    // branjeVprasanj();
+    // branjeRezultatov();
+    // // socket.emit("socketPosiljanjeStatistike", {"VprID":vprasanja.VprID,"vpr":vprasanja.vprasanje}); // NI DOKONČANO
+    // setTimeout(function() {
+    //   var cunga = {"VprID":vprasanja.VprID,"vpr":vprasanja.vprasanje};
+    //   console.log("izpis stat: "+JSON.stringify(cunga));
+    // },100);
     console.log("Št odg na vpr array: "+stOdgVpr);
     var j=1,
         k=0,
@@ -176,10 +183,8 @@ io.sockets.on("connection", function(socket) {
         tempOdgovor,
         tempSeStrinjam,
         tempVzdrzan,
-        tempSeNeStrinjam,
-        odgovor=[]; // array vseh odgovorv, ki se posredujejo na webpage za izpis
+        tempSeNeStrinjam;
     for(i=0; i<maxVprID; i++) {
-      // console.log("i: "+i+"; maxVprID: "+maxVprID);
       clientRedis.zrangebyscore("vprasanja", '('+i, (i+1), function(err, reply) {
         // console.log("izpis stat "+j+": "+reply);
         // j++;
@@ -197,34 +202,40 @@ io.sockets.on("connection", function(socket) {
           tempSeStrinjam=0;
           tempVzdrzan=0;
           tempSeNeStrinjam=0;
-          tempOdgovor = JSON.parse('['+reply+']'); // ker je odgovorov za dano vprašanje več kot eden, ga sestavimo v JSON array
-          for(ii=0; ii<stOdgVpr[k]; ii++) { // ponovimo branje JSON array-a odgovorov, kolikor je odgovorov v array-u - 'stOdgVpr[k]'
-            // console.log("tempOdgovorK: "+JSON.stringify(tempOdgovorK));
-            if (tempOdgovor[ii].Odg == "Se strinjam") {
-              tempSeStrinjam++;
-            } else if (tempOdgovor[ii].Odg == "Vzdržan") {
-              tempVzdrzan++;
-            } else if (tempOdgovor[ii].Odg == "Se ne strinjam") {
-              tempSeNeStrinjam++;
+          // if (stOdgVpr[k]==1) {
+          //   tempOdgovor = JSON.parse(reply);
+          //   if (tempOdgovor.Odg == "Se strinjam") {
+          //     tempSeStrinjam++;
+          //   } else if (tempOdgovor.Odg == "Vzdržan") {
+          //     tempVzdrzan++;
+          //   } else if (tempOdgovor.Odg == "Se ne strinjam") {
+          //     tempSeNeStrinjam++;
+          //   }
+          // } else if (stOdgVpr[k]>1) {
+            tempOdgovor = JSON.parse('['+reply+']'); // ker je odgovorov za dano vprašanje več kot eden, ga sestavimo v JSON array
+            for(ii=0; ii<stOdgVpr[k]; ii++) { // ponovimo branje JSON array-a odgovorov, kolikor je odgovorov v array-u - 'stOdgVpr[k]'
+              // tempOdgovorK = tempOdgovor[ii]; // vsak odgovor za dano vprašanje izluščimo iz JSON array-a
+              // console.log("tempOdgovorK: "+JSON.stringify(tempOdgovorK));
+              if (tempOdgovor[ii].Odg == "Se strinjam") {
+                tempSeStrinjam++;
+              } else if (tempOdgovor[ii].Odg == "Vzdržan") {
+                tempVzdrzan++;
+              } else if (tempOdgovor[ii].Odg == "Se ne strinjam") {
+                tempSeNeStrinjam++;
+              }
             }
-          }
+          // }
           // console.log("Stat odg: "+reply);
           // console.log("reply Odg: "+tempOdgovor.Odg);
           // console.log("===Rezultati: Se strinjam: "+tempSeStrinjam+"; Vzdržan: "+tempVzdrzan+"; Se ne strinjam: "+tempSeNeStrinjam);
           // console.log("stOdgVpr: "+stOdgVpr[k]);
-          // console.log({"VprID":tempVprID,"vprasanje":tempVpr,"seStrinjam":tempSeStrinjam,"vzdrzan":tempVzdrzan,"seNeStrinjam":tempSeNeStrinjam});
-          // odgovor[k]=tempVprID;
-          odgovor[k]={"VprID":tempVprID,"vprasanje":tempVpr,"seStrinjam":tempSeStrinjam,"vzdrzan":tempVzdrzan,"seNeStrinjam":tempSeNeStrinjam};
-          // odgovor222=[{VprID:'2',vprasanje:'qq',seStrinjam:1,vzdrzan:2,seNeStrinjam:0},{VprID:'3',vprasanje:'qqq',seStrinjam:0,vzdrzan:0,seNeStrinjam:3},{VprID:'5',vprasanje:'ww',seStrinjam:0,vzdrzan:2,seNeStrinjam:0},{VprID:'7',vprasanje:'e',seStrinjam:1,vzdrzan:0,seNeStrinjam:2},{VprID:'8',vprasanje:'ee',seStrinjam:2,vzdrzan:0,seNeStrinjam:0},{VprID:'9',vprasanje:'eee',seStrinjam:0,vzdrzan:2,seNeStrinjam:0},{VprID:'11',vprasanje:'rr',seStrinjam:0,vzdrzan:0,seNeStrinjam:1},{VprID:'20',vprasanje:'5',seStrinjam:1,vzdrzan:0,seNeStrinjam:0}];
-          // console.log("Vmesni odgovor: "+odgovor);
-          if ((k+1) == stOdgVpr.length) {
-            // console.log("Končni Odgovori:\n"+JSON.stringify(odgovor));
-            socket.emit("socketPosiljanjeStatistike", odgovor);
-          }
           k++;
+          console.log({"VprID":tempVprID,"vprasanje":tempVpr,"seStrinjam":tempSeStrinjam,"vzdrzan":tempVzdrzan,"seNeStrinjam":tempSeNeStrinjam});
         }
       });
+      // console.log({"VprID":tempVprasanje.VprID,"vprasanje":tempVprasanje.vprasanje,"seStrinjam":tempSeStrinjam,"vzdrzan":tempVzdrzan,"seNeStrinjam":tempSeNeStrinjam});
     }
+
   });
   // FUNKCIJE =================================================================
   // branje števila vprašanj

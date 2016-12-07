@@ -101,8 +101,9 @@ Verzija: 2016.12.05b
 Narejeno: Dodajanje podstrani za prikaz statistike rezultatov [webpage_2016.12.05b.html; app_2016.12.05b.js; server_2016.12.05b.js; statistics_2016.12.05a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.07a
+Narejeno: Urejanje prikaza tabele statistike rezultatov. [server_2016.12.07c.js; webpage_2016.12.07a.html; statistics_2016.12.07a.html; app_2016.12.07a.js]
+Urejanje kontrolerja 'StatisticsController'
 To-Do:
 ==============================
 Verzija:

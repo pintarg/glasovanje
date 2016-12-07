@@ -8,8 +8,9 @@ Narejeno: Sprememba parsanja odgovorov v JSON na strani server-ja in ne več na 
 Sprememba imena gumba v izpisStatistike
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.07a
+Narejeno: Urejanje prikaza tabele statistike rezultatov. [server_2016.12.07c.js; webpage_2016.12.07a.html; statistics_2016.12.07a.html; app_2016.12.07a.js]
+Urejanje in ustrezno poimenovanje spremenljivk in posameznih elementov v tabeli
 To-Do:
 ==============================
 Verzija:
