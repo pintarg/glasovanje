@@ -272,8 +272,8 @@ Narejeno: Urejanje prikaza tabele statistike rezultatov. [server_2016.12.07c.js;
 Dodajanje 'socketPosiljanjeStatistike'
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.07b
+Narejeno: Urejanje kode za izpis podatkov v tabelo ob kliku na zavihek - ni več potrebno klikanje na gumb, za prikaz podatkov.
 To-Do:
 ==============================
 Verzija:

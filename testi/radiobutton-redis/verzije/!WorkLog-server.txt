@@ -216,12 +216,14 @@ Narejeno: Urejanje prikaza tabele statistike rezultatov. [server_2016.12.07c.js;
 Urejanje 'socketIzpisStatistike'
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.07d
+Narejeno: Računanje in pošiljanje % posameznih odgovorov na vprašanje.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.07e
+Narejeno: Urejanje kode, da se osveževanje rezultatov ob dodajanju novih odgovorov, brisanju odgovorov in povezanem brisanju vprašanj in odgovorov izvede pravilno.
+V 'socketIzpisStatistike' dodan klic funkcije 'branjeStVpr', ki kliče povezane funkcije, za pridobivanje potrebnih podatkov za izvedbo pridobivanja rezultatov in pošiljanje na webpage.
+Koda, ki se je nahajala v 'socketIzpisStatistike', je seljena v funkcijo 'branjeVprOdgSkupaj', ki jo kliče funkcija 'stOdgPosameznoVpr', če je pogoj izpolnjen.
 To-Do:
 ==============================
 Verzija:

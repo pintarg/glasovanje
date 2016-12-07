@@ -188,20 +188,20 @@ app.controller('StatisticsController', function($scope, $filter, $route, $uibMod
   $scope.predicates = ['VprID', 'vprasanje'];
   $scope.selectedPredicate = $scope.predicates[0];
 });
-app.controller('CtrlRmRowVprasanje', function ($uibModalInstance, $scope) {
-  var $ctrl = this;
-  $scope.vprasanja = vsaVpr;
-  $ctrl.ok = function() {
-    var index = $scope.vprasanja.indexOf(removeRowVprasanje);
-    if (index !== -1) {
-      $scope.vprasanja.splice(index, 1);
-    }
-    socket.emit("socketBrisanjeVrsticeVpr", removeRowVprasanje);
-    socket.emit("socketIzpisiRezultate");
-    $uibModalInstance.close();
-  };
-  $ctrl.cancel = function() {
-    $uibModalInstance.close();
-  };
-});
+// app.controller('CtrlRmRowVprasanje', function ($uibModalInstance, $scope) {
+//   var $ctrl = this;
+//   $scope.vprasanja = vsaVpr;
+//   $ctrl.ok = function() {
+//     var index = $scope.vprasanja.indexOf(removeRowVprasanje);
+//     if (index !== -1) {
+//       $scope.vprasanja.splice(index, 1);
+//     }
+//     socket.emit("socketBrisanjeVrsticeVpr", removeRowVprasanje);
+//     socket.emit("socketIzpisiRezultate");
+//     $uibModalInstance.close();
+//   };
+//   $ctrl.cancel = function() {
+//     $uibModalInstance.close();
+//   };
+// });
 // POSAMEZNI CONTROLLER-ji
