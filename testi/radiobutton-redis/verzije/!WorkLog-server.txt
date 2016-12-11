@@ -226,8 +226,9 @@ V 'socketIzpisStatistike' dodan klic funkcije 'branjeStVpr', ki kliče povezane 
 Koda, ki se je nahajala v 'socketIzpisStatistike', je seljena v funkcijo 'branjeVprOdgSkupaj', ki jo kliče funkcija 'stOdgPosameznoVpr', če je pogoj izpolnjen.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.11a
+Narejeno: Urejeno delovanje osveževanje tabele statistika, po brisanju vprašanja in povezanih odgovorov ali po brisanju vseh odgovorov.
+Na konec funkcije 'branjeVprOdgSkupaj' dodana koda za prazen array: 'stOdgVpr = [];'
 To-Do:
 ==============================
 Verzija:
