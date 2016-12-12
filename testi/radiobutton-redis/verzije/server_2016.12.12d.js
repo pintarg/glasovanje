@@ -1,4 +1,4 @@
-// Verzija: 2016.12.12f
+// Verzija: 2016.12.12d
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -17,6 +17,7 @@ var VprID, // ID vprašanja v bazi "vprasanja"
     stVpr = 0, // število vprašanj v bazi
     zapStVpr = 0; // zaporedna številka vprašanja pri branju iz baze
 var osveziPodatke = true; // spremenjivka, ki se uporabi za preverjanje ob vnovičnem zagonu programa
+var a, b; // test
 // === EXPRESS.GET initial files ===
 express.get('/', function(req, res) {
   res.sendFile(__dirname + '/webpage.html');
@@ -102,16 +103,31 @@ io.sockets.on("connection", function(socket) {
   branjeStVpr(); // branje števila vprašanj v bazi ob zagonu serverja
   // branje vprašanja iz Redis + pošiljanje ID vprašanja (zaporedna št vpr)
   socket.on("socketBeriVpr", function(msg) {
+    // console.log("socketBeriVpr > msg: "+msg);
+    // console.log("socketBeriVpr > zapStVpr na začetku: "+zapStVpr);
     if (msg===1) {
       zapStVpr++;
+      // console.log("socketBeriVpr > msg: NASLEDNJE VPRAŠANJE");
     } else if (msg===2) {
       zapStVpr--;
+      // console.log("socketBeriVpr > msg: PREJŠNJE VPRAŠANJE");
     }
+    // console.log("socketBeriVpr > tempZapStVpr: "+tempZapStVpr);
     branjeStVpr();
     clientRedis.zrange("vprasanja", zapStVpr-1, zapStVpr-1, function(err, reply) {
       tempReply = JSON.parse(reply);
       VprID = tempReply.VprID;
+      // console.log("Vprašanje št "+zapStVpr+": "+reply);
+      // console.log(">>> VprID: "+tempReply.VprID+"; vprasanje: "+tempReply.vprasanje);
       socket.emit("socketVprPrebran", {"vpr":tempReply.vprasanje, "zapStVpr":zapStVpr, "stVpr":stVpr});
+      // if (msg===1) {
+      //   zapStVpr++;
+      // } else if (msg===2) {
+      //   zapStVpr--;
+      // }
+      // console.log("socketBeriVpr > zapStVpr na koncu: "+zapStVpr);
+      // console.log("==================================");
+      // zapStVpr++;
     });
   });
   // zapisovanje novega vprašanja v Redis
@@ -171,6 +187,7 @@ io.sockets.on("connection", function(socket) {
   });
   // branje vprašanj in povezanih odgovorov ter pošiljanje VprID, vprašanja, št odg 'se strinja', št odg 'vzdržan' in št odg 'se ne strinja' na webpage
   socket.on("socketIzpisStatistike", function() {
+    // a = "socketIzpisStatistike";
     v02=1;
     branjeStVpr();
   });
@@ -184,6 +201,8 @@ io.sockets.on("connection", function(socket) {
         socket.emit("socketVprPrebran", {"vpr":"osveziPodatke", "zapStVpr":(zapStVpr), "stVpr":stVpr});
         osveziPodatke = false;
       }
+      // b = "branjeStVpr";
+      // console.log("Prožen ukaz: '"+a+"'. Sedaj se nahajam: ':"+b+"'.");
       lastVprID(); // ko preberemo število vprašanj v DB, kličemo funkcijo 'lastVprID()', ki prebere VprID zadnjega vprašanja - 'maxVprID'
     });
   }
@@ -195,6 +214,8 @@ io.sockets.on("connection", function(socket) {
         maxVprID = tempReply.VprID;
         stOdgPosameznoVpr(); // ko preberemo VprID zadnjega vprašanja v DB, kličemo funkcijo 'stOdgPosameznoVpr', ki sestavi array, ki vsebuje število odgovorov za posamezno vprašanje
       });
+      // b="lastVprID";
+      // console.log("Prožen ukaz: '"+a+"'. Sedaj se nahajam: ':"+b+"'.");
     }
   }
   // izpis števila prejetih odgovorov na posamezno vprašanje - beležimo samo vprašanja, ki imajo odgovore
@@ -215,6 +236,7 @@ io.sockets.on("connection", function(socket) {
         // console.log("stOdgPosameznoVpr, i: "+i+"; maxVprID: "+maxVprID);
         if (v02===1) {
           branjeVprOdgSkupaj();
+          // branjeVprOdgSkupaj();
           v02=0;
           // console.log("stOdgPosameznoVpr() > klic branjeVprOdgSkupaj(), Array: "+stOdgVpr+" Array lenght: "+stOdgVpr.length);
         }
@@ -222,6 +244,8 @@ io.sockets.on("connection", function(socket) {
       });
       // console.log("=====stOdgPosameznoVpr, i: "+i+"; maxVprID: "+maxVprID);
     }
+    // b="stOdgPosameznoVpr";
+    // console.log("Prožen ukaz: '"+a+"'. Sedaj se nahajam: ':"+b+"'.");
   }
   // branje vprašanj in odgovorov ter sestavljanje v enoten string za izpis na webpage (podstran 'statistika')
   function branjeVprOdgSkupaj() {
@@ -229,6 +253,7 @@ io.sockets.on("connection", function(socket) {
     var j=1, k=0, tempVprID, tempVpr, tempVprasanje, tempOdgovor, tempSeStrinjam,
         tempVzdrzan, tempSeNeStrinjam,
         odgovor=[]; // array vseh odgovorv, ki se posredujejo na webpage za izpis
+    // stOdgVpr = [];
     for(i=0; i<maxVprID; i++) {
       // console.log("i: "+i+"; maxVprID: "+maxVprID);
       clientRedis.zrangebyscore("vprasanja", '('+i, (i+1), function(err, reply) {
@@ -239,6 +264,8 @@ io.sockets.on("connection", function(socket) {
           tempVprasanje = JSON.parse(reply);
           tempVprID = tempVprasanje.VprID;
           tempVpr = tempVprasanje.vprasanje;
+          // console.log("tempVprID: "+tempVprID+"; tempVpr: "+tempVpr);
+          // console.log("Neparsan VprID: "+reply.VprID+" Parsan VprID: "+tempVprasanje.VprID);
         }
       });
       clientRedis.zrangebyscore("odgovori", '('+i, (i+1), function(err, reply) {
@@ -270,6 +297,8 @@ io.sockets.on("connection", function(socket) {
         }
       });
     }
+    // b="branjeVprOdgSkupaj";
+    // console.log("Prožen ukaz: '"+a+"'. Sedaj se nahajam: ':"+b+"'.");
   }
   // branje rezultatov iz Redis in pošiljanje na webpage za izpis v tabeli
   function branjeRezultatov() {
@@ -282,6 +311,7 @@ io.sockets.on("connection", function(socket) {
       }
     });
   }
+
   // branje vprašanj iz DB
   function branjeVprasanj() {
     clientRedis.zrange("vprasanja", 0, -1, function(err, reply) { // pridobivanje seznama vprašanj
@@ -293,5 +323,6 @@ io.sockets.on("connection", function(socket) {
       }
     });
   }
+
   // FUNKCIJE =================================================================
 });

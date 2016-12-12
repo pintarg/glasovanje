@@ -106,12 +106,13 @@ Narejeno: Urejanje prikaza tabele statistike rezultatov. [server_2016.12.07c.js;
 Urejanje kontrolerja 'StatisticsController'
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.12a
+Narejeno: Odpravljanje napake, ki se pojavi pri brisanju trenutno izbranega vprašanja. [app_2016.12.12a.js server_2016.12.12d]
+V 'all-questionsController'>'removeRowVprasanja'>'CtrlRmRowVprasanje' dodan 'socket.emit("socketBeriVpr", 2);'
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.12b
+Narejeno: Brisanje odvečne komentirane kode
 To-Do:
 ==============================
 Verzija:

@@ -244,12 +244,13 @@ Narejeno: Dodajanje gumba za prejšnje vprašanje in urejanje kode za pravilen i
 Sprememba 'socketBeriVpr', začetne vrednosti zapStVpr v 0 in posledično spreminjanje 'zapStVpr-X' v X+1, kjer se uporablja.
 To-Do: Odstranjevanje odvečne komentirane kode.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.12d
+Narejeno: Odpravljanje napake, ki se pojavi pri brisanju trenutno izbranega vprašanja. [app_2016.12.12a.js server_2016.12.12d]
+Spremenjena koda v 'branjeStVpr()'-brisanje else if-a v 'osveziPodatke'
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.12e
+Narejeno: Brisanje odvečne komentirane kode
 To-Do:
 ==============================
 Verzija:

@@ -1,4 +1,4 @@
-// Verzija: 2016.12.12c
+// Verzija: 2016.12.12a
 // ====================================================================================================
 var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap', 'smart-table']);
 var removeRowPodatek, removeRowVprasanje;
@@ -177,6 +177,15 @@ app.controller('StatisticsController', function($scope, $filter, $route, $uibMod
     return $scope.odgovori = statOdg,
     $route.reload();
   };
+  // $scope.removeRowVprasanja = function removeRow(vprasanje) {
+  //   removeRowVprasanje = vprasanje;
+  //   var modalInstance = $uibModal.open({
+  //     templateUrl: '/pages/popup/delete-warning.html',
+  //     controller: 'CtrlRmRowVprasanje',
+  //     controllerAs: '$ctrl',
+  //     windowClass: 'app-modal-window'
+  //   });
+  // };
   $scope.predicates = ['VprID', 'vprasanje'];
   $scope.selectedPredicate = $scope.predicates[0];
 });
