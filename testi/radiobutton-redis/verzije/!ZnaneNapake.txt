@@ -1,3 +1,2 @@
-Znane napake 2016.12.07:
-- Brisanje vprašanja in povezanih odg ne osveži tabele statistika - povezano z osveževanjem array-a.
-- Doseženo zadnje vprašanje in brisanje enega od vprašanj - številka in število vprašanj se ne osveži.
+Znane napake 2016.12.12:
+

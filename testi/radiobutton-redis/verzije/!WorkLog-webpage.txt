@@ -276,8 +276,9 @@ Verzija: 2016.12.07b
 Narejeno: Urejanje kode za izpis podatkov v tabelo ob kliku na zavihek - ni več potrebno klikanje na gumb, za prikaz podatkov.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.12a
+Narejeno: Dodajanje gumba za prejšnje vprašanje in urejanje kode za pravilen izpis 'zapStVpr' in vprašanja. [question_2016.12.12a.html; webpage_2016.12.12a.html; server_2016.12.12c]
+Dodajanje funkcije 'prejsnjeVpr()' in popravljanje funkcije 'beriVpr()'.
 To-Do:
 ==============================
 Verzija:

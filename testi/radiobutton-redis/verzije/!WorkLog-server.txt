@@ -231,17 +231,18 @@ Narejeno: Urejeno delovanje osveževanje tabele statistika, po brisanju vprašan
 Na konec funkcije 'branjeVprOdgSkupaj' dodana koda za prazen array: 'stOdgVpr = [];'
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.12a
+Narejeno: 'stOdgVpr = [];' prestavljen višje v kodo, da se brisanje array-a izvede v pravilnem trenutku, drugače je vrednos VprID NaN. Sedaj deluje.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.12b
+Narejeno: Popravljen izpis 'zapStVpr' ob brisanju vprašanja iz DB
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.12.12c
+Narejeno: Dodajanje gumba za prejšnje vprašanje in urejanje kode za pravilen izpis 'zapStVpr' in vprašanja. [question_2016.12.12a.html; webpage_2016.12.12a.html; server_2016.12.12c]
+Sprememba 'socketBeriVpr', začetne vrednosti zapStVpr v 0 in posledično spreminjanje 'zapStVpr-X' v X+1, kjer se uporablja.
+To-Do: Odstranjevanje odvečne komentirane kode.
 ==============================
 Verzija:
 Narejeno:
