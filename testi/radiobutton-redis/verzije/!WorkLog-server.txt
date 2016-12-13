@@ -272,8 +272,8 @@ Verzija: 2016.12.13d
 Narejeno: Brisanje odvečne komentirane kode. [webpage_2016.12.13d.html; server_2016.12.13d.js]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.13e
+Narejeno: Popravljanje kode za osveževanje (F5) strani. [webpage_2016.12.13e.html; server_2016.12.13e.js]
 To-Do:
 ==============================
 Verzija:
