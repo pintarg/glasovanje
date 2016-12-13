@@ -1,4 +1,4 @@
-// Verzija: 2016.12.13e
+// Verzija: 2016.12.13c
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -15,7 +15,9 @@ var VprID, // ID vprašanja v bazi "vprasanja"
     v02=0, // varovalka, ki se uporablja v funkciji 'stOdgPosameznoVpr'
     stOdgVpr = [], // število odgovorov na posamezno vprašanje - array
     stVpr = 0, // število vprašanj v bazi
-    zapStVpr = 0; // zaporedna številka vprašanja pri branju iz baze
+    zapStVpr = 0, // zaporedna številka vprašanja pri branju iz baze
+    cunga, // msg, ki se ga prejme ob klicu 'socketBeriVpr'
+    msg666;
 var osveziPodatke = true; // spremenjivka, ki se uporabi za preverjanje ob vnovičnem zagonu programa
 var socketF5 = true; // spremenljivka, ki se uporablja pri zagonu programa in osveževanju (F5) webpage-a
 // === EXPRESS.GET initial files ===
@@ -103,6 +105,7 @@ http.listen(8080);
 console.log("Zagon sistema");
 
 io.sockets.on("connection", function(socket) {
+  // branjeStVpr(); // branje števila vprašanj v bazi ob zagonu serverja
   // klic ob zagonu programa in ob refresh-u (F5) webpage-a
   socket.on("socketF5", function() {
     if (socketF5===true) { // ob zagonu programa

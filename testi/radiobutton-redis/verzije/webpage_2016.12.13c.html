@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2016.12.13e -->
+<!-- Verzija: 2016.12.13c -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -80,6 +80,23 @@
 
     window.onload = function() {
       url=window.location.href;
+      // console.log("url: "+url);
+      // if (url.includes('home')) {
+      //   url="#/home";
+      //   // console.log("url.search = #/home");
+      // } else if (url.includes('all-questions')) {
+      //   url="#/all-questions";
+      //   // console.log("url.search = #/all-questions");
+      // } else if (url.includes('add-question')) {
+      //   url="#/add-question";
+      //   // console.log("url.search = #/add-question");
+      // } else if (url.includes('answers')) {
+      //   url="#/answers";
+      //   // console.log("url.search = #/answers");
+      // } else if (url.includes('statistics')) {
+      //   url="#/statistics";
+      //   // console.log("url.search = #/statistics");
+      // }
       socket.emit("socketF5");
     };
     socket.on("socketF5webpage", function() {
@@ -95,6 +112,13 @@
       } else if (url.includes('statistics')) {
         izpisStatistike();
       }
+
+      // window.location.href = url;
+      // console.log("url: "+url);
+      // izpisRezultatov();
+      // izpisVprasanj();
+      // izpisStatistike();
+      // document.getElementById("btnPrejemStVpr2").click();
     });
     // branje novega vprašanja iz webpage-a in pošiljanje v bazo
     function dodajVpr() {

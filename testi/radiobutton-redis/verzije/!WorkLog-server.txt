@@ -263,12 +263,13 @@ Narejeno: Dodajanje varovalke pred oddajo praznega novega vprašanja. [server_20
 Dodajanje 'express.get('/pages/popup/empty-question.html''
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.12.13c
+Narejeno: Popravljanje funkcije ob osveževanju (F5) webpage-a. [webpage_2016.12.13c.html; server_2016.12.13c.js]
+Urejanje 'socketF5'
+To-Do: Brisanje odvečne komentirane kode.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.13d
+Narejeno: Brisanje odvečne komentirane kode. [webpage_2016.12.13d.html; server_2016.12.13d.js]
 To-Do:
 ==============================
 Verzija:
