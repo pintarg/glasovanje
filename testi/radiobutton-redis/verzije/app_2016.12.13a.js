@@ -1,4 +1,4 @@
-// Verzija: 2016.12.13b
+// Verzija: 2016.12.13a
 // ====================================================================================================
 var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap', 'smart-table']);
 var removeRowPodatek, removeRowVprasanje;
@@ -126,7 +126,7 @@ app.controller('AnswersController', function($scope, $filter, $route, $uibModal)
       windowClass: 'app-modal-window' // Uporablja se v povezavi s CSS za določanje izgleda
     });
   };
-  $scope.predicates = ['ID vprašanja', 'Odgovor', 'Čas oddaje odgovora', 'Časovni žig', 'ID Socket povezave'];
+  $scope.predicates = ['VprID', 'Odg', 'ts', 'ts2', 'SocketID'];
   $scope.selectedPredicate = $scope.predicates[0];
 });
 app.controller('CtrlRmRow', function ($uibModalInstance, $scope) { // ta kontroler se uporablja skupaj z '$scope.removeRow', za prikaz popup-a ob brisanju odgovora
@@ -185,7 +185,7 @@ app.controller('StatisticsController', function($scope, $filter, $route, $uibMod
     return $scope.odgovori = statOdg,
     $route.reload();
   };
-  $scope.predicates = ['ID vprašanja', 'Vprašanje'];
+  $scope.predicates = ['VprID', 'vprasanje'];
   $scope.selectedPredicate = $scope.predicates[0];
 });
 // app.controller('CtrlRmRowVprasanje', function ($uibModalInstance, $scope) {

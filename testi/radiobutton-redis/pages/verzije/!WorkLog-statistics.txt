@@ -13,8 +13,8 @@ Narejeno: Urejanje prikaza tabele statistike rezultatov. [server_2016.12.07c.js;
 Urejanje in ustrezno poimenovanje spremenljivk in posameznih elementov v tabeli
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.13a
+Narejeno: Urejanje imen stolpcov in prikaz oken za iskanje po tabeli. [statistics_2016.12.13a.html; answers_2016.12.13a.html; all-questions_2016.12.13a.html]
 To-Do:
 ==============================
 Verzija:

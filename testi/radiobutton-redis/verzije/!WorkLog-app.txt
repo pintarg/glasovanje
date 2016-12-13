@@ -115,8 +115,9 @@ Verzija: 2016.12.12b
 Narejeno: Brisanje odvečne komentirane kode
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.13a
+Narejeno: Dodajanje varovalke pred oddajo praznega novega vprašanja. [server_2016.12.13b.js; webpage_2016.12.13b.html; empty-question.html; add-question_2016.12.13a.html; app_2016.12.13a.js]
+V Popup-e dodan 'PraznoVpr'
 To-Do:
 ==============================
 Verzija:

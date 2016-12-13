@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2016.12.13c -->
+<!-- Verzija: 2016.12.13a -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -64,7 +64,7 @@
   <script type="text/javascript">
 
     var odg = 'x';
-    var socket = io.connect("10.1.0.111:8080");
+    var socket = io.connect("192.168.1.123:8080");
     var VprID,
       stVpr,
       novoVpr,
@@ -87,12 +87,8 @@
     // branje novega vprašanja iz webpage-a in pošiljanje v bazo
     function dodajVpr() {
       novoVpr = document.getElementById("iptDodajVpr").value;
-      if (novoVpr != "") {
-        socket.emit("socketDodajVpr", novoVpr);
-        document.getElementById("iptDodajVpr").value = "";
-      } else {
-        document.getElementById("btnPraznoVpr").click();
-      }
+      socket.emit("socketDodajVpr", novoVpr);
+      document.getElementById("iptDodajVpr").value = "";
     };
     // pritisk na gumb "Beri vprašanje" proži ukaz za branje vprašanja in ID vprašanja iz baze
     function beriVpr() {

@@ -1,4 +1,4 @@
-// Verzija: 2016.12.13c
+// Verzija: 2016.12.13a
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -90,9 +90,6 @@ express.get('/pages/popup/no-question.html', function(req, res) {
 });
 express.get('/pages/popup/delete-warning.html', function(req, res) {
   res.sendFile(__dirname + '/pages/popup/delete-warning.html');
-});
-express.get('/pages/popup/empty-question.html', function(req, res) {
-  res.sendFile(__dirname + '/pages/popup/empty-question.html');
 });
 // === EXPRESS.GET pictures ===
 express.get('/pictures/ozadje.jpg', function(req, res) {

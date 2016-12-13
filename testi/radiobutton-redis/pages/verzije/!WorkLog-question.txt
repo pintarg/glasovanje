@@ -62,8 +62,8 @@ Narejeno: Dodajanje gumba za prejšnje vprašanje in urejanje kode za pravilen i
 Dodajanje gumba 'btnPrejsnjeVpr'.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.12b
+Narejeno: Komentiranje kode 'Povratna informacija2'
 To-Do:
 ==============================
 Verzija:

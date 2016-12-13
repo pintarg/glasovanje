@@ -281,12 +281,14 @@ Narejeno: Dodajanje gumba za prejšnje vprašanje in urejanje kode za pravilen i
 Dodajanje funkcije 'prejsnjeVpr()' in popravljanje funkcije 'beriVpr()'.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.13a
+Narejeno: Urejanje delovanja ob refresh-u strani (F5). [server_2016.12.13a.js; webpage_2016.12.13a.html]
+Dodajanje 'window.onload' funkcije
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.13b
+Narejeno: Dodajanje varovalke pred oddajo praznega novega vprašanja. [server_2016.12.13b.js; webpage_2016.12.13b.html; empty-question.html]
+Urejanje 'dodajVpr'-dodan if in klic 'document.getElementById("btnPraznoVpr").click();' ob praznem vprašanju.
 To-Do:
 ==============================
 Verzija:
