@@ -1,0 +1,151 @@
+==============================
+Verzija: 2016.11.12a
+Narejeno: Začetna datoteka za vzpostavitev Single page application.
+To-Do: /
+==============================
+Verzija: 2016.11.13a
+Narejeno: Urejanje 'AnswersController' controllerja. Premik 'myCtrl' iz webpage.html v app.js in preimenovanje v answers.html iz 'myCtrl' v 'AnswersController'.
+To-Do: /
+==============================
+Verzija: 2016.11.17a
+Narejeno: Delo na kontrolerju 'QuestionController' za omogočanje expression-ov na question_2016.11.17a.html.
+To-Do: Urejanje ostalih podstrani.
+==============================
+Verzija: 2016.11.17b
+Narejeno: Dodajanje potrjevanja o prejemu odgovora. [webpage_2016.11.17c.html; question_2016.11.17b.html; app_2016.11.17b.js]
+To-Do:
+==============================
+Verzija: 2016.11.17c
+Narejeno: Prikaz števila vprašanj v bazi. [server_2016.11.17a.js; webpage_2016.11.17d.html; add-question_2016.11.17a.html; app_2016.11.17c.js]
+To-Do:
+==============================
+Verzija: 2016.11.18a
+Narejeno: Urejanje prikaza števila vprašanj v bazi, pri dodajanju novega vprašanja in povratne informacije pri dodajanju novega vprašanja. [webpage_2016.11.18c.html; add-question_2016.11.18a.html; app_2016.11.18a.js]
+controller 'Add-questionController' > prejemStVpr
+To-Do:
+==============================
+Verzija: 2016.11.20a
+Narejeno: Prikaz pop-up-a, ko dosežemo zadnje vprašanje in želimo prebrati naslednje vprašanje [webpage_2016.11.20a.html; question_2016.11.20a.html; app_2016.11.20a.js; server_2016.11.20a.js].
+Sprememba v 'angular.module'; dodajanje 'app.controller ConfirmCtrl', 'app.config ngDialogProvider' in 'app.directive confirm1'
+To-Do:
+==============================
+Verzija: 2016.11.20b
+Narejeno: Delovanje controllerja za question.html združeno pod en controller - 'QuestionController'. [question_2016.11.20b.html; app_2016.11.20b.js].
+To-Do: Brisanje odvečne, komentirane, kode.
+==============================
+Verzija: 2016.11.22a
+Narejeno: Brisanje odvečne komentirane kode.
+To-Do:
+==============================
+Verzija: 2016.11.22b
+Narejeno: Urejanje kode za testiranje pop-up2. [question_2016.11.22b.html; app_2016.11.22b.js; server_2016.11.22a; webpage_2016.11.22a.html]
+Dodajanje 2 controller-jev: 'ModalDemoCtrl' in 'ModalInstanceCtrl'
+To-Do: Brisanje odvečne, komentirane kode. Urejanje imen novih controller-jev.
+==============================
+Verzija: 2016.11.22c
+Narejeno: Urejanje kode za popup2. [question_2016.11.22c.html; app_2016.11.22c.js; server_2016.11.22b; webpage_2016.11.22b.html]
+Urejanje controller-ja 'ModalPopup' in odstranjevanje kode, povezane s popup1.
+To-Do:
+==============================
+Verzija: 2016.11.22d
+Narejeno: Popup za oddajo podvojenega in praznega odgovora. [question_2016.11.22d.html; app_2016.11.22d.js; server_2016.11.22c; webpage_2016.11.22c.html]
+Dodajanje funkcij za popup-a
+To-Do:
+==============================
+Verzija: 2016.11.23a
+Narejeno: Urejanje izpisa prejema povratne informacije zapisa odgovora v bazo. [question_2016.11.23a.html; app_2016.11.23a.js; webpage_2016.11.23a.html]
+To-Do:
+==============================
+Verzija: 2016.11.23b
+Narejeno: Dodajanje popup-a za oddajanje odgovora na 0. vprašanje/ni vprašanja. [question_2016.11.23b.html; app_2016.11.23b.js; webpage_2016.11.23b.html; server_2016.11.23a.js]
+Dodajanje funkcije '$ctrl.NiVpr' za popup
+To-Do:
+==============================
+Verzija: 2016.11.23c
+Narejeno: Urejanje prikaza tabele odgovorov in dodajanje gumba za izbris posamezne vrstice. [app_2016.11.23c.js; answers_2016.11.23a.html]
+To-Do: Trenutno se izvede samo izbris vrstice na strani. Treba urediti komunikacijo s strežnikom, da izvede brisanje v Redis DB.
+==============================
+Verzija: 2016.11.23d
+Narejeno: Urejanje tabele za izpis rezultatov. Nastavljeno filtriranje/iskanje. [answers_2016.11.23b.html; app_2016.11.23d.js; webpage_2016.11.23e.html; server_2016.11.23b.js]
+To-Do:
+==============================
+Verzija: 2016.11.25a
+Narejeno: Brisanje vrstice odgovora v tabeli, proži ukaz brisanja izbrane vrstice v Redis DB. [app_2016.11.25a.js; webpage_2016.11.25a.html; server_2016.11.25b.js]
+Dodan socket.emit("socketBrisanjeVrsticeOdg", podatek);
+To-Do: Popup varovalka brisanja - da/ne vprašanje brisanja.
+==============================
+Verzija: 2016.11.25b
+Narejeno: Dodajanje popup-a za obvestilo o brisanju odgovora. [app_2016.11.25b.js; server_2016.11.25c.js]
+Urejanje $scope.removeRow in dodajanje app.controller('CtrlRmRow'
+To-Do: Trenutno se ob kliku na 'Da' proži brisanje izbranega odgovora, ob kliku na 'Ne', pa se ponovno prebere in izpiše tabelo. Urediti kodo, da se izognem nepotrebnemu branju iz DB.
+==============================
+Verzija: 2016.11.25c
+Narejeno: Urejeno delovanje popup-a za brisanje odgovora, da ni potrebno ponovno branje in nalaganje tabele.
+To-Do:
+==============================
+Verzija: 2016.11.28a
+Narejeno: Urejanje dodatne podstrani 'all-questions' za prikaz zabele vprašanj. [server_2016.11.28b.js; app_2016.11.28a.js; all-questions_2016.11.28a.html; webpage_2016.11.28a.html]
+Dodano: '.when('/all-questions', {', 'app.controller('all-questionsController',' in 'app.controller('CtrlRmRowVprasanje','.
+To-Do:
+==============================
+Verzija: 2016.11.29a
+Narejeno: Dodajanje nove spremenljivke 'zapStVpr' in prenos funkcionalnosti 'VprID' na novo spremeljivko, ko je potreben prikaz zaporedne številke vprašanja. Narejeno zaradi možnosti brisanja vprašanj. [server_2016.11.29b.js; app_2019.11.29a.js; webpage_2016.11.29a.html; question_2019.11.29a.html]
+To-Do:
+==============================
+Verzija: 2016.12.05a
+Narejeno: Urejanje osveževanje tabele odgovorov, po brisanju vprašanja in povezanih odgovorov. [app_2016.12.05a.js].
+V 'app.controller('CtrlRmRowVprasanje'' dodana vrstica 'socket.emit("socketIzpisiRezultate");'.
+To-Do:
+==============================
+Verzija: 2016.12.05b
+Narejeno: Dodajanje podstrani za prikaz statistike rezultatov [webpage_2016.12.05b.html; app_2016.12.05b.js; server_2016.12.05b.js; statistics_2016.12.05a.html]
+To-Do:
+==============================
+Verzija: 2016.12.07a
+Narejeno: Urejanje prikaza tabele statistike rezultatov. [server_2016.12.07c.js; webpage_2016.12.07a.html; statistics_2016.12.07a.html; app_2016.12.07a.js]
+Urejanje kontrolerja 'StatisticsController'
+To-Do:
+==============================
+Verzija: 2016.12.12a
+Narejeno: Odpravljanje napake, ki se pojavi pri brisanju trenutno izbranega vprašanja. [app_2016.12.12a.js server_2016.12.12d]
+V 'all-questionsController'>'removeRowVprasanja'>'CtrlRmRowVprasanje' dodan 'socket.emit("socketBeriVpr", 2);'
+To-Do:
+==============================
+Verzija: 2016.12.12b
+Narejeno: Brisanje odvečne komentirane kode
+To-Do:
+==============================
+Verzija: 2016.12.13a
+Narejeno: Dodajanje varovalke pred oddajo praznega novega vprašanja. [server_2016.12.13b.js; webpage_2016.12.13b.html; empty-question.html; add-question_2016.12.13a.html; app_2016.12.13a.js]
+V Popup-e dodan 'PraznoVpr'
+To-Do:
+==============================
+Verzija: 2016.12.19a
+Narejeno: Urejanje delovanja F5 webpage in prikaza podatkov, prejšnje seje.
+[server_2016.12.19a.js; webpage_2016.12.19a.html; app_2016.12.19a.js; show-question_2016.12.19a.html]
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================

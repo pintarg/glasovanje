@@ -1,0 +1,104 @@
+<!--
+Opis: Spletna stran za prikaz zbranih glasov.
+Verzija: 2016.12.19e
+====================================================================================================-->
+<html>
+
+<head>
+
+</head>
+
+<body>
+  <p>Glasovalna enota 1: <output id="ge0" type="text" /></p>
+  <p>Glasovalna enota 2: <output id="ge1" type="text" /></p>
+  <p>Glasovalna enota 3: <output id="ge2" type="text" /></p>
+  <br>
+
+  <script type="text/javascript" charset="UTF-8">
+    var vrednostGE0, vrednostGE1, vrednostGE2;
+    var tempVrednostGE0 = 0, tempVrednostGE1 = 0, tempVrednostGE2 = 0;
+    var tempval = 0, tempval1 = 0, tempval2 = 0;
+    var msgReceivedGE0 = true, msgReceivedGE1 = true, msgReceivedGE2 = true;
+
+    // POVEZAVA Z ESP8266
+    var connection0 = new WebSocket('ws://192.168.42.70:81/', ['arduino']); // CONNECTION0 - ESP8266-0
+    var connection1 = new WebSocket('ws://192.168.42.71:81/', ['arduino']); // CONNECTION1 - ESP8266-1
+    var connection2 = new WebSocket('ws://192.168.42.72:81/', ['arduino']); // CONNECTION1 - ESP8266-2
+
+    // connection0 - povezava z glasovalno enoto 0
+    connection0.onopen = function() {
+      setInterval(function() {
+        tempval++
+        if (msgReceivedGE0)
+          connection0.send('tempval: ' + tempval);
+        msgReceivedGE0 = false;
+      }, 20);
+    };
+    connection0.onerror = function(error) {
+      console.log('WebSocket Error ', error);
+    };
+    connection0.onmessage = function(msg) {
+      msgReceivedGE0 = true;
+      vrednostGE0 = parseInt(msg.data);
+      if (vrednostGE0 != tempVrednostGE0) {
+        if (vrednostGE0 != 0 && typeof(vrednostGE0) != "undefined") {
+          document.getElementById("ge0").value=vrednostGE0;
+          connection0.send(vrednostGE0); // povratna informacije ESP-ju, katero LED naj prižge
+        }
+        tempVrednostGE0 = vrednostGE0;
+      }
+    };
+
+    // connection1 - povezava z glasovalno enoto 1
+    connection1.onopen = function() {
+      setInterval(function() {
+        tempval1++
+        if (msgReceivedGE1)
+          connection1.send('tempval: ' + tempval1);
+        msgReceivedGE1 = false;
+      }, 20);
+    };
+    connection1.onerror = function(error) {
+      console.log('WebSocket Error ', error);
+    };
+    connection1.onmessage = function(msg) {
+      msgReceivedGE1 = true;
+      vrednostGE1 = parseInt(msg.data);
+      if (vrednostGE1 != tempVrednostGE1) {
+        if (vrednostGE1 != 0 && typeof(vrednostGE1) != "undefined") {
+          document.getElementById("ge1").value=vrednostGE1;
+          connection1.send(vrednostGE1); // povratna informacije ESP-ju, katero LED naj prižge
+        }
+        tempVrednostGE1 = vrednostGE1;
+      }
+    };
+
+    // connection2 - povezava z glasovalno enoto 2
+    connection2.onopen = function() {
+      setInterval(function() {
+        // tempval2++
+        if (msgReceivedGE2) {
+          // connection2.send('tempval: ' + tempval2);
+          connection2.send(0);
+        }
+        msgReceivedGE2 = false;
+      }, 20);
+    };
+    connection2.onerror = function(error) {
+      console.log('WebSocket Error ', error);
+    };
+    connection2.onmessage = function(msg) {
+      msgReceivedGE2 = true;
+      vrednostGE2 = parseInt(msg.data);
+      if (vrednostGE2 != tempVrednostGE2) {
+        if (vrednostGE2 != 0 && typeof(vrednostGE2) != "undefined") {
+          document.getElementById("ge2").value=vrednostGE2;
+          connection2.send(vrednostGE2); // povratna informacije ESP-ju, katero LED naj prižge
+        }
+        tempVrednostGE2 = vrednostGE2;
+      }
+    };
+  </script>
+</body>
+
+</html>

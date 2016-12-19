@@ -1,0 +1,148 @@
+==============================
+Verzija: 2016.11.12a
+Narejeno: Začetna postavitev.
+To-Do: Prenos podatkov številke vprašanja in števila vseh vprašanj prek '$scope' in samodejni izpis ob prihodu na stran.
+Ko je vprašanje enkrat prebrano, je vedno izpisano - tudi če se premika med 'zavihki/podstranmi'
+==============================
+Verzija: 2016.11.17a
+Narejeno: Sprememba načina prikaza vprašanj, id in števila vprašanj - uporaba expression-ov.
+To-Do: Uredi ponastavitev izbranega odgovora po oddaji odgovora. Onemogoči zahteve po novem vprašanju, če je izpisano zadnje vprašanje - npr 3/3.
+==============================
+Verzija: 2016.11.17b
+Narejeno: Dodajanje potrjevanja o prejemu odgovora. [webpage_2016.11.17c.html; question_2016.11.17b.html; app_2016.11.17b.js]
+To-Do:
+==============================
+Verzija: 2016.11.20a
+Narejeno: Prikaz pop-up-a, ko dosežemo zadnje vprašanje in želimo prebrati naslednje vprašanje [webpage_2016.11.20a.html; question_2016.11.20a.html; app_2016.11.20a.js; server_2016.11.20a.js].
+Dodan '<div ng-controller="ConfirmCtrl">' in vsebina.
+To-Do:
+==============================
+Verzija: 2016.11.20b
+Narejeno: Delovanje controllerja za question.html združeno pod en controller - 'QuestionController'. [question_2016.11.20b.html; app_2016.11.20b.js].
+To-Do: Brisanje odvečne, komentirane, kode.
+==============================
+Verzija: 2016.11.22a
+Narejeno: Brisanje odvečne komentirane kode.
+To-Do:
+==============================
+Verzija: 2016.11.22b
+Narejeno: Urejanje kode za testiranje pop-up2. [question_2016.11.22b.html; app_2016.11.22b.js; server_2016.11.22a; webpage_2016.11.22a.html]
+Dodajanje kode za button 'ng-controller="ModalDemoCtrl as $ctrl"'
+To-Do: Brisanje kode za pop-up1
+==============================
+Verzija: 2016.11.22c
+Narejeno: Urejanje kode za popup2. [question_2016.11.22c.html; app_2016.11.22c.js; server_2016.11.22b; webpage_2016.11.22b.html]
+Dodan gumb 'ng-controller="ModalPopup as $ctrl"' in odstranjena koda v povezavi s popup1
+To-Do:
+==============================
+Verzija: 2016.11.22d
+Narejeno: Popup za oddajo podvojenega in praznega odgovora. [question_2016.11.22d.html; app_2016.11.22d.js; server_2016.11.22c; webpage_2016.11.22c.html]
+Dodajanje gumbov za klic popup-ov
+To-Do:
+==============================
+Verzija: 2016.11.23a
+Narejeno: Urejanje izpisa prejema povratne informacije zapisa odgovora v bazo. [question_2016.11.23a.html; app_2016.11.23a.js; webpage_2016.11.23a.html]
+To-Do:
+==============================
+Verzija: 2016.11.23b
+Narejeno: Dodajanje popup-a za oddajanje odgovora na 0. vprašanje/ni vprašanja. [question_2016.11.23b.html; app_2016.11.23b.js; webpage_2016.11.23b.html; server_2016.11.23a.js]
+Dodajanje gumbov za klic popup-ov
+To-Do:
+==============================
+Verzija: 2016.11.25a
+Narejeno: Uvoz oblikovanja.
+To-Do:
+==============================
+Verzija: 2019.11.29a
+Narejeno: Dodajanje nove spremenljivke 'zapStVpr' in prenos funkcionalnosti 'VprID' na novo spremeljivko, ko je potreben prikaz zaporedne številke vprašanja. Narejeno zaradi možnosti brisanja vprašanj. [server_2016.11.29b.js; app_2019.11.29a.js; webpage_2016.11.29a.html; question_2019.11.29a.html]
+To-Do:
+==============================
+Verzija: 2016.12.12a
+Narejeno: Dodajanje gumba za prejšnje vprašanje in urejanje kode za pravilen izpis 'zapStVpr' in vprašanja. [question_2016.12.12a.html; webpage_2016.12.12a.html; server_2016.12.12c]
+Dodajanje gumba 'btnPrejsnjeVpr'.
+To-Do:
+==============================
+Verzija: 2016.12.12b
+Narejeno: Komentiranje kode 'Povratna informacija2'
+To-Do:
+==============================
+Verzija: 2016.12.19a
+Narejeno: File preimenovan iz question.html v show-question.html zaradi delovanja filtra include iskanja po url-ju
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================

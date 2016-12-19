@@ -1,0 +1,119 @@
+<!--
+Opis: Spletna stran za prikaz zbranih glasov.
+Verzija: 2016.12.19c
+====================================================================================================-->
+<html>
+
+<head>
+
+</head>
+
+<body>
+  <p>Glasovalna enota 1: <output id="ge0" type="text" /></p>
+  <p>Glasovalna enota 2: <output id="ge1" type="text" /></p>
+  <p>Glasovalna enota 3: <output id="ge2" type="text" /></p>
+  <br>
+
+  <script type="text/javascript" charset="UTF-8">
+    var vrednostGE0, vrednostGE1, vrednostGE2;
+    var tempVrednostGE0 = 0, tempVrednostGE1 = 0, tempVrednostGE2 = 0;
+    var tempval = 0, tempval1 = 0, tempval2 = 0;
+    var msgReceivedGE0 = true, msgReceivedGE1 = true, msgReceivedGE2 = true;
+
+    // POVEZAVA Z ESP8266 ********************************************************************************
+    var connection0 = new WebSocket('ws://192.168.42.70:81/', ['arduino']); // CONNECTION0 - ESP8266-0
+    var connection1 = new WebSocket('ws://192.168.42.71:81/', ['arduino']); // CONNECTION1 - ESP8266-1
+    var connection2 = new WebSocket('ws://192.168.42.72:81/', ['arduino']); // CONNECTION1 - ESP8266-2
+    // POVEZAVA Z ESP8266 ********************************************************************************
+
+    function log(msg) { // funkcija za izpis izbrane tipke na glasovalni enoti 1
+      if (vrednostGE0 != tempVrednostGE0) {
+        if (msg != 0 && typeof(msg) != "undefined") {
+          document.getElementById("ge0").value=msg;
+          connection0.send(vrednostGE0);
+        }
+        tempVrednostGE0 = vrednostGE0;
+      }
+    }
+
+    function log1(msg1) { // funkcija za izpis izbrane tipke na glasovalni enoti 2
+      if (vrednostGE1 != tempVrednostGE1) {
+        if (msg1 != 0 && typeof(msg1) != "undefined") {
+          document.getElementById("ge1").value=msg1;
+          connection1.send(vrednostGE1);
+        }
+        tempVrednostGE1 = vrednostGE1;
+      }
+    }
+
+    function log2(msg2) { // funkcija za izpis izbrane tipke na glasovalni enoti 3
+      if (vrednostGE2 != tempVrednostGE2) {
+        if (msg2 != 0 && typeof(msg2) != "undefined") {
+          document.getElementById("ge2").value=msg2;
+          connection2.send(vrednostGE2); // povratna informacije ESP-ju, katero LED naj prižge
+        }
+        tempVrednostGE2 = vrednostGE2;
+      }
+    }
+
+    // CONNECTION0 ******************************************************************************
+    connection0.onopen = function() {
+      setInterval(function() {
+        tempval++
+        if (msgReceivedGE0)
+          connection0.send('tempval: ' + tempval);
+        msgReceivedGE0 = false;
+      }, 20);
+    };
+    connection0.onerror = function(error) {
+      console.log('WebSocket Error ', error);
+    };
+    connection0.onmessage = function(e) {
+      log(vrednostGE0);
+      msgReceivedGE0 = true;
+      vrednostGE0 = parseInt(e.data);
+      }
+    // CONNECTION0 ******************************************************************************
+
+    // CONNECTION1 ******************************************************************************
+    connection1.onopen = function() {
+      setInterval(function() {
+        tempval1++
+        if (msgReceivedGE1)
+          connection1.send('tempval: ' + tempval1);
+        msgReceivedGE1 = false;
+      }, 20);
+    };
+    connection1.onerror = function(error) {
+      console.log('WebSocket Error ', error);
+    };
+    connection1.onmessage = function(e) {
+      log1(vrednostGE1);
+      msgReceivedGE1 = true;
+      vrednostGE1 = parseInt(e.data);
+    };
+    // CONNECTION1 ******************************************************************************
+
+    // CONNECTION2 ******************************************************************************
+    connection2.onopen = function() {
+      setInterval(function() {
+        tempval2++
+        if (msgReceivedGE2) {
+          connection2.send('tempval: ' + tempval2);
+        }
+        msgReceivedGE2 = false;
+      }, 20);
+    };
+    connection2.onerror = function(error) {
+      console.log('WebSocket Error ', error);
+    };
+    connection2.onmessage = function(e) {
+      log2(vrednostGE2);
+      msgReceivedGE2 = true;
+      vrednostGE2 = parseInt(e.data);
+    };
+    // CONNECTION2 ******************************************************************************
+  </script>
+</body>
+
+</html>

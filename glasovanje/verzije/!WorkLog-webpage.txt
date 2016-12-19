@@ -1,0 +1,319 @@
+==============================
+Verzija: 2016.09.19a
+Narejeno: Začetna različica.
+To-Do:
+==============================
+Verzija: 2016.09.19b
+Narejeno: Vzpostavljeno branje izbranega radio buttna.
+To-Do: Urediti ustrezen izpis izbrane vrednosti/gumba.
+==============================
+Verzija: 2016.09.19c
+Narejeno: Urejen izpis izbrane vrednosti/gumba.
+To-Do: Urediti povezavo z Redis.
+==============================
+Verzija: 2016.09.19d
+Narejeno: Popravljen izpis za vprašanje in dodan redisClient.
+To-Do: Urediti povezavo z Redis.
+==============================
+Verzija: 2016.09.20a
+Narejeno:/
+To-Do:/
+==============================
+Verzija: 2016.09.24a
+Narejeno: Odstranjevanje kode za povezavo z Redis, saj direktna povezava html-Redis ni možna. Povezava poteka prek server.js. Za komunikacijo se uporablja socket.io.
+To-Do: /
+==============================
+Verzija: 2016.09.24b
+Narejeno: Branje števila vprašanj iz baze - deluje samo gumb "Beri vprašanje."
+To-Do: Branje vprašanja iz baze.
+==============================
+Verzija: 2016.09.24c
+Narejeno: Branje vprašanja iz baze.
+To-Do: Loči kodo za branje vprašanja in branje števila vprašanj, da se branje števila vprašanj izvede samo na začetku.
+==============================
+Verzija: 2016.09.24d
+Narejeno: Koda za branje števila vprašanj v bazi ločena od kode za branje samega vprašanja.
+To-Do: Uredi kodo za zapis novega prašanja v bazo prek webpage-a.==============================
+==============================
+Verzija: 2016.09.24e
+Narejeno: Dodajanje novega vprašanja v bazo.
+To-Do: Pri dodajanju novega vprašanja, se ponovno prebere število vprašanj v bazi in s tem proži popravek izpisa na webpage-u, kar idVpr/stVpr nastavi na 0/stVpr. Treba popraviti, da se izpiše idVpr in ne 0
+==============================
+Verzija: 2016.09.24f
+Narejeno: Urejn izpis VprID/stVpr pri dodajanju novega vpr.
+To-Do: Urediti kodo za dodajanje izbranega odgovora na vpr.
+==============================
+Verzija: 2016.09.25a
+Narejeno: Branje izbranega odgovora in pošiljanje VprID+odg serverju, kateri doda 2 timestamp-a (YYYY-MM-DD-HH-MM-SS... in v milisekundah).
+To-Do: Izbrati format celotnega odgovora (JSON) in informacije, ki jih vsebuje za zapis v Redis.
+==============================
+Verzija: 2016.09.29a
+Narejeno: Urejanje zapisa izbranega odg v Redis.
+To-Do: /
+==============================
+Verzija: 2016.10.03a
+Narejeno: Dodana koda za zapisovanje izbranega odgovora v Sorted Set. Testiranje. Deluje.
+To-Do: Urejanje zapisa za String, da bo ustrezal JSON formatu.
+==============================
+Verzija: 2016.10.03b
+Narejeno: Dodan gumb 'Pretvori prejete rezultate v JSON' in dodana koda, ki kliče funkcijo 'pretvorbaJSON'.
+To-Do: Urejanje izpisa rezultatov.
+==============================
+Verzija: 2016.10.03c
+Narejeno: Dodan gumb 'Izpiši rezultate glasovanja' in dodana koda, ki kliče funkcijo 'izpisRezultatov'.
+To-Do: Urediti izpis rezultatov na webpage.
+==============================
+Verzija: 2016.10.07a
+Narejeno: Testiranje funkcij. Vmesna verzija.
+To-Do: Urediti izpis rezultatov na webpage.
+==============================
+Verzija: 2016.10.08a
+Narejeno: Brisanje gumba 'btnPretvorbaJSON' in z njim povezane funkcije.
+To-Do: Urediti izpis rezultatov na webpage.
+==============================
+Verzija: 2016.10.08b
+Narejeno: Oblikovno in funkcionalno urejanje kode. Brisanje odvečne kode in spreminjanje za optimalnejše delovanje.
+To-Do: Urediti izpis rezultatov na webpage.
+==============================
+Verzija: 2016.10.14a
+Narejeno: Vmesno shranjevanje pred dodajanjem AngularJS.
+To-Do:/
+==============================
+Verzija: 2016.10.14b
+Narejeno: Mentorski sestanek. Delo na tabeli za izpis odgovorov (AngularJS).
+To-Do: Nadaljuj.
+==============================
+Verzija: 2016.10.18a
+Narejeno: Vzpostavljeno delovanje testnega izpisa podatkov v tabelo
+To-Do: /
+==============================
+Verzija: 2016.10.19a
+Narejeno: Vrnitev na verzijo 2016.10.14a in ponovno dodajanje kode za ng-table.
+Narejeno: Koda dodana. htmlpreview deluje. Test prek node > server.js javlja napako glede deklarirana angularja in 'angular.module'-a
+To-Do: Urediti delovanj prek node > server.js.
+==============================
+Verzija: 2016.10.20a
+Narejeno: Urejen izpis podatkov v tabelo z uporabo angular-ja. src angular je nastavljen na 'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js' in ne na lokalno verzijo.
+To-Do: Urejanje izpisa rezultatov iz Redis DB v tabelo in uporaba lokalne verzije angular-ja.
+==============================
+Verzija: 2016.10.20b
+Narejeno: Urejanje izpisa rezultatov iz Redis DB v tabelo.
+Podatki se prenesejo na spletno stran, vendar se tabela ne osveži.
+To-Do: Urediti osveževanje tabele ob prenosu podatkov. Uporaba lokalne verzije angular-ja.
+==============================
+Verzija: 2016.10.21a
+Narejeno: Mentorski sestanek. Preverjanje tabele z angular.js - ni zaključeno.
+To-Do: Vrni na verzijo 2016.10.20b in uredi dodajanje zapisov v tabelo in ne osveževanje.
+==============================
+Verzija: 2016.10.22a
+Narejeno: Povrnitev na verzijo 2016.10.20b. Sprememba uporabe angular.js, da se bere z lokalnega diska. Nepotrebni deli kode so komentirani in se odstranijo v naslednji verziji.
+To-Do: Urejanje tabele za dodajanje novih podatkov.
+==============================
+Verzija: 2016.10.22b
+Narejeno: Vmesno shranjevanje med testiranjem https://hello-angularjs.appspot.com/addtablerow/
+To-Do: Nadaljuj.
+==============================
+Verzija: 2016.10.22c
+Narejeno: Testiranje testClick po predlogu ML. Ne deluje. Začetna vrednost var 'rezultati' je prazna (''). Po izpisu rezultatov iz baze v var 'rezultati', se vrednost var spremeni v vrednot vsebine rezultatov v bazi. Po kliku na 'Naloži podatke', se vsebina ne prikaže na spletni strani. Drsnik na spletni strani se premakne, kot da je bila vsebina dodana, vendar se ne izpiše na spletni strani.
+To-Do: Vrni na verzijo 2016.10.22b in nadaljuj z opcijo dodajanja novih vrednosti v tabelo.
+==============================
+Verzija: 2016.10.22d
+Narejeno: Urejeno delovanje dodajanja novih podatkov - testno. V kodi so 3 primeri uporabe.
+To-Do: Odstranjevanje odvečne kode in ureditev izpisa podatkov iz baze.
+==============================
+Verzija: 2016.10.22e
+Narejeno: Urejena koda za izpis rezultatov v Angular tabelo.
+To-Do: Izpisi se samo dodajajo in se pojavi podvajanje. Urediti, da ponoven klik na izpis podatkov pobriše tabelo in ponovno izpolni tabelo.
+==============================
+Verzija: 2016.10.22f
+Narejeno: Odstranjevanje komentirane kode.
+To-Do: Izpisi se samo dodajajo in se pojavi podvajanje. Urediti, da ponoven klik na izpis podatkov pobriše tabelo in ponovno izpolni tabelo.
+==============================
+Verzija: 2016.10.23a
+Narejeno: Dodani funkciji 'scope.emptyRows' in 'socketPosiljanjeStOdgVBazi' za prejem informacij o številu odg v bazi in ustrezno brisanje vsebine tabele pred ponovnim zapisom.
+To-Do: Oblikovanje.
+==============================
+Verzija: 2016.10.24a
+Narejeno: Sprememba kode v 'addRow' in 'socketPosiljanjeStOdgVBazi' za dodajanje novih podatkov.
+To-Do: Oblikovanje.
+==============================
+Verzija: 2016.10.24b
+Narejeno: Sprememba izpisa rezultatov v Angular tabelo. Ni potrebe po brisanju vrstic in rezultati se ne pošiljajo vsak posebej ampak vsi skupaj istočasno v eni spremenljivki. Na strani webpage-a se naredi 'JSON.parse'.
+Brisanje: 'emptyRows', 'socketPosiljanjeStOdgVBazi'.
+Spreminjanje: 'addRow' v 'Rewrite'.
+To-Do: Oblikovanje.
+==============================
+Verzija: 2016.11.12a
+Narejeno: Spreminjanje v Single page aplication.
+To-Do: Oblikovanje.
+==============================
+Verzija: 2016.11.13a
+Narejeno: Dodana navigacijska vrstica z uporabo 'bootstrap'-a.
+To-Do: Oblikovanje. Izpis številke in števila vprašanj in vprašanja ni ok.
+==============================
+Verzija: 2016.11.13b
+Narejeno: Premik 'myCtrl' iz webpage.html v app.js in preimenovanje v answers.html iz 'myCtrl' v 'AnswersController'.
+To-Do: Oblikovanje. Izpis številke in števila vprašanj in vprašanja ni ok.
+==============================
+Verzija: 2016.11.17a
+Narejeno: Delo na funkciji 'socketVprPrebran', da je kompatibilno z question_2016.11.17a.html pri uporabi expression-ov.
+To-Do: Dodatno urejanje drugih podstrani.
+==============================
+Verzija: 2016.11.17b
+Narejeno: Ob oddaji odgovora, se izbran radiobutton ponastavi.
+To-Do:
+==============================
+Verzija: 2016.11.17c
+Narejeno: Dodajanje potrjevanja o prejemu odgovora. [webpage_2016.11.17c.html; question_2016.11.17b.html; app_2016.11.17b.js]
+To-Do:
+==============================
+Verzija: 2016.11.17d
+Narejeno: Prikaz števila vprašanj v bazi. [server_2016.11.17a.js; webpage_2016.11.17d.html; add-question_2016.11.17a.html; app_2016.11.17c.js]
+To-Do:
+==============================
+Verzija: 2016.11.18a
+Narejeno: Zaradi preglednosti brisanje nepotrebne komentirane kode.
+To-Do:
+==============================
+Verzija: 2016.11.18b
+Narejeno: Urejanje osveževanja števila vprašanj v bazi, po dodajanju novega vprašanja. [webpage_2016.11.18b.html; add-question_2016.11.17a.html]
+To-Do:
+==============================
+Verzija: 2016.11.18c
+Narejeno: Urejanje prikaza števila vprašanj v bazi, pri dodajanju novega vprašanja in povratne informacije pri dodajanju novega vprašanja. [webpage_2016.11.18c.html; add-question_2016.11.18a.html; app_2016.11.18a.js]
+Funkcije 'dodajVpr', 'oddajOdg'
+To-Do:
+==============================
+Verzija: 2016.11.18d
+Narejeno: Popravljanje ponastavljanja radiobutton-ov ob oddaji odgovora. Sedaj se ponastavijo ob branju novega vprašanja in ne takoj ob oddaji odgovora.
+To-Do:
+==============================
+Verzija: 2016.11.18e
+Narejeno: Dodano opozorilo in omejitev, ko dosežemo zadnje vprašanje.
+To-Do: Uredi prikaz opozorila.
+==============================
+Verzija: 2016.11.20a
+Narejeno: Prikaz pop-up-a, ko dosežemo zadnje vprašanje in želimo prebrati naslednje vprašanje [webpage_2016.11.20a.html; question_2016.11.20a.html; app_2016.11.20a.js; server_2016.11.20a.js].
+Sprememba kode v funkciji 'beriVpr'.
+To-Do:
+==============================
+Verzija: 2016.11.22a
+Narejeno: Urejanje kode za testiranje pop-up2. [question_2016.11.22b.html; app_2016.11.22b.js; server_2016.11.22a; webpage_2016.11.22a.html]
+Dodajanje SRC za 'ui-bootstrap-tpls.js'.
+To-Do: Brisanje kode za pop-up1 (ngDialog).
+==============================
+Verzija: 2016.11.22b
+Narejeno: Urejanje kode za popup2. [question_2016.11.22c.html; app_2016.11.22c.js; server_2016.11.22b; webpage_2016.11.22b.html]
+Odstranjeni linki za 'ngDialog' in dodan za 'style.css'.
+To-Do:
+==============================
+Verzija: 2016.11.22c
+Narejeno: Popup za oddajo podvojenega in praznega odgovora. [question_2016.11.22d.html; app_2016.11.22d.js; server_2016.11.22c; webpage_2016.11.22c.html]
+Dodajanje gumbov za klic popupov in preverjanje pogojev za klic posameznega popup-a.
+To-Do:
+==============================
+Verzija: 2016.11.23a
+Narejeno: Urejanje izpisa prejema povratne informacije zapisa odgovora v bazo. [question_2016.11.23a.html; app_2016.11.23a.js; webpage_2016.11.23a.html]
+To-Do:
+==============================
+Verzija: 2016.11.23b
+Narejeno: Dodajanje popup-a za oddajanje odgovora na 0. vprašanje/ni vprašanja. [question_2016.11.23b.html; app_2016.11.23b.js; webpage_2016.11.23b.html; server_2016.11.23a.js]
+Urejanje kode za klic popup-a.
+To-Do: Preveri pogoje za klic posameznih popup-ov in jih uredi.
+==============================
+Verzija: 2016.11.23c
+Narejeno: Urejanje kode za določanje pogojev klicov posameznih popup-ov na question.html strani.
+To-Do:
+==============================
+Verzija: 2016.11.23d
+Narejeno: Po oddaji odgovora, se izpiše obvestilo o sprejemu odgovora, vprašanju in izbranem odgovoru.
+To-Do:
+==============================
+Verzija: 2016.11.23e
+Narejeno: Urejanje tabele za izpis rezultatov. Nastavljeno filtriranje/iskanje. [answers_2016.11.23b.html; app_2016.11.23d.js; webpage_2016.11.23e.html; server_2016.11.23b.js]
+To-Do:
+==============================
+Verzija: 2016.11.25a
+Narejeno: Brisanje vrstice odgovora v tabeli, proži ukaz brisanja izbrane vrstice v Redis DB. [app_2016.11.25a.js; webpage_2016.11.25a.html; server_2016.11.25b.js]
+To-Do:
+==============================
+Verzija: 2016.11.28a
+Narejeno: Urejanje dodatne podstrani 'all-questions' za prikaz zabele vprašanj. [server_2016.11.28b.js; app_2016.11.28a.js; all-questions_2016.11.28a.html; webpage_2016.11.28a.html]
+Dodani src za 'jquery.min.js', 'bootstrap.min.js' in 'bootstrap-hover-dropdown.min.js'. Dodane funkcije 'function izpisVprasanj()' in 'socket.on("socketPosiljanjeVprasanj"'
+To-Do: Dokončanje izpisa vprašanj v tabelo.
+==============================
+Verzija: 2016.11.28b
+Narejeno: Sprememba DB za zapis vprašanj. Sprememba iz Hash v Sorted set zaradi izpisa vprašanj v tabelo. [server_2016.11.28c.js; webpage_2016.11.28b.html]
+To-Do:
+==============================
+Verzija: 2019.11.29a
+Narejeno: Dodajanje nove spremenljivke 'zapStVpr' in prenos funkcionalnosti 'VprID' na novo spremeljivko, ko je potreben prikaz zaporedne številke vprašanja. Narejeno zaradi možnosti brisanja vprašanj. [server_2016.11.29b.js; app_2019.11.29a.js; webpage_2016.11.29a.html; question_2019.11.29a.html]
+To-Do:
+==============================
+Verzija: 2016.12.04a
+Narejeno: Urejeno osveževanje številke in števila vprašanj ob brisanju vprašanja iz tabele in DB [server_2016.12.04b.js; webpage_2016.12.04a.html]
+V 'socket.on("socketVprPrebran"' sprememba 'zagonPrograma' v 'osveziPodatke'.
+To-Do:
+==============================
+Verzija: 2016.12.05a
+Narejeno: Urejeno brisanje vrednosti vnosnega polja po dodajanju vprašanja in popravljena povratna informacije pri prejemu novega vprašanja. [webpage_2016.12.05a.html; add-question_2016.12.05a.html]
+To-Do:
+==============================
+Verzija: 2016.12.05b
+Narejeno: Dodajanje podstrani za prikaz statistike rezultatov [webpage_2016.12.05b.html; app_2016.12.05b.js; server_2016.12.05a.js; statistics_2016.12.05a.html]
+To-Do:
+==============================
+Verzija: 2016.12.05c
+Narejeno: Sprememba parsanja odgovorov v JSON na strani server-ja in ne več na strani webpage-a. Urejanje kode za izpis števila posameznih glasov glede na odgovor. [server_2016.12.05c.js; webpage_2016.12.05c.html; statistics_2016.12.05b.html]
+To-Do:
+==============================
+Verzija: 2016.12.07a
+Narejeno: Urejanje prikaza tabele statistike rezultatov. [server_2016.12.07c.js; webpage_2016.12.07a.html; statistics_2016.12.07a.html; app_2016.12.07a.js]
+Dodajanje 'socketPosiljanjeStatistike'
+To-Do:
+==============================
+Verzija: 2016.12.07b
+Narejeno: Urejanje kode za izpis podatkov v tabelo ob kliku na zavihek - ni več potrebno klikanje na gumb, za prikaz podatkov.
+To-Do:
+==============================
+Verzija: 2016.12.12a
+Narejeno: Dodajanje gumba za prejšnje vprašanje in urejanje kode za pravilen izpis 'zapStVpr' in vprašanja. [question_2016.12.12a.html; webpage_2016.12.12a.html; server_2016.12.12c]
+Dodajanje funkcije 'prejsnjeVpr()' in popravljanje funkcije 'beriVpr()'.
+To-Do:
+==============================
+Verzija: 2016.12.13a
+Narejeno: Urejanje delovanja ob refresh-u strani (F5). [server_2016.12.13a.js; webpage_2016.12.13a.html]
+Dodajanje 'window.onload' funkcije
+To-Do:
+==============================
+Verzija: 2016.12.13b
+Narejeno: Dodajanje varovalke pred oddajo praznega novega vprašanja. [server_2016.12.13b.js; webpage_2016.12.13b.html; empty-question.html]
+Urejanje 'dodajVpr'-dodan if in klic 'document.getElementById("btnPraznoVpr").click();' ob praznem vprašanju.
+To-Do:
+==============================
+Verzija: 2016.12.13c
+Narejeno: Popravljanje funkcije ob osveževanju (F5) webpage-a. [webpage_2016.12.13c.html; server_2016.12.13c.js]
+Urejanje 'window.onload' in 'socketF5webpage'
+To-Do: Brisanje odvečne komentirane kode.
+==============================
+Verzija: 2016.12.13d
+Narejeno: Brisanje odvečne komentirane kode. [webpage_2016.12.13d.html; server_2016.12.13d.js]
+To-Do:
+==============================
+Verzija: 2016.12.13e
+Narejeno: Popravljanje kode za osveževanje (F5) strani. [webpage_2016.12.13e.html; server_2016.12.13e.js]
+To-Do:
+==============================
+Verzija: 2016.12.19a
+Narejeno: Urejanje delovanja F5 webpage in prikaza podatkov, prejšnje seje.
+[server_2016.12.19a.js; webpage_2016.12.19a.html; app_2016.12.19a.js; show-question_2016.12.19a.html]
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================

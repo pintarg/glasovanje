@@ -1,0 +1,102 @@
+<!--
+Opis: Spletna stran za prikaz zbranih glasov.
+Verzija: 2016.10.14b
+====================================================================================================-->
+<!DOCTYPE html>
+<meta charset=utf-8>
+<html>
+
+<head>
+
+</head>
+
+<body>
+<!-- tukaj bo koda za prikaz strani -->
+<p><b>Vprašanje: </b><output id="stVpr" type="text" /><br>
+<p><b>> </b><output id="vpr" type="text" /></p><br>
+<button id="btnBeriVpr" onClick="beriVpr()">Beri vprašanje</button>
+<p><b>Odgovori:</b></p>
+<form action="">
+  <input type="radio" name="Q" id="strinja"> Se strinjam
+  <input type="radio" name="Q" id="vzdrzan"> Vzdrzan
+  <input type="radio" name="Q" id="nestrinja"> Se ne strinjam
+</form>
+<button id="btnOddajOdg" onClick="oddajOdg()">Oddaj odgovor</button><br>
+<p>Povratna informacija: <output id="odg" type="text" /></p>
+<hr>
+<p><b>Dodajanje vprašanja: </b><input id="iptDodajVpr" type="text" /</p><br>
+<button id="btnDodajVpr" onClick="dodajVpr()">Dodaj vprašanje</button>
+<hr>
+<button id="btnIzpisRezultatov" onClick="izpisRezultatov()">Izpiši rezultate glasovanja</button>
+<p><b>Izpis rezultatov: </b><output id="rezultati" type="text" /></p>
+<hr>
+<!-- dodajanje kode za tabelo  -->
+<table>
+    <tr>
+        <th ng-click="sortBy='name';reverse=!reverse">Vpr ID</th>
+        <th>Odg</th>
+        <th>ts</th>
+        <th>ts2</th>
+        <th>SocketID</th>
+    </tr>
+    <tr ng-repeat="podatek in podatki | filter:podatkiFilter | orderBy:sortBy:reverse">
+        <td>{{podatek.VprID}}</td>
+        <td>{{podatek.Odg}}</td>
+        <td>{{podatek.ts}}</td>
+        <td>{{podatek.ts2}}</td>
+        <td>{{podatek.SocketID}}</td>
+    </tr>
+</table>
+<!-- ================================================================= -->
+
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script src="angular.js"></script>
+  <script type="text/javascript">
+
+    var socket = io.connect("192.168.42.50:8080")
+    var odg = 'x';
+    var vprID = 0;
+
+    // branje novega vprašanja iz webpage-a in pošiljanje v bazo
+    function dodajVpr() {
+      socket.emit("socketDodajVpr", document.getElementById("iptDodajVpr").value);
+    };
+    // pritisk na gumb "Beri vprašanje" proži ukaz za branje vprašanja in ID vprašanja iz baze
+    function beriVpr() {
+      socket.emit("socketBeriVpr");
+    };
+    // prejem in izpis vprašanja, števila vprašanj v bazi in prejem ID vprašanja
+    socket.on("socketVprPrebran", function(data) {
+      if (data.vpr != "delniIzpis") { // funkcija je uporabljena 2x, pri branju vprašanja in pri dodajanju novega vprašanja, zato omejitev izpisa
+        vprID = data.VprID;
+        document.getElementById("vpr").value = data.vpr;
+      }
+      document.getElementById("stVpr").value = data.VprID+"/"+data.stVpr;
+    });
+    // funkcija branja izbranega odg in pošiljanja povratne informacije o vprID, izbranem odg, timestamp... serverju za vpis v Redis
+    function oddajOdg() {
+      if(document.getElementById("strinja").checked) {
+        document.getElementById("odg").value = "strinja";
+        odg = 'strinja';
+      } else if (document.getElementById("vzdrzan").checked) {
+        document.getElementById("odg").value = "vzdrzan";
+        odg = 'vzdrzan';
+      } else if (document.getElementById("nestrinja").checked) {
+        document.getElementById("odg").value = "ne strinja";
+        odg = 'ne strinja';
+      }
+      socket.emit("socketPisanjeOdg", {"VprID":vprID, "Odg":odg});
+    };
+    // izpis rezultatov glasovanja
+    function izpisRezultatov() {
+      socket.emit("socketIzpisiRezultate");
+    };
+    // angular
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+      $scope.podatki = '{"VprID":"1","Odg":"strinja","ts":"2016-10-09T01:33:08+02:00","ts2":"1475969588710","SocketID":"/#bTZQaCpk1eUG4Ag2AAAB"}';
+    });
+  </script>
+</body>
+
+</html>

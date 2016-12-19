@@ -1,0 +1,45 @@
+<!-- Verzija: 2016.12.13c -->
+<div class="homepage">
+  <h1>Statistika rezultatov</h1>
+  <button id="btnIzpisStatistike" onClick="izpisStatistike()" style="display:none">Izpiši statistiko</button>
+  <div id="divStatistikaRezultatov", ng-controller="StatisticsController">
+    <button id="btnRewriteStatistika" type='button' ng-click="rewriteStatistika()" style="display:none">Naloži podatke</button> <!-- gumb je skrit, ker se ga uporablja v 'socketPosiljanjeVprasanj' za izpis nove vrstice v Angular tabelo -->
+    <!-- <h2>Izpis vprašanj, na katera so bili podani odgovori:</h2> -->
+    <form>
+      <label for="predicate">Izberi ime stolpca, po katerem želiš iskati:</label>
+      <select class="form-control" id="predicate" ng-model="selectedPredicate" ng-options="predicate for predicate in predicates"></select>
+    </form>
+    <table st-table="odgovori" class="table table-striped">
+      <thead>
+        <tr>
+          <th st-sort="VprID">ID vprašanja</th>
+          <th st-sort="vprasanje">Vprašanje</th>
+          <th st-sort="seStrinjam">Se strinjam</th>
+          <th st-sort="vzdrzan">Vzdržan</th>
+          <th st-sort="seNeStrinjam">Se ne strinjam</th>
+        </tr>
+        <tr>
+          <th colspan="1">
+            <input st-search="VprID" placeholder="Išči po ID vprašanja" class="input-sm form-control" type="search" />
+          </th>
+          <th colspan="1">
+            <input st-search placeholder="Iskanje po celotni tabeli" class="input-sm form-control" type="search" />
+          </th>
+          <th colspan="3">
+            <input st-search="{{selectedPredicate}}" placeholder="Išči po izbranem stolpcu" class="input-sm form-control" type="search" />
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="odgovor in odgovori">
+          <td>{{odgovor.VprID}}</td>
+          <td>{{odgovor.vprasanje}}</td>
+          <td>{{odgovor.seStrinjam}}</td>
+          <td>{{odgovor.vzdrzan}}</td>
+          <td>{{odgovor.seNeStrinjam}}</td>
+          <!-- <td><button type="button" ng-click="removeRowVprasanja(vprasanje)" class="btn btn-sm btn-danger">X</button></td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

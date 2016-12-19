@@ -1,0 +1,59 @@
+==============================
+Verzija: 2016.12.05a
+Narejeno: Dodajanje podstrani za prikaz statistike rezultatov [webpage_2016.12.05b.html; app_2016.12.05b.js; server_2016.12.05a.js; statistics_2016.12.05a.html]
+To-Do:
+==============================
+Verzija: 2016.12.05b
+Narejeno: Sprememba parsanja odgovorov v JSON na strani server-ja in ne več na strani webpage-a. Urejanje kode za izpis števila posameznih glasov glede na odgovor. [server_2016.12.05c.js; webpage_2016.12.05c.html; statistics_2016.12.05b.html]
+Sprememba imena gumba v izpisStatistike
+To-Do:
+==============================
+Verzija: 2016.12.07a
+Narejeno: Urejanje prikaza tabele statistike rezultatov. [server_2016.12.07c.js; webpage_2016.12.07a.html; statistics_2016.12.07a.html; app_2016.12.07a.js]
+Urejanje in ustrezno poimenovanje spremenljivk in posameznih elementov v tabeli
+To-Do:
+==============================
+Verzija: 2016.12.13a
+Narejeno: Urejanje imen stolpcov in prikaz oken za iskanje po tabeli. [statistics_2016.12.13a.html; answers_2016.12.13a.html; all-questions_2016.12.13a.html]
+To-Do:
+==============================
+Verzija: 2016.12.13b
+Narejeno: Skrivanje gumbov za izpis podatkov v tabelo in umik <h2> naslovov [all-question_2016.12.13b.html; answers_2016.12.13b.html; statistics_2016.12.13b.html]
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================

@@ -1,0 +1,16 @@
+<!-- Verzija: 2016.12.13b -->
+<div class='homepage'>
+    <h1>Dodajanje novega vprašanja</h1>
+    <div id="divDodajVprasanje", ng-controller="Add-questionController">
+        <p class='stvprasanj-holder'>
+            <span class='stvprasanj-title'>Število vprašanj v bazi:<span class='stvprasanj'>{{stVpr1}}</span>
+        </p>
+        <input placeholder='Vpišite vprašanje...' id="iptDodajVpr" type="text" /><br>
+
+        <button id="btnDodajVpr" onClick="dodajVpr()">Dodaj vprašanje</button>
+        <button id="btnPrejemStVpr" type="button" ng-click="prejemStVpr()" style="display:none"></button>
+        <br>
+        <p class='povratna'>{{potrditevPrejemaNovegaVpr}}</p>
+    </div>
+</div>
+<button ng-controller="ModalPopup as $ctrl" id="btnPraznoVpr" type="button" class="btn btn-default" ng-click="$ctrl.PraznoVpr()" style="display:none">Prazno vprašanje</button>

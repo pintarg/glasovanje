@@ -1,0 +1,127 @@
+<!--
+Opis: Spletna stran za prikaz zbranih glasov.
+Verzija: 2016.12.19b
+====================================================================================================-->
+<html>
+
+<head>
+
+</head>
+
+<body>
+  <p>Glasovalna enota 1: <output id="ge" type="text" /></p>
+  <p>Glasovalna enota 2: <output id="ge1" type="text" /></p>
+  <p>Glasovalna enota 3: <output id="ge2" type="text" /></p>
+  <br>
+
+  <script type="text/javascript" charset="UTF-8">
+    var potVrednost, potVrednost1, potVrednost2;
+    var potVrednostTest = 0, potVrednostTest1 = 0, potVrednostTest2 = 0;
+    var tempval = 0, tempval1 = 0, tempval2 = 0;
+    var messageReceived = true, messageReceived1 = true, messageReceived2 = true;
+
+    // POVEZAVA Z ESP8266 ********************************************************************************
+    var connection = new WebSocket('ws://192.168.42.70:81/', ['arduino']); // CONNECTION0 - ESP8266-0
+    var connection1 = new WebSocket('ws://192.168.42.71:81/', ['arduino']); // CONNECTION1 - ESP8266-1
+    var connection2 = new WebSocket('ws://192.168.42.72:81/', ['arduino']); // CONNECTION1 - ESP8266-2
+    // POVEZAVA Z ESP8266 ********************************************************************************
+
+    // SCROLL0 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
+    function log(msg) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
+      if (potVrednost != potVrednostTest) {
+        if (msg != 0 && typeof(msg) != "undefined") {
+          document.getElementById("ge").value=msg;
+          connection.send(potVrednost);
+        }
+        potVrednostTest = potVrednost;
+      }
+    }
+    // SCROLL0 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
+
+    // SCROLL1 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
+    function log1(msg1) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
+      if (potVrednost1 != potVrednostTest1) {
+        if (msg1 != 0 && typeof(msg1) != "undefined") {
+          document.getElementById("ge1").value=msg1;
+          connection1.send(potVrednost1);
+        }
+        potVrednostTest1 = potVrednost1;
+      }
+    }
+    // SCROLL1 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
+
+    // SCROLL2 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
+    function log2(msg2) { // funkcija za izpis sporočil z izvedenim pomikom (scroll)
+      if (potVrednost2 != potVrednostTest2) {
+        if (msg2 != 0 && typeof(msg2) != "undefined") {
+          document.getElementById("ge2").value=msg2;
+          connection2.send(potVrednost2);
+        }
+        potVrednostTest2 = potVrednost2;
+      }
+    }
+
+    // SCROLL2 FUNKCIJA IZPISA VREDNOSTI TIPKE *****************************************************************************
+
+    // CONNECTION0 ******************************************************************************
+    connection.onopen = function() {
+      setInterval(function() {
+        tempval++
+        if (messageReceived)
+          connection.send('tempval: ' + tempval);
+        messageReceived = false;
+      }, 20);
+    };
+    connection.onerror = function(error) {
+      console.log('WebSocket Error ', error);
+    };
+    connection.onmessage = function(e) {
+      log(potVrednost);
+      messageReceived = true;
+      potVrednost = parseInt(e.data);
+      }
+
+    // CONNECTION0 ******************************************************************************
+
+    // CONNECTION1 ******************************************************************************
+    connection1.onopen = function() {
+      setInterval(function() {
+        tempval1++
+        if (messageReceived1)
+          connection1.send('tempval: ' + tempval1);
+        messageReceived1 = false;
+      }, 20);
+    };
+    connection1.onerror = function(error) {
+      console.log('WebSocket Error ', error);
+    };
+    connection1.onmessage = function(e) {
+      log1(potVrednost1);
+      messageReceived1 = true;
+      potVrednost1 = parseInt(e.data);
+    };
+    // CONNECTION1 ******************************************************************************
+
+    // CONNECTION2 ******************************************************************************
+    connection2.onopen = function() {
+      setInterval(function() {
+        tempval2++
+        if (messageReceived2) {
+          connection2.send('tempval: ' + tempval2);
+        }
+        messageReceived2 = false;
+      }, 20);
+    };
+    connection2.onerror = function(error) {
+      console.log('WebSocket Error ', error);
+    };
+    connection2.onmessage = function(e) {
+      log2(potVrednost2);
+      messageReceived2 = true;
+      potVrednost2 = parseInt(e.data);
+    };
+    // CONNECTION2 ******************************************************************************
+  </script>
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2016.12.19b -->
+<!-- Verzija: 2016.11.23e -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -7,9 +7,6 @@
 <head>
   <script src="/src/angular.js"></script>
   <script src="/src/angular-route.js"></script>
-  <script src="/src/jquery.min.js"></script>
-  <script src="/src/bootstrap.min.js"></script>
-  <script src="/src/bootstrap-hover-dropdown.min.js"></script>
   <script src="/src/ui-bootstrap-tpls.js"></script>
   <script src="/src/smart-table.js"></script>
   <script src="/socket.io/socket.io.js"></script>
@@ -30,33 +27,15 @@
       </div>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#/home">Home</a></li>
-        <li><a href="#/show-question">Vprašanje</a></li>
-        <li class="dropdown">
-          <a href="#/add-question" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="false">
-            Dodajanje novega vprašanja
-            <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a tabindex="-1" href="#/all-questions" onClick="izpisVprasanj()">Izpis vseh vprašanj</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#/answers" onClick="izpisRezultatov()" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="false">
-            Odgovori/rezultati
-            <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a tabindex="-1" href="#/statistics" onClick="izpisStatistike()">Statistika rezultatov</a></li>
-          </ul>
-        </li>
-        <!-- <li><a href="#/answers">Odgovori/rezultati</a></li> -->
+        <li><a href="#/question">Vprašanje</a></li>
+        <li><a href="#/add-question">Dodajanje novega vprašanja</a></li>
+        <li><a href="#/answers">Odgovori/rezultati</a></li>
       </ul>
     </div>
     </nav>
   </header>
-  <div class='banner'></div>
   <div class="container">
-    <div class='content' ng-view><div> <!-- div za prikaz Single page aplication -->
+    <div ng-view><div> <!-- div za prikaz Single page aplication -->
   </div>
 
   <script src="app.js"></script>
@@ -65,72 +44,31 @@
 
     var odg = 'x';
     var socket = io.connect("10.1.0.111:8080");
-    var VprID,
-      stVpr,
-      novoVpr,
-      potrZapOdg, // potrZapOdg-potrditev zapisa odgovora
-      rezultati, // rezultati-spremenljiva za izpis odgovorov v tabelo
-      vsaVpr, // vsaVpr-spremenljivka za zapis vprašanj v tabelo
-      zapStVpr, // zapStVpr-zaporedna številka vprašanja
-      statOdg, // spremenljivka za zapis odgovorov
-      url, // zapis trenutnega url-ja
-      load=true;
+    var VprID, stVpr, novoVpr, potrZapOdg; // potrZapOdg-potrditev zapisa odgovora
+    var rezultati = [{VprID:"",Odg:"",ts:"",ts2:"",SocketID:""}];
     var podvojenOdg = false; // Varovalka pred dvojnim oddajanjem odgovora na isto vprašanje
     var prazenOdg = false; // Varovalka pred praznim oddajanjem odgovora
-    var vprasanje = 'Za prikaz vprašanja klikni na gumb "Naslednje vprašanje".';
+    var vprasanje = 'Za prikaz vprašanja klikni na gumb "Beri vprašanje".';
 
-    if (load=true) {
-      url=location.href;
-      socket.emit("socketF5", url);
-      load=false;
-    }
-    socket.on("socketF5webpage", function() {
-      if (url.includes('add-question')) {
-        location.href = "#/";
-        setTimeout(function() {
-          location.href = "#/add-question";
-        }, 1);
-      } else if (url.includes('all-questions')) {
-        izpisVprasanj();
-      } else if (url.includes('answers')) {
-        izpisRezultatov();
-      } else if (url.includes('statistics')) {
-        izpisStatistike();
-      }
-    });
     // branje novega vprašanja iz webpage-a in pošiljanje v bazo
     function dodajVpr() {
       novoVpr = document.getElementById("iptDodajVpr").value;
-      if (novoVpr != "") {
-        socket.emit("socketDodajVpr", novoVpr);
-        document.getElementById("iptDodajVpr").value = "";
-      } else {
-        document.getElementById("btnPraznoVpr").click();
-      }
+      socket.emit("socketDodajVpr", novoVpr);
     };
     // pritisk na gumb "Beri vprašanje" proži ukaz za branje vprašanja in ID vprašanja iz baze
     function beriVpr() {
-      if (zapStVpr < stVpr) {
-        socket.emit("socketBeriVpr", 1);
+      if (VprID < stVpr) {
+        socket.emit("socketBeriVpr");
         podvojenOdg = false;
       } else { // popup za opozorilo zadnjega vprašanja
         document.getElementById("btnZadnjeVpr").click();
       }
     };
-    // branje predhodnjega vprašanja trenutnemu
-    function prejsnjeVpr() {
-      if (zapStVpr > 1) {
-        socket.emit("socketBeriVpr", 2);
-        podvojenOdg = false;
-      } else {
-        document.getElementById("btnZadnjeVpr").click();
-      }
-    };
     // prejem in izpis vprašanja, števila vprašanj v bazi in prejem ID vprašanja
     socket.on("socketVprPrebran", function(data) {
-      zapStVpr = data.zapStVpr;
+      VprID = data.VprID;
       stVpr = data.stVpr;
-      if (data.vpr != "delniIzpis" && data.vpr != "osveziPodatke" && location.href.includes('show-question')) { // funkcija je uporabljena 2x, pri branju vprašanja in pri dodajanju novega vprašanja, zato omejitev izpisa
+      if (data.vpr != "delniIzpis" && data.vpr != "zagonPrograma") { // funkcija je uporabljena 2x, pri branju vprašanja in pri dodajanju novega vprašanja, zato omejitev izpisa
         vprasanje = data.vpr;
         potrZapOdg = '';
         document.getElementById("strinja").checked = false;
@@ -155,7 +93,7 @@
       } else {
         prazenOdg = true;
       }
-      if (zapStVpr == 0) { // popup za oddajo odgovora na 0. vprašanje/ni vprašanja
+      if (VprID == 0) { // popup za oddajo odgovora na 0. vprašanje/ni vprašanja
         document.getElementById("btnNiVpr").click();
       } else if (prazenOdg == true) { // popup za prazen odgovor
         document.getElementById("btnPrazenOdg").click();
@@ -163,8 +101,7 @@
         document.getElementById("btnPodvojenOdg").click();
       } else { // pošiljanje odgovora v bazo
         potrZapOdg = 'Odgovor zabeležen. Vprašanje: "'+vprasanje+'", odgovor: "'+odg+'".'; // potrditev zapisa odgovora v bazo
-        // socket.emit("socketPisanjeOdg", {"VprID":VprID, "Odg":odg});
-        socket.emit("socketPisanjeOdg", {"Odg":odg});
+        socket.emit("socketPisanjeOdg", {"VprID":VprID, "Odg":odg});
         document.getElementById("btnPotrditevPrejemaOdg").click();
         podvojenOdg = true;
       }
@@ -175,24 +112,8 @@
     };
     // izpis rezultatov glasovanja
     socket.on("socketPosiljanjeRezultatov", function(msg) {
-      rezultati = msg;
+      rezultati = JSON.parse(msg);
       document.getElementById("btnRewrite").click();
-    });
-    // izpis vseh vprašanj v tabelo
-    function izpisVprasanj() {
-      socket.emit("socketIzpisVprasanj");
-    };
-    // prejem vseh vprašanj za prikaz
-    socket.on("socketPosiljanjeVprasanj", function(msg) {
-      vsaVpr = msg;
-      document.getElementById("btnRewriteVprasanja").click();
-    });
-    function izpisStatistike() {
-      socket.emit("socketIzpisStatistike");
-    };
-    socket.on("socketPosiljanjeStatistike", function(msg) {
-      statOdg = msg;
-      document.getElementById("btnRewriteStatistika").click();
     });
   </script>
 </body>

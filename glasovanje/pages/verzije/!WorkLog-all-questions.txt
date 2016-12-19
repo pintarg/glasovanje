@@ -1,0 +1,37 @@
+==============================
+Verzija: 2016.11.28a
+Narejeno: Urejanje dodatne podstrani 'all-questions' za prikaz zabele vprašanj. [server_2016.11.28b.js; app_2016.11.28a.js; all-questions_2016.11.28a.html; webpage_2016.11.28a.html]
+To-Do: Nadaljuj z urejanjem.
+==============================
+Verzija: 2016.12.04a
+Narejeno: Dodajanje funkcionalnosti brisanja vprašanj in povezanih odgovorov iz DB [server_2016.12.04a.js; all-questions_2016.12.04a.html]
+To-Do:
+==============================
+Verzija: 2016.12.13a
+Narejeno: Urejanje imen stolpcov in prikaz oken za iskanje po tabeli. [statistics_2016.12.13a.html; answers_2016.12.13a.html; all-questions_2016.12.13a.html]
+To-Do:
+==============================
+Verzija: 2016.12.13b
+Narejeno: Skrivanje gumbov za izpis podatkov v tabelo in umik <h2> naslovov [all-question_2016.12.13b.html; answers_2016.12.13b.html; statistics_2016.12.13b.html]
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================

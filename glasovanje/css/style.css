@@ -1,0 +1,93 @@
+/* Verzija: 2016.12.17b */
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700');
+body{padding-top:0 !important;background:#4a4a4a;}
+.navbar-default{background:#50e3c2;box-shadow:none;border:none;}
+.navbar-default .navbar-brand{font-family:"Raleway";color: #fff;font-size: 30px;text-transform: uppercase; font-weight: 500;margin:0;}
+.navbar-default .navbar-brand:hover{color:#fff;}
+.navbar-default .navbar-nav>li>a{font-family:"Raleway";color: #fff;font-weight:300;text-transform:uppercase;}
+.navbar-default .navbar-nav>li>a:hover{color:#ebebeb;}
+.navbar .container{height: 80px;line-height: 80px; padding: 15px;}
+
+h1{color:#fff;font-family:"Raleway";margin-bottom:390px;text-shadow: 0px 0px 2px rgba(150, 150, 150, 1);text-align:center;text-transform:uppercase;}
+h2{text-align:center;font-family:"Raleway";color:#fff;font-size:30px;margin-bottom:30px;font-weight:300;}
+h3{font-family:"Raleway";color:#fff;font-size:30px;margin-bottom:30px;font-weight:300;}
+button, button.btn-primary{margin-top:30px;transition:0.1s all linear;font-family:"Raleway";background-color:transparent;border:1px solid #fff;padding:10px 20px;color:#fff;text-transform:uppercase;}
+button:hover, button.btn-primary:hover{border-color:#50e3c2;color:#50e3c2;background-color:transparent;}
+button.btn-primary:focus{outline:0;background-color:transparent;box-shadow: none;border: 1px solid #fff;}
+
+output{color:#fff;}
+body .container input, body .container select{color:#fff;background-color: transparent;border: none;border: 1px solid #fff;padding: 0 20px;outline:none;}
+body .container select{height:40px;}
+label{color:#fff;font-family:"Raleway";font-weight:300;}
+input[type='text']{min-width:400px;}
+input[type='radio']{margin-right:15px;}
+input:focus{border-color:#50e3c2;}
+::-webkit-input-placeholder {
+   color: #fff;
+   font-weight:300;
+   font-family:"Raleway";
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: #fff;
+    font-weight:300;
+    font-family:"Raleway";
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: #fff;
+    font-weight:300;
+    font-family:"Raleway";
+}
+
+:-ms-input-placeholder {
+    color: #fff;
+    font-weight:300;
+    font-family:"Raleway";
+}
+p,li{font-family:"Raleway";color:#fff;}
+.custom-list li{line-height:2.3;list-style-type:none;position:relative;}
+.custom-list li::before{content:"• ";font-family:"Raleway";font-size:30px;position:absolute;left:-20px;top:-17px;color:#50e3c2;;}
+
+/*DOMAČA STRAN*/
+.homepage{border-radius:20px 0;margin-top:-390px;padding-bottom:100px;}
+.banner{background-image:url(../pictures/ozadje.jpg);height:500px;background-size:cover;background-position:50%;}
+.poudarek{color:#50e3c2;}
+/*VPRAŠANJE*/
+.dvetretjini{float:left;width:66%;}
+.enatretjina{float:left;width:33%;}
+.radioLine{color:#fff;font-family:"Raleway";margin-bottom:15px;}
+.vrsticaxody{text-transform:uppercase;font-weight:700;}
+.trenutnoVprasanje{border-bottom:1px solid #50e3c2;padding-bottom:10px;margin-right:100px;font-weight:300;font-size:20px;}
+.modal-content{background-color:#4a4a4a;}
+
+/*DODAJANJE VPRAŠANJ*/
+
+.stvprasanj-holder{margin-bottom:15px;}
+.stvprasanj{font-size: 30px;margin-left: 10px;color: #50e3c2;}
+.povratna{margin-top:30px;border-bottom:1px solid #50e3c2;padding-bottom:10px;}
+
+/*IZPIS*/
+#btnIzpisRezultatov{display:block;margin:auto;}
+#btnIzpisVprasanj{display:block;margin:auto;}
+#btnIzpisStatistike{display:block;margin:auto;}
+table.table-striped.table tr{background-color:transparent;}
+table{width:100%;font-family:"Raleway";margin-bottom:100px;}
+table th{color:#fff;font-weight:300;text-align:center;border-bottom:1px solid #fff;padding:15px 10px}
+table td{color:#fff;font-weight:300;text-align:center;padding:15px 10px}
+table .btn-danger{margin-top:0;}
+
+@media screen and (max-width: 990px) {
+
+}
+
+@media screen and (max-width: 767px) {
+    .navbar .container{height:auto;}
+    .homepage{margin-top:-190px;}
+    h1{margin-bottom:190px;}
+}
+/*=== === === === === === POPUP-i === === === === === ===*/
+.app-modal-window .modal-dialog { /*uporabljen v: last-question.html*/
+  width: 350px;
+}
+/*=== === === === === === /POPUP-i === === === === === ===*/

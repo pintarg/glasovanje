@@ -91,20 +91,20 @@ Verzija: 2016.09.11a
 Narejeno: Odstranjevanje funkcij LedBlinkESPX.
 To-Do: Pojavlja se občasna neodzivnost ESPjev, če se tipke pritisne prehitro eno za drugo.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.19a
+Narejeno: Shranjevanje pred urejanjem kode.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.19b
+Narejeno: Brisanje odvečne kode.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.19c
+Narejeno: Urejanje spremenljivk
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.19d
+Narejeno: Koda oklestena odvečne kode, koliko se je dalo.
 To-Do:
 ==============================
 Verzija:

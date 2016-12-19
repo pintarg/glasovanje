@@ -1,0 +1,23 @@
+<!-- Verzija: 2016.11.20b -->
+<div id="divVprasanje", ng-controller="QuestionController">
+  <!-- <p><b>Vprašanje: </b><output id="stVpr" type="text" /><br> -->
+  <p><b>Vprašanje: </b>{{VprID+' od '+stVpr}}<br>
+  <!-- <p><b>> </b><output id="vpr" type="text" /></p><br> -->
+  <p><b>> </b>{{vprasanje}}</p><br>
+  <button id="btnBeriVpr" onClick="beriVpr()">Beri vprašanje</button>
+  <button id="btnRewriteVprasanje" type="button" ng-click="rewriteVprasanje()" style="display:none"></button>
+  <button id="btnPotrditevPrejemaOdg" type="button" ng-click="potrditevPrejemaOdg()" style="display:none"></button>
+
+  <p><b>Odgovori:</b></p>
+  <form action="">
+    <input type="radio" name="Q" id="strinja"> Se strinjam
+    <input type="radio" name="Q" id="vzdrzan"> Vzdrzan
+    <input type="radio" name="Q" id="nestrinja"> Se ne strinjam
+  </form>
+  <button id="btnOddajOdg" onClick="oddajOdg()">Oddaj odgovor</button><br
+  <p>Povratna informacija: {{potrditevPrejemaOdg}}</p>
+  <confirm1 type="confirm1"></confirm1> <!-- vezano na app.directive 'confirm1' v app.js -->
+</div>
+<!--<div ng-controller="ConfirmCtrl">
+  <confirm1 type="confirm1"></confirm1> vezano na app.directive 'confirm1' v app.js
+</div> -->

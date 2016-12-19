@@ -1,0 +1,34 @@
+<!-- Verzija: 2016.12.12c -->
+<div class='homepage'>
+    <h1>Vprašanje</h1>
+    <div id="divVprasanje" , ng-controller="QuestionController">
+        <div class='dvetretjini'>
+            <p class='vrsticaxody'><span class='poudarek'>Vprašanje: </span>{{zapStVpr+' od '+stVpr}}<br>
+                <p class='trenutnoVprasanje'><b>> </b>{{vprasanje}}</p>
+                <button id="btnPrejsnjeVpr" onClick="prejsnjeVpr()"><< Prejšnje vprašanje</button>
+                <button id="btnBeriVpr" onClick="beriVpr()">Naslednje vprašanje >></button>
+                <button id="btnRewriteVprasanje" type="button" ng-click="rewriteVprasanje()" style="display:none"></button>
+                <button id="btnPotrditevPrejemaOdg" type="button" ng-click="potrditevPrejemaOdg()" style="display:none"></button>
+        </div>
+        <div class='enatretjina'>
+            <p class='poudarek'>Odgovori:</p>
+            <form action="">
+                <div class='radioLine'><input type="radio" name="Q" id="strinja"> Se strinjam</div>
+                <div class='radioLine'><input type="radio" name="Q" id="vzdrzan"> Vzdržan</div>
+                <div class='radioLine'><input type="radio" name="Q" id="nestrinja"> Se ne strinjam</div>
+            </form>
+        </div>
+        <button id="btnOddajOdg" onClick="oddajOdg()">Oddaj odgovor</button><br>
+        <p class='povratna'>{{potrZapOdg}}</p>
+        <!-- Spodnja koda je komentirana in ostaja v testne namene -->
+        <!-- <p>Povratna informacija2: <output id="odg" type="text" /></p> -->
+    </div>
+    <hr>
+    <p>Glasovalna enota 1: <output id="ge0" type="text" /></p>
+    <p>Glasovalna enota 2: <output id="ge1" type="text" /></p>
+    <p>Glasovalna enota 3: <output id="ge2" type="text" /></p>
+</div>
+<button ng-controller="ModalPopup as $ctrl" id="btnZadnjeVpr" type="button" class="btn btn-default" ng-click="$ctrl.ZadnjeVpr()" style="display:none">Zadnje vprašanje</button>
+<button ng-controller="ModalPopup as $ctrl" id="btnPodvojenOdg" type="button" class="btn btn-default" ng-click="$ctrl.PodvojenOdg()" style="display:none">Podvojen odgovor</button>
+<button ng-controller="ModalPopup as $ctrl" id="btnPrazenOdg" type="button" class="btn btn-default" ng-click="$ctrl.PrazenOdg()" style="display:none">Prazen odgovor</button>
+<button ng-controller="ModalPopup as $ctrl" id="btnNiVpr" type="button" class="btn btn-default" ng-click="$ctrl.NiVpr()" style="display:none">Ni vprašanja</button>

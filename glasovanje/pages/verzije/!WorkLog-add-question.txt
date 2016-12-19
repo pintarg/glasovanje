@@ -1,0 +1,52 @@
+==============================
+Verzija: 2016.11.12a
+Narejeno: Začetna postavitev.
+To-Do: Prenos podatkov številke vprašanja in števila vseh vprašanj prek '$scope' in samodejni izpis ob prihodu na stran.
+Dodajanje možnosti izpisa vseh vprašanj v bazi.
+==============================
+Verzija: 2016.11.17a
+Narejeno: Prikaz števila vprašanj v bazi. [server_2016.11.17a.js; webpage_2016.11.17d.html; add-question_2016.11.17a.html; app_2016.11.17c.js]
+To-Do:
+==============================
+Verzija: 2016.11.18a
+Narejeno: Urejanje prikaza števila vprašanj v bazi, pri dodajanju novega vprašanja in povratne informacije pri dodajanju novega vprašanja. [webpage_2016.11.18c.html; add-question_2016.11.18a.html; app_2016.11.18a.js]
+potrditevPrejemaNovegaVpr
+To-Do:
+==============================
+Verzija: 2016.11.25a
+Narejeno: Uvoz oblikovanja.
+To-Do:
+==============================
+Verzija: 2016.12.05a
+Narejeno: Urejeno brisanje vrednosti vnosnega polja po dodajanju vprašanja in popravljena povratna informacije pri prejemu novega vprašanja. [webpage_2016.12.05a.html; add-question_2016.12.05a.html]
+To-Do:
+==============================
+Verzija: 2016.12.13a
+Narejeno: Dodajanje varovalke pred oddajo praznega novega vprašanja. [server_2016.12.13b.js; webpage_2016.12.13b.html; empty-question.html; add-question_2016.12.13a.html]
+Dodan 'btnPraznoVpr'
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================

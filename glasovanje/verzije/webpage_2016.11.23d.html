@@ -1,0 +1,119 @@
+<!-- Opis: Spletna stran za prikaz zbranih glasov. -->
+<!-- Verzija: 2016.11.23d -->
+<!-- ==================================================================================================== -->
+<!DOCTYPE html>
+<meta charset=utf-8>
+<html ng-app="myApp">
+<head>
+  <script src="/src/angular.js"></script>
+  <script src="/src/angular-route.js"></script>
+  <script src="/src/ui-bootstrap-tpls.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <style>
+    html, body {font-size: 1em;}
+    body {padding-top: 70px;}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <p class="navbar-brand">Glasovanje</p>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#/home">Home</a></li>
+        <li><a href="#/question">Vprašanje</a></li>
+        <li><a href="#/add-question">Dodajanje novega vprašanja</a></li>
+        <li><a href="#/answers">Odgovori/rezultati</a></li>
+      </ul>
+    </div>
+    </nav>
+  </header>
+  <div class="container">
+    <div ng-view><div> <!-- div za prikaz Single page aplication -->
+  </div>
+
+  <script src="app.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+
+    var odg = 'x';
+    var socket = io.connect("10.1.0.111:8080");
+    var VprID, stVpr, novoVpr, potrZapOdg; // potrZapOdg-potrditev zapisa odgovora
+    var rezultati;
+    var podvojenOdg = false; // Varovalka pred dvojnim oddajanjem odgovora na isto vprašanje
+    var prazenOdg = false; // Varovalka pred praznim oddajanjem odgovora
+    var vprasanje = 'Za prikaz vprašanja klikni na gumb "Beri vprašanje".';
+
+    // branje novega vprašanja iz webpage-a in pošiljanje v bazo
+    function dodajVpr() {
+      novoVpr = document.getElementById("iptDodajVpr").value;
+      socket.emit("socketDodajVpr", novoVpr);
+    };
+    // pritisk na gumb "Beri vprašanje" proži ukaz za branje vprašanja in ID vprašanja iz baze
+    function beriVpr() {
+      if (VprID < stVpr) {
+        socket.emit("socketBeriVpr");
+        podvojenOdg = false;
+      } else { // popup za opozorilo zadnjega vprašanja
+        document.getElementById("btnZadnjeVpr").click();
+      }
+    };
+    // prejem in izpis vprašanja, števila vprašanj v bazi in prejem ID vprašanja
+    socket.on("socketVprPrebran", function(data) {
+      VprID = data.VprID;
+      stVpr = data.stVpr;
+      if (data.vpr != "delniIzpis" && data.vpr != "zagonPrograma") { // funkcija je uporabljena 2x, pri branju vprašanja in pri dodajanju novega vprašanja, zato omejitev izpisa
+        vprasanje = data.vpr;
+        potrZapOdg = '';
+        document.getElementById("strinja").checked = false;
+        document.getElementById("vzdrzan").checked = false;
+        document.getElementById("nestrinja").checked = false;
+        document.getElementById("btnRewriteVprasanje").click();
+      } else if (data.vpr == "delniIzpis") {
+        document.getElementById("btnPrejemStVpr").click();
+      }
+    });
+    // funkcija branja izbranega odg in pošiljanja povratne informacije o vprID, izbranem odg, timestamp... serverju za vpis v Redis
+    function oddajOdg() {
+      if(document.getElementById("strinja").checked) {
+        odg = 'Se strinjam';
+        prazenOdg = false;
+      } else if (document.getElementById("vzdrzan").checked) {
+        odg = 'Vzdržan';
+        prazenOdg = false;
+      } else if (document.getElementById("nestrinja").checked) {
+        odg = 'Se ne strinjam';
+        prazenOdg = false;
+      } else {
+        prazenOdg = true;
+      }
+      if (VprID == 0) { // popup za oddajo odgovora na 0. vprašanje/ni vprašanja
+        document.getElementById("btnNiVpr").click();
+      } else if (prazenOdg == true) { // popup za prazen odgovor
+        document.getElementById("btnPrazenOdg").click();
+      } else if (podvojenOdg == true) { // popup za podvojen odg
+        document.getElementById("btnPodvojenOdg").click();
+      } else { // pošiljanje odgovora v bazo
+        potrZapOdg = 'Odgovor zabeležen. Vprašanje: "'+vprasanje+'", odgovor: "'+odg+'".'; // potrditev zapisa odgovora v bazo
+        socket.emit("socketPisanjeOdg", {"VprID":VprID, "Odg":odg});
+        document.getElementById("btnPotrditevPrejemaOdg").click();
+        podvojenOdg = true;
+      }
+    };
+    // izpis rezultatov glasovanja
+    function izpisRezultatov() {
+      socket.emit("socketIzpisiRezultate");
+    };
+    // izpis rezultatov glasovanja
+    socket.on("socketPosiljanjeRezultatov", function(msg) {
+      rezultati = JSON.parse(msg);
+      document.getElementById("btnRewrite").click();
+    });
+  </script>
+</body>
+</html>

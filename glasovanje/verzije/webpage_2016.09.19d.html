@@ -1,0 +1,44 @@
+<!--
+Opis: Spletna stran za prikaz zbranih glasov.
+Verzija: 2016.09.19d
+====================================================================================================-->
+<html>
+
+<head>
+
+</head>
+
+<body>
+<!-- tukaj bo koda za prikaz strani -->
+
+<p><b>Vprasanje:</b><input id="vpr" type="text" /></p>
+<p><b>Odgovori:</b></p>
+<form action="">
+  <input type="radio" name="Q000" id="strinja" value="1"> Se strinjam
+  <input type="radio" name="Q000" id="vzdrzan" value="2"> Vzdrzan
+  <input type="radio" name="Q000" id="nestrinja" value="3"> Se ne strinjam
+</form>
+<button id="btnOddajOdg" onClick="oddajOdg()">Oddaj odgovor</button><br>
+
+Povratna informacija: <input id="odg" type="text" />
+
+<!-- ================================================================= -->
+
+  <script type="text/javascript" charset="UTF-8">
+    // tukaj bo koda za povezavo z Redis in preverjanje izbranih odgovorov
+    var redisClient = require('redis').createClient();
+
+    function oddajOdg() {
+      if(document.getElementById("strinja").checked) {
+        document.getElementById("odg").value = "strinja";
+      } else if (document.getElementById("vzdrzan").checked) {
+        document.getElementById("odg").value = "vzdrzan";
+      } else if (document.getElementById("nestrinja").checked) {
+        document.getElementById("odg").value = "nestrinja";
+      }
+    };
+
+  </script>
+</body>
+
+</html>

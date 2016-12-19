@@ -1,0 +1,45 @@
+<!-- Verzija: 2016.11.25a -->
+<div class='homepage'>
+    <h1>Odgovori / rezultati</h1>
+    <button id="btnIzpisRezultatov" onClick="izpisRezultatov()">Izpiši rezultate glasovanja</button>
+    <div id="divIzpisRezultatov" ng-controller="AnswersController">
+        <button id="btnRewrite" type='button' ng-click="rewrite()" style="display:none">Naloži podatke</button> <!-- gumb je skrit, ker se ga uporablja v 'socketPosiljanjeRezultatov' za izpis nove vrstice v Angular tabelo -->
+        <h2>Izpis rezultatov:</h2>
+        <form>
+            <label for="predicate">Izberi ime stolpca, po katerem želiš iskati:</label>
+            <select class="form-control" id="predicate" ng-model="selectedPredicate" ng-options="predicate for predicate in predicates"></select>
+        </form>
+        <table st-table="podatki" class="table table-striped">
+            <thead>
+                <tr>
+                    <th st-sort="VprID">Vpr ID</th>
+                    <th st-sort="Odg">Odg</th>
+                    <th st-sort="ts">ts</th>
+                    <th st-sort="ts2">ts2</th>
+                    <th st-sort="SocketID">SocketID</th>
+                </tr>
+                <tr>
+                    <th>
+                        <input st-search="VprID" placeholder="Išči po VprID" class="input-sm form-control" type="search" />
+                    </th>
+                    <th colspan="3">
+                        <input st-search placeholder="Iskanje po celotni tabeli" class="input-sm form-control" type="search" />
+                    </th>
+                    <th>
+                        <input st-search="{{selectedPredicate}}" placeholder="Išči po izbranem stolpcu" class="input-sm form-control" type="search" />
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="podatek in podatki">
+                    <td>{{podatek.VprID}}</td>
+                    <td>{{podatek.Odg}}</td>
+                    <td>{{podatek.ts}}</td>
+                    <td>{{podatek.ts2}}</td>
+                    <td>{{podatek.SocketID}}</td>
+                    <td><button type="button" ng-click="removeRow(podatek)" class="btn btn-sm btn-danger">X</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

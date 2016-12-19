@@ -1,0 +1,23 @@
+<!-- Verzija: 2016.11.13a -->
+<button id="btnIzpisRezultatov" onClick="izpisRezultatov()">Izpiši rezultate glasovanja</button>
+
+<div id="divIzpisRezultatov" ng-controller="AnswersController">
+  <button id="btnRewrite" type='button' ng-click="rewrite()" style="display:none">Naloži podatke</button> <!-- gumb je skrit, ker se ga uporablja v 'socketPosiljanjeRezultatov' za izpis nove vrstice v Angular tabelo -->
+  <p><b>Izpis rezultatov:</b>
+  <table>
+    <tr>
+      <th>Vpr ID</th>
+      <th>Odg</th>
+      <th>ts</th>
+      <th>ts2</th>
+      <th>SocketID</th>
+    </tr>
+    <tr ng-repeat="podatek in podatki">
+      <td>{{podatek.VprID}}</td>
+      <td>{{podatek.Odg}}</td>
+      <td>{{podatek.ts}}</td>
+      <td>{{podatek.ts2}}</td>
+      <td>{{podatek.SocketID}}</td>
+    </tr>
+  </table>
+</div>
