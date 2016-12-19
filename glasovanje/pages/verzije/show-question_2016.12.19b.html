@@ -1,4 +1,4 @@
-<!-- Verzija: 2016.12.12c -->
+<!-- Verzija: 2016.12.19b -->
 <div class='homepage'>
     <h1>Vprašanje</h1>
     <div id="divVprasanje" , ng-controller="QuestionController">
@@ -23,6 +23,10 @@
         <!-- Spodnja koda je komentirana in ostaja v testne namene -->
         <!-- <p>Povratna informacija2: <output id="odg" type="text" /></p> -->
     </div>
+    <hr>
+    <p>Glasovalna enota 1: <output id="ge0" type="text" /></p>
+    <p>Glasovalna enota 2: <output id="ge1" type="text" /></p>
+    <p>Glasovalna enota 3: <output id="ge2" type="text" /></p>
 </div>
 <button ng-controller="ModalPopup as $ctrl" id="btnZadnjeVpr" type="button" class="btn btn-default" ng-click="$ctrl.ZadnjeVpr()" style="display:none">Zadnje vprašanje</button>
 <button ng-controller="ModalPopup as $ctrl" id="btnPodvojenOdg" type="button" class="btn btn-default" ng-click="$ctrl.PodvojenOdg()" style="display:none">Podvojen odgovor</button>

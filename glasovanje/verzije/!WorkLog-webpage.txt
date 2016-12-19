@@ -309,8 +309,9 @@ Narejeno: Urejanje delovanja F5 webpage in prikaza podatkov, prejšnje seje.
 [server_2016.12.19a.js; webpage_2016.12.19a.html; app_2016.12.19a.js; show-question_2016.12.19a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.19b
+Narejeno: ZDRUŽEVANJE kode '/GitHub/glasovanje/testi/radiobutton-redis/pages/webpage.html - [2016.12.19a]' in '/GitHub/glasovanje/testi/ESP-webpage/webpage.html - [2016.12.19e]'
+Dodana koda znotraj <script> tab-ov.
 To-Do:
 ==============================
 Verzija:

@@ -70,8 +70,9 @@ Verzija: 2016.12.19a
 Narejeno: File preimenovan iz question.html v show-question.html zaradi delovanja filtra include iskanja po url-ju
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.19b
+Narejeno: ZDRUŽEVANJE kode '/GitHub/glasovanje/testi/radiobutton-redis/pages/show-question.html - [2016.12.19a]' in '/GitHub/glasovanje/testi/ESP-webpage/webpage.html - [2016.12.19e]'
+Dodana koda za izpis izbrane tipke glasovalnih enot.
 To-Do:
 ==============================
 Verzija:
