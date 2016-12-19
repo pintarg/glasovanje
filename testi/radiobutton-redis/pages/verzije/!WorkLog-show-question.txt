@@ -66,8 +66,8 @@ Verzija: 2016.12.12b
 Narejeno: Komentiranje kode 'Povratna informacija2'
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.19a
+Narejeno: File preimenovan iz question.html v show-question.html zaradi delovanja filtra include iskanja po url-ju
 To-Do:
 ==============================
 Verzija:

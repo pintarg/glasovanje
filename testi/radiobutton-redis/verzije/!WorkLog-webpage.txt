@@ -304,8 +304,9 @@ Verzija: 2016.12.13e
 Narejeno: Popravljanje kode za osveževanje (F5) strani. [webpage_2016.12.13e.html; server_2016.12.13e.js]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.19a
+Narejeno: Urejanje delovanja F5 webpage in prikaza podatkov, prejšnje seje.
+[server_2016.12.19a.js; webpage_2016.12.19a.html; app_2016.12.19a.js; show-question_2016.12.19a.html]
 To-Do:
 ==============================
 Verzija:
