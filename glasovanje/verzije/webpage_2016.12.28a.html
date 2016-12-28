@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2016.12.28c -->
+<!-- Verzija: 2016.12.28a -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -81,13 +81,12 @@
 
     // spremenljvke za glasovalne enote
     var vrednostGE0, vrednostGE1, vrednostGE2;
-    // var connection2Test = true;
+    var connection2Test = true;
 
     // POVEZAVA Z ESP8266
     var connection0 = new WebSocket('ws://192.168.42.70:81/', ['arduino']); // CONNECTION0 - ESP8266-0
     // var connection1 = new WebSocket('ws://192.168.42.71:81/', ['arduino']); // CONNECTION1 - ESP8266-1
-    // var connection2 = new WebSocket('ws://192.168.42.72:81/', ['arduino']); // CONNECTION2 - ESP8266-2
-    connect2();
+    var connection2 = new WebSocket('ws://192.168.42.72:81/', ['arduino']); // CONNECTION2 - ESP8266-2
 
     // connection0 - povezava z glasovalno enoto 0
     connection0.onopen = function() {
@@ -121,101 +120,47 @@
     //   }
     // };
 
-    // =========================== RECONNECT WEBSOCKET TESTNA KODA =====================================
-    function connect2() {
-      var connection2Test = true, connection2Restart = true;
-      var connection2 = new WebSocket('ws://192.168.42.72:81/', ['arduino']); // CONNECTION2 - ESP8266-2
-      // connection2 - povezava z glasovalno enoto 2
-      connection2.onopen = function() {
-        setInterval(function() {
-          if (connection2Test) {
-            document.getElementById("ge02Connection").value="Test povezave";
-            connection2.send(0);
-            connection2Test=false;
-
-          } else if (!connection2Test) {
-            document.getElementById("ge02Connection").value="Povezava prekinjena!";
-            console.log("Restarting Conn2");
-            // connection2 = new WebSocket('ws://192.168.42.72:81/', ['arduino']);
-            setTimeout(function() {
-              if (!connection2Test) {
-                connect2();
-              }
-            }, 2000);
-          }
-        }, 1000);
-        // connection2.send(0);
-      };
-      // connection2.onclose = function(e) {
-      //   console.log("Conn2 socket prekinjen. Razlog: "+e.reason);
-      //   document.getElementById("ge02Connection").value="Povezava prekinjena22222!";
-      //   // setTimeout(function() {
-      //     console.log("Restarting Conn22222222222");
-      //     connect2();
-      //   // }, 3000);
-      // };
-      connection2.onerror = function(error) {
-        console.log('WebSocket Error ', error);
-      };
-      connection2.onmessage = function(msg) {
-        vrednostGE2 = parseInt(msg.data);
-        if (vrednostGE2 == 42) {
-          connection2Test=true;
-          document.getElementById("ge02Connection").value="OK";
-        } else if (vrednostGE2 != 0 && typeof(vrednostGE2) != "undefined") {
-          connection2Test=true;
-          document.getElementById("ge02").value=vrednostGE2;
-          connection2.send(vrednostGE2); // povratna informacije ESP-ju, katero LED naj prižge
+    // connection2 - povezava z glasovalno enoto 2
+    connection2.onopen = function() {
+      setInterval(function() {
+        if (connection2Test) {
+          connection2.send(0);
+          connection2Test=false;
+        } else {
+          document.getElementById("ge02Connection").value="Povezava prekinjena!";
+          console.log("Restarting Conn2");
+          connection2 = new WebSocket('ws://192.168.42.72:81/', ['arduino']);
+          setTimeout(function() {
+            connection2Test=true;
+          }, 500);
         }
-        // if (vrednostGE2 != 0 && typeof(vrednostGE2) != "undefined") {
-        //   document.getElementById("ge02").value=vrednostGE2;
-        //   connection2.send(vrednostGE2); // povratna informacije ESP-ju, katero LED naj prižge
-        // }
-      };
-    }
-    // =========================== RECONNECT WEBSOCKET TESTNA KODA =====================================
-
-    // // connection2 - povezava z glasovalno enoto 2
-    // connection2.onopen = function() {
-    //   setInterval(function() {
-    //     if (connection2Test) {
-    //       connection2.send(0);
-    //       connection2Test=false;
-    //     } else {
-    //       document.getElementById("ge02Connection").value="Povezava prekinjena!";
-    //       console.log("Restarting Conn2");
-    //       connection2 = new WebSocket('ws://192.168.42.72:81/', ['arduino']);
-    //       setTimeout(function() {
-    //         connection2Test=true;
-    //       }, 500);
-    //     }
-    //   }, 1000);
-    //   // connection2.send(0);
+      }, 1000);
+      // connection2.send(0);
+    };
+    // connection2.onclose = function() {
+    //   document.getElementById("ge02Connection").value="Povezava prekinjena!";
+    //   // setTimeout(function() {
+    //   //   console.log("Restarting Conn2");
+    //   //   connection2 = new WebSocket('ws://192.168.42.72:81/', ['arduino']);
+    //   // }, 3000);
     // };
-    // // connection2.onclose = function() {
-    // //   document.getElementById("ge02Connection").value="Povezava prekinjena!";
-    // //   // setTimeout(function() {
-    // //   //   console.log("Restarting Conn2");
-    // //   //   connection2 = new WebSocket('ws://192.168.42.72:81/', ['arduino']);
-    // //   // }, 3000);
-    // // };
-    // connection2.onerror = function(error) {
-    //   console.log('WebSocket Error ', error);
-    // };
-    // connection2.onmessage = function(msg) {
-    //   vrednostGE2 = parseInt(msg.data);
-    //   if (vrednostGE2 == 42) {
-    //     connection2Test=true;
-    //     document.getElementById("ge02Connection").value="OK";
-    //   } else if (vrednostGE2 != 0 && typeof(vrednostGE2) != "undefined") {
-    //     document.getElementById("ge02").value=vrednostGE2;
-    //     connection2.send(vrednostGE2); // povratna informacije ESP-ju, katero LED naj prižge
-    //   }
-    //   // if (vrednostGE2 != 0 && typeof(vrednostGE2) != "undefined") {
-    //   //   document.getElementById("ge02").value=vrednostGE2;
-    //   //   connection2.send(vrednostGE2); // povratna informacije ESP-ju, katero LED naj prižge
-    //   // }
-    // };
+    connection2.onerror = function(error) {
+      console.log('WebSocket Error ', error);
+    };
+    connection2.onmessage = function(msg) {
+      vrednostGE2 = parseInt(msg.data);
+      if (vrednostGE2 == 42) {
+        connection2Test=true;
+        document.getElementById("ge02Connection").value="OK";
+      } else if (vrednostGE2 != 0 && typeof(vrednostGE2) != "undefined") {
+        document.getElementById("ge02").value=vrednostGE2;
+        connection2.send(vrednostGE2); // povratna informacije ESP-ju, katero LED naj prižge
+      }
+      // if (vrednostGE2 != 0 && typeof(vrednostGE2) != "undefined") {
+      //   document.getElementById("ge02").value=vrednostGE2;
+      //   connection2.send(vrednostGE2); // povratna informacije ESP-ju, katero LED naj prižge
+      // }
+    };
 
     if (load) { // izvajanje kode ob dostopu na webpage ali ob refresh-u webpage-a
       url=location.href;

@@ -1,5 +1,5 @@
 // Opis: Koda, ki se izvaja na ESP8266 in skrbi za vzpostavitev WiFi povezave z routerjem, zajem glasov in komunikacijo s spletno stranjo.
-// Verzija: 2016.12.28e
+// Verzija: 2016.12.28c
 // ====================================================================================================
 
 #include <Arduino.h>
@@ -10,8 +10,6 @@ WebSocketsServer webSocket = WebSocketsServer(81);
 const char* ssid = "glasovanje"; // replace "SSID" with wireless name (SSID)
 const char* password = "DontPanic!42"; // replace "PWD" eith wireless password
 boolean empty = true;
-unsigned long lastBtnPressTime = 0;
-unsigned long debounceDelay = 1000;
 
 void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght) {
 
@@ -37,9 +35,6 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t lenght
         digitalWrite(14, 1);
         delay(500);
         digitalWrite(14, 0);
-      } else if (text == "0") {
-        webSocket.sendTXT(num, "42");
-        // webSocket.broadcastTXT("42");
       }
       // webSocket.sendTXT(num, payload, lenght);
       break;
@@ -74,19 +69,13 @@ void loop() {
   webSocket.loop();
 
   if (digitalRead(2) == 0) { // D4-proti (13)
-    if((millis()-lastBtnPressTime)>debounceDelay) {
-      webSocket.broadcastTXT("3");
-      lastBtnPressTime=millis();
-    }
+    webSocket.broadcastTXT("3");
+    delay(1000);
   } else if (digitalRead(4) == 0) { // D2-nedolocen (12)
-    if((millis()-lastBtnPressTime)>debounceDelay) {
-      webSocket.broadcastTXT("2");
-      lastBtnPressTime=millis();
-    }
+    webSocket.broadcastTXT("2");
+    delay(1000);
   } else if (digitalRead(5) == 0) { // D1-za (14)
-    if((millis()-lastBtnPressTime)>debounceDelay) {
-      webSocket.broadcastTXT("1");
-      lastBtnPressTime=millis();
-    }
+    webSocket.broadcastTXT("1");
+    delay(1000);
   }
 }

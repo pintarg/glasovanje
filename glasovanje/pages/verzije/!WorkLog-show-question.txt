@@ -75,8 +75,8 @@ Narejeno: ZDRUŽEVANJE kode '/GitHub/glasovanje/testi/radiobutton-redis/pages/sh
 Dodana koda za izpis izbrane tipke glasovalnih enot.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.28a
+Narejeno: Dodajanje tabele za prikaz statusa glasovalnih enot.
 To-Do:
 ==============================
 Verzija:

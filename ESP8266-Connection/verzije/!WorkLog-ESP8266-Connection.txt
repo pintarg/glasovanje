@@ -10,12 +10,12 @@ Verzija: 2016.12.28b
 Narejeno: Brisanje odvečne kode in urejanje kode.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.12.28c
+Narejeno: Urejanje kode, da se izbrane tipke ni pošiljajo dvojno.
+To-Do: Brisanje odvečne komentirane kode.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2016.12.28d
+Narejeno: Odstranjevanje delay-a pri pritisku tipke in dodan debounce.
 To-Do:
 ==============================
 Verzija:
