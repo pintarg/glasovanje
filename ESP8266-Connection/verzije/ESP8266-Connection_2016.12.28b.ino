@@ -1,5 +1,5 @@
 // Opis: Koda, ki se izvaja na ESP8266 in skrbi za vzpostavitev WiFi povezave z routerjem, zajem glasov in komunikacijo s spletno stranjo.
-// Verzija: 2016.12.28c
+// Verzija: 2016.12.28b
 // ====================================================================================================
 
 #include <Arduino.h>

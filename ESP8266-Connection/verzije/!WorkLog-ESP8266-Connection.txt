@@ -1,0 +1,72 @@
+Verzija: 2016.12.19a
+Narejeno: Shranjevanje pred urejanjem.
+To-Do:
+==============================
+Verzija: 2016.12.28a
+Narejeno: Urejanje kode, da se podatek o pritisku tipke pošlje samo ob pritisku in ni konstantnega prevernjanja spremebe s strani webpage-a
+To-Do: Brisanje odvečne kode
+==============================
+Verzija: 2016.12.28b
+Narejeno: Brisanje odvečne kode in urejanje kode.
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
