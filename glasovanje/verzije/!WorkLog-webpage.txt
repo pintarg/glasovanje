@@ -322,9 +322,9 @@ Verzija: 2016.12.28b
 Narejeno: Testiranje kode za ponovno vzpostavljanje povezave ob prekinitvi.
 To-Do: Ponovna vzpostavitev deluje, vendar z napakami - kljub vzpostavitvi povezave vmesno javlja, da ni povezave.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2016.12.29a
+Narejeno: Urejenja koda za reconnect ob prekinitvi povezave za Connection2.
+To-Do: Urejanje kode še za Conn0 in 1 in brisanje odvečne komentirane kode.
 ==============================
 Verzija:
 Narejeno:
