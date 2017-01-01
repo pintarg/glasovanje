@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2017.01.01c -->
+<!-- Verzija: 2017.01.01a -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -100,17 +100,13 @@
           connection00Test=false;
           document.getElementById("ge00Connection").value="Test povezave";
         } else if (!connection00Test) {
-          document.getElementById("ge00Connection").value="Povezava prekinjena! Vzpostavljanje povezave...";
+          document.getElementById("ge00Connection").value="Povezava prekinjena!";
           clearInterval(testConnection00);
           connectGE00();
         }
       }, 5000);
       connection00.onerror = function(error) {
         console.log('WebSocket Error ', error);
-      };
-      connection00.onclose = function() {
-        clearInterval(testConnection00);
-        connectGE00();
       };
       connection00.onmessage = function(msg) {
         vrednostGE00 = parseInt(msg.data);
@@ -138,17 +134,13 @@
           connection01Test=false;
           document.getElementById("ge01Connection").value="Test povezave";
         } else if (!connection01Test) {
-          document.getElementById("ge01Connection").value="Povezava prekinjena! Vzpostavljanje povezave...";
+          document.getElementById("ge01Connection").value="Povezava prekinjena!";
           clearInterval(testConnection01);
           connectGE01();
         }
-      }, 5100);
+      }, 5000);
       connection01.onerror = function(error) {
         console.log('WebSocket Error ', error);
-      };
-      connection01.onclose = function() {
-        clearInterval(testConnection01);
-        connectGE01();
       };
       connection01.onmessage = function(msg) {
         vrednostGE01 = parseInt(msg.data);
@@ -176,17 +168,13 @@
           connection02Test=false;
           document.getElementById("ge02Connection").value="Test povezave";
         } else if (!connection02Test) {
-          document.getElementById("ge02Connection").value="Povezava prekinjena! Vzpostavljanje povezave...";
+          document.getElementById("ge02Connection").value="Povezava prekinjena!";
           clearInterval(testConnection02);
           connectGE02();
         }
-      }, 5200);
+      }, 5000);
       connection02.onerror = function(error) {
         console.log('WebSocket Error ', error);
-      };
-      connection02.onclose = function() {
-        clearInterval(testConnection02);
-        connectGE02();
       };
       connection02.onmessage = function(msg) {
         vrednostGE02 = parseInt(msg.data);
@@ -201,6 +189,7 @@
         }
       };
     }
+
 
     if (load) { // izvajanje kode ob dostopu na webpage ali ob refresh-u webpage-a
       url=location.href;

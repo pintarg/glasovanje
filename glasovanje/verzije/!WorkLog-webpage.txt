@@ -326,12 +326,12 @@ Verzija: 2016.12.29a
 Narejeno: Urejenja koda za reconnect ob prekinitvi povezave za Connection2.
 To-Do: Urejanje kode še za Conn0 in 1 in brisanje odvečne komentirane kode.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.01a
+Narejeno: Urejena koda za conn00 in 01. Brisanje odvečne kode.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.01b
+Narejeno: Dodano .onclose preverjanje WebSocket povezave za hitrejši reconnect ob prekinitvi.
 To-Do:
 ==============================
 Verzija:
