@@ -334,9 +334,9 @@ Verzija: 2017.01.01b
 Narejeno: Dodano .onclose preverjanje WebSocket povezave za hitrejši reconnect ob prekinitvi.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.01.01c
+Narejeno: Testiranje oddaje odgovora na GE03 (connectGE02). Deluje.
+To-Do: Dodajanje kode še na ostale GE. Sprememba preverjanja SocketID na strani webpage-a in ne na strani serverja, da se zabeleži SocketID za vsako GE posebej.
 ==============================
 Verzija:
 Narejeno:
