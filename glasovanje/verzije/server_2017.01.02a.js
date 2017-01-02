@@ -1,4 +1,4 @@
-// Verzija: 2017.01.02c
+// Verzija: 2017.01.02a
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -150,15 +150,6 @@ io.sockets.on("connection", function(socket) {
     var timestamp = new Date().getTime(); // timestamp v milisekundah
     var timestamp2 = moment().format(); // timestamp v obliki "2016-09-25T23:05:56+02:00" // uporablja se knjižnica "moment"
     clientRedis.zadd("odgovori", VprID, '{"VprID"'+':"'+VprID+'","Odg"'+':"'+msg.Odg+'","ts"'+':"'+timestamp2+'","ts2":"'+timestamp+'","SocketID":"'+SocketID+'"}');
-    if (msg.SocketID.includes('-GE00')) { // pošiljanje povratne informacije o zapisu odgovora glasovalne enote, da se na GE prižge ustrezno LED
-      socket.emit("socketOdgGE00Zapisan");
-    } else if (msg.SocketID.includes('-GE01')) {
-      socket.emit("socketOdgGE01Zapisan");
-    } else if (msg.SocketID.includes('-GE02')) {
-      socket.emit("socketOdgGE02Zapisan");
-    } else if (msg.SocketID.includes('-GE03')) {
-      socket.emit("socketOdgGE03Zapisan");
-    }
   });
   // branje izbranih odgovorov iz Redis
   socket.on("socketBranjeOdg", function() {

@@ -338,24 +338,25 @@ Verzija: 2017.01.01c
 Narejeno: Testiranje oddaje odgovora na GE03 (connectGE02). Deluje.
 To-Do: Dodajanje kode še na ostale GE. Sprememba preverjanja SocketID na strani webpage-a in ne na strani serverja, da se zabeleži SocketID za vsako GE posebej.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.02a
+Narejeno: V "connectGE02" dodano "connIDGE02", ki generira SocketID. Spremenjena koda za pošiljanje SocketID skupaj z izbranim odgovorom.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.01.02b
+Narejeno: V "connectGE02" dodano preverjanje, da se brskalnik nahaja na strani "show-question". Če se ne nahaja na tej strani, se preverjanje ne izvaja.
+To-Do: Spremeniti, da se ne izvaja samo zapisovanje sprememb stanja v output, ker samo to javlja errorje, ko se brskalnik nahaja na drugi strani?
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.01.02c
+Narejeno: Spremenjeno, da se ne izvaja samo zapisovanje sprememb stanja v output, ker samo to javlja errorje, ko se brskalnik nahaja na drugi strani.
+To-Do: Dodajanje varovalke, da oddaja odgovora ni možna, če se brskalnik ne nahaja na strani "show-question".
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.01.02d
+Narejeno: Dodajanje varovalke, da oddaja odgovora ni možna, če se brskalnik ne nahaja na strani "show-question".
+To-Do: Povratna informacija o signalizaciji zapisa oddanega odgovora, se pošlje po zapisu odgovora v DB.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.02e
+Narejeno: V "connectGE02" dodan "socketOdgGE02Zapisan", ki proži aktivacijo LED na glasovalni enoti po prejemu informacije, da je odgovor GE zapisan v DB
+[server_2017.01.02b; webpage_2017.01.02e]
 To-Do:
 ==============================
 Verzija:

@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2017.01.02f -->
+<!-- Verzija: 2017.01.02d -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -208,7 +208,7 @@
           if (zapStVpr == 0) { // preverjanje, da je izpisano vprašanje in da se ne nahaja na 0. vprašanju
             document.getElementById("ge02").value="Prazen odgovor. Počakaj na vprašanje...";
           } else {
-            // connection02.send(vrednostGE02); // povratna informacije ESP-ju, katero LED naj prižge
+            connection02.send(vrednostGE02); // povratna informacije ESP-ju, katero LED naj prižge
             if (vrednostGE02==1) {
               odgGE02="Se strinjam";
             } else if (vrednostGE02==2) {
@@ -221,9 +221,6 @@
           }
         }
       };
-      socket.on("socketOdgGE02Zapisan", function() {
-        connection02.send(vrednostGE02); // povratna informacije ESP-ju, katero LED naj prižge
-      });
     }
 
     if (load) { // izvajanje kode ob dostopu na webpage ali ob refresh-u webpage-a

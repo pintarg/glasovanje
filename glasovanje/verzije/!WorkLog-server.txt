@@ -281,12 +281,13 @@ Narejeno: Urejanje delovanja F5 webpage in prikaza podatkov, prejšnje seje.
 [server_2016.12.19a.js; webpage_2016.12.19a.html; app_2016.12.19a.js; show-question_2016.12.19a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.02a
+Narejeno: Sprememba funkcije "socketPisanjeOdg", da se SocketID določi glede na prejem odgovora - različno glede na prejem s spletne strani ali z glasovalne enote
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.02b
+Narejeno: V "socketPisanjeOdg" dodana koda za pošiljanje povratne informacije o zapisu odgovora glasovalne enote, da se na GE aktivira LED
+[server_2017.01.02b; webpage_2017.01.02e]
 To-Do:
 ==============================
 Verzija:
