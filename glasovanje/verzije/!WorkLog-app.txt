@@ -125,20 +125,24 @@ Narejeno: Urejanje delovanja F5 webpage in prikaza podatkov, prejšnje seje.
 [server_2016.12.19a.js; webpage_2016.12.19a.html; app_2016.12.19a.js; show-question_2016.12.19a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.06a
+Narejeno: Stanje odgovora posamezne GE spremenjen v Angular expression-e, da se izpis odgovora po menjavi spletne strani ohrani.
+[webpage_2017.01.06a.html; app_2017.01.06a.js; show-question_2017.01.06a]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.06b
+Narejeno: Ob branju novega vprašanja, se stanje zapisa prejetih odgovorv GE ponastavi.
+[webpage_2017.01.06b.html; app_2017.01.06b.js]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.06c
+Narejeno: Priprava kode za GE00 in GE01.
+[webpage_2017.01.06c.html; app_2017.01.06c.js; show-question_2017.01.06b]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.06d
+Narejeno: Priprava kode za GE04
+[webpage_2017.01.06f.html; app_2017.01.06d.js; show-question_2017.01.06c]
 To-Do:
 ==============================
 Verzija:

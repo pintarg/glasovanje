@@ -79,16 +79,19 @@ Verzija: 2016.12.28a
 Narejeno: Dodajanje tabele za prikaz statusa glasovalnih enot.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.06a
+Narejeno: Stanje odgovora posamezne GE spremenjen v Angular expression-e, da se izpis odgovora po menjavi spletne strani ohrani.
+[webpage_2017.01.06a.html; app_2017.01.06a.js; show-question_2017.01.06a]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.06b
+Narejeno: Priprava kode za GE00 in GE01.
+[webpage_2017.01.06c.html; app_2017.01.06c.js; show-question_2017.01.06b]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.06c
+Narejeno: Priprava kode za GE04
+[webpage_2017.01.06f.html; app_2017.01.06d.js; show-question_2017.01.06c]
 To-Do:
 ==============================
 Verzija:

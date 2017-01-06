@@ -308,6 +308,9 @@ io.sockets.on("connection", function(socket) {
     clientRedis.zrange("odgovori", 0, -1, function(err, reply) { // pridobivanje seznama odgovorov
       rezultati = JSON.parse('['+reply+']');
       if (v01===1) {
+        // setTimeout(function() {
+        //   socket.emit("socketPosiljanjeRezultatov", rezultati);
+        // }, 100);
         socket.emit("socketPosiljanjeRezultatov", rezultati);
         v01=0;
         // console.log("Rezultati: "+JSON.stringify(rezultati));

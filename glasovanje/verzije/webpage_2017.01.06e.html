@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2017.01.06g -->
+<!-- Verzija: 2017.01.06e -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -81,17 +81,16 @@
     var vprasanje = 'Za prikaz vprašanja klikni na gumb "Naslednje vprašanje".';
 
     // spremenljvke za glasovalne enote
-    var vrednostGE00, vrednostGE01, vrednostGE02, vrednostGE03,
-        testConnection00, testConnection01, testConnection02, testConnection03,
-        connIDGE00, connIDGE01, connIDGE02, connIDGE03,
-        ge00odg = "...", ge01odg = "...", ge02odg = "...", ge03odg = "...", // spremenljivke za zapis odgovora
-        ge00odgCnt=1, ge01odgCnt=1, ge02odgCnt=1, ge03odgCnt=1; // števec podanih odgovorov na trenutno vprašanje prek GE
+    var vrednostGE00, vrednostGE01, vrednostGE02,
+        testConnection00, testConnection01, testConnection02,
+        connIDGE00, connIDGE01, connIDGE02,
+        ge00odg = "...", ge01odg = "...", ge02odg = "...", // spremenljivke za zapis odgovora
+        ge00odgCnt=1, ge01odgCnt=1, ge02odgCnt=1; // števec podanih odgovorov na trenutno vprašanje prek GE
 
     // POVEZAVA Z ESP8266
     connectGE00();
     connectGE01();
     connectGE02();
-    connectGE03();
 
     function connectGE00() { // povezava z glasovalno enoto 00, test povezave in reconnect
       var connection00Test = true, odgGE00;
@@ -175,7 +174,7 @@
           if (location.href.includes('show-question')) {
             document.getElementById("ge01Connection").value="Povezava prekinjena! Vzpostavljanje povezave...";
           }
-          connIDGE01="clearConnIDGE01";
+          connIDGE01="clearConnIDGE00";
           clearInterval(testConnection01);
           connectGE01();
         }
@@ -239,7 +238,7 @@
           if (location.href.includes('show-question')) {
             document.getElementById("ge02Connection").value="Povezava prekinjena! Vzpostavljanje povezave...";
           }
-          connIDGE02="clearConnIDGE02";
+          connIDGE02="clearConnIDGE00";
           clearInterval(testConnection02);
           connectGE02();
         }
@@ -282,70 +281,6 @@
       };
       socket.on("socketOdgGE02Zapisan", function() {
         connection02.send(vrednostGE02); // povratna informacije ESP-ju, katero LED naj prižge
-      });
-    }
-
-    function connectGE03() { // povezava z glasovalno enoto 03, test povezave in reconnect
-      var connection03Test = true, odgGE03;
-      var connection03 = new WebSocket('ws://192.168.42.73:81/', ['arduino']); // connection03 - ESP8266-3
-      connection03.onopen = function() {
-        connection03.send(0);
-        connIDGE03 = new Date().getTime()+"-GE03";
-      };
-      testConnection03 = setInterval(function() {
-        if (connection03Test && connection03.readyState != 0) {
-          connection03.send(0);
-          connection03Test=false;
-          if (location.href.includes('show-question')) {
-            document.getElementById("ge03Connection").value="Test povezave";
-          }
-        } else if (!connection03Test) {
-          if (location.href.includes('show-question')) {
-            document.getElementById("ge03Connection").value="Povezava prekinjena! Vzpostavljanje povezave...";
-          }
-          connIDGE03="clearConnIDGE03";
-          clearInterval(testConnection03);
-          connectGE03();
-        }
-      }, 5300);
-      connection03.onerror = function(error) {
-        console.log('WebSocket Error ', error);
-      };
-      connection03.onclose = function() {
-        clearInterval(testConnection03);
-        connectGE03();
-      };
-      connection03.onmessage = function(msg) {
-        vrednostGE03 = parseInt(msg.data);
-        if (vrednostGE03 == 42) {
-          connection03Test=true;
-          if (location.href.includes('show-question')) {
-            setTimeout(function() {
-              document.getElementById("ge03Connection").value="OK";
-            }, 500);
-          }
-        } else if (vrednostGE03 != 0 && typeof(vrednostGE03) != "undefined" && location.href.includes('show-question')) {
-          if (zapStVpr == 0) { // preverjanje, da je izpisano vprašanje in da se ne nahaja na 0. vprašanju
-            ge03odg = "Prazen odgovor. Počakaj na vprašanje...";
-          } else {
-            // connection03.send(vrednostGE03); // povratna informacije ESP-ju, katero LED naj prižge
-            if (vrednostGE03==1) {
-              odgGE03="Se strinjam";
-            } else if (vrednostGE03==2) {
-              odgGE03="Vzdržan";
-            } else if (vrednostGE03==3) {
-              odgGE03="Se ne strinjam";
-            }
-            timeStamp();
-            ge03odg = "Ob "+hms+" "+ge03odgCnt+". prejem odgovora na "+zapStVpr+". vprašanje.";
-            socket.emit("socketPisanjeOdg", {"Odg":odgGE03,"SocketID":connIDGE03});
-            ge03odgCnt++;
-          }
-          document.getElementById("btnRewriteGE03odg").click();
-        }
-      };
-      socket.on("socketOdgGE03Zapisan", function() {
-        connection03.send(vrednostGE03); // povratna informacije ESP-ju, katero LED naj prižge
       });
     }
 

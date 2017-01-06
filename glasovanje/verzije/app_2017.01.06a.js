@@ -1,4 +1,4 @@
-// Verzija: 2017.01.06e
+// Verzija: 2017.01.06a
 // ====================================================================================================
 var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap', 'smart-table']);
 var removeRowPodatek, removeRowVprasanje;
@@ -41,32 +41,18 @@ app.controller('QuestionController', function($scope) {
   $scope.potrZapOdg = potrZapOdg,
   $scope.ge00odg = ge00odg,
   $scope.ge01odg = ge01odg,
-  $scope.ge02odg = ge02odg,
-  $scope.ge03odg = ge03odg;
+  $scope.ge02odg = ge02odg;
   $scope.rewriteVprasanje = function() {
     return $scope.vprasanje = vprasanje,
     $scope.zapStVpr = zapStVpr,
     $scope.stVpr = stVpr,
-    $scope.potrZapOdg = potrZapOdg,
-    $scope.ge00odg = ge00odg,
-    $scope.ge01odg = ge01odg,
-    $scope.ge02odg = ge02odg,
-    $scope.ge03odg = ge03odg;
+    $scope.potrZapOdg = potrZapOdg;
   };
   $scope.potrditevPrejemaOdg = function() {
     return $scope.potrZapOdg = potrZapOdg;
   };
-  $scope.rewriteGE00odg = function() {
-    return $scope.ge00odg = ge00odg;
-  };
-  $scope.rewriteGE01odg = function() {
-    return $scope.ge01odg = ge01odg;
-  };
   $scope.rewriteGE02odg = function() {
     return $scope.ge02odg = ge02odg;
-  };
-  $scope.rewriteGE03odg = function() {
-    return $scope.ge03odg = ge03odg;
   };
 });
 // === POPUP-i ===
