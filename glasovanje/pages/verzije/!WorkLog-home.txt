@@ -7,8 +7,8 @@ Verzija: 2016.11.25a
 Narejeno: Uvoz oblikovanja.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.08a
+Narejeno: Urejanje vsebine strani in dodajanje povezav do podstrani
 To-Do:
 ==============================
 Verzija:

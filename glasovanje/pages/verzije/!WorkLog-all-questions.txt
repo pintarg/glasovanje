@@ -15,8 +15,9 @@ Verzija: 2016.12.13b
 Narejeno: Skrivanje gumbov za izpis podatkov v tabelo in umik <h2> naslovov [all-question_2016.12.13b.html; answers_2016.12.13b.html; statistics_2016.12.13b.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.08a
+Narejeno: Dodajanje "id" k vsem stolcom v tabeli izpisa, da se določi fiksno širino posameznega stolcpa
+[all-questions_2017.01.08a.html; statistics_2017.01.08a.html; answers_2017.01.08a.html]
 To-Do:
 ==============================
 Verzija:

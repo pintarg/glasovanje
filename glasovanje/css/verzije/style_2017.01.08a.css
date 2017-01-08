@@ -1,4 +1,4 @@
-/* Verzija: 2017.01.08b */
+/* Verzija: 2017.01.08a */
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700');
 body{padding-top:0 !important;background:#4a4a4a;}
 .navbar-default{background:#50e3c2;box-shadow:none;border:none;}
@@ -86,14 +86,6 @@ table .btn-danger{margin-top:0;}
     .navbar .container{height:auto;}
     .homepage{margin-top:-190px;}
     h1{margin-bottom:190px;}
-}
-
-/*TABELE*/
-#predicate {
-  width:300px;
-}
-#thVprID {
-  width:160px;
 }
 /*=== === === === === === POPUP-i === === === === === ===*/
 .app-modal-window .modal-dialog { /*uporabljen v: last-question.html*/

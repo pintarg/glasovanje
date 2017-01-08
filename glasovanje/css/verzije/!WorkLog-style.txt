@@ -15,8 +15,8 @@ Verzija: 2016.12.17a
 Narejeno: Poenotenje kode s popravljeno kodo na C9
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.08a
+Narejeno: Urejanje iptDodajVpr
 To-Do:
 ==============================
 Verzija:
