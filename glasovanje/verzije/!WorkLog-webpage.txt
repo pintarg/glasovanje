@@ -387,8 +387,8 @@ Narejeno: Priprava kode za GE04
 [webpage_2017.01.06f.html; app_2017.01.06d.js; show-question_2017.01.06c]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.15a
+Narejeno: Odpravljen bug nedelovanja F5 answers strani.
 To-Do:
 ==============================
 Verzija:
