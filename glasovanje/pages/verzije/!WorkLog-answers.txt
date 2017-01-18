@@ -33,8 +33,8 @@ Narejeno: Dodajanje "id" k vsem stolcom v tabeli izpisa, da se določi fiksno š
 [all-questions_2017.01.08a.html; statistics_2017.01.08a.html; answers_2017.01.08a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.18a
+Narejeno: Urejanje izgleda tabel. [style_2017.01.18a.css; statistics_2017.01.18a.html; answers_2017.01.18a.html; all-questions_2017.01.18a.html]
 To-Do:
 ==============================
 Verzija:
