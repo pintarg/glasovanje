@@ -1,4 +1,4 @@
-<!-- Verzija: 2017.01.20b -->
+<!-- Verzija: 2017.01.20a -->
 <div class='homepage'>
   <h1>Odgovori / rezultati</h1>
   <button id="btnIzpisRezultatov" onClick="izpisRezultatov()" style="display:none">Izpiši rezultate glasovanja</button>
@@ -39,7 +39,7 @@
           <td>{{podatek.ts}}</td>
           <td>{{podatek.ts2}}</td>
           <td>{{podatek.SocketID}}</td>
-          <td><button type="button" style="font-weight:bold;" ng-click="removeRow(podatek)" class="btn btn-sm btn-danger">X</button></td>
+          <td><button type="button" ng-click="removeRow(podatek)" class="btn btn-sm btn-danger">X</button></td>
         </tr>
       </tbody>
     </table>

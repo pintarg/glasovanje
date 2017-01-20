@@ -30,8 +30,9 @@ Verzija: 2017.01.18a
 Narejeno: Urejanje izgleda tabel. [style_2017.01.18a.css; statistics_2017.01.18a.html; answers_2017.01.18a.html; all-questions_2017.01.18a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.20a
+Narejeno: Urejanje izgleda in dodajanje števila vseh odgovor v tabelo statistike.
+[all-questions_2017.01.20a.html; answers_2017.01.20a.html; statistics_2017.01.20a.html; style_2017.01.20a.css; server_2017.01.20a.js]
 To-Do:
 ==============================
 Verzija:

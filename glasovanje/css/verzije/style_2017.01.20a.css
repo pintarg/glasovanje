@@ -1,4 +1,4 @@
-/* Verzija: 2017.01.20b */
+/* Verzija: 2017.01.20a */
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700');
 body{padding-top:0 !important;background:#4a4a4a;}
 .navbar-default{background:#50e3c2;box-shadow:none;border:none;}
@@ -101,7 +101,6 @@ table .btn-danger{margin-top:0;}
 #thSrchVprID {float:left;min-width:120px;width:15%;margin-right:0.5%;}
 #thSrchIskanje {float:left;min-width:200px;width:42%;margin-right:0.5%;}
 #thSrchIskanje2 {float:left;min-width:200px;width:42%;}
-#thSrchIskanjeAQ {float:left;min-width:200px;width:84.5%;}
 /*=== === === === === === POPUP-i === === === === === ===*/
 .app-modal-window .modal-dialog { /*uporabljen v: last-question.html*/
   width: 350px;

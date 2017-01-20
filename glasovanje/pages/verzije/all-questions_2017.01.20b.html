@@ -1,4 +1,4 @@
-<!-- Verzija: 2017.01.20c -->
+<!-- Verzija: 2017.01.20b -->
 <div class='homepage'>
   <h1>Seznam vseh vprašanj</h1>
   <button id="btnIzpisVprasanj" onClick="izpisVprasanj()" style="display:none">Izpiši vprašanja</button>
@@ -22,7 +22,7 @@
         <tr ng-repeat="vprasanje in vprasanja">
           <td>{{vprasanje.VprID}}</td>
           <td>{{vprasanje.vprasanje}}</td>
-          <td><button type="button" style="font-weight:bold;" ng-click="removeRowVprasanja(vprasanje)" class="btn btn-sm btn-danger">X</button></td>
+          <td><button type="button" ng-click="removeRowVprasanja(vprasanje)" class="btn btn-sm btn-danger">X</button></td>
         </tr>
       </tbody>
     </table>
