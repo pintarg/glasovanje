@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2017.01.21d -->
+<!-- Verzija: 2017.01.21b -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -77,7 +77,7 @@
       load=true,
       bla=0;
     var prazenOdg = false; // Varovalka pred praznim oddajanjem odgovora
-    var vprasanje = 'Za prikaz vprašanja klikni na gumb "Naslednje vprašanje".',
+    var vprasanje = 'Za prikaz vprašanja klikni na gumb "Naslednje vprašanje".';
 
     // spremenljvke za glasovalne enote
     var vrednostGE00, vrednostGE01, vrednostGE02, vrednostGE03,
@@ -414,14 +414,14 @@
     socket.on("socketVprPrebran", function(data) {
       zapStVpr = data.zapStVpr;
       stVpr = data.stVpr;
-      if (data.vpr != "delniIzpis" && data.vpr != "osveziPodatke") { // funkcija je uporabljena 2x, pri branju vprašanja in pri dodajanju novega vprašanja, zato omejitev izpisa
+      if (data.vpr != "delniIzpis" && data.vpr != "osveziPodatke" && (location.href.includes('show-question') || location.href.includes('submit-vote'))) { // funkcija je uporabljena 2x, pri branju vprašanja in pri dodajanju novega vprašanja, zato omejitev izpisa
         vprasanje = data.vpr;
         potrZapOdg = '', ge00odg = '...', ge01odg = '...', ge02odg = '...';
         document.getElementById("strinja").checked = false;
         document.getElementById("vzdrzan").checked = false;
         document.getElementById("nestrinja").checked = false;
         document.getElementById("btnRewriteVprasanje").click();
-      } else if (data.vpr == "delniIzpis") { // uporablja se pri F5 add-question.html
+      } else if (data.vpr == "delniIzpis") {
         document.getElementById("btnPrejemStVpr").click();
       }
     });

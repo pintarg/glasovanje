@@ -308,8 +308,9 @@ Verzija: 2017.01.21c
 Narejeno: V konzolo dodan izpis povezave in prekinitve klienta. Izpis vsebuje Socket ID in IP klienta.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.21d
+Narejeno: Urejanje kode za izpis vprašanja na submit-vote.html ob F5 in naknadnem prihodu na stran.
+[server_2017.01.21d.js; submit-vote_2017.01.21b.html; webpage_2017.01.21c.html; show-question_2017.01.21b.html]
 To-Do:
 ==============================
 Verzija:

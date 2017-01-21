@@ -396,12 +396,14 @@ Dodajanje podstrani 'submit-vote' za oddajanje glasu prek spletne GE.
 [submit-vote_2017.01.21a.html; server_2017.01.21b.js; webpage_2017.01.21a.html; app_2017.01.21a.js; style_2017.01.21a.css]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.21c
+Narejeno: Umik zaščite podvojenega odgovora na spletni strani. show-question.html in submit-vote.html.
+[show-question_2017.01.21a.html; webpage_2017.01.21b.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.21c
+Narejeno: Urejanje kode za izpis vprašanja na submit-vote.html ob F5 in naknadnem prihodu na stran.
+[server_2017.01.21d.js; submit-vote_2017.01.21b.html; webpage_2017.01.21c.html; show-question_2017.01.21b.html]
 To-Do:
 ==============================
 Verzija:
