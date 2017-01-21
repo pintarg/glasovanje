@@ -1,4 +1,4 @@
-// Verzija: 2017.01.21b
+// Verzija: 2017.01.21a
 // ====================================================================================================
 var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap', 'smart-table']);
 var removeRowPodatek, removeRowVprasanje;

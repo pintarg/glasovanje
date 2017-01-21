@@ -1,4 +1,4 @@
-// Verzija: 2017.01.21d
+// Verzija: 2017.01.21b
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -107,12 +107,8 @@ http.listen(8080);
 console.log("Zagon sistema");
 
 io.sockets.on("connection", function(socket) {
-  var ip=socket.request.connection.remoteAddress; // IP-naslov clienta
   // klic ob zagonu programa in ob refresh-u (F5) webpage-a
-  console.log("New user has connected. Socket ID: "+socket.id+" IP: "+ip.substring(7));
-  socket.on("disconnect", function() {
-    console.log("User has disconnected. Socket ID: "+socket.id);
-  });
+  console.log("New user has connected.");
   socket.on("socketF5", function(msg) {
     if (socketF5===true) { // ob zagonu programa
       branjeStVpr();

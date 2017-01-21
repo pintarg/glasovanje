@@ -295,16 +295,17 @@ Narejeno: Urejanje izgleda in dodajanje števila vseh odgovor v tabelo statistik
 [all-questions_2017.01.20a.html; answers_2017.01.20a.html; statistics_2017.01.20a.html; style_2017.01.20a.css; server_2017.01.20a.js]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.21a
+Narejeno: V 'socketBeriVpr' sprememba kode, da se branje novega vprašanja posreduje na vse kliente
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.21b
+Narejeno: Dodajanje podstrani 'submit-vote' za oddajanje glasu prek spletne GE.
+[submit-vote_2017.01.21a.html; server_2017.01.21b.js; webpage_2017.01.21a.html; app_2017.01.21a.js; style_2017.01.21a.css]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.21c
+Narejeno: V konzolo dodan izpis povezave in prekinitve klienta. Izpis vsebuje Socket ID in IP klienta.
 To-Do:
 ==============================
 Verzija:
