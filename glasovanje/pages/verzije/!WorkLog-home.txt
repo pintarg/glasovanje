@@ -11,12 +11,14 @@ Verzija: 2017.01.08a
 Narejeno: Urejanje vsebine strani in dodajanje povezav do podstrani
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.22a
+Narejeno: Dodajanje funkcije 'osveziVprasanje()', ki osveži expression 'vprasanje', v Spletni glasovalni enoti.
+[home_2017.01.22a.html; server_2017.01.22a.js; webpage_2017.01.22a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.22b
+Narejeno: Dodajanje funkcije 'osveziVprasanje()' za osveževanje na 'show-question'
+[home_2017.01.22b.html; server_2017.01.22b.js; webpage_2017.01.22b.html]
 To-Do:
 ==============================
 Verzija:

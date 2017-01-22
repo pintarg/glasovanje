@@ -313,12 +313,14 @@ Narejeno: Urejanje kode za izpis vprašanja na submit-vote.html ob F5 in naknadn
 [server_2017.01.21d.js; submit-vote_2017.01.21b.html; webpage_2017.01.21c.html; show-question_2017.01.21b.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.22a
+Narejeno: Dodajanje funkcije 'osveziVprasanje()', ki osveži expression 'vprasanje', v Spletni glasovalni enoti.
+[home_2017.01.22a.html; server_2017.01.22a.js; webpage_2017.01.22a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.22b
+Narejeno: Dodajanje funkcije 'osveziVprasanje()' za osveževanje na 'show-question'
+[home_2017.01.22b.html; server_2017.01.22b.js; webpage_2017.01.22b.html]
 To-Do:
 ==============================
 Verzija:
