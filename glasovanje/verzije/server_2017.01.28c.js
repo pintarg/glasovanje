@@ -1,4 +1,4 @@
-// Verzija: 2017.01.28e
+// Verzija: 2017.01.28c
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -103,9 +103,6 @@ express.get('/pages/popup/delete-warning.html', function(req, res) {
 express.get('/pages/popup/empty-question.html', function(req, res) {
   res.sendFile(__dirname + '/pages/popup/empty-question.html');
 });
-express.get('/pages/popup/duplicated-socketid.html', function(req, res) {
-  res.sendFile(__dirname + '/pages/popup/duplicated-socketid.html');
-});
 // === EXPRESS.GET pictures ===
 express.get('/pictures/ozadje.jpg', function(req, res) {
   res.sendFile(__dirname + '/pictures/ozadje.jpg');
@@ -113,23 +110,12 @@ express.get('/pictures/ozadje.jpg', function(req, res) {
 http.listen(8080);
 console.log("Zagon sistema");
 clientRedis.del("preverjanje"); // brisanje Redis tabele 'preverjanje' ob zagonu server.js
-clientRedis.del("socketid"); // brisanje Redis tabele 'socketid' ob zagonu server.js
 
 io.sockets.on("connection", function(socket) {
   // pridobivanje IP-naslova klienta in socket ID
   cIP=socket.request.connection.remoteAddress.substring(7); // substring odreže prvih 7 znakov (":ffff::")
   cSocketID = socket.id;
-  clientRedis.hget("socketid", cIP, function(err, reply) { // preverjanje podvojenosti dostopa z istega IP
-    if (reply === null) {
-      console.log("Nov uporabnik. IP: "+cIP+", SocketID: "+cSocketID);
-      clientRedis.hset("socketid", cIP, cSocketID);
-      cNum++;
-    } else {
-      console.log("Podvojen dostop naprave z IP: "+cIP+". Nov SocketID podvojene naprave: "+cSocketID+". Povezava novega SocketID prekinjena!");
-      socket.emit("socketDuplicatedSocketID");
-      io.sockets.connected[cSocketID].disconnect();
-    }
-  });
+  cNum++;
   socket.emit("socketWebGENum", cNum);
   console.log("New user has connected. Socket ID: "+socket.id+". IP: "+socket.request.connection.remoteAddress.substring(7)+". Total users: "+cNum+".");
   socket.on("disconnect", function() {

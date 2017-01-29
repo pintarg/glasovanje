@@ -1,4 +1,4 @@
-// Verzija: 2017.01.28e
+// Verzija: 2017.01.28d
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -113,7 +113,7 @@ express.get('/pictures/ozadje.jpg', function(req, res) {
 http.listen(8080);
 console.log("Zagon sistema");
 clientRedis.del("preverjanje"); // brisanje Redis tabele 'preverjanje' ob zagonu server.js
-clientRedis.del("socketid"); // brisanje Redis tabele 'socketid' ob zagonu server.js
+clientRedis.del("socketid");
 
 io.sockets.on("connection", function(socket) {
   // pridobivanje IP-naslova klienta in socket ID

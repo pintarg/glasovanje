@@ -323,20 +323,22 @@ Narejeno: Dodajanje funkcije 'osveziVprasanje()' za osveževanje na 'show-questi
 [home_2017.01.22b.html; server_2017.01.22b.js; webpage_2017.01.22b.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.28a
+Narejeno: Spremenjena oblika 'timestamp2'. Dodana funkcija 'timeStamp', ki vrne novo obliko.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.28b
+Narejeno: V 'socketPisanjeOdg' dodajanje zapisovanja prejetih odg v dodatno hash tabelo (preverjanje), ki služi za preverjanje podvojenosti odg na podlagi VprID in SocketID. Če je odg podvojen, se odg prepiše in vrednost v tabeli osveži.
+To-Do: Pri zagonu server.js se tabelo 'preverjanje' izbriše.
+==============================
+Verzija: 2017.01.28c
+Narejeno: Dodajanje ukaza za brisanje tabele 'preverjanje' na začetek kode, da se izvede ob zagonu server.js.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
-==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.28d
+Narejeno: Dodajanje preverjanja podvojenosti povezave z istega IP-ja. V primeru podvojene povezave se podvojeno (novejšo) povezavo prekine, pred tem pa na podvojenem (novejšem) dostopu izpiše popup z obvestilom.
+[server_2017.01.28d.js; app_2017.01.28a.js; webpage_2017.01.28a.html; show-question_2017.01.28a.html; home_2017.01.28a.html; submit-vote_2017.01.28a.html]
+Dodan 'express.get' in 'clientRedis.hget("socketid"'.
 To-Do:
 ==============================
 Verzija:

@@ -9,8 +9,10 @@ Narejeno: Urejanje kode za izpis vprašanja na submit-vote.html ob F5 in naknadn
 [server_2017.01.21d.js; submit-vote_2017.01.21b.html; webpage_2017.01.21c.html; show-question_2017.01.21b.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.28a
+Narejeno: Dodajanje preverjanja podvojenosti povezave z istega IP-ja. V primeru podvojene povezave se podvojeno (novejšo) povezavo prekine, pred tem pa na podvojenem (novejšem) dostopu izpiše popup z obvestilom.
+[server_2017.01.28d.js; app_2017.01.28a.js; webpage_2017.01.28a.html; show-question_2017.01.28a.html; home_2017.01.28a.html; submit-vote_2017.01.28a.html]
+Dodan gumb.
 To-Do:
 ==============================
 Verzija:
