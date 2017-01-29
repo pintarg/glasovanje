@@ -341,8 +341,8 @@ Narejeno: Dodajanje preverjanja podvojenosti povezave z istega IP-ja. V primeru 
 Dodan 'express.get' in 'clientRedis.hget("socketid"'.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.28e
+Narejeno: V 'socket.on("disconnect"' dodano preverjanje za disconnect in brisanje zapisa iz 'socketid' DB, ko se klient odjavi.
 To-Do:
 ==============================
 Verzija:
