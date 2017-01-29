@@ -345,12 +345,12 @@ Verzija: 2017.01.28e
 Narejeno: V 'socket.on("disconnect"' dodano preverjanje za disconnect in brisanje zapisa iz 'socketid' DB, ko se klient odjavi.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.01.29a
+Narejeno: V 'socketPisanjeOdg' dodana koda za štetje prejetih odgovorov na aktualno vprašanje s strani WebGE. Podatki se zapisujejo v Redis - 'clientRedis.hget("stanjeodg"'. Tabela se ponastavi ob zagonu server.js in branju drugega vprašanja.
+To-Do: Pojavlja se napaka zaznave podvojene povezave z istega IP-ja, ko se naredi F5 webpage-a in sta povezana 2 ali več klientov. Če je povezan samo 1 klient, napake še nisem zaznal.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.29b
+Narejeno: Odpravljena napaka napačne zaznave podvojene povezave. V 'socket.on("disconnect"' cIP zamenjan z 'socket.request.connection.remoteAddress.substring(7)', saj se je drugače lahko upoštevala vrednost cIP od drugega klienta in je posledično odjavilo napačnega klienta.
 To-Do:
 ==============================
 Verzija:

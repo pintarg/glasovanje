@@ -1,4 +1,4 @@
-// Verzija: 2017.01.29c
+// Verzija: 2017.01.29a
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -133,14 +133,13 @@ io.sockets.on("connection", function(socket) {
       duplicatedSocketID=true;
       io.sockets.connected[cSocketID].disconnect();
       console.log("Podvojen dostop naprave z IP: "+cIP+". Nov SocketID podvojene naprave: "+cSocketID+". Povezava novega SocketID prekinjena!");
-      console.log("Reply: "+reply);
       duplicatedSocketID=false;
     }
   });
   // socket.emit("socketWebGENum", cNum);
   socket.on("disconnect", function() {
     if (!duplicatedSocketID) {
-      clientRedis.hdel("webge", socket.request.connection.remoteAddress.substring(7));
+      clientRedis.hdel("webge", cIP);
       cNum--;
       console.log("User has disconnected. Socket ID: "+socket.id+". IP: "+socket.request.connection.remoteAddress.substring(7)+". Total users: "+cNum+".");
       // socket.emit("socketWebGENum", cNum);
@@ -162,7 +161,6 @@ io.sockets.on("connection", function(socket) {
   });
   // branje vprašanja iz Redis + pošiljanje ID vprašanja (zaporedna št vpr)
   socket.on("socketBeriVpr", function(msg) {
-    clientRedis.del("stanjeodg");
     if (msg===1) {
       zapStVpr++;
     } else if (msg===2) {
