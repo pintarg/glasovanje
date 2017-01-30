@@ -13,6 +13,7 @@
         <button id="btnRewriteGE01odg" type="button" ng-click="rewriteGE01odg()" style="display:none"></button>
         <button id="btnRewriteGE02odg" type="button" ng-click="rewriteGE02odg()" style="display:none"></button>
         <button id="btnRewriteGE03odg" type="button" ng-click="rewriteGE03odg()" style="display:none"></button>
+        <button id="btnRewriteWebGETabela" type='button' ng-click="rewriteWebGETabela()" style="display:none">Osveži podathe WebGE tabele</button>
       </div>
       <div class='enatretjina'>
         <p class='poudarek'>Odgovori:</p>
@@ -57,13 +58,22 @@
           <th><output id="ge03" type="text">{{ge03odg}}</output></th>
         </tr>
       </table>
-      <table style="width:100%">
-        <tr>
-          <th>Število povezav prek spletnih glasovalnih enot:</th>
-          <!-- <th><output id="optWebGENum" type="text" /></th> -->
-        </tr>
+      <table style="width:100%" st-table="WebGETabela">
+        <thead>
+          <th st-sort="ip">IP</th>
+          <th st-sort="SocketID">SocketID</th>
+          <th st-sort="stanjeOdg">Stanje odgovora</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="WebGE in WebGETabela">
+            <td>{{WebGE.IP}}</td>
+            <td>{{WebGE.SocketID}}</td>
+            <td>{{WebGE.stanjeOdg}}</td>
+          </tr>
+        </tbody>
       </table>
       <!-- <p>Število povezav prek spletnih glasovalnih enot: <output id="optWebGENum" type="text" /></p> -->
+      <button id="btnKnof" onClick="WebGERefresh()">Knof</button>
     </div>
 </div>
 <button ng-controller="ModalPopup as $ctrl" id="btnZadnjeVpr" type="button" class="btn btn-default" ng-click="$ctrl.ZadnjeVpr()" style="display:none">Zadnje vprašanje</button>

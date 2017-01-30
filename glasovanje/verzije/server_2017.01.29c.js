@@ -1,4 +1,4 @@
-// Verzija: 2017.01.29e
+// Verzija: 2017.01.29c
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -22,8 +22,7 @@ var VprID, // ID vprašanja v bazi "vprasanja"
     cSocketID, // client Socket ID
     cNum=0, // število povezanih klientov
     timestamp2,
-    hms,
-    hkeysWebGE; // spremenljivka za vse key-e 'webge' Redis tabele
+    hms;
 var osveziPodatke = true, // spremenjivka, ki se uporabi za preverjanje ob vnovičnem zagonu programa
     socketF5 = true, // spremenljivka, ki se uporablja pri zagonu programa in osveževanju (F5) webpage-a
     duplicatedSocketID=false;
@@ -116,7 +115,7 @@ express.get('/pictures/ozadje.jpg', function(req, res) {
 });
 http.listen(8080);
 console.log("Zagon sistema");
-// clientRedis.del("preverjanje"); // brisanje Redis tabele 'preverjanje' ob zagonu server.js
+clientRedis.del("preverjanje"); // brisanje Redis tabele 'preverjanje' ob zagonu server.js
 clientRedis.del("webge"); // brisanje Redis tabele 'webge' ob zagonu server.js
 clientRedis.del("stanjeodg"); // brisanje Redis tabele 'stanjeodg' ob zagonu server.js
 
@@ -267,18 +266,7 @@ io.sockets.on("connection", function(socket) {
     beriVprasanje();
   });
   socket.on("socketWebGEF5", function() {
-    // var tempReply;
-    // console.log("socketWebGEF5");
-    // var len=0;
-    // clientRedis.hlen("webge", function(err, reply) {
-    //   len=reply;
-    // });
-    clientRedis.hkeys("webge1", function(err, reply) {
-      hkeysWebGE = reply;
-      console.log("redis1, hkeysWebGE:"+hkeysWebGE);
-      WebGETabela();
-    });
-    // WebGETabela();
+    // clientRedis.
   });
   // FUNKCIJE =================================================================
   // branje števila vprašanj
@@ -416,116 +404,5 @@ io.sockets.on("connection", function(socket) {
     timestamp2 = dd+"."+mm+"."+yyyy+", "+h+":"+m+":"+s;
     hms=h+":"+m+":"+s;
   }
-  // function WebGETabela() {
-  //   console.log("funkcija");
-  //   for(i=1; i<hkeysWebGE.length; i++) {
-  //     // console.log("for: "+i+" hkeysWebGE: "+hkeysWebGE[i]);
-  //     var tempSocketID, tempIP, tempHMS, tempStanjeOdg, stanjeWebGE=[], tempKey;
-  //     tempKey = hkeysWebGE[i];
-  //     console.log("tempKey: "+tempKey);
-  //     clientRedis.hget("webge1", tempKey, function(err, reply1) {
-  //       tmpReply1=JSON.parse(reply1);
-  //       tempSocketID=tmpReply1.SocketID;
-  //       tempIP=tmpReply1.IP;
-  //     });
-  //     clientRedis.hget("stanjeodg1", tempKey, function(err, reply2) {
-  //       tmpReply2=JSON.parse(reply2);
-  //       tempHMS=tmpReply2.hms;
-  //       tempStanjeOdg=tmpReply2.stanjeOdg;
-  //     });
-  //     // console.log("tempSocketID: "+tempSocketID+"; tempIP: "+tempIP+"; tempHMS: "+tempHMS+"; tempStanjeOdg: "+tempStanjeOdg);
-  //     stanjeWebGE[i]={"IP":tempIP,"SocketID":tempSocketID,"stanjeOdg":"Ob "+tempHMS+" "+tempStanjeOdg+". prejem odgovora na ?. vprašanje."};
-  //     if((i+1) == hkeysWebGE.length) {
-  //       socket.emit("socketWebGETabela", stanjeWebGE);
-  //       console.log("stanjeWebGE: "+JSON.stringify(stanjeWebGE));
-  //     }
-  //     // console.log("Reply "+i+", vrednost: "+hkeysWebGE[i]);
-  //   }
-  // }
-  // function WebGETabela() {
-  //   var k=0, tempSocketID, tempIP, tempHMS, tempStanjeOdg, stanjeWebGE=[], tempKey;
-  //   console.log("funkcija");
-  //   for(i=0; i<hkeysWebGE.length; i++) {
-  //     // console.log("for: "+i+" hkeysWebGE: "+hkeysWebGE[i]);
-  //     tempKey = hkeysWebGE[k];
-  //     clientRedis.hget("webge1", tempKey, function(err, reply1) {
-  //       tmpReply1=JSON.parse(reply1);
-  //       tempSocketID=tmpReply1.SocketID;
-  //       tempIP=tmpReply1.IP;
-  //       clientRedis.hget("stanjeodg1", tempKey, function(err, reply2) {
-  //         tmpReply2=JSON.parse(reply2);
-  //         tempHMS=tmpReply2.hms;
-  //         tempStanjeOdg=tmpReply2.stanjeOdg;
-  //         console.log("tempSocketID: "+tempSocketID+"; tempIP: "+tempIP+"; tempHMS: "+tempHMS+"; tempStanjeOdg: "+tempStanjeOdg);
-  //         stanjeWebGE[k]={"IP":tempIP,"SocketID":tempSocketID,"stanjeOdg":"Ob "+tempHMS+" "+tempStanjeOdg+". prejem odgovora na ?. vprašanje."};
-  //       });
-  //     });
-  //     if((i+1) == hkeysWebGE.length) {
-  //       socket.emit("socketWebGETabela", stanjeWebGE);
-  //       console.log("stanjeWebGE: "+JSON.stringify(stanjeWebGE));
-  //     }
-  //     k++;
-  //     // console.log("Reply "+i+", vrednost: "+hkeysWebGE[i]);
-  //   }
-  // }
-
-  // function WebGETabela() {
-  //   var k=0, tempSocketID, tempIP, tempHMS, tempStanjeOdg, stanjeWebGE=[], tempKey;
-  //   console.log("funkcija");
-  //   for(i=0; i<hkeysWebGE.length; i++) {
-  //     // console.log("for: "+i+" hkeysWebGE: "+hkeysWebGE[i]);
-  //     tempKey = hkeysWebGE[k];
-  //     clientRedis.hget("webge1", hkeysWebGE[k], function(err, reply1) {
-  //       tmpReply1=JSON.parse(reply1);
-  //       tempSocketID=tmpReply1.SocketID;
-  //       tempIP=tmpReply1.IP;
-  //     });
-  //     clientRedis.hget("stanjeodg1", hkeysWebGE[k], function(err, reply2) {
-  //       tmpReply2=JSON.parse(reply2);
-  //       tempHMS=tmpReply2.hms;
-  //       tempStanjeOdg=tmpReply2.stanjeOdg;
-  //     });
-  //     console.log("tempSocketID: "+tempSocketID+"; tempIP: "+tempIP+"; tempHMS: "+tempHMS+"; tempStanjeOdg: "+tempStanjeOdg);
-  //     stanjeWebGE[k]={"IP":tempIP,"SocketID":tempSocketID,"stanjeOdg":"Ob "+tempHMS+" "+tempStanjeOdg+". prejem odgovora na ?. vprašanje."};
-  //     if((i+1) == hkeysWebGE.length) {
-  //       socket.emit("socketWebGETabela", stanjeWebGE);
-  //       console.log("stanjeWebGE: "+JSON.stringify(stanjeWebGE));
-  //     }
-  //     k++;
-  //     // console.log("Reply "+i+", vrednost: "+hkeysWebGE[i]);
-  //   }
-  // }
-
-  function WebGETabela() {
-    var repeats=hkeysWebGE.length, done=false;
-    var k=0, tempSocketID, tempIP, tempHMS, tempStanjeOdg, stanjeWebGE=[], tempKey;
-    console.log("funkcija");
-
-    while (!done) {
-      tempKey = hkeysWebGE[k];
-      clientRedis.hget("webge1", tempKey, function(err, reply1) {
-        tmpReply1=JSON.parse(reply1);
-        tempSocketID=tmpReply1.SocketID;
-        tempIP=tmpReply1.IP;
-      });
-      clientRedis.hget("stanjeodg1", tempKey, function(err, reply2) {
-        tmpReply2=JSON.parse(reply2);
-        tempHMS=tmpReply2.hms;
-        tempStanjeOdg=tmpReply2.stanjeOdg;
-      });
-      console.log("tempSocketID: "+tempSocketID+"; tempIP: "+tempIP+"; tempHMS: "+tempHMS+"; tempStanjeOdg: "+tempStanjeOdg);
-      stanjeWebGE[k]={"IP":tempIP,"SocketID":tempSocketID,"stanjeOdg":"Ob "+tempHMS+" "+tempStanjeOdg+". prejem odgovora na ?. vprašanje."};
-      if((k+1) == hkeysWebGE.length) {
-        socket.emit("socketWebGETabela", stanjeWebGE);
-        console.log("stanjeWebGE: "+JSON.stringify(stanjeWebGE));
-      }
-      k++;
-      if (k == repeats) {
-        done = true;
-      }
-    }
-
-  }
-
   // FUNKCIJE =================================================================
 });

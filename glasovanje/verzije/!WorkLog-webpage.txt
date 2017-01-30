@@ -422,8 +422,9 @@ Narejeno: Dodajanje preverjanja podvojenosti povezave z istega IP-ja. V primeru 
 Dodan 'socketDuplicatedSocketID'.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.29a
+Priprava tabele WebGE. Pripravljeno. Ne deluje zajem podatkov na strani server.js. Rešujem jutri.
+[server_2017.01.29d.js; app_2017.01.29a.js; webpage_2017.01.29a.html]
 To-Do:
 ==============================
 Verzija:
