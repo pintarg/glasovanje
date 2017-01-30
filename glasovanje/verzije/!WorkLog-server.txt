@@ -362,9 +362,9 @@ Priprava tabele WebGE. Pripravljeno. Ne deluje zajem podatkov na strani server.j
 [server_2017.01.29d.js; app_2017.01.29a.js; webpage_2017.01.29a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.01.30a
+Narejeno: Delo na WebGE tabeli. Tabeli 'webge' in 'stanjeodg' združeni v 'webge'. Tabele 'stanjeodg' se ne uporablja več. Koda ustrezno popravljena, da se vse podatke zapisuje v eno tabelo, ob oddaji odgovora se podatki v tabeli osvežijo in ob branju drugega vpr se podatka 'hsm' in 'stanjeOdg' ponastavita, 'IP' in 'SocketID' pa se ohranita.
+To-Do: Zajem podatkov in pošiljanje na webpage za prikaz.
 ==============================
 Verzija:
 Narejeno:
