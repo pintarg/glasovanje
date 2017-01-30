@@ -1,4 +1,4 @@
-<!-- Verzija: 2017.01.30e-->
+<!-- Verzija: 2017.01.30c-->
 <div class='homepage'>
     <h1>Vprašanje</h1>
     <div id="divVprasanje", ng-controller="QuestionController">
@@ -67,7 +67,7 @@
           <tr ng-repeat="WebGEData in WebGETabela">
             <td>{{WebGEData.IP}}</td>
             <td>{{WebGEData.SocketID}}</td>
-            <td>{{WebGEData.stanjeOdg==="0"?"Čakam odgovor...":"Ob "+WebGEData.hms+" "+WebGEData.stanjeOdg+". prejem odgovora na izpisano vprašanje."}}</td>
+            <td>{{WebGEData.stanjeOdg==="0"?"Čakam odgovor...":"Ob "+WebGEData.hms+" "+WebGEData.stanjeOdg+". prejem odgovora."}}</td>
             <!-- <td>{{WebGEData.stanjeOdg === "0" ? "Čakam odgovor..." : WebGEData.stanjeOdg}}</td> -->
           </tr>
         </tbody>

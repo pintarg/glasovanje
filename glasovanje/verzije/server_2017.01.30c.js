@@ -1,4 +1,4 @@
-// Verzija: 2017.01.30e
+// Verzija: 2017.01.30c
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -22,9 +22,9 @@ var VprID, // ID vprašanja v bazi "vprasanja"
     cSocketID, // client Socket ID
     cNum=0, // število povezanih klientov
     timestamp2,
-    hms, // timestamp hh:mm:ss
-    serverIP="192.168.42.50"; // spremenljivka za server IP. Uporablja se pri preverjanju in zapisovanju podatkov v Redis tabelo WebGE
+    hms; // timestamp hh:mm:ss
 
+    var currentKey=0, stanjeWebGE=[]; // spremenljivki se uporabljata v funkciji 'WebGETabela'
 var osveziPodatke = true, // spremenjivka, ki se uporabi za preverjanje ob vnovičnem zagonu programa
     socketF5 = true, // spremenljivka, ki se uporablja pri zagonu programa in osveževanju (F5) webpage-a
     duplicatedSocketID=false; // spremenljivka, ki se uporablja pri preverjanju dupliciranih WebGE enot
@@ -126,11 +126,11 @@ io.sockets.on("connection", function(socket) {
   cSocketID = socket.id;
   clientRedis.hget("webge", cIP, function(err, reply) { // preverjanje podvojenosti dostopa z istega IP
     if (reply === null) {
-      if (socket.request.connection.remoteAddress.substring(7) != serverIP) {
-        cNum++;
-        clientRedis.hset("webge", cIP, '{"IP":"'+cIP+'","SocketID":"'+cSocketID+'","hms":"99:99:99","stanjeOdg":"0"}');
-        console.log("New user has connected. Socket ID: "+socket.id+". IP: "+socket.request.connection.remoteAddress.substring(7)+". Total users: "+cNum+".");
-      }
+      cNum++;
+      // console.log("Nov uporabnik. IP: "+cIP+", SocketID: "+cSocketID);
+      // clientRedis.hset("webge", cIP, '{"IP":"'+cIP+'","SocketID":"'+cSocketID+'"}');
+      clientRedis.hset("webge", cIP, '{"IP":"'+cIP+'","SocketID":"'+cSocketID+'","hms":"99:99:99","stanjeOdg":"0"}');
+      console.log("New user has connected. Socket ID: "+socket.id+". IP: "+socket.request.connection.remoteAddress.substring(7)+". Total users: "+cNum+".");
     } else {
       socket.emit("socketDuplicatedSocketID");
       duplicatedSocketID=true;
@@ -142,7 +142,7 @@ io.sockets.on("connection", function(socket) {
   });
   // socket.emit("socketWebGENum", cNum);
   socket.on("disconnect", function() {
-    if (!duplicatedSocketID && socket.request.connection.remoteAddress.substring(7) != serverIP) {
+    if (!duplicatedSocketID) {
       clientRedis.hdel("webge", socket.request.connection.remoteAddress.substring(7));
       cNum--;
       console.log("User has disconnected. Socket ID: "+socket.id+". IP: "+socket.request.connection.remoteAddress.substring(7)+". Total users: "+cNum+".");
@@ -267,6 +267,7 @@ io.sockets.on("connection", function(socket) {
   });
   socket.on("socketWebGEF5", function() {
     clientRedis.hvals("webge", function(err, reply) {
+      // console.log("hvals: "+reply);
       socket.emit("socketWebGETabela", reply);
     });
   });
@@ -410,8 +411,16 @@ io.sockets.on("connection", function(socket) {
   function WebGEQRst(key) { // funkcija za reset vrednosti 'stanjeOdg' ob branju drugega vprašanja
     clientRedis.hget("webge", key, function(err, reply) {
       tempReply=JSON.parse(reply);
-      clientRedis.hset("webge", key, '{"IP":"'+tempReply.IP+'","SocketID":"'+tempReply.SocketID+'","hms":"99:99:99","stanjeOdg":"0"}');
+      clientRedis.hset("webge", key, '{"IP":"'+tempReply.IP+'","SocketID":"'+tempReply.SocketID+'","hms":"99:99:99","stanjeOdg":"0"}')
     });
   }
+
+  function WebGETabela(key) {
+    clientRedis.hget("webge", key, function(err, reply) {
+      stanjeWebGE[currentKey]={"IP":tempReply.IP,"SocketID":tempReply.SocketID,"hms":tempReply.hms,"stanjeOdg":tempReply.stanjeOdg};
+    });
+    currentKey++;
+  }
+
   // FUNKCIJE =================================================================
 });

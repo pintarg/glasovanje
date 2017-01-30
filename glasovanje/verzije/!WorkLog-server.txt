@@ -371,13 +371,13 @@ Narejeno: Urejen zajem in osveževanje podatkov v tabeli 'webge'. Urejen prenos 
 [server_2017.01.30b.js; webpage_2017.01.30a.html; show-question_2017.01.30a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.30c
+Narejeno: Brisanje odvečne komentirane kode.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.01.30d
+Narejeno: Dodajanje varovalke, da se serverIP ne zapisuje v WebGE tabelo.
+To-Do: S strani 'show-question' odstraniti radiobuttne za oddajanje odgovora, ker bo ta stran namenjena samo za prikaz in menjavo vprašanja in prikaz stanja povezav GE.
 ==============================
 Verzija:
 Narejeno:

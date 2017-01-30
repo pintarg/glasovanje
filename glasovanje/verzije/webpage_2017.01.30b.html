@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2017.01.30c -->
+<!-- Verzija: 2017.01.30b -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -495,7 +495,7 @@
       setInterval(function() {
         if (location.href.includes('show-question')) {
           socket.emit("socketWebGEF5");
-          console.log("WebGERefresh-interval 3s");
+          console.log("interval 3s");
         }
       }, 3000);
     }
