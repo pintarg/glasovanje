@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2017.01.30b -->
+<!-- Verzija: 2017.01.30a -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -99,8 +99,6 @@
     // connectGE01();
     // connectGE02();
     // connectGE03();
-
-    WebGERefresh(); // funckija za osveževanje tabele WebGE na 3 sekunde
 
     function connectGE00() { // povezava z glasovalno enoto 00, test povezave in reconnect
       var connection00Test = true, odgGE00;
@@ -467,6 +465,7 @@
     // izpis rezultatov glasovanja
     socket.on("socketPosiljanjeRezultatov", function(msg) {
       rezultati = msg;
+      // console.log("Answers: "+JSON.stringify(msg));
       document.getElementById("btnRewrite").click();
     });
     // izpis vseh vprašanj v tabelo
@@ -495,15 +494,18 @@
       document.getElementById("btnPodvojenSocketID").click();
     });
     function WebGERefresh() { // funkcija za osveževanje tabele povezanih WebGE na 'show-question' strani. Osvežitev se izvede samo, ko smo na strani 'show-question'.
-      setInterval(function() {
-        if (location.href.includes('show-question')) {
+      // setInterval(function() {
+      //   if (location.href.includes('show-question')) {
           socket.emit("socketWebGEF5");
-          console.log("interval 3s");
-        }
-      }, 3000);
+          console.log("klik zaznan");
+      //   }
+      // }, 5000);
     }
     socket.on("socketWebGETabela", function(msg) {
       WebGETabela = JSON.parse('['+msg+']');
+      // WebGETabela=[{"IP":"192.168.42.50","SocketID":"/#l3PQ70O9yzkDLkbBAAAA","hms":"12:34:56","stanjeOdg":"0"},{"IP":"192.168.42.51","SocketID":"/#l3PQ70O9yzkeLkbBAAAA","hms":"11:22:00","stanjeOdg":"0"}];
+      console.log("WebGETabela prejeta1: "+WebGETabela);
+      // console.log("WebGETabela prejeta2: "+JSON.stringify(msg));
       document.getElementById("btnRewriteWebGETabela").click();
     });
     // =============================================

@@ -270,7 +270,7 @@ io.sockets.on("connection", function(socket) {
     beriVprasanje();
   });
   socket.on("socketWebGEF5", function() {
-    clientRedis.hvals("webge", function(err, reply) {
+    clientRedis.hvals("webge1", function(err, reply) {
       // console.log("hvals: "+reply);
       socket.emit("socketWebGETabela", reply);
     });

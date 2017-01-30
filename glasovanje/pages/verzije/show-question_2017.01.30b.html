@@ -1,4 +1,4 @@
-<!-- Verzija: 2017.01.30c-->
+<!-- Verzija: 2017.01.30b-->
 <div class='homepage'>
     <h1>Vprašanje</h1>
     <div id="divVprasanje", ng-controller="QuestionController">
@@ -75,6 +75,7 @@
         </tbody>
       </table>
       <!-- <p>Število povezav prek spletnih glasovalnih enot: <output id="optWebGENum" type="text" /></p> -->
+      <button id="btnKnof" onClick="WebGERefresh()">Knof</button>
     </div>
 </div>
 <button ng-controller="ModalPopup as $ctrl" id="btnZadnjeVpr" type="button" class="btn btn-default" ng-click="$ctrl.ZadnjeVpr()" style="display:none">Zadnje vprašanje</button>

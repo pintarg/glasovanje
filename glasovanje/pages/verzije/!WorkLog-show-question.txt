@@ -110,12 +110,13 @@ Narejeno: Dodajanje preverjanja podvojenosti povezave z istega IP-ja. V primeru 
 Dodan gumb.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.30a
+Urejen zajem in osveževanje podatkov v tabeli 'webge'. Urejen prenos podatkov na webpage in urejen izpis na webpage.
+[server_2017.01.30b.js; webpage_2017.01.30a.html; show-question_2017.01.30a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.01.30b
+Narejeno: Izpis WebGE tabele oblikovan.
 To-Do:
 ==============================
 Verzija:
