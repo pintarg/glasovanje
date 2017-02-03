@@ -1,4 +1,4 @@
-// Verzija: 2017.02.03f
+// Verzija: 2017.02.03e
 // ====================================
 // var bodyParser = require('body-parser');
 // var express = require('express');
@@ -43,7 +43,6 @@ express.use(sessions({
   secret: 'asd123aFsd234',
   duration: 60*60*1000, // 1h
   activeDuration: 30*60*1000,
-  httpOnly: true,
 }));
 
 express.use(function(req, res, next) {

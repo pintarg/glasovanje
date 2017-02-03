@@ -9,22 +9,22 @@ Narejeno: Urejena koda za primer pravilnega userja in napačnega gesla.
 Povezane datoteke: /
 To-do:
 =========================
-Verzija:
-Narejeno:
-Povezane datoteke:
+Verzija: 2017.02.03c
+Narejeno: Delujoča prijava, odjava, nastavljanje cookie-a in preverjanje, da je uporabnik prijavljen ob obisku dashboard strano.
+Povezane datoteke: /
 To-do:
 =========================
-Verzija:
-Narejeno:
-Povezane datoteke:
+Verzija: 2017.02.03d
+Narejeno: Dodan bcrypt za kriptiranje gesla. Komentiral del kode še ni v uporabi (sledi v nadaljevanju).
+Povezane datoteke: /
 To-do:
 =========================
-Verzija:
-Narejeno:
-Povezane datoteke:
+Verzija: 2017.02.03e
+Narejeno: Dodan middleware 'express.use(function(req, res, next) {' in 'function requireLogin' za preverjanje, da je user prijavljen.
+Povezane datoteke: /
 To-do:
 =========================
-Verzija:
+Verzija: 
 Narejeno:
 Povezane datoteke:
 To-do:

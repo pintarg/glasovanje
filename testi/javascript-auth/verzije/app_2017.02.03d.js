@@ -1,4 +1,4 @@
-// Verzija: 2017.02.03f
+// Verzija: 2017.02.03d
 // ====================================
 // var bodyParser = require('body-parser');
 // var express = require('express');
@@ -43,33 +43,24 @@ express.use(sessions({
   secret: 'asd123aFsd234',
   duration: 60*60*1000, // 1h
   activeDuration: 30*60*1000,
-  httpOnly: true,
 }));
 
-express.use(function(req, res, next) {
-  if (req.session && req.session.user) {
-    tmpUser = JSON.parse(req.session.user);
-    clientRedis.hget('user', tmpUser.username, function(err, user) {
-      if (user !== null) {
-        req.user = user;
-        delete req.user.password;
-        req.session.user = req.user;
-        res.locals.user = req.user;
-      }
-      next();
-    });
-  } else {
-    next();
-  }
-});
-
-function requireLogin(req, res, next) {
-  if (!req.user) {
-    res.redirect('/login');
-  } else {
-    next();
-  }
-}
+// express.use(function(req, res, next) {
+//   if (req.session && req.session.user) {
+//     tmpUser = JSON.parse(req.session.user);
+//     clientRedis.hget('user', tmpUser.username, function(err, user) {
+//       if (user !== null) {
+//         req.user = user;
+//         delete req.user.password;
+//         req.session.user = req.user;
+//         req.locals.user = req.user;
+//       }
+//       next();
+//     });
+//   } else {
+//     next();
+//   }
+// });
 
 express.get('/', function(req, res) {
   res.sendFile(__dirname + '/views/index.html');
@@ -78,6 +69,7 @@ express.get('/login', function(req, res) {
   res.sendFile(__dirname + '/views/login.html');
 });
 express.post('/login', function(req, res) {
+  // res.json(req.body);
   clientRedis.hget('user', req.body.username, function(err, user) {
     tmpReply = JSON.parse(user);
     // console.log("Username: "+req.body.username);
@@ -94,8 +86,21 @@ express.post('/login', function(req, res) {
     }
   });
 });
-express.get('/dashboard', requireLogin, function(req, res) {
-    res.sendFile(__dirname + '/views/dashboard.html');
+express.get('/dashboard', function(req, res) {
+  if (req.session && req.session.user) {
+    tmpUser=JSON.parse(req.session.user); // 'req.session.user' je v JSON obliki in je potrebno parsanje, da lahko v naslednjem koraku preveremo samo vrednost 'username'
+    clientRedis.hget('user', tmpUser.username, function(err, user) {
+      if (user === null) {
+        req.session.reset();
+        res.redirect('/login');
+      } else {
+        res.locals.user = user;
+        res.sendFile(__dirname + '/views/dashboard.html');
+      }
+    });
+  } else {
+    res.redirect('login');
+  }
 });
 express.get('/logout', function(req, res) {
   req.session.reset();
