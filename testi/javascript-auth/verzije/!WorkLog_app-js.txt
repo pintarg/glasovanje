@@ -1,0 +1,96 @@
+=========================
+Verzija: 2017.02.03a
+Narejeno: Uspešno preverjanje pravilnosti username in password. Če username ne obstaja, javi napako. Če sta podatka pravilna, preusmeri na dashboard.
+Povezane datoteke: /
+To-do: Urediti kodo za primer pravilnega userja in napačnega gesla.
+=========================
+Verzija: 2017.02.03b
+Narejeno: Urejena koda za primer pravilnega userja in napačnega gesla.
+Povezane datoteke: /
+To-do:
+=========================
+Verzija:
+Narejeno:
+Povezane datoteke:
+To-do:
+=========================
+Verzija:
+Narejeno:
+Povezane datoteke:
+To-do:
+=========================
+Verzija:
+Narejeno:
+Povezane datoteke:
+To-do:
+=========================
+Verzija:
+Narejeno:
+Povezane datoteke:
+To-do:
+=========================
+Verzija:
+Narejeno:
+Povezane datoteke:
+To-do:
+=========================
+Verzija:
+Narejeno:
+Povezane datoteke:
+To-do:
+=========================
+Verzija:
+Narejeno:
+Povezane datoteke:
+To-do:
+=========================
+Verzija:
+Narejeno:
+Povezane datoteke:
+To-do:
+=========================
+Verzija:
+Narejeno:
+Povezane datoteke:
+To-do:
+=========================
+Verzija:
+Narejeno:
+Povezane datoteke:
+To-do:
+=========================
+Verzija:
+Narejeno:
+Povezane datoteke:
+To-do:
+=========================
+Verzija:
+Narejeno:
+Povezane datoteke:
+To-do:
+=========================
+Verzija:
+Narejeno:
+Povezane datoteke:
+To-do:
+=========================
+Verzija:
+Narejeno:
+Povezane datoteke:
+To-do:
+=========================
+Verzija:
+Narejeno:
+Povezane datoteke:
+To-do:
+=========================
+Verzija:
+Narejeno:
+Povezane datoteke:
+To-do:
+=========================
+Verzija:
+Narejeno:
+Povezane datoteke:
+To-do:
+=========================
