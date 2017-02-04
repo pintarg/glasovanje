@@ -1,4 +1,4 @@
-// Verzija: 2017.02.04d
+// Verzija: 2017.02.04c
 // ====================================================================================================
 var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap', 'smart-table']);
 var removeRowPodatek, removeRowVprasanje;
@@ -265,11 +265,6 @@ app.controller('LogoutController', function($scope, $http, $location) {
     .error(function(data) {
       console.log("logout error"+data);
     });
-  };
-});
-app.controller('RedirectController', function($scope, $location) {
-  $scope.niPrijave = function() {
-    $location.url('/');
   };
 });
 // app.controller('CtrlRmRowVprasanje', function ($uibModalInstance, $scope) {

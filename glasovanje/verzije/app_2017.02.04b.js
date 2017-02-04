@@ -1,4 +1,4 @@
-// Verzija: 2017.02.04d
+// Verzija: 2017.02.04b
 // ====================================================================================================
 var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap', 'smart-table']);
 var removeRowPodatek, removeRowVprasanje;
@@ -32,10 +32,14 @@ app.config(function($routeProvider) {
     templateUrl:'pages/submit-vote.html',
     controller:'WebGEController'
   })
-  .when('/login', {
-    templateUrl:'pages/login.html',
-    controller:'LoginController'
+  .when('/logout', {
+    templateUrl:'logout'
+    // controller:'WebGEController'
   })
+  // .when('/login', {
+  //   templateUrl:'pages/login.html'
+  //   // controller:'WebGEController'
+  // })
   .otherwise({redirectTo:'/'});
 });
 
@@ -132,13 +136,28 @@ app.controller('ModalPopup', function ($uibModal) {
       windowClass: 'app-modal-window' // Uporablja se v povezavi s CSS za določanje izgleda
     });
   };
+  $ctrl.Login = function () { // Popup za prijavo
+    var modalInstance = $uibModal.open({
+      templateUrl: '/pages/popup/login.html',
+      controller: 'ModalInstanceCtrl',
+      controllerAs: '$ctrl',
+      windowClass: 'app-modal-window' // Uporablja se v povezavi s CSS za določanje izgleda
+    });
+  };
 });
-app.controller('ModalInstanceCtrl', function ($uibModalInstance) {
+app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance) {
   var $ctrl = this;
   $ctrl.ok = function() {
       $uibModalInstance.close();
   };
   $ctrl.cancel = function() {
+  };
+  var un, pwd;
+  $ctrl.login = function() {
+    un = $scope.username,
+    pwd = $scope.password;
+    unpwd={"username":un,"password":pwd};
+    socket.emit("socketLogin", unpwd);
   };
 });
 // === /POPUP-i ===
@@ -241,35 +260,6 @@ app.controller('WebGEController', function($scope) {
   };
   $scope.potrditevPrejemaOdg = function() {
     return $scope.potrZapOdg = potrZapOdg;
-  };
-});
-app.controller('LoginController', function($scope, $http, $location) { // controller za Login stran. Skrbi za pošiljanje POST zahtevkov, da se lahko izvede prijavo in zapiše podatke seje
-  $scope.sub = function() {
-    $http.post('/login', $scope.formData)
-    .success(function(data) {
-      // console.log("posted successfully:");
-      $location.url('/');
-    })
-    .error(function(data) {
-      console.error("error in posting:");
-    });
-  };
-});
-app.controller('LogoutController', function($scope, $http, $location) {
-  $scope.logout = function() {
-    $http.get('/logout')
-    .success(function(data) {
-      // console.log("logout successfull");
-      $location.url('/');
-    })
-    .error(function(data) {
-      console.log("logout error"+data);
-    });
-  };
-});
-app.controller('RedirectController', function($scope, $location) {
-  $scope.niPrijave = function() {
-    $location.url('/');
   };
 });
 // app.controller('CtrlRmRowVprasanje', function ($uibModalInstance, $scope) {

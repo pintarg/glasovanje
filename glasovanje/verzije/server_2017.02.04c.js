@@ -1,4 +1,4 @@
-// Verzija: 2017.02.04d
+// Verzija: 2017.02.04c
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -64,9 +64,7 @@ express.use(function(req, res, next) {
 
 function requireLogin(req, res, next) {
   if (!req.user) {
-    console.log("ni prijave, preusmerjam...");
-    angular.element('#RedirectController').scope().niPrijave();
-    // res.redirect('#/login');
+    res.redirect('/login');
   } else {
     next();
   }

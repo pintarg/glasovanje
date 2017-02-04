@@ -78,6 +78,7 @@ express.get('/login', function(req, res) {
   res.sendFile(__dirname + '/views/login.html');
 });
 express.post('/login', function(req, res) {
+  console.log("Login post. req.body: "+req.body);
   clientRedis.hget('user', req.body.username, function(err, user) {
     tmpReply = JSON.parse(user);
     // console.log("Username: "+req.body.username);

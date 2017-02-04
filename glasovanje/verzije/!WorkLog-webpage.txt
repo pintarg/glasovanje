@@ -437,16 +437,19 @@ Narejeno: Popravek izpisa 'Stanje odgovora' v obliko 'Ob 22:47:39 2. prejem odgo
 [webpage_2017.01.30b.html; show-question_2017.01.30d.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.02.04a
+Narejeno: Urejanje login-a. Vmesno shranjevanje. Testiranje login z uporabo popup-a ali dodatne spletne strani. Naletel na težavo, da AngularJS ne posreduje POST ukaza ob vpisu u/p in potrjevanju vnosa, zato se podatki ne posredujejo v funkcijo login. Poizkusim z uporabo popupa in alternativnega načina posredovanja podatkov. Pred nadaljevanjem naredim to shranjevanje.
+[server_2017.02.04a.js; app_2017.02.04a.js; webpage_2017.02.04a.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.02.04b
+Narejeno: Vmesno shranjevanje. Test logina prek popupa. Ni uspešno, ker ne dobim podatkov 'req.session.user = user;' in 'rediredt' ne deluje. Rollback na verzijo 2017.01.30b.
+[app_2017.02.04b.js; server_2017.02.04b.js; webpage_2017.02.04b.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.02.04c
+Urejeno delovanje login in logout. V browserju se v developer tools - konzola, pojavlja nekaj errorjev. Treba preveriti.
+[app_2017.02.04c.js; server_2017.02.04c.js; webpage_2017.02.04c.html]
 To-Do:
 ==============================
 Verzija:

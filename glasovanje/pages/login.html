@@ -1,0 +1,18 @@
+<div class="homepage">
+  <h1>Prijavna stran1</h1>
+  <div id="divLogin", ng-controller="LoginController">
+    <!-- <form method="post">
+      <!-- <span>Uporabniško ime: <input type="text" name="username", required=true></span><br>
+      <span>Geslo: <input type="password" name="password", required=true></span><br> -->
+      <!-- <p>Uporabniško ime: <input type="text" name="username", required=true></p><br>
+      <p>Geslo: <input type="password" name="password", required=true></p><br> -->
+      <!-- <input type="submit" value="Submit"/>
+      <button id="btnLogin" type="submit" value="Submit">Prijavi me</button>
+    </form> -->
+    <form>
+      <p>Uporabniško ime: <input type="text", ng-model="formData.username" required=true></p><br>
+      <p>Geslo: <input type="password", ng-model="formData.password" required=true></p><br>
+      <button type="submit" class="btn btn-primary" ng-click="sub()">Prijava</button>
+    </form>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2017.02.04d -->
+<!-- Verzija: 2017.02.04b -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -35,8 +35,9 @@
             <b class="caret"></b>
           </a>
           <ul class="dropdown-menu">
-            <li><a tabindex="-1" href="#/login">Prijava v administrativni vmesnik</a></li>
-            <li><a tabindex="-2" href="#/" ng-click="logout()" ng-controller="LogoutController">Odjava iz administrativnega vmesnika</a></li>
+            <li><a tabindex="-1" ng-controller="ModalPopup as $ctrl" ng-click="$ctrl.Login()">Prijava v administrativni vmesnik</a></li>
+            <!-- <li><a tabindex="-1" href="/login">Prijava v administrativni vmesnik</a></li> -->
+            <li><a tabindex="-2" href="#/logout">Odjava iz administrativnega vmesnika</a></li>
           </ul>
         </li>
         <li class="dropdown">
@@ -74,6 +75,7 @@
   <div class="container">
     <div class='content' ng-view><div> <!-- div za prikaz Single page aplication -->
   </div>
+  <button ng-controller="ModalPopup as $ctrl" id="btnLogin" type="button" class="btn btn-default" ng-click="$ctrl.Login()" style="display:none">Ni vprašanja</button>
 
   <script src="app.js"></script>
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
@@ -504,7 +506,7 @@
       setInterval(function() {
         if (location.href.includes('show-question')) {
           socket.emit("socketWebGEF5");
-          console.log("interval 3s");
+          console.log("WebGERefresh-interval 3s");
         }
       }, 3000);
     }
