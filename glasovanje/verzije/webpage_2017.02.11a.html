@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2017.02.11c -->
+<!-- Verzija: 2017.02.11a -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -80,7 +80,7 @@
   <script type="text/javascript">
 
     var odg = 'x';
-    var socket = io.connect("192.168.1.200:8080");
+    var socket = io.connect("192.168.42.50:8080");
     var VprID,
       stVpr,
       novoVpr,
@@ -482,10 +482,7 @@
     // izpis rezultatov glasovanja
     socket.on("socketPosiljanjeRezultatov", function(msg) {
       rezultati = msg;
-      setTimeout(function() {
-        document.getElementById("btnRewrite").click();
-      }, 10);
-      // document.getElementById("btnRewrite").click();
+      document.getElementById("btnRewrite").click();
     });
     // izpis vseh vprašanj v tabelo
     function izpisVprasanj() {
@@ -494,20 +491,14 @@
     // prejem vseh vprašanj za prikaz
     socket.on("socketPosiljanjeVprasanj", function(msg) {
       vsaVpr = msg;
-      setTimeout(function() {
-        document.getElementById("btnRewriteVprasanja").click();
-      }, 10)
-      // document.getElementById("btnRewriteVprasanja").click();
+      document.getElementById("btnRewriteVprasanja").click();
     });
     function izpisStatistike() {
       socket.emit("socketIzpisStatistike");
     };
     socket.on("socketPosiljanjeStatistike", function(msg) {
       statOdg = msg;
-      setTimeout(function() {
-        document.getElementById("btnRewriteStatistika").click();
-      }, 10);
-      // document.getElementById("btnRewriteStatistika").click();
+      document.getElementById("btnRewriteStatistika").click();
     });
     function osveziVprasanje() { // osveževanja spremenljivke za izpis vprašanja na Spletni glasovalni enoti
       socket.emit("socketOsveziVprasanje");

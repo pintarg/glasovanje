@@ -26,7 +26,7 @@ var VprID, // ID vprašanja v bazi "vprasanja"
     cNum=0, // število povezanih klientov
     timestamp2,
     hms, // timestamp hh:mm:ss
-    serverIP="192.168.42.50"; // spremenljivka za server IP. Uporablja se pri preverjanju in zapisovanju podatkov v Redis tabelo WebGE
+    serverIP="192.168.1.200"; // spremenljivka za server IP. Uporablja se pri preverjanju in zapisovanju podatkov v Redis tabelo WebGE
 
 var osveziPodatke = true, // spremenjivka, ki se uporabi za preverjanje ob vnovičnem zagonu programa
     socketF5 = true, // spremenljivka, ki se uporablja pri zagonu programa in osveževanju (F5) webpage-a
@@ -39,7 +39,7 @@ express.use(bodyParser.urlencoded({extended:true}));
 
 express.use(sessions({
   cookieName: 'session',
-  secret: 'asd123aFsd234',
+  secret: 'L2Rt6rp4VwJUO0qOKoD6NAnZnyjhzIf1FpESGv7K1u',
   duration: 60*60*1000, // 1h
   activeDuration: 30*60*1000,
   httpOnly: true,
@@ -65,7 +65,7 @@ express.use(function(req, res, next) {
 function requireLogin(req, res, next) {
   if (!req.user) {
     console.log("ni prijave, preusmerjam...");
-    angular.element('#RedirectController').scope().niPrijave();
+    // angular.element('#RedirectController').scope().niPrijave();
     // res.redirect('#/login');
   } else {
     next();

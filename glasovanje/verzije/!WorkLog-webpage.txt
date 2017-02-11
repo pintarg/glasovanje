@@ -452,13 +452,13 @@ Urejeno delovanje login in logout. V browserju se v developer tools - konzola, p
 [app_2017.02.04c.js; server_2017.02.04c.js; webpage_2017.02.04c.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.02.11a
+Narejeno: Urejanje kode v 'socketVprPrebran', da browser ne javlja napake 'Cannot read property 'click' of null'.
+To-Do: Preveri, če obstaja kakšna druga možnost, da se ne uporabi timeout funkcije
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.02.11b
+Narejeno: Dodajanje setTimeout funkcije še v 'socketPosiljanjeStatistike', 'socketPosiljanjeVprasanj', 'socketPosiljanjeRezultatov'.
+To-Do: Alternative (še) nisem našel.
 ==============================
 Verzija:
 Narejeno:
