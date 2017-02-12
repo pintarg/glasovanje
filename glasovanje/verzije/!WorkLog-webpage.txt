@@ -460,12 +460,12 @@ Verzija: 2017.02.11b
 Narejeno: Dodajanje setTimeout funkcije še v 'socketPosiljanjeStatistike', 'socketPosiljanjeVprasanj', 'socketPosiljanjeRezultatov'.
 To-Do: Alternative (še) nisem našel.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.02.12a
+Narejeno: Dodan 'socketNiPrijave', ki proži preusmeritev na '#/', če uporabnik ni prijavljen.
+To-Do: Ob prijavi in odjavi treba narediti F5 strani, ker drugače ne deluje najbolje.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.02.12b
+Narejeno: Dodana funkcija 'pageRefresh', za F5 strani ob prijavi in odjavi.
 To-Do:
 ==============================
 Verzija:

@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2017.02.12c -->
+<!-- Verzija: 2017.02.12a -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -36,7 +36,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a tabindex="-1" href="#/login">Prijava v administrativni vmesnik</a></li>
-            <li><a tabindex="-2" href="#/" ng-click="logout()" ng-controller="LogoutController" onClick="pageRefresh()">Odjava iz administrativnega vmesnika</a></li>
+            <li><a tabindex="-2" href="#/" ng-click="logout()" ng-controller="LogoutController">Odjava iz administrativnega vmesnika</a></li>
           </ul>
         </li>
         <li class="dropdown">
@@ -539,16 +539,6 @@
       console.log("Ni prijave-socket");
       location.href = "#/";
     });
-    function pageRefresh() {
-      if (location.href.includes('login')) {
-        setTimeout(function() {
-          location.reload();
-        }, 500);
-      } else {
-        location.reload();
-      }
-      // location.reload();
-    }
     // =============================================
 
   </script>

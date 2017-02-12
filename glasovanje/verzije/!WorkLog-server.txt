@@ -394,8 +394,8 @@ Urejeno delovanje login in logout. V browserju se v developer tools - konzola, p
 [app_2017.02.04c.js; server_2017.02.04c.js; webpage_2017.02.04c.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.02.12a
+Narejeno: V funkcijo 'requireLogin' dodano 'io.sockets.emit("socketNiPrijave");', ki na spletno stran posreduje ukaz za preusmeritev na '#/', če login ni narejen in uporabnik želi dostopat do zaklenjenih strani
 To-Do:
 ==============================
 Verzija:
