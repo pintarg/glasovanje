@@ -1,4 +1,4 @@
-// Verzija: 2017.04.03c
+// Verzija: 2017.04.03a
 // ====================================================================================================
 var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap', 'smart-table']);
 var removeRowPodatek, removeRowVprasanje;
@@ -9,62 +9,22 @@ app.config(function($routeProvider) {
     controller:'HomeController'
   })
   .when('/show-question', {
-    resolve: {
-      "check": function($location, $rootScope) {
-        if(!$rootScope.loggedIn) {
-          $location.path('/login');
-          alert('Za dostop do te strani se je treba prijaviti!');
-        }
-      }
-    },
     templateUrl:'pages/show-question.html',
     controller:'QuestionController'
   })
   .when('/add-question', {
-    resolve: {
-      "check": function($location, $rootScope) {
-        if(!$rootScope.loggedIn) {
-          $location.path('/login');
-          alert('Za dostop do te strani se je treba prijaviti!');
-        }
-      }
-    },
     templateUrl:'pages/add-question.html',
     controller:'Add-questionController'
   })
   .when('/answers', {
-    resolve: {
-      "check": function($location, $rootScope) {
-        if(!$rootScope.loggedIn) {
-          $location.path('/login');
-          alert('Za dostop do te strani se je treba prijaviti!');
-        }
-      }
-    },
     templateUrl:'pages/answers.html',
     controller:'AnswersController'
   })
   .when('/all-questions', {
-    resolve: {
-      "check": function($location, $rootScope) {
-        if(!$rootScope.loggedIn) {
-          $location.path('/login');
-          alert('Za dostop do te strani se je treba prijaviti!');
-        }
-      }
-    },
     templateUrl:'pages/all-questions.html',
     controller:'all-questionsController'
   })
   .when('/statistics', {
-    resolve: {
-      "check": function($location, $rootScope) {
-        if(!$rootScope.loggedIn) {
-          $location.path('/login');
-          alert('Za dostop do te strani se je treba prijaviti!');
-        }
-      }
-    },
     templateUrl:'pages/statistics.html',
     controller:'StatisticsController'
   })
@@ -283,47 +243,35 @@ app.controller('WebGEController', function($scope) {
     return $scope.potrZapOdg = potrZapOdg;
   };
 });
-app.controller('LoginController', function($scope, $http, $location, $rootScope) { // controller za Login stran. Skrbi za pošiljanje POST zahtevkov, da se lahko izvede prijavo in zapiše podatke seje
-  // $scope.sub = function() {
-  //   $http.post('/login', $scope.formData)
-  //   .success(function(data) {
-  //     // console.log("posted successfully:");
-  //     $location.url('/');
-  //   })
-  //   .error(function(data) {
-  //     console.error("error in posting:");
-  //   });
-  // };
+app.controller('LoginController', function($scope, $http, $location) { // controller za Login stran. Skrbi za pošiljanje POST zahtevkov, da se lahko izvede prijavo in zapiše podatke seje
   $scope.sub = function() {
-    if($scope.username == 'admin' && $scope.password == 'riba') {
-      $rootScope.loggedIn = true;
-      $location.path('/show-question');
-    } else {
-      alert('Napačno uporabniško ime in/ali geslo!');
-    }
+    $http.post('/login', $scope.formData)
+    .success(function(data) {
+      // console.log("posted successfully:");
+      $location.url('/');
+    })
+    .error(function(data) {
+      console.error("error in posting:");
+    });
   };
 });
-app.controller('LogoutController', function($scope, $http, $location, $rootScope) {
-  // $scope.logout = function() {
-  //   $http.get('/logout')
-  //   .success(function(data) {
-  //     // console.log("logout successfull");
-  //     $location.url('/');
-  //   })
-  //   .error(function(data) {
-  //     console.log("logout error"+data);
-  //   });
-  // };
+app.controller('LogoutController', function($scope, $http, $location) {
   $scope.logout = function() {
-    $rootScope.loggedIn = false;
-    $location.path('/');
+    $http.get('/logout')
+    .success(function(data) {
+      // console.log("logout successfull");
+      $location.url('/');
+    })
+    .error(function(data) {
+      console.log("logout error"+data);
+    });
   };
 });
-// app.controller('RedirectController', function($scope, $location) {
-//   $scope.niPrijave = function() {
-//     $location.url('/');
-//   };
-// });
+app.controller('RedirectController', function($scope, $location) {
+  $scope.niPrijave = function() {
+    $location.url('/');
+  };
+});
 // app.controller('CtrlRmRowVprasanje', function ($uibModalInstance, $scope) {
 //   var $ctrl = this;
 //   $scope.vprasanja = vsaVpr;

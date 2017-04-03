@@ -1,4 +1,4 @@
-// Verzija: 2017.04.03c
+// Verzija: 2017.04.03a
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -32,47 +32,47 @@ var osveziPodatke = true, // spremenjivka, ki se uporabi za preverjanje ob vnovi
     socketF5 = true, // spremenljivka, ki se uporablja pri zagonu programa in osveževanju (F5) webpage-a
     duplicatedSocketID=false; // spremenljivka, ki se uporablja pri preverjanju dupliciranih WebGE enot
 
-// express.set('view engine', 'html');
-// // === MIDDLEWARE ===
-// express.use(bodyParser.json());
-// express.use(bodyParser.urlencoded({extended:true}));
-//
-// express.use(sessions({
-//   cookieName: 'session',
-//   secret: 'L2Rt6rp4VwJUO0qOKoD6NAnZnyjhzIf1FpESGv7K1u',
-//   duration: 60*60*1000, // 1h
-//   activeDuration: 30*60*1000,
-//   httpOnly: true,
-// }));
-//
-// express.use(function(req, res, next) {
-//   if (req.session && req.session.user) {
-//     tmpUser = JSON.parse(req.session.user);
-//     clientRedis.hget('user', tmpUser.username, function(err, user) {
-//       if (user !== null) {
-//         req.user = user;
-//         delete req.user.password;
-//         req.session.user = req.user;
-//         res.locals.user = req.user;
-//       }
-//       next();
-//     });
-//   } else {
-//     next();
-//   }
-// });
-//
-// function requireLogin(req, res, next) {
-//   if (!req.user) {
-//     console.log("ni prijave, preusmerjam... Socket ID: "+socket.id);
-//     // angular.element('#RedirectController').scope().niPrijave();
-//     // res.redirect('#/login');
-//     // niPrijave();
-//     io.sockets.emit("socketNiPrijave");
-//   } else {
-//     next();
-//   }
-// }
+express.set('view engine', 'html');
+// === MIDDLEWARE ===
+express.use(bodyParser.json());
+express.use(bodyParser.urlencoded({extended:true}));
+
+express.use(sessions({
+  cookieName: 'session',
+  secret: 'L2Rt6rp4VwJUO0qOKoD6NAnZnyjhzIf1FpESGv7K1u',
+  duration: 60*60*1000, // 1h
+  activeDuration: 30*60*1000,
+  httpOnly: true,
+}));
+
+express.use(function(req, res, next) {
+  if (req.session && req.session.user) {
+    tmpUser = JSON.parse(req.session.user);
+    clientRedis.hget('user', tmpUser.username, function(err, user) {
+      if (user !== null) {
+        req.user = user;
+        delete req.user.password;
+        req.session.user = req.user;
+        res.locals.user = req.user;
+      }
+      next();
+    });
+  } else {
+    next();
+  }
+});
+
+function requireLogin(req, res, next) {
+  if (!req.user) {
+    console.log("ni prijave, preusmerjam... Socket ID: "+socket.id);
+    // angular.element('#RedirectController').scope().niPrijave();
+    // res.redirect('#/login');
+    // niPrijave();
+    io.sockets.emit("socketNiPrijave");
+  } else {
+    next();
+  }
+}
 
 // === EXPRESS.GET initial files ===
 express.get('/', function(req, res) {
@@ -85,24 +85,19 @@ express.get('/app.js', function(req, res) {
 express.get('/pages/home.html', function(req, res) {
   res.sendFile(__dirname + '/pages/home.html');
 });
-express.get('/pages/show-question.html', function(req, res) {
-// express.get('/pages/show-question.html', requireLogin, function(req, res) {
+express.get('/pages/show-question.html', requireLogin, function(req, res) {
   res.sendFile(__dirname + '/pages/show-question.html');
 });
-express.get('/pages/add-question.html', function(req, res) {
-// express.get('/pages/add-question.html', requireLogin, function(req, res) {
+express.get('/pages/add-question.html', requireLogin, function(req, res) {
   res.sendFile(__dirname + '/pages/add-question.html');
 });
-express.get('/pages/answers.html', function(req, res) {
-// express.get('/pages/answers.html', requireLogin, function(req, res) {
+express.get('/pages/answers.html', requireLogin, function(req, res) {
   res.sendFile(__dirname + '/pages/answers.html');
 });
-express.get('/pages/all-questions.html', function(req, res) {
-// express.get('/pages/all-questions.html', requireLogin, function(req, res) {
+express.get('/pages/all-questions.html', requireLogin, function(req, res) {
   res.sendFile(__dirname + '/pages/all-questions.html');
 });
-express.get('/pages/statistics.html', function(req, res) {
-// express.get('/pages/statistics.html', requireLogin, function(req, res) {
+express.get('/pages/statistics.html', requireLogin, function(req, res) {
   res.sendFile(__dirname + '/pages/statistics.html');
 });
 express.get('/pages/submit-vote.html', function(req, res) {
@@ -111,33 +106,33 @@ express.get('/pages/submit-vote.html', function(req, res) {
 express.get('/pages/login.html', function(req, res) {
   res.sendFile(__dirname + '/pages/login.html');
 });
-// express.post('/login', function(req, res, next) {
-//   // console.log("Login post. req.body: "+JSON.stringify(req.body));
-//   clientRedis.hget('user', req.body.username, function(err, user) {
-//     tmpReply = JSON.parse(user);
-//     // console.log("Username: "+req.body.username);
-//     if (user === null) {
-//       // res.sendFile(__dirname + '/views/err-wrong-user-pass.html');
-//       console.log("Napačno uporabniško ime in/ali geslo.-1");
-//     } else {
-//       // if (req.body.password === tmpReply.password) {
-//       if (bcrypt.compareSync(req.body.password, tmpReply.password)) {
-//         req.session.user = user;
-//         // $location.url('/');
-//         res.redirect('/');
-//         // res.sendFile(__dirname + '/pages/home.html');
-//       } else {
-//         // res.sendFile(__dirname + '/views/err-wrong-user-pass.html');
-//         console.log("Napačno uporabniško ime in/ali geslo.-2");
-//       }
-//     }
-//   });
-// });
-// express.get('/logout', function(req, res) {
-//   // console.log("logout");
-//   req.session.reset();
-//   res.redirect('/');
-// });
+express.post('/login', function(req, res, next) {
+  // console.log("Login post. req.body: "+JSON.stringify(req.body));
+  clientRedis.hget('user', req.body.username, function(err, user) {
+    tmpReply = JSON.parse(user);
+    // console.log("Username: "+req.body.username);
+    if (user === null) {
+      // res.sendFile(__dirname + '/views/err-wrong-user-pass.html');
+      console.log("Napačno uporabniško ime in/ali geslo.-1");
+    } else {
+      // if (req.body.password === tmpReply.password) {
+      if (bcrypt.compareSync(req.body.password, tmpReply.password)) {
+        req.session.user = user;
+        // $location.url('/');
+        res.redirect('/');
+        // res.sendFile(__dirname + '/pages/home.html');
+      } else {
+        // res.sendFile(__dirname + '/views/err-wrong-user-pass.html');
+        console.log("Napačno uporabniško ime in/ali geslo.-2");
+      }
+    }
+  });
+});
+express.get('/logout', function(req, res) {
+  // console.log("logout");
+  req.session.reset();
+  res.redirect('/');
+});
 // === EXPRESS.GET src ===
 express.get('/src/angular.js', function(req, res) {
   res.sendFile(__dirname + '/src/angular.js');

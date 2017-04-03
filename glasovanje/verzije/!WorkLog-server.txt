@@ -398,13 +398,15 @@ Verzija: 2017.02.12a
 Narejeno: V funkcijo 'requireLogin' dodano 'io.sockets.emit("socketNiPrijave");', ki na spletno stran posreduje ukaz za preusmeritev na '#/', če login ni narejen in uporabnik želi dostopat do zaklenjenih strani
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.04.03a
+Narejeno: Vmesno shranjevanje pred revert-anjem na verzijo pred loginom (2017.01.30d)
+app_2017.04.03a.js; server_2017.04.03a.js; webpage_2017.04.03a.html
+To-Do: Ureditev logina z uporabo AngularJS
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.04.03b
+Narejeno: Urejen login z uporabo AngularJS. Star login umaknjen. Koda starega logina komentirana.
+app_2017.04.03b.js; server_2017.04.03b.js; webpage_2017.04.03b.html
+To-Do: Briši komentirano kodo starega logina.
 ==============================
 Verzija:
 Narejeno:
