@@ -1,4 +1,4 @@
-// Verzija: 2017.04.04d
+// Verzija: 2017.04.04c
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
