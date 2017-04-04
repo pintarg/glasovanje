@@ -15,9 +15,10 @@ Narejeno: Dodajanje preverjanja podvojenosti povezave z istega IP-ja. V primeru 
 Dodan gumb.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.04.04a
+Narejeno: Urejanje izpisa start/stop glasovanja.
+[app_2017.04.04b.js; webpage_2017.04.04b.html; submit-vote_2017.04.04a.html; show-question_2017.04.04b.html; server_2017.04.04b.js]
+To-Do: Urejanje sprejema odgovorov glede na stanje stanje (start/stop) glasovanja.
 ==============================
 Verzija:
 Narejeno:

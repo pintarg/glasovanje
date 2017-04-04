@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2017.04.04c -->
+<!-- Verzija: 2017.04.04a -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -80,7 +80,7 @@
   <script type="text/javascript">
 
     var odg = 'x';
-    var socket = io.connect("192.168.0.199:8080");
+    var socket = io.connect("192.168.42.50:8080");
     var VprID,
       stVpr,
       novoVpr,
@@ -92,12 +92,9 @@
       url, // zapis trenutnega url-ja
       hms,
       WebGETabela, // spremenljiva za vrednost tabele WebGE
-      load=true,
-      startStop = false, // spremenljivka za start/stop glasovanja (false=stop, true=start)
-      startStopVal = 0; // spremenljivka za start/stop glasovanja, vrednost katere se prek socketa pošlje strežniku, da obvesti vse WebGE.
+      load=true;
     var prazenOdg = false; // Varovalka pred praznim oddajanjem odgovora
-    var vprasanje = 'Za prikaz vprašanja klikni na gumb "Naslednje vprašanje".',
-      stanjeGlasovanja = 'Glasovanje je ustavljeno. Počakaj na začetek glasovanja.';
+    var vprasanje = 'Za prikaz vprašanja klikni na gumb "Naslednje vprašanje".';
 
     // spremenljvke za glasovalne enote
     var vrednostGE00, vrednostGE01, vrednostGE02, vrednostGE03,
@@ -440,18 +437,12 @@
         vprasanje = data.vpr;
         potrZapOdg = '', ge00odg = '...', ge01odg = '...', ge02odg = '...';
         setTimeout( function() { // če ni timeout-a, v browserju javi napako 'Cannot read property of null'-preverjanje se izvede pred nalaganjem strani
-          // if (location.href.includes('show-question') || location.href.includes('submit-vote')) {
-          //   document.getElementById("strinja").checked = false;
-          //   document.getElementById("vzdrzan").checked = false;
-          //   document.getElementById("nestrinja").checked = false;
-          //   document.getElementById("btnRewriteVprasanje").click();
-          // }
-          if (location.href.includes('submit-vote')) {
+          if (location.href.includes('show-question') || location.href.includes('submit-vote')) {
             document.getElementById("strinja").checked = false;
             document.getElementById("vzdrzan").checked = false;
             document.getElementById("nestrinja").checked = false;
+            document.getElementById("btnRewriteVprasanje").click();
           }
-          document.getElementById("btnRewriteVprasanje").click();
         }, 10);
         // document.getElementById("strinja").checked = false;
         // document.getElementById("vzdrzan").checked = false;
@@ -543,19 +534,6 @@
     socket.on("socketWebGETabela", function(msg) {
       WebGETabela = JSON.parse('['+msg+']');
       document.getElementById("btnRewriteWebGETabela").click();
-    });
-    function startStopGlasovanje() { // funkcija za zagon in ustavitev glasovanja/sprejemanja glasov
-      if(!startStop) {
-        startStop = true;
-      } else {
-        startStop = false;
-      }
-      socket.emit("socketStartStopGlasovanje");
-    }
-    socket.on("socketStartStopGlasovanjeIzpis", function() {
-      if (location.href.includes('submit-vote')) {
-        document.getElementById("btnStartStopInfo").click();
-      }
     });
     // =============================================
   </script>

@@ -1,4 +1,4 @@
-// Verzija: 2017.04.04c
+// Verzija: 2017.04.04a
 // ====================================================================================================
 var app = angular.module('myApp', ['ngRoute', 'ui.bootstrap', 'smart-table']);
 var removeRowPodatek, removeRowVprasanje;
@@ -9,14 +9,14 @@ app.config(function($routeProvider) {
     controller:'HomeController'
   })
   .when('/show-question', {
-    // resolve: {
-    //   "check": function($location, $rootScope) {
-    //     if(!$rootScope.loggedIn) {
-    //       $location.path('/login');
-    //       alert('Za dostop do te strani se je treba prijaviti!');
-    //     }
-    //   }
-    // },
+    resolve: {
+      "check": function($location, $rootScope) {
+        if(!$rootScope.loggedIn) {
+          $location.path('/login');
+          alert('Za dostop do te strani se je treba prijaviti!');
+        }
+      }
+    },
     templateUrl:'pages/show-question.html',
     controller:'QuestionController'
   })
@@ -91,9 +91,7 @@ app.controller('QuestionController', function($scope) {
   $scope.ge01odg = ge01odg,
   $scope.ge02odg = ge02odg,
   $scope.ge03odg = ge03odg,
-  $scope.WebGETabela = WebGETabela,
-  $scope.stanjeGlasovanja = stanjeGlasovanja,
-  $scope.stanjeGlasovanjaTF = false;
+  $scope.WebGETabela = WebGETabela;
   $scope.rewriteVprasanje = function() {
     return $scope.vprasanje = vprasanje,
     $scope.zapStVpr = zapStVpr,
@@ -121,15 +119,6 @@ app.controller('QuestionController', function($scope) {
   };
   $scope.rewriteWebGETabela = function() {
     return $scope.WebGETabela = WebGETabela;
-  };
-  $scope.startStopGl = function() {
-    if(!$scope.stanjeGlasovanjaTF) {
-      $scope.stanjeGlasovanjaTF = true;
-      return $scope.stanjeGlasovanja = 'Glasovanje je v teku. Prosim, oddaj svoj glas.';
-    } else {
-      $scope.stanjeGlasovanjaTF = false;
-      return $scope.stanjeGlasovanja = 'Glasovanje je ustavljeno. Počakaj na začetek glasovanja.';
-    }
   };
 });
 // === POPUP-i ===
@@ -283,9 +272,7 @@ app.controller('WebGEController', function($scope) {
   $scope.vprasanje = vprasanje,
   $scope.zapStVpr = zapStVpr,
   $scope.stVpr = stVpr,
-  $scope.potrZapOdg = potrZapOdg,
-  $scope.stanjeGlasovanja = stanjeGlasovanja,
-  $scope.stanjeGlasovanjaTF = false;
+  $scope.potrZapOdg = potrZapOdg;
   $scope.rewriteVprasanje = function() {
     return $scope.vprasanje = vprasanje,
     $scope.zapStVpr = zapStVpr,
@@ -294,15 +281,6 @@ app.controller('WebGEController', function($scope) {
   };
   $scope.potrditevPrejemaOdg = function() {
     return $scope.potrZapOdg = potrZapOdg;
-  };
-  $scope.startStopGlWebGE = function() {
-    if(!$scope.stanjeGlasovanjaTF) {
-      $scope.stanjeGlasovanjaTF = true;
-      return $scope.stanjeGlasovanja = 'Glasovanje je v teku. Prosim, oddaj svoj glas.';
-    } else {
-      $scope.stanjeGlasovanjaTF = false;
-      return $scope.stanjeGlasovanja = 'Glasovanje je ustavljeno. Počakaj na začetek glasovanja.';
-    }
   };
 });
 app.controller('LoginController', function($scope, $http, $location, $rootScope) { // controller za Login stran.

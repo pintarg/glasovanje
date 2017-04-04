@@ -1,4 +1,4 @@
-// Verzija: 2017.04.04c
+// Verzija: 2017.04.04a
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -26,7 +26,7 @@ var VprID, // ID vprašanja v bazi "vprasanja"
     cNum=0, // število povezanih klientov
     timestamp2,
     hms, // timestamp hh:mm:ss
-    serverIP="192.168.0.199"; // spremenljivka za server IP. Uporablja se pri preverjanju in zapisovanju podatkov v Redis tabelo WebGE
+    serverIP="192.168.42.50"; // spremenljivka za server IP. Uporablja se pri preverjanju in zapisovanju podatkov v Redis tabelo WebGE
 
 var osveziPodatke = true, // spremenjivka, ki se uporabi za preverjanje ob vnovičnem zagonu programa
     socketF5 = true, // spremenljivka, ki se uporablja pri zagonu programa in osveževanju (F5) webpage-a
@@ -277,13 +277,10 @@ io.sockets.on("connection", function(socket) {
   socket.on("socketOsveziVprasanje", function() {
     beriVprasanje();
   });
-  socket.on("socketWebGEF5", function() { // osveževanje WebGE tabele
+  socket.on("socketWebGEF5", function() {
     clientRedis.hvals("webge", function(err, reply) {
       socket.emit("socketWebGETabela", reply);
     });
-  });
-  socket.on("socketStartStopGlasovanje", function() { // osveževanje izpisa start/stop glasovanja
-    io.emit("socketStartStopGlasovanjeIzpis");
   });
   // FUNKCIJE =================================================================
   // branje števila vprašanj

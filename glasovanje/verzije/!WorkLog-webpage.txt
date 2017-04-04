@@ -478,17 +478,19 @@ Narejeno: Urejen login z uporabo AngularJS. Star login umaknjen. Koda starega lo
 app_2017.04.03b.js; server_2017.04.03b.js; webpage_2017.04.03b.html
 To-Do: Briši komentirano kodo starega logina.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.04.04a
+Narejeno: Brisanje komentirane kode, vezane na star login.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.04.04b
+Narejeno: webpage > "socketVprPrebran": urejanje if stavka, da se koda ponastavljanja radiobutton-ov proži samo na submit-vote, ker sem jih na show-question umaknil.
+[webpage_2017.04.04b.html; show-question_2017.04.04a.html]
+To-Do: Brisanje odvečne komentirane kode.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.04.04b - zgoraj opisanega nisem shranil pod svojo različico, tako da vse sprada pod 2017.04.04b
+Narejeno: Urejanje izpisa start/stop glasovanja.
+[app_2017.04.04b.js; webpage_2017.04.04b.html; submit-vote_2017.04.04a.html; show-question_2017.04.04b.html; server_2017.04.04b.js]
+To-Do: Urejanje sprejema odgovorov glede na stanje stanje (start/stop) glasovanja.
 ==============================
 Verzija:
 Narejeno:

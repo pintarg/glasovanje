@@ -129,13 +129,15 @@ Narejeno: Popravek izpisa 'Stanje odgovora' v obliko 'Ob 22:47:39 2. prejem odgo
 [webpage_2017.01.30b.html; show-question_2017.01.30d.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.04.04a
+Narejeno: Urejanje/odstranjevanje radiobutton-ov, gumba za oddajo glasu in izpisa povratne informacije ob oddaji odgovora.
+[webpage_2017.04.04b.html; show-question_2017.04.04a.html]
+To-Do: Brisanje odvečne komentirane kode.
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.04.04b
+Narejeno: Urejanje izpisa start/stop glasovanja.
+[app_2017.04.04b.js; webpage_2017.04.04b.html; submit-vote_2017.04.04a.html; show-question_2017.04.04b.html; server_2017.04.04b.js]
+To-Do: Urejanje sprejema odgovorov glede na stanje stanje (start/stop) glasovanja.
 ==============================
 Verzija:
 Narejeno:
