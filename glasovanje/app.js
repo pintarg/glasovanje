@@ -9,14 +9,14 @@ app.config(function($routeProvider) {
     controller:'HomeController'
   })
   .when('/show-question', {
-    // resolve: {
-    //   "check": function($location, $rootScope) {
-    //     if(!$rootScope.loggedIn) {
-    //       $location.path('/login');
-    //       alert('Za dostop do te strani se je treba prijaviti!');
-    //     }
-    //   }
-    // },
+    resolve: {
+      "check": function($location, $rootScope) {
+        if(!$rootScope.loggedIn) {
+          $location.path('/login');
+          alert('Za dostop do te strani se je treba prijaviti!');
+        }
+      }
+    },
     templateUrl:'pages/show-question.html',
     controller:'QuestionController'
   })
