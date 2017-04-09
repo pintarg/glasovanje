@@ -1,4 +1,4 @@
-// Verzija: 2017.04.09c
+// Verzija: 2017.04.09a
 // ====================================================================================================
 var express = require("express")();
 var http = require("http").Server(express);
@@ -232,6 +232,7 @@ io.sockets.on("connection", function(socket) {
     }
   });
   socket.on("socketIzpisiRezultate", function() {
+    // stOdgPosameznoVpr();
     v01=1;
     branjeRezultatov();
   });
@@ -257,6 +258,7 @@ io.sockets.on("connection", function(socket) {
       console.log("Število brisanih vprašanj iz tabele vprašanj: "+reply);
     });
     clientRedis.zrangebyscore("odgovori", '('+(delVprID-1), delVprID, function(err, reply) {
+      // console.log("Odgovori vezani na brisano vprašanje: "+reply);
       var delSeznamOdg = reply;
       clientRedis.zrem("odgovori", delSeznamOdg, function(err, reply) {
         console.log("Število brisanih odgovorov, vezanih na brisano vprašanje: "+reply);
@@ -287,6 +289,7 @@ io.sockets.on("connection", function(socket) {
   function branjeStVpr() {
     clientRedis.zcount("vprasanja", "-inf", "+inf", function(err, reply) {
       stVpr = reply;
+      // console.log("Število vprašanj v bazi: "+reply);
       if (osveziPodatke === true) { // pošiljanje števila vprašanj v bazi ob zagonu programa in ob brisanju vprašanja iz DB
         socket.emit("socketVprPrebran", {"vpr":"osveziPodatke", "zapStVpr":(zapStVpr), "stVpr":stVpr});
         osveziPodatke = false;
@@ -324,12 +327,17 @@ io.sockets.on("connection", function(socket) {
   }
   // branje vprašanj in odgovorov ter sestavljanje v enoten string za izpis na webpage (podstran 'statistika')
   function branjeVprOdgSkupaj() {
+    // console.log("Array števila odgovorov na posamezno vprašanje: "+stOdgVpr+". Array length: "+stOdgVpr.length);
     var j=1, k=0, tempVprID, tempVpr, tempVprasanje, tempOdgovor, tempSeStrinjam,
         tempVzdrzan, tempSeNeStrinjam,
         odgovor=[]; // array vseh odgovorv, ki se posredujejo na webpage za izpis
     for(i=0; i<maxVprID; i++) {
+      // console.log("i: "+i+"; maxVprID: "+maxVprID);
       clientRedis.zrangebyscore("vprasanja", '('+i, (i+1), function(err, reply) {
+        // console.log("izpis stat "+j+": "+reply);
+        // j++;
         if (reply != "") { // pusti '!=', če spremeniš v '!==' ne deluje
+          // console.log("Stat vpr: "+reply);
           tempVprasanje = JSON.parse(reply);
           tempVprID = tempVprasanje.VprID;
           tempVpr = tempVprasanje.vprasanje;
@@ -340,6 +348,7 @@ io.sockets.on("connection", function(socket) {
           tempSeStrinjam=0, tempVzdrzan=0, tempSeNeStrinjam=0;
           tempOdgovor = JSON.parse('['+reply+']'); // ker je odgovorov za dano vprašanje več kot eden, ga sestavimo v JSON array
           for(ii=0; ii<stOdgVpr[k]; ii++) { // ponovimo branje JSON array-a odgovorov, kolikor je odgovorov v array-u - 'stOdgVpr[k]'
+            // console.log("tempOdgovorK: "+JSON.stringify(tempOdgovorK));
             if (tempOdgovor[ii].Odg == "Se strinjam") {
               tempSeStrinjam++;
             } else if (tempOdgovor[ii].Odg == "Vzdržan") {
@@ -348,12 +357,14 @@ io.sockets.on("connection", function(socket) {
               tempSeNeStrinjam++;
             }
           }
+          // console.log("Stat odg: "+reply);
           tempOdgSkupaj=tempSeStrinjam+tempVzdrzan+tempSeNeStrinjam;
           tempOdgSeStrinjam=tempSeStrinjam+" ("+parseFloat(Math.round(tempSeStrinjam * 100) / (tempSeStrinjam+tempVzdrzan+tempSeNeStrinjam)).toFixed(2)+"%)";
           tempOdgVzdrzan=tempVzdrzan+" ("+parseFloat(Math.round(tempVzdrzan * 100) / (tempSeStrinjam+tempVzdrzan+tempSeNeStrinjam)).toFixed(2)+"%)";
           tempOdgSeNeStrinjam=tempSeNeStrinjam+" ("+parseFloat(Math.round(tempSeNeStrinjam * 100) / (tempSeStrinjam+tempVzdrzan+tempSeNeStrinjam)).toFixed(2)+"%)";
           odgovor[k]={"VprID":tempVprID,"vprasanje":tempVpr,"seStrinjam":tempOdgSeStrinjam,"vzdrzan":tempOdgVzdrzan,"seNeStrinjam":tempOdgSeNeStrinjam,"skupaj":tempOdgSkupaj};
           if ((k+1) == stOdgVpr.length) {
+            // console.log("Končni Odgovori:\n"+JSON.stringify(odgovor));
             socket.emit("socketPosiljanjeStatistike", odgovor);
           }
           k++;
