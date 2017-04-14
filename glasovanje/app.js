@@ -9,62 +9,62 @@ app.config(function($routeProvider) {
     controller:'HomeController'
   })
   .when('/show-question', {
-    resolve: {
-      "check": function($location, $rootScope) {
-        if(!$rootScope.loggedIn) {
-          $location.path('/login');
-          alert('Za dostop do te strani se je treba prijaviti!');
-        }
-      }
-    },
+    // resolve: {
+    //   "check": function($location, $rootScope) {
+    //     if(!$rootScope.loggedIn) {
+    //       $location.path('/login');
+    //       alert('Za dostop do te strani se je treba prijaviti!');
+    //     }
+    //   }
+    // },
     templateUrl:'pages/show-question.html',
     controller:'QuestionController'
   })
   .when('/add-question', {
-    resolve: {
-      "check": function($location, $rootScope) {
-        if(!$rootScope.loggedIn) {
-          $location.path('/login');
-          alert('Za dostop do te strani se je treba prijaviti!');
-        }
-      }
-    },
+    // resolve: {
+    //   "check": function($location, $rootScope) {
+    //     if(!$rootScope.loggedIn) {
+    //       $location.path('/login');
+    //       alert('Za dostop do te strani se je treba prijaviti!');
+    //     }
+    //   }
+    // },
     templateUrl:'pages/add-question.html',
     controller:'Add-questionController'
   })
   .when('/answers', {
-    resolve: {
-      "check": function($location, $rootScope) {
-        if(!$rootScope.loggedIn) {
-          $location.path('/login');
-          alert('Za dostop do te strani se je treba prijaviti!');
-        }
-      }
-    },
+    // resolve: {
+    //   "check": function($location, $rootScope) {
+    //     if(!$rootScope.loggedIn) {
+    //       $location.path('/login');
+    //       alert('Za dostop do te strani se je treba prijaviti!');
+    //     }
+    //   }
+    // },
     templateUrl:'pages/answers.html',
     controller:'AnswersController'
   })
   .when('/all-questions', {
-    resolve: {
-      "check": function($location, $rootScope) {
-        if(!$rootScope.loggedIn) {
-          $location.path('/login');
-          alert('Za dostop do te strani se je treba prijaviti!');
-        }
-      }
-    },
+    // resolve: {
+    //   "check": function($location, $rootScope) {
+    //     if(!$rootScope.loggedIn) {
+    //       $location.path('/login');
+    //       alert('Za dostop do te strani se je treba prijaviti!');
+    //     }
+    //   }
+    // },
     templateUrl:'pages/all-questions.html',
     controller:'all-questionsController'
   })
   .when('/statistics', {
-    resolve: {
-      "check": function($location, $rootScope) {
-        if(!$rootScope.loggedIn) {
-          $location.path('/login');
-          alert('Za dostop do te strani se je treba prijaviti!');
-        }
-      }
-    },
+    // resolve: {
+    //   "check": function($location, $rootScope) {
+    //     if(!$rootScope.loggedIn) {
+    //       $location.path('/login');
+    //       alert('Za dostop do te strani se je treba prijaviti!');
+    //     }
+    //   }
+    // },
     templateUrl:'pages/statistics.html',
     controller:'StatisticsController'
   })

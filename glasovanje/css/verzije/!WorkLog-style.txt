@@ -38,9 +38,9 @@ Narejeno: Urejanje izgleda tabel za prikaz stanja glasovalnih enot.
 [show-question_2017.01.30c.html; style_2017.01.30a.css]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.04.13a
+Narejeno: Testiranje delovanja aplikacije in manjši popravki kode.
+To-Do: Popraviti zabeležene napake.
 ==============================
 Verzija:
 Narejeno:

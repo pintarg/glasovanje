@@ -425,9 +425,9 @@ Verzija: 2017.04.09b
 Narejeno: Čiščenje/urejanje kode. Brisanje komentirane kode, ki ni v uporabi.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
+Verzija: 2017.04.13a
+Narejeno: Testiranje delovanja aplikacije in manjši popravki kode.
+To-Do: Popraviti zabeležene napake.
 ==============================
 Verzija:
 Narejeno:
