@@ -1,10 +1,10 @@
-/* Verzija: 2017.04.14c */
+/* Verzija: 2017.04.14a */
 /* latin-ext */
 @font-face {
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 300;
-  src: local('Raleway Light'), local('Raleway-Light'), url("fonts/Raleway-Light-ext.woff2") format('woff2');
+  src: local('Raleway Light'), local('Raleway-Light'), url(fonts/Raleway-Light-ext.woff2) format('woff2');
   unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
@@ -12,7 +12,7 @@
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 300;
-  src: local('Raleway Light'), local('Raleway-Light'), url("fonts/Raleway-Light.woff2") format('woff2');
+  src: local('Raleway Light'), local('Raleway-Light'), url(fonts/Raleway-Light.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
 /* latin-ext */
@@ -20,7 +20,7 @@
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
-  src: local('Raleway'), local('Raleway-Regular'), url("fonts/Raleway-Regular-ext.woff2") format('woff2');
+  src: local('Raleway'), local('Raleway-Regular'), url(fonts/Raleway-Regular-ext.woff2) format('woff2');
   unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
@@ -28,7 +28,7 @@
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 400;
-  src: local('Raleway'), local('Raleway-Regular'), url("fonts/Raleway-Regular.woff2") format('woff2');
+  src: local('Raleway'), local('Raleway-Regular'), url(fonts/Raleway-Regular.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
 /* latin-ext */
@@ -36,7 +36,7 @@
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 500;
-  src: local('Raleway Medium'), local('Raleway-Medium'), url("fonts/Raleway-Medium-ext.woff2") format('woff2');
+  src: local('Raleway Medium'), local('Raleway-Medium'), url(fonts/Raleway-Medium-ext.woff2) format('woff2');
   unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
@@ -44,7 +44,7 @@
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 500;
-  src: local('Raleway Medium'), local('Raleway-Medium'), url("fonts/Raleway-Medium.woff2") format('woff2');
+  src: local('Raleway Medium'), local('Raleway-Medium'), url(fonts/Raleway-Medium.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
 /* latin-ext */
@@ -52,7 +52,7 @@
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 600;
-  src: local('Raleway SemiBold'), local('Raleway-SemiBold'), url("fonts/Raleway-SemiBold-ext.woff2") format('woff2');
+  src: local('Raleway SemiBold'), local('Raleway-SemiBold'), url(fonts/Raleway-SemiBold-ext.woff2) format('woff2');
   unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
@@ -60,7 +60,7 @@
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 600;
-  src: local('Raleway SemiBold'), local('Raleway-SemiBold'), url("fonts/Raleway-SemiBold.woff2") format('woff2');
+  src: local('Raleway SemiBold'), local('Raleway-SemiBold'), url(fonts/Raleway-SemiBold.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
 /* latin-ext */
@@ -68,7 +68,7 @@
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
-  src: local('Raleway Bold'), local('Raleway-Bold'), url("fonts/Raleway-Bold-ext.woff2") format('woff2');
+  src: local('Raleway Bold'), local('Raleway-Bold'), url(fonts/Raleway-Bold-ext.woff2) format('woff2');
   unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
@@ -76,9 +76,10 @@
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
-  src: local('Raleway Bold'), local('Raleway-Bold'), url("fonts/Raleway-Bold.woff2") format('woff2');
+  src: local('Raleway Bold'), local('Raleway-Bold'), url(fonts/Raleway-Bold.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
+/*@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700');*/
 body{padding-top:0 !important;background:#4a4a4a;}
 .navbar-default{background:#50e3c2;box-shadow:none;border:none;}
 .navbar-default .navbar-brand{font-family:"Raleway";color: #fff;font-size: 30px;text-transform: uppercase; font-weight: 500;margin:0;}

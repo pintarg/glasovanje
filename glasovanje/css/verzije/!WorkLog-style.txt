@@ -42,6 +42,51 @@ Verzija: 2017.04.13a
 Narejeno: Testiranje delovanja aplikacije in manjši popravki kode.
 To-Do: Popraviti zabeležene napake.
 ==============================
+Verzija: 2017.04.14a
+Narejeno: Dodajanje fonta Raleway na lokalni disk, da ni potrebe po internetni povezavi.
+To-Do:
+==============================
+Verzija: 2017.04.14b
+Narejeno: Dodajanje fonta Raleway na lokalni disk, da ni potrebe po internetni povezavi - dodatno urejanje.
+[server_2017.04.14b.js, style_2017.04.14b.css]
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
+Verzija:
+Narejeno:
+To-Do:
+==============================
 Verzija:
 Narejeno:
 To-Do:
