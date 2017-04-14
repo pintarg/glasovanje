@@ -195,8 +195,9 @@ Narejeno: Urejanje izpisa start/stop glasovanja.
 [app_2017.04.04b.js; webpage_2017.04.04b.html; submit-vote_2017.04.04a.html; show-question_2017.04.04b.html; server_2017.04.04b.js]
 To-Do: Urejanje sprejema odgovorov glede na stanje stanje (start/stop) glasovanja.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.04.14a
+Narejeno: Urejanje kode za pravilni izpis informacije o stanju (start/stop) glasovanja.
+[webpage_2017.04.14d.html, app_2017.04.14a.js]
 To-Do:
 ==============================
 Verzija:

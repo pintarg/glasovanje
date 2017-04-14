@@ -513,8 +513,9 @@ Narejeno: Popravljanje kode za start/stop glasovanja, da se pošlje vrednost spr
 [webpage_2017.04.14c.html, server_2017.04.14a.js]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.04.14d
+Narejeno: Urejanje kode za pravilni izpis informacije o stanju (start/stop) glasovanja.
+[webpage_2017.04.14d.html, app_2017.04.14a.js]
 To-Do:
 ==============================
 Verzija:
