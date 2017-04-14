@@ -8,7 +8,8 @@
         <p class="stanjeGlasovanja"><span class='poudarek'>Stanje glasovanja: </span>{{stanjeGlasovanja}}</p>
         <button id="btnPrejsnjeVpr" onClick="prejsnjeVpr()"><< Prejšnje vprašanje</button>
         <button id="btnBeriVpr" onClick="beriVpr()">Naslednje vprašanje >></button>
-        <button id="btnStartStop" onClick="startStopGlasovanje()" ng-click="startStopGl()">Začni/ustavi glasovanje</button>
+        <!-- <button id="btnStartStop" onClick="startStopGlasovanje()" ng-click="startStopGl()">Začni/ustavi glasovanje</button> -->
+        <button id="btnStartStop" onClick="startStopGlasovanje()">Začni/ustavi glasovanje</button>
         <button id="btnRewriteVprasanje" type="button" ng-click="rewriteVprasanje()" style="display:none"></button>
         <button id="btnPotrditevPrejemaOdg" type="button" ng-click="potrditevPrejemaOdg()" style="display:none"></button>
         <button id="btnRewriteGE00odg" type="button" ng-click="rewriteGE00odg()" style="display:none"></button>
@@ -16,6 +17,7 @@
         <button id="btnRewriteGE02odg" type="button" ng-click="rewriteGE02odg()" style="display:none"></button>
         <button id="btnRewriteGE03odg" type="button" ng-click="rewriteGE03odg()" style="display:none"></button>
         <button id="btnRewriteWebGETabela" type='button' ng-click="rewriteWebGETabela()" style="display:none">Osveži podatke WebGE tabele</button>
+        <button id="btnStartStopGL" type="button" ng-click="startStopGl()" style="display:none"></button>
       </div>
       <div class='enatretjina'>
         <!-- <p class='poudarek'>Odgovori:</p>

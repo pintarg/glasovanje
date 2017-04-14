@@ -518,8 +518,9 @@ Narejeno: Urejanje kode za pravilni izpis informacije o stanju (start/stop) glas
 [webpage_2017.04.14d.html, app_2017.04.14a.js]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.04.14e
+Narejeno: Urejanje kode za pravilni izpis informacije o stanju (start/stop) glasovanja.
+[app_2017.04.14b.js, webpage_2017.04.14e.html]
 To-Do:
 ==============================
 Verzija:
