@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2017.04.14d -->
+<!-- Verzija: 2017.04.14a -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -153,27 +153,22 @@
             }, 500);
           }
         } else if (vrednostGE00 != 0 && typeof(vrednostGE00) != "undefined" && location.href.includes('show-question')) {
-          if(startStop) {
-            if (zapStVpr == 0) { // preverjanje, da je izpisano vprašanje in da se ne nahaja na 0. vprašanju
-              ge00odg = "Prazen odgovor. Počakaj na vprašanje...";
-            } else {
-              if (vrednostGE00==1) {
-                odgGE00="Se strinjam";
-              } else if (vrednostGE00==2) {
-                odgGE00="Vzdržan";
-              } else if (vrednostGE00==3) {
-                odgGE00="Se ne strinjam";
-              }
-              timeStamp();
-              ge00odg = "Ob "+hms+" "+ge00odgCnt+". prejem odgovora na izpisano vprašanje.";
-              socket.emit("socketPisanjeOdg", {"Odg":odgGE00,"SocketID":connIDGE00});
-              ge00odgCnt++;
-            }
-            document.getElementById("btnRewriteGE00odg").click();
+          if (zapStVpr == 0) { // preverjanje, da je izpisano vprašanje in da se ne nahaja na 0. vprašanju
+            ge00odg = "Prazen odgovor. Počakaj na vprašanje...";
           } else {
-            ge00odg="Glasovanje je ustavljeno! Za oddajo glasu počakaj na zagon glasovanja.";
-            document.getElementById("btnRewriteGE00odg").click();
+            if (vrednostGE00==1) {
+              odgGE00="Se strinjam";
+            } else if (vrednostGE00==2) {
+              odgGE00="Vzdržan";
+            } else if (vrednostGE00==3) {
+              odgGE00="Se ne strinjam";
+            }
+            timeStamp();
+            ge00odg = "Ob "+hms+" "+ge00odgCnt+". prejem odgovora na izpisano vprašanje.";
+            socket.emit("socketPisanjeOdg", {"Odg":odgGE00,"SocketID":connIDGE00});
+            ge00odgCnt++;
           }
+          document.getElementById("btnRewriteGE00odg").click();
         }
       };
       socket.on("socketOdgGE00Zapisan", function() {
@@ -221,27 +216,22 @@
             }, 500);
           }
         } else if (vrednostGE01 != 0 && typeof(vrednostGE01) != "undefined" && location.href.includes('show-question')) {
-          if(startStop) {
-            if (zapStVpr == 0) { // preverjanje, da je izpisano vprašanje in da se ne nahaja na 0. vprašanju
-              ge01odg = "Prazen odgovor. Počakaj na vprašanje...";
-            } else {
-              if (vrednostGE01==1) {
-                odgGE01="Se strinjam";
-              } else if (vrednostGE01==2) {
-                odgGE01="Vzdržan";
-              } else if (vrednostGE01==3) {
-                odgGE01="Se ne strinjam";
-              }
-              timeStamp();
-              ge01odg = "Ob "+hms+" "+ge01odgCnt+". prejem odgovora na izpisano vprašanje.";
-              socket.emit("socketPisanjeOdg", {"Odg":odgGE01,"SocketID":connIDGE01});
-              ge01odgCnt++;
-            }
-            document.getElementById("btnRewriteGE01odg").click();
+          if (zapStVpr == 0) { // preverjanje, da je izpisano vprašanje in da se ne nahaja na 0. vprašanju
+            ge01odg = "Prazen odgovor. Počakaj na vprašanje...";
           } else {
-            ge01odg="Glasovanje je ustavljeno! Za oddajo glasu počakaj na zagon glasovanja.";
-            document.getElementById("btnRewriteGE01odg").click();
+            if (vrednostGE01==1) {
+              odgGE01="Se strinjam";
+            } else if (vrednostGE01==2) {
+              odgGE01="Vzdržan";
+            } else if (vrednostGE01==3) {
+              odgGE01="Se ne strinjam";
+            }
+            timeStamp();
+            ge01odg = "Ob "+hms+" "+ge01odgCnt+". prejem odgovora na izpisano vprašanje.";
+            socket.emit("socketPisanjeOdg", {"Odg":odgGE01,"SocketID":connIDGE01});
+            ge01odgCnt++;
           }
+          document.getElementById("btnRewriteGE01odg").click();
         }
       };
       socket.on("socketOdgGE01Zapisan", function() {
@@ -310,6 +300,22 @@
             ge02odg="Glasovanje je ustavljeno! Za oddajo glasu počakaj na zagon glasovanja.";
             document.getElementById("btnRewriteGE02odg").click();
           }
+          // if (zapStVpr == 0) { // preverjanje, da je izpisano vprašanje in da se ne nahaja na 0. vprašanju
+          //   ge02odg = "Prazen odgovor. Počakaj na vprašanje...";
+          // } else {
+          //   if (vrednostGE02==1) {
+          //     odgGE02="Se strinjam";
+          //   } else if (vrednostGE02==2) {
+          //     odgGE02="Vzdržan";
+          //   } else if (vrednostGE02==3) {
+          //     odgGE02="Se ne strinjam";
+          //   }
+          //   timeStamp();
+          //   ge02odg = "Ob "+hms+" "+ge02odgCnt+". prejem odgovora na izpisano vprašanje.";
+          //   socket.emit("socketPisanjeOdg", {"Odg":odgGE02,"SocketID":connIDGE02});
+          //   ge02odgCnt++;
+          // }
+          // document.getElementById("btnRewriteGE02odg").click();
         }
       };
       socket.on("socketOdgGE02Zapisan", function() {
@@ -357,27 +363,22 @@
             }, 500);
           }
         } else if (vrednostGE03 != 0 && typeof(vrednostGE03) != "undefined" && location.href.includes('show-question')) {
-          if(startStop) {
-            if (zapStVpr == 0) { // preverjanje, da je izpisano vprašanje in da se ne nahaja na 0. vprašanju
-              ge03odg = "Prazen odgovor. Počakaj na vprašanje...";
-            } else {
-              if (vrednostGE03==1) {
-                odgGE03="Se strinjam";
-              } else if (vrednostGE03==2) {
-                odgGE03="Vzdržan";
-              } else if (vrednostGE03==3) {
-                odgGE03="Se ne strinjam";
-              }
-              timeStamp();
-              ge03odg = "Ob "+hms+" "+ge03odgCnt+". prejem odgovora na izpisano vprašanje.";
-              socket.emit("socketPisanjeOdg", {"Odg":odgGE03,"SocketID":connIDGE03});
-              ge03odgCnt++;
-            }
-            document.getElementById("btnRewriteGE03odg").click();
+          if (zapStVpr == 0) { // preverjanje, da je izpisano vprašanje in da se ne nahaja na 0. vprašanju
+            ge03odg = "Prazen odgovor. Počakaj na vprašanje...";
           } else {
-            ge03odg="Glasovanje je ustavljeno! Za oddajo glasu počakaj na zagon glasovanja.";
-            document.getElementById("btnRewriteGE03odg").click();
+            if (vrednostGE03==1) {
+              odgGE03="Se strinjam";
+            } else if (vrednostGE03==2) {
+              odgGE03="Vzdržan";
+            } else if (vrednostGE03==3) {
+              odgGE03="Se ne strinjam";
+            }
+            timeStamp();
+            ge03odg = "Ob "+hms+" "+ge03odgCnt+". prejem odgovora na izpisano vprašanje.";
+            socket.emit("socketPisanjeOdg", {"Odg":odgGE03,"SocketID":connIDGE03});
+            ge03odgCnt++;
           }
+          document.getElementById("btnRewriteGE03odg").click();
         }
       };
       socket.on("socketOdgGE03Zapisan", function() {
@@ -550,17 +551,13 @@
       document.getElementById("btnRewriteWebGETabela").click();
     });
     function startStopGlasovanje() { // funkcija za zagon in ustavitev glasovanja/sprejemanja glasov
-      if(startStop) { // če je true, pošlji 0=false
-        socket.emit("socketStartStopGlasovanje", 0); // start>stop
-      } else { // če je false, pošlji 1=true
-        socket.emit("socketStartStopGlasovanje", 1); // stop>start
-      }
+      socket.emit("socketStartStopGlasovanje");
     }
-    socket.on("socketStartStopGlasovanjeIzpis", function(msg) {
-      if(msg===0) {
-        startStop = false;
-      } else if(msg===1) {
+    socket.on("socketStartStopGlasovanjeIzpis", function() {
+      if(!startStop) {
         startStop = true;
+      } else {
+        startStop = false;
       }
       if(location.href.includes('submit-vote')) {
         document.getElementById("btnStartStopInfo").click();

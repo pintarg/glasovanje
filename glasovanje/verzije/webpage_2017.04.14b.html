@@ -1,5 +1,5 @@
 <!-- Opis: Spletna stran za prikaz zbranih glasov. -->
-<!-- Verzija: 2017.04.14d -->
+<!-- Verzija: 2017.04.14b -->
 <!-- ==================================================================================================== -->
 <!DOCTYPE html>
 <meta charset=utf-8>
@@ -550,17 +550,13 @@
       document.getElementById("btnRewriteWebGETabela").click();
     });
     function startStopGlasovanje() { // funkcija za zagon in ustavitev glasovanja/sprejemanja glasov
-      if(startStop) { // če je true, pošlji 0=false
-        socket.emit("socketStartStopGlasovanje", 0); // start>stop
-      } else { // če je false, pošlji 1=true
-        socket.emit("socketStartStopGlasovanje", 1); // stop>start
-      }
+      socket.emit("socketStartStopGlasovanje");
     }
-    socket.on("socketStartStopGlasovanjeIzpis", function(msg) {
-      if(msg===0) {
-        startStop = false;
-      } else if(msg===1) {
+    socket.on("socketStartStopGlasovanjeIzpis", function() {
+      if(!startStop) {
         startStop = true;
+      } else {
+        startStop = false;
       }
       if(location.href.includes('submit-vote')) {
         document.getElementById("btnStartStopInfo").click();

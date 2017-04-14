@@ -500,16 +500,17 @@ Verzija: 2017.04.13a
 Narejeno: Testiranje delovanja aplikacije in manjši popravki kode.
 To-Do: Popraviti zabeležene napake.
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.04.14a
+Narejeno: Za GE02 narejena varovalka za preverjanje start/stop glasovanja in ustrezen odgovor glede na stanje glasovanja.
+To-Do: Prenos kode še na ostale GE.
+==============================
+Verzija: 2017.04.14b
+Narejeno: Dodajanje varovalke za preverjanje start/stop na ostale GE.
 To-Do:
 ==============================
-Verzija:
-Narejeno:
-To-Do:
-==============================
-Verzija:
-Narejeno:
+Verzija: 2017.04.14c
+Narejeno: Popravljanje kode za start/stop glasovanja, da se pošlje vrednost spremembe, katero enako upoštevajo vse GE, ne glede na predhodno stanje glasovanja.
+[webpage_2017.04.14c.html, server_2017.04.14a.js]
 To-Do:
 ==============================
 Verzija:
