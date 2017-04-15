@@ -205,8 +205,8 @@ Narejeno: Urejanje kode za pravilni izpis informacije o stanju (start/stop) glas
 [app_2017.04.14b.js, webpage_2017.04.14e.html]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.04.15a
+Narejeno: Urejanje in brisanje komentiranje kode. Odkomentiranje kode za preverjanje login-a.
 To-Do:
 ==============================
 Verzija:
