@@ -444,8 +444,8 @@ Narejeno: Popravljanje delovanja funkcije, ki preverja stanje glasovanja, da se 
 [server_2017.04.28a.js]
 To-Do:
 ==============================
-Verzija:
-Narejeno:
+Verzija: 2017.04.30a
+Narejeno: Odstranjevanje neuporabljenih knjižnic bodyParser, sessions, bcrypt
 To-Do:
 ==============================
 Verzija:
